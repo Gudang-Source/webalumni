@@ -67,8 +67,8 @@
         <div class="container-fluid">
             <div class="row no-gutter popup-gallery">
                 <div class="col-lg-4 col-md-6 col-sm-6">
-                    <a href="<?php echo base_url('assets/back-end/img/1.jpeg') ?>" class="portfolio-box">
-                        <img src="<?php echo base_url('assets/back-end/img/1.jpeg') ?>" class="img-responsive" alt="">
+                    <a href="<?= base_url('assets/back-end/img/1.jpeg') ?>" class="portfolio-box">
+                        <img src="<?= base_url('assets/back-end/img/1.jpeg') ?>" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -82,8 +82,8 @@
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
-                    <a href="<?php echo base_url('assets/back-end/img/2.jpeg') ?>" class="portfolio-box">
-                        <img src="<?php echo base_url('assets/back-end/img/2.jpeg') ?>" class="img-responsive" alt="">
+                    <a href="<?= base_url('assets/back-end/img/2.jpeg') ?>" class="portfolio-box">
+                        <img src="<?= base_url('assets/back-end/img/2.jpeg') ?>" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -97,8 +97,8 @@
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
-                    <a href="<?php echo base_url('assets/back-end/img/12.jpeg') ?>" class="portfolio-box">
-                        <img src="<?php echo base_url('assets/back-end/img/12.jpeg') ?>" class="img-responsive" alt="">
+                    <a href="<?= base_url('assets/back-end/img/12.jpeg') ?>" class="portfolio-box">
+                        <img src="<?= base_url('assets/back-end/img/12.jpeg') ?>" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -113,8 +113,8 @@
                 </div>
                 
                 <div class="col-lg-4 col-md-6 col-sm-6">
-                    <a href="<?php echo base_url('assets/back-end/img/13.jpeg') ?>" class="portfolio-box">
-                        <img src="<?php echo base_url('assets/back-end/img/13.jpeg') ?>" class="img-responsive" alt="">
+                    <a href="<?= base_url('assets/back-end/img/13.jpeg') ?>" class="portfolio-box">
+                        <img src="<?= base_url('assets/back-end/img/13.jpeg') ?>" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -128,8 +128,8 @@
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
-                    <a href="<?php echo base_url('assets/back-end/img/1.jpeg') ?>" class="portfolio-box">
-                        <img src="<?php echo base_url('assets/back-end/img/1.jpeg') ?>" class="img-responsive" alt="">
+                    <a href="<?= base_url('assets/back-end/img/1.jpeg') ?>" class="portfolio-box">
+                        <img src="<?= base_url('assets/back-end/img/1.jpeg') ?>" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -143,8 +143,8 @@
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
-                    <a href="<?php echo base_url('assets/back-end/img/15.jpeg'); ?>" class="portfolio-box">
-                        <img src="<?php echo base_url('assets/back-end/img/15.jpeg'); ?>" class="img-responsive" alt="">
+                    <a href="<?= base_url('assets/back-end/img/15.jpeg'); ?>" class="portfolio-box">
+                        <img src="<?= base_url('assets/back-end/img/15.jpeg'); ?>" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
