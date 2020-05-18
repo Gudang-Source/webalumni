@@ -48,25 +48,17 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                    <li><a class="page-scroll" href="">Berita</a></li>
                     <li><a class="page-scroll" href="">Lowongan</a></li>
                     <li><a class="page-scroll" href="">Galeri Bisnis</a></li>
                     <li><a class="page-scroll" href="">Anggota</a></li>
-                    <li><a class="page-scroll" href="">Forum</a></li>
+                    <li><a class="page-scroll" href="">Forum Alumni</a></li>
+                    <li class="">
+                        <a href="<?= base_url('registrasi'); ?>" title="Registrasi" class="page-scroll">Registrasi</a>
+                    </li>
                     <li>
                         <a href="<?= base_url('login'); ?>" title="Login" class="page-scroll">Login</a>
                     </li>
-                    <!-- <li>
-                        <a class="page-scroll" href="#about">About</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#services">Services</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#portfolio">Gallery</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
-                    </li> -->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
