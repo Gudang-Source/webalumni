@@ -7,9 +7,11 @@ if (defined('BASEPATH') or exit('No direct script access allowed'));
  * Created by Lut Dinar Fadila 2018
 */
 
-class Anggota extends MY_Controller {
-    
-    function __construct() {
+class Anggota extends MY_Controller
+{
+
+    function __construct()
+    {
         parent::__construct();
 
         // Load Admin Anggota Model
@@ -24,10 +26,10 @@ class Anggota extends MY_Controller {
         } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == '3') {
             redirect('anggota');
         }
-        
     }
-    
-    function index() {
+
+    function index()
+    {
         $data['title'] = 'Kelola Calon Anggota';
 
         $where = array(
@@ -38,7 +40,7 @@ class Anggota extends MY_Controller {
         $data['calonAnggota'] = $this->M_anggota->findAnggota('*', $where);
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id' => $this->session->userdata('uid')));
         $this->admin_render('admin/anggotaBaru', $data);
-//         echo json_encode($data);
+        //         echo json_encode($data);
     }
 
     public function tambahCalonAnggota()
@@ -49,46 +51,46 @@ class Anggota extends MY_Controller {
         $noTelepon = $this->input->post('noTelepon');
         $email = $this->input->post('email');
 
-        $filename = "anggota-".$namaLengkap."-".time();
+        $filename = "anggota-" . $namaLengkap . "-" . time();
 
         // Set preferences
-		$config['upload_path'] = './uploads/avatars';
-		$config['allowed_types'] = 'png|jpg|jpeg';
-		$config['file_name'] = $filename;
+        $config['upload_path'] = './uploads/avatars';
+        $config['allowed_types'] = 'png|jpg|jpeg';
+        $config['file_name'] = $filename;
 
-		//load upload class library
-		$this->load->library('upload', $config);
+        //load upload class library
+        $this->load->library('upload', $config);
 
-		if (!$this->upload->do_upload('fileSaya')) {
-			flashMessage('error', 'Maaf, Upload gambar calon anggota gagal! Silahkan coba lagi');
-			redirect('admin/Anggota');
-		} else {
-			$upload_data = $this->upload->data();
+        if (!$this->upload->do_upload('fileSaya')) {
+            flashMessage('error', 'Maaf, Upload gambar calon anggota gagal! Silahkan coba lagi');
+            redirect('admin/Anggota');
+        } else {
+            $upload_data = $this->upload->data();
 
-			$data['nama_lengkap'] = $namaLengkap;
-			$data['nama_panggilan_alias'] = $namaPanggilan;
-			$data['tanggal_lahir'] = $this->input->post('tglLahir');
-			$data['angkatan'] = $angkatan;
-			$data['no_telp'] = $noTelepon;
-			$data['email'] = $email;
-			$data['nama_foto'] = $upload_data['file_name'];
-			$data['status_anggota'] = '0';
+            $data['nama_lengkap'] = $namaLengkap;
+            $data['nama_panggilan_alias'] = $namaPanggilan;
+            $data['tanggal_lahir'] = $this->input->post('tglLahir');
+            $data['angkatan'] = $angkatan;
+            $data['no_telp'] = $noTelepon;
+            $data['email'] = $email;
+            $data['nama_foto'] = $upload_data['file_name'];
+            $data['status_anggota'] = '0';
 
-			// echo json_encode($data);
-			$sukses = $this->M_anggota->insertAnggota($data);
+            // echo json_encode($data);
+            $sukses = $this->M_anggota->insertAnggota($data);
 
-			if (!$sukses) {
-				flashMessage('success', 'Calon Anggota Baru berhasil di daftarkan. Silahkan verifikasi di Permohonan Calon Anggota');
-				redirect('admin/Anggota');
-			} else {
-				flashMessage('error', 'Calon Anggota Baru gagal di daftarkan! Silahkan coba lagi');
-				redirect('admin/Anggota');
-			}
-		}
-        
+            if (!$sukses) {
+                flashMessage('success', 'Calon Anggota Baru berhasil di daftarkan. Silahkan verifikasi di Permohonan Calon Anggota');
+                redirect('admin/Anggota');
+            } else {
+                flashMessage('error', 'Calon Anggota Baru gagal di daftarkan! Silahkan coba lagi');
+                redirect('admin/Anggota');
+            }
+        }
     }
-    
-    function kelolaAnggota() {
+
+    function kelolaAnggota()
+    {
         $data['title'] = 'Kelola Anggota';
 
         $where = array(
@@ -97,9 +99,8 @@ class Anggota extends MY_Controller {
         );
         $data['anggota'] = $this->M_anggota->findAnggota('*', $where);
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id' => $this->session->userdata('uid')));
-        
-        $this->admin_render('admin/kelolaAnggota', $data);
 
+        $this->admin_render('admin/kelolaAnggota', $data);
     }
 
     function detailAnggota($id)
@@ -110,37 +111,41 @@ class Anggota extends MY_Controller {
 
         $this->admin_render('admin/detailAnggota', $data);
     }
-    
-    function cariAnggota() {
+
+    function cariAnggota()
+    {
         $nama = $this->input->post('namaAnggota');
-        
+
         $where = "tb_anggota.status_anggota != 0";
         $data['anggota'] = $this->M_anggota->findAnggotaLikeNama($where, $nama);
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('aid')));
-        
+
         echo json_encode($data);
         echo '<br>';
         echo json_encode($nama);
     }
-    
-    function dataMaster() {
+
+    function dataMaster()
+    {
         $data['title'] = 'Tambah Data Anggota Master';
         $data['dataMaster'] = $this->AdminAnggotaModel->getAllDataMaster();
         $data['info'] = $this->AdminHomeModel->getInfoBySessionId($this->session->userdata('aid'));
-        
-//        echo json_encode($data);
+
+        //        echo json_encode($data);
         $this->admin_render('admin/dataMasterAnggota', $data);
     }
-    
-    function anggotaJSON() {
+
+    function anggotaJSON()
+    {
         $id = $this->input->post('id');
-        
+
         $data['anggota'] = $this->M_anggota->findAnggota('*', array('tb_anggota.id_anggota = ' => $id));
-        
+
         echo json_encode($data);
     }
-    
-    function aktivasiCalonAnggota() {
+
+    function aktivasiCalonAnggota()
+    {
         $this->load->model('M_user');
 
         $pass = $this->input->post('password');
@@ -150,7 +155,7 @@ class Anggota extends MY_Controller {
         $user['password'] = md5($pass);
         $user['status_akun'] = '1';
         $user['role'] = $this->input->post('role');
-        
+
         // echo json_encode($user);
         $sukses = $this->M_user->insertUser($user);
 
@@ -167,12 +172,10 @@ class Anggota extends MY_Controller {
                 flashMessage('error', 'Aktivasi Calon Anggota gagal! Silahkan coba lagi...');
                 redirect('admin/Anggota');
             }
-
         } else {
             flashMessage('error', 'Maaf, Terjadi kesalahan pada saat proses pembuatan akun anggota baru');
             redirect('admin/Anggota');
         }
-
     }
 
     function tolakCalonAnggota()
@@ -233,11 +236,11 @@ class Anggota extends MY_Controller {
         $anggota['jabatan'] = $this->input->post('jabatan');
         $anggota['nama_perusahaan'] = $this->input->post('namaPerusahaan');
         $anggota['bisnis_usaha'] = $this->input->post('bisnisUsaha');
-        
+
         if ($sosialPendidikan == "on") {
             $anggota['sosial_pendidikan'] = "1";
         } else {
-            $anggota['sosialPendidikan'] = "0"; 
+            $anggota['sosialPendidikan'] = "0";
         }
 
         if ($sosialKemanusiaan == "on") {
@@ -296,12 +299,10 @@ class Anggota extends MY_Controller {
                 flashMessage('error', 'Data anggota gagal diubah! Silahkan coba lagi');
                 redirect('admin/Anggota/kelolaAnggota');
             }
-            
         } else {
             flashMessage('error', 'Maaf, Terjadi kesalahan pada saat perubahan data anggota');
             redirect('admin/Anggota/kelolaAnggota');
         }
-
     }
 
     public function hapusAnggota()
@@ -315,12 +316,11 @@ class Anggota extends MY_Controller {
         $deleteUser = $this->M_user->deleteUser($idUser);
 
         if (!$deleteUser) {
-            flashMessage('success','Anggota berhasil dihapus');
+            flashMessage('success', 'Anggota berhasil dihapus');
             redirect('admin/Anggota/kelolaAnggota');
         } else {
             flashMessage('error', 'Anggota gagal dihapus! Silahkan coba lagi');
             redirect('admin/Anggota/kelolaAnggota');
         }
     }
-    
 }

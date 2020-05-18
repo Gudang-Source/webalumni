@@ -2,7 +2,8 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class M_anggota extends CI_Model {
+class M_anggota extends CI_Model
+{
 
     function getAllAnggota()
     {
@@ -12,6 +13,7 @@ class M_anggota extends CI_Model {
     function findAnggota($select, $where)
     {
         $this->db->select($select);
+        $this->db->order_by('id_anggota', 'DESC');
         $this->db->where($where);
 
         return $this->db->get('tb_anggota')->result();
@@ -49,5 +51,4 @@ class M_anggota extends CI_Model {
         $this->db->where('id_anggota', $id);
         $this->db->delete('tb_anggota');
     }
-
 }
