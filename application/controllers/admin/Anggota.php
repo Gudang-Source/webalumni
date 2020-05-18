@@ -163,7 +163,7 @@ class Anggota extends MY_Controller
 
             $anggota['user_id'] = $sukses;
             $anggota['status_anggota'] = '1';
-            $updateAnggota = $this->M_anggota->updateAnggota($anggota, $id);
+            $updateAnggota = $this->M_anggota->updateAnggota($anggota, $idAnggota);
 
             if (!$updateAnggota) {
                 flashMessage('success', 'Calon Anggota berhasil di aktifkan dan dapat masuk menggunakan Username & Password sesuai yang tertera pada saat Aktivasi');
