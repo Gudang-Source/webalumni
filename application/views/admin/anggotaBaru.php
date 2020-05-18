@@ -408,27 +408,29 @@ $(".btn-terima").click(function() {
                 document.getElementById('usernameAnggota').innerHTML = noTelp +
                     " (Default Username & Password sesuai yang tertera)";
                 document.getElementById('userName').value = noTelp;
-                document.getElementById('passWord').value = noTelp;
+                document.getElementById('passWord').value = 12345678;
             } else if (email != null) {
                 document.getElementById('usernameAnggota').innerHTML = email.toLowerCase() +
                     " (Default Username & Password sesuai yang tertera)";
                 document.getElementById('userName').value = email.toLowerCase();
-                document.getElementById('passWord').value = email.toLowerCase();
+                document.getElementById('passWord').value = 12345678;
             } else if (nik != null) {
                 document.getElementById('usernameAnggota').innerHTML = nik +
                     " (Default Username & Password sesuai yang tertera)";
                 document.getElementById('userName').value = nik;
-                document.getElementById('passWord').value = nik;
+                document.getElementById('passWord').value = 12345678;
             } else if (namaPanggilan != null) {
                 document.getElementById('usernameAnggota').innerHTML = namaPanggilan.toLowerCase() +
                     " (Default Username & Password sesuai yang tertera)";
                 document.getElementById('userName').value = namaPanggilan.toLowerCase();
-                document.getElementById('passWord').value = namaPanggilan.toLowerCase();
+                document.getElementById('passWord').value = 12345678;
             } else if (namaLengkap != null) {
-                document.getElementById('usernameAnggota').innerHTML = namaLengkap.toLowerCase() +
+                document.getElementById('usernameAnggota').innerHTML = namaLengkap.split(' ').join('')
+                    .toLowerCase() +
                     " (Default Username & Password sesuai yang tertera)";
-                document.getElementById('userName').value = namaLengkap.toLowerCase();
-                document.getElementById('passWord').value = namaLengkap.toLowerCase();
+                document.getElementById('userName').value = namaLengkap.split(' ').join('')
+                    .toLowerCase();
+                document.getElementById('passWord').value = 12345678;
             }
 
         });
