@@ -99,12 +99,12 @@
                                     <div class="col-md-2">
                                         <!-- <input type="text" class="form-control" id="telepon" readonly> -->
                                         <label class="control-label"><?= $info[0]->no_telp; ?></label>
-
-                                    </div>
-                                    <div class="col-md-2">
-                                        <!-- <input type="text" class="form-control" id="teleponAlternatif" readonly> -->
+                                         <b> / </b> 
                                         <label class="control-label"><?= $info[0]->no_telp_alternatif; ?></label>
                                     </div>
+                                    <!-- <div class="col-md-2"> -->
+                                        <!-- <input type="text" class="form-control" id="teleponAlternatif" readonly> -->
+                                    <!-- </div> -->
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">NIK :</label>
@@ -191,7 +191,11 @@
                                     <label class="col-md-3 control-label">Status Bekerja :</label>
                                     <div class="col-md-9">
                                         <!-- <input type="text" class="form-control" id="statusBekerja" readonly /> -->
-                                        <label class="control-label"><?= $info[0]->status_bekerja; ?></label>
+                                        <?php if ($info[0]->status_bekerja == 0) : ?>
+                                            <label class="control-label">Tidak Bekerja</label>
+                                        <?php else :?>
+                                            <label class="control-label">Bekerja</label>
+                                        <?php endif; ?>
                                     </div>
                                 </div>                    
 
@@ -223,7 +227,11 @@
                                     <label class="col-md-3 control-label">Bisnis / Usaha :</label>     
                                     <div class="col-md-9">
                                         <!-- <input type="text" class="form-control" id="bisnisUsaha" readonly /> -->
-                                        <label class="control-label"><?= $info[0]->bisnis_usaha; ?></label>
+                                        <?php if ($info[0]->bisnis_usaha == 0) : ?>
+                                            <label class="control-label">Tidak</label>
+                                        <?php else :?>
+                                            <label class="control-label">Ya</label>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
