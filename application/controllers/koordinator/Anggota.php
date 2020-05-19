@@ -94,7 +94,7 @@ class Anggota extends MY_Controller {
         	$data['nama_foto'] = $upload_data['file_name'];
 			$data['status_anggota'] = '0';
 
-			$sukses = $this->M_anggota->insertAnggota($data);
+			$sukses = $this->M_anggota->insertNewAnggota($data);
 
 			if (!$sukses) {
 				flashMessage('success', 'Calon Anggota Baru berhasil di daftarkan. Silahkan verifikasi di Permohonan Calon Anggota');
