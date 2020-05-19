@@ -21,7 +21,7 @@
                     <p>Cari Anggota</p>
                     <form action="<?= base_url('admin/Anggota/cariAnggota'); ?>" method="post">
                         <div class="form-group">
-                            <div class="col-md-12">
+                            <div class="col-md-10">
                                 <div class="input-group">
                                     <div class="input-group-addon">
                                         <span class="fa fa-search"></span>
@@ -33,7 +33,12 @@
                                 </div>
                             </div>
                         </div>
-                    </form>                 
+                        <div class="form-group">
+                            <div class="col-md-2">
+                                <a href="<?= base_url('admin/Anggota/kelolaAnggota'); ?>" class="btn btn-primary">Reset Search</a>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

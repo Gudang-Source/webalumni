@@ -114,15 +114,19 @@ class Anggota extends MY_Controller
 
     function cariAnggota()
     {
+        $data['title'] = 'Kelola Anggota';
+
         $nama = $this->input->post('namaAnggota');
 
         $where = "tb_anggota.status_anggota != 0";
         $data['anggota'] = $this->M_anggota->findAnggotaLikeNama($where, $nama);
-        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('aid')));
+        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
-        echo json_encode($data);
-        echo '<br>';
-        echo json_encode($nama);
+        $this->admin_render('admin/kelolaAnggota', $data);
+
+        // echo json_encode($data);
+        // echo '<br>';
+        // echo json_encode($nama);
     }
 
     function dataMaster()
