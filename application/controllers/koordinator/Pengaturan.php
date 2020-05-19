@@ -88,7 +88,7 @@ class Pengaturan extends MY_Controller
         } else {
             $upload_data = $this->upload->data();
 
-            $anggota['foto'] = $upload_data['file_name'];
+            $anggota['nama_foto'] = $upload_data['file_name'];
 
             // echo json_encode($data);
             $sukses = $this->M_anggota->updateAnggota($anggota, $idAnggota);

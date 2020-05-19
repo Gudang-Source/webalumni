@@ -69,13 +69,20 @@
 						</div>
 					</div>
 					<div class="row">
+						<label class="col-md-2 control-label">Password :</label>
+						<div class="col-md-3">
+							<label class="control-label">****</label>
+						</div>
+					</div>	
+					<br>
+					<!-- <div class="row">
 						<div class="col-md-4">
 							<button class="btn btn-info btn-username" title="Ganti" data-toggle="modal" data-target="#UbahUsernameModal">
 								<i class="fa fa-pencil-square"></i>
 								<span>Ganti Username</span>
 							</button>
-						</div>
-						<div class="col-md-4">
+						</div> -->
+						<div class="col-md-12">
 							<button class="btn btn-danger" title="Ganti Password" data-toggle="modal" data-target="#UbahPasswordModal">
 								<i class="glyphicon glyphicon-remove"></i>
 								<span>Ganti Password</span>
