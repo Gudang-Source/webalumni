@@ -184,7 +184,8 @@
             <div class="mb-title">
                 <span class="fa fa-times"></span> Hapus <strong>Jenis Bisnis</strong>
             </div>
-            <form action="#" class="form-horizontal" method="post">
+            <form action="<?= base_url('admin/ForumBisnis/setDeleteJenisBisnis'); ?>" class="form-horizontal"
+                method="post">
                 <div class="mb-content">
                     <div class="panel-body">
                         <p style="font-size: 16px;">Anda yakin akan menghapus Jenis Bisnis <label class="control-label"
@@ -225,7 +226,7 @@ $(".btn-ubah-jenis-bisnis").click(function() {
 
             document.getElementById('idJenisBisnisEdit').value = data_obj.jenisBisnis[0].id_jenis_bisnis;
             document.getElementById('namaJenisBisnisEdit').value = data_obj.jenisBisnis[0]
-            .nama_jenis_bisnis;
+                .nama_jenis_bisnis;
         });
 });
 

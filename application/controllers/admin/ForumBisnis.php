@@ -105,9 +105,6 @@ class ForumBisnis extends MY_Controller
         }
     }
 
-    public function setDeleteForbis()
-    { }
-
     public function setAddJenisBisnis()
     {
         $data['nama_jenis_bisnis'] = $this->input->post('namaJenisBisnisModal');
@@ -123,10 +120,26 @@ class ForumBisnis extends MY_Controller
         }
     }
 
+    public function setDeleteJenisBisnis()
+    {
+        $id = $this->input->post('idJenisBisnisDelete');
+        // $namaJenisDelete = $this->input->post('namaJenisBisnisDelete');
+
+        $sukses = $this->M_jenisBisnis->deleteJenisBisnis($id);
+
+        if (!$sukses) {
+            flashMessage('success', 'Jenis Bisnis berhasil dihapus');
+            redirect('admin/ForumBisnis/kelolaJenisBisnis');
+        } else {
+            flashMessage('error', 'Jenis Bisnis gagal dihapus! Silahkan coba lagi');
+            redirect('admin/ForumBisnis/kelolaJenisBisnis');
+        }
+    }
+
     public function setUpdateJenisBisnis()
     {
         $id = $this->input->post('idJenisBisnisEdit');
-        $namaJenis = $this->input->post('namaJenisBisnisEdit');
+        $namaJenis = $this->input->post('namaJenisBisnisEdit', true);
 
         $sukses = $this->M_jenisBisnis->updateJenisBisnis($namaJenis, $id);
 
