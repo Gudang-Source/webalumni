@@ -77,7 +77,7 @@ class Anggota extends MY_Controller
             $data['status_anggota'] = '0';
 
             // echo json_encode($data);
-            $sukses = $this->M_anggota->insertAnggota($data);
+            $sukses = $this->M_anggota->insertNewAnggota($data);
 
             if (!$sukses) {
                 flashMessage('success', 'Calon Anggota Baru berhasil di daftarkan. Silahkan verifikasi di Permohonan Calon Anggota');
