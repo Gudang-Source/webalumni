@@ -31,7 +31,7 @@
                         <div class="form-group">
                             <div class="panel-body">
 
-                            <div class="table-responsive">
+                                <div class="table-responsive">
                                     <table class="table table-bordered table-striped table-actions datatable">
                                         <thead>
                                             <tr>
