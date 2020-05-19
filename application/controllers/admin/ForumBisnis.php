@@ -9,14 +9,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class ForumBisnis extends MY_Controller
 {
-    
+
     function __construct()
     {
         parent::__construct();
         $this->load->model('M_anggota');
         $this->load->model('M_forumBisnis');
         $this->load->model('M_jenisBisnis');
-        
+
         if ($this->session->userdata('logged_in') == '' && $this->session->userdata('username') == '' && $this->session->userdata('role') == '') {
             redirect('login');
         } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == 2) {
@@ -35,7 +35,6 @@ class ForumBisnis extends MY_Controller
         $data['pemilikForbis'] = $this->M_anggota->findAnggota('*', array('tb_anggota.support = ' => '1'));
 
         $this->admin_render('admin/kelolaForumBisnis', $data);
-        
     }
 
     function kelolaJenisBisnis()
@@ -107,9 +106,7 @@ class ForumBisnis extends MY_Controller
     }
 
     public function setDeleteForbis()
-    {
-        
-    }
+    { }
 
     public function setAddJenisBisnis()
     {
@@ -119,10 +116,10 @@ class ForumBisnis extends MY_Controller
 
         if (!$sukses) {
             flashMessage('success', 'Tambah jenis bisnis berhasil. Silahkan lihat pada Tambah Forum Bisnis');
-            redirect('admin/ForumBisnis');
+            redirect('admin/ForumBisnis/kelolaJenisBisnis');
         } else {
             flashMessage('error', 'Tambah jenis bisnis gagal! Silahkan coba lagi.');
-            redirect('admin/ForumBisnis');
+            redirect('admin/ForumBisnis/kelolaJenisBisnis');
         }
     }
 
@@ -141,5 +138,4 @@ class ForumBisnis extends MY_Controller
             redirect('admin/ForumBisnis/kelolaJenisBisnis');
         }
     }
-
 }
