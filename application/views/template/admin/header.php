@@ -50,7 +50,7 @@
             <!-- START X-NAVIGATION -->
             <ul class="x-navigation">
                 <li class="xn-logo">
-                    <a href="<?= base_url('admin'); ?>">ATLANT</a>
+                    <a href="<?= base_url('admin'); ?>" style="font-size:35px;">IKASMA3BDG</a>
                     <a href="#" class="x-navigation-control"></a>
                 </li>
                 <li class="xn-profile">

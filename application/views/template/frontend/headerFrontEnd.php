@@ -48,13 +48,13 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class="page-scroll" href="">Berita</a></li>
-                    <li><a class="page-scroll" href="">Lowongan</a></li>
-                    <li><a class="page-scroll" href="">Galeri Bisnis</a></li>
-                    <li><a class="page-scroll" href="">Anggota</a></li>
-                    <li><a class="page-scroll" href="">Forum Alumni</a></li>
-                    <li class="">
-                        <a href="<?= base_url('registrasi'); ?>" title="Registrasi" class="page-scroll">Registrasi</a>
+                    <li><a href="<?= base_url('berita'); ?>" class="page-scroll" href="">Berita</a></li>
+                    <li><a href="<?= base_url('forumbisnis'); ?>" class="page-scroll" href="">Forum Bisnis</a></li>
+                    <li><a href="<?= base_url('komunitas'); ?>" class="page-scroll" href="">Komunitas</a></li>
+                    <li><a href="<?= base_url('anggota'); ?>" class="page-scroll" href="">Anggota</a></li>
+                    <li><a href="<?= base_url('lowongan'); ?>" class="page-scroll" href="">Lowongan</a></li>
+                    <li style="margin-left: 30px;">
+                        <a href="<?= base_url('register'); ?>" title="Registrasi" class="page-scroll">Registrasi</a>
                     </li>
                     <li>
                         <a href="<?= base_url('login'); ?>" title="Login" class="page-scroll">Login</a>

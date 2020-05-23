@@ -41,9 +41,9 @@
 				<div class="col-md-12">
 					<div class="row">
 						<?php if ($info[0]->nama_foto == null) { ?>
-							<img src="<?= base_url('uploads/no-image.jpg'); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" width="150" height="150"/>
+							<img src="<?= base_url('uploads/no-image.jpg'); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" width="150"/>
 						<?php } else { ?>
-							<img src="<?= base_url('uploads/avatars/'.$info[0]->nama_foto); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" width="200" height="150"/>
+							<img src="<?= base_url('uploads/avatars/'.$info[0]->nama_foto); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" width="200"/>
 						<?php } ?>
 					</div>
 					<br>
