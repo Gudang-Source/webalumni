@@ -6,8 +6,8 @@ class Komunitas extends MY_Controller {
 
     function index()
     {
-        echo 'komunitas/index<br>';
-        echo 'halaman ini tidak perlu login dahulu, user dapat langsung melihat link-link grup komunitas yang tersedia :)';
+        $data['title'] = 'Komunitas';
+        $this->frontend_render('frontend/komunitas/index', $data);
     }
 
 }

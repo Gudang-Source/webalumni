@@ -1,0 +1,1 @@
+berita/index.php
