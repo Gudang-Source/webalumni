@@ -26,6 +26,8 @@ class Home extends MY_Controller {
         $data['title'] = 'Beranda Admin';
         $data['info'] = $this->AdminHomeModel->getInfoBySessionId();
         
-        $this->admin_render('admin/home', $data);
+        if ($this->session->userdata('role') == 1) {
+            $this->admin_render('admin/home', $data);
+        }
     }
 }

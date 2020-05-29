@@ -29,7 +29,9 @@ class Profile extends MY_Controller {
         $where = "tb_anggota.user_id = ".$this->session->userdata('uid');
         $data['info'] = $this->M_anggota->findAnggota($select, $where);
         
-        $this->admin_render('admin/profile', $data);
+        if ($this->session->userdata('role') == 1) {
+            $this->admin_render('admin/profile', $data);
+        }
     }
 
     function getDataDiriAdmin()

@@ -31,7 +31,9 @@ class Pengaturan extends MY_Controller
         $data['title'] = 'Admin - Pengaturan';
         $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
-        $this->admin_render('admin/pengaturan', $data);
+        if ($this->session->userdata('role') == 1) {
+            $this->admin_render('admin/pengaturan', $data);
+        }
     }
 
     function setUpdateUsername() {

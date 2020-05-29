@@ -39,7 +39,10 @@ class Anggota extends MY_Controller
 
         $data['calonAnggota'] = $this->M_anggota->findAnggota('*', $where);
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id' => $this->session->userdata('uid')));
-        $this->admin_render('admin/anggotaBaru', $data);
+
+        if ($this->session->userdata('role') == 1) {
+            $this->admin_render('admin/anggotaBaru', $data);
+        }
         //         echo json_encode($data);
     }
 
@@ -100,7 +103,9 @@ class Anggota extends MY_Controller
         $data['anggota'] = $this->M_anggota->findAnggota('*', $where);
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id' => $this->session->userdata('uid')));
 
-        $this->admin_render('admin/kelolaAnggota', $data);
+        if ($this->session->userdata('role') == 1) {
+            $this->admin_render('admin/kelolaAnggota', $data);
+        }
     }
 
     function detailAnggota($id)
@@ -109,7 +114,9 @@ class Anggota extends MY_Controller
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
         $data['anggota'] = $this->M_anggota->findAnggota('*', array('tb_anggota.id_anggota = ' => $id));
 
-        $this->admin_render('admin/detailAnggota', $data);
+        if ($this->session->userdata('role') == 1) {
+            $this->admin_render('admin/detailAnggota', $data);
+        }
     }
 
     function cariAnggota()
@@ -122,7 +129,9 @@ class Anggota extends MY_Controller
         $data['anggota'] = $this->M_anggota->findAnggotaLikeNama($where, $nama);
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
-        $this->admin_render('admin/kelolaAnggota', $data);
+        if ($this->session->userdata('role') == 1) {
+            $this->admin_render('admin/kelolaAnggota', $data);
+        }
 
         // echo json_encode($data);
         // echo '<br>';
@@ -136,7 +145,9 @@ class Anggota extends MY_Controller
         $data['info'] = $this->AdminHomeModel->getInfoBySessionId($this->session->userdata('aid'));
 
         //        echo json_encode($data);
-        $this->admin_render('admin/dataMasterAnggota', $data);
+        if ($this->session->userdata('role') == 1) {
+            $this->admin_render('admin/dataMasterAnggota', $data);
+        }
     }
 
     function anggotaJSON()

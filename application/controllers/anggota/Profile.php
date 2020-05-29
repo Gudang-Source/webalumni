@@ -22,6 +22,57 @@ class Profile extends MY_Controller {
         }
         
     }
+
+    function getDataDiriAnggota()
+    {
+        $id = $this->input->post('id');
+
+        $select = "id_anggota, nama_lengkap, jenis_kelamin, nama_panggilan_alias, tempat_lahir, tanggal_lahir, angkatan, golongan_darah, no_telp, no_telp_alternatif, NIK, email";
+        $where = "tb_anggota.id_anggota = ".$id;
+        $data['dataDiri'] = $this->M_anggota->findAnggota($select, $where);
+
+        echo json_encode($data);
+    }
+
+    function getDomisiliAnggota()
+    {
+        $id = $this->input->post('id');
+
+        $select = "id_anggota, negara, provinsi, kabupaten_kota, alamat";
+        $where = "tb_anggota.id_anggota = ".$id;
+        $data['domisili'] = $this->M_anggota->findAnggota($select, $where);
+
+        echo json_encode($data);
+    }
+
+    function getProfesiAnggota()
+    {
+        $id = $this->input->post('id');
+
+        $select = "id_anggota, pendidikan_terakhir, status_bekerja, bidang_industri, jabatan, nama_perusahaan, bisnis_usaha";
+        $where = "tb_anggota.id_anggota = ".$id;
+        $data['profesi'] = $this->M_anggota->findAnggota($select, $where);
+
+        echo json_encode($data);
+    }
+
+    function getInfoProgramAnggota($id) {
+
+        $select = "id_anggota, sosial_pendidikan, sosial_kemanusiaan, pengembangan_sarana_prasarana, silaturahim_kebersamaan, penawaran_sponsorship_donasi";
+        $where = "tb_anggota.id_anggota = ".$id;
+        $data['infoProgram'] = $this->M_anggota->findAnggota($select, $where);
+
+        echo json_encode($data);
+    }
+
+    function getKeanggotaanAnggota($id)
+    {
+        $select = "id_anggota, support, loyalist, iuran_sukarela";
+        $where = "tb_anggota.id_anggota = ".$id;
+        $data['keanggotaan'] = $this->M_anggota->findAnggota($select, $where);
+
+        echo json_encode($data);
+    }
     
     function setUpdateDataDiri() {
         $namaLengkap = $this->input->post('namaLengkap');
@@ -36,7 +87,7 @@ class Profile extends MY_Controller {
         $nik = $this->input->post('nik');
         $email = $this->input->post('email');
         
-        $idAnggota = $this->input->post('idAnggota');
+        $idAnggota = $this->input->post('idAnggotaDataDiri');
         $anggota['nama_lengkap'] = $namaLengkap;
         $anggota['jenis_kelamin'] = $jenisKelamin;
         $anggota['nama_panggilan_alias'] = $namaPanggilanAlias;
@@ -53,37 +104,37 @@ class Profile extends MY_Controller {
         
         if (!$sukses) {
             flashMessage('success', 'Data diri Anda berhasil diperbarui');
-            redirect('anggota/Home');
+            redirect('admin/Profile');
         } else {
             flashMessage('error', 'Data diri Anda gagal diperbarui! Silahkan coba lagi');
-            redirect('anggota/Home');
+            redirect('admin/Profile');
         }
         
     }
 
     function setUpdateDomisili() {
         
-        $idAnggota = $this->input->post('idAnggotaDomisiliModal');
-        $data['negara'] = $this->input->post('negaraModal');
-        $data['provinsi'] = $this->input->post('provinsiModal');
-        $data['kabupaten_kota'] = $this->input->post('kabupatenKotaModal');
-        $data['alamat'] = $this->input->post('alamatLengkapModal');
+        $idAnggota = $this->input->post('idAnggotaDomisili');
+        $data['negara'] = $this->input->post('negara');
+        $data['provinsi'] = $this->input->post('provinsi');
+        $data['kabupaten_kota'] = $this->input->post('kabupatenKota');
+        $data['alamat'] = $this->input->post('alamatLengkap');
 
         $sukses = $this->M_anggota->updateAnggota($data, $idAnggota);
 
         if (!$sukses) {
             flashMessage('success', 'Domisili Anda berhasil diperbarui');
-            redirect('anggota/Home');
+            redirect('admin/Profile');
         } else {
             flashMessage('error', 'Domisili Anda gagal diperbarui! Silahkan coba lagi.');
-            redirect('anggota/Home');
+            redirect('admin/Profile');
         }
 
     }
 
     function setUpdateProfesi()
     {
-        $idAnggota = $this->input->post('idAnggotaProfesiModal');
+        $idAnggota = $this->input->post('idAnggotaProfesi');
         $data['pendidikan_terakhir'] = $this->input->post('pendidikanTerakhir');
         $data['status_bekerja'] = $this->input->post('statusBekerja');
         $data['bidang_industri'] = $this->input->post('bidangIndustri');
@@ -95,11 +146,53 @@ class Profile extends MY_Controller {
 
         if (!$sukses) {
             flashMessage('success', 'Profesi Anda berhasil diperbarui');
-            redirect('anggota/Home');
+            redirect('admin/Profile');
         } else {
             flashMessage('error', 'Profesi Anda gagal diperbarui! Silahkan coba lagi.');
-            redirect('anggota/Home');
+            redirect('admin/Profile');
         }
+    }
+
+    function setUpdateInfoProgram()
+    {
+        $idAnggota = $this->input->post('idAnggotaInfoProgram');
+
+        $data['sosial_pendidikan'] = $this->input->post('infoProgram1');
+        $data['sosial_kemanusiaan'] = $this->input->post('infoProgram2');
+        $data['pengembangan_sarana_prasarana'] = $this->input->post('infoProgram3');
+        $data['silaturahim_kebersamaan'] = $this->input->post('infoProgram4');
+        $data['penawaran_sponsorship_donasi'] = $this->input->post('infoProgram5');
+
+        $sukses = $this->M_anggota->updateAnggota($data, $idAnggota);
+
+        if (!$sukses) {
+            flashMessage('success', 'Info program berhasil diperbarui');
+            redirect('admin/Profile');
+        } else {
+            flashMessage('error', 'Info program gagal diperbarui! Silahkan coba lagi');
+            redirect('admin/Profile');
+        }
+
+    }
+
+    function setUpdateKeanggotaan()
+    {
+        $idAnggota = $this->input->post('idAnggotaKeanggotaan');
+
+        $data['support'] = $this->input->post('support');
+        $data['loyalist'] = $this->input->post('loyalist');
+        $data['iuran_sukarela'] = $this->input->post('iuranSukarela');
+
+        $sukses = $this->M_anggota->updateAnggota($data, $idAnggota);
+
+        if (!$sukses) {
+            flashMessage('success', 'Keanggotaan Anda berhasil diperbarui');
+            redirect('admin/Profile');
+        } else {
+            flashMessage('error', 'Keanggotaan Anda gagal diperbarui! Silahkan coba lagi');
+            redirect('admin/Profile');
+        }
+
     }
     
 }

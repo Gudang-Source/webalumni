@@ -34,7 +34,10 @@ class ForumBisnis extends MY_Controller
         $data['jenisBisnis'] = $this->M_jenisBisnis->getAllJenisBisnis();
         $data['pemilikForbis'] = $this->M_anggota->findAnggota('*', array('tb_anggota.support = ' => '1'));
 
-        $this->admin_render('admin/kelolaForumBisnis', $data);
+
+        if ($this->session->userdata('role') == 1) {
+            $this->admin_render('admin/kelolaForumBisnis', $data);
+        }
     }
 
     function kelolaJenisBisnis()
@@ -43,7 +46,9 @@ class ForumBisnis extends MY_Controller
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
         $data['jenisBisnis'] = $this->M_jenisBisnis->getAllJenisBisnis();
 
-        $this->admin_render('admin/kelolaJenisBisnis', $data);
+        if ($this->session->userdata('role') == 1) {
+            $this->admin_render('admin/kelolaJenisBisnis', $data);
+        }
     }
 
     public function setAddForbis()
