@@ -54,12 +54,14 @@ class Login extends MY_Controller
                         $this->session->set_userdata($sess_data);
                     }
                     
-                    if ($this->session->userdata('status') == '1' && $this->session->userdata('role') == '1') {
-                        redirect('admin');
-                    } elseif ($this->session->userdata('status') == '1' && $this->session->userdata('role') == '2') {
-                        redirect('koordinator');
-                    } elseif ($this->session->userdata('status') == '1' && $this->session->userdata('role') == '3') {
-                        redirect('anggota');
+                    if ($this->session->userdata('status') == '1') {
+                        if ($this->session->userdata('role') == '1') {
+                            redirect('admin');
+                        } else if ($this->session->userdata('role') == '2') {
+                            redirect('koordinator');
+                        } else if ($this->session->userdata('role') == '3') {
+                            redirect('anggota');
+                        }
                     }
                 }
                 
