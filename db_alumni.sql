@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2020 at 07:01 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.3
+-- Generation Time: May 31, 2020 at 06:15 AM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_alumni`
+-- Database: `db_cobaalumni`
 --
 
 -- --------------------------------------------------------
@@ -87,7 +87,7 @@ CREATE TABLE `tb_anggota` (
 --
 
 INSERT INTO `tb_anggota` (`id_anggota`, `nama_lengkap`, `nama_panggilan_alias`, `NIK`, `angkatan`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `golongan_darah`, `no_telp`, `no_telp_alternatif`, `email`, `nama_foto`, `negara`, `provinsi`, `kabupaten_kota`, `alamat`, `pendidikan_terakhir`, `status_bekerja`, `bidang_industri`, `jabatan`, `nama_perusahaan`, `bisnis_usaha`, `sosial_pendidikan`, `sosial_kemanusiaan`, `pengembangan_sarana_prasarana`, `silaturahim_kebersamaan`, `penawaran_sponsorship_donasi`, `support`, `loyalist`, `iuran_sukarela`, `status_anggota`, `user_id`) VALUES
-(1, 'root', 'admin', '173040038', 2017, '1', 'Bandung', '1999-04-04', 'A', '081911437177', '0', 'root123@gmail.com', 'IKA-SMA3-root-1590193058.jpg', 'Indonesia', 'Jawa Barat', 'Kab. Cirebon', 'Jl. Nusa Indah No. 27 Wiratama - Tuparev', 'SMA', '1', 'Informatika', 'CEO Apple', 'Apple, Inc', '1', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 1),
+(1, 'root', 'admin', '173040038', 2017, '1', 'Bandung', '1999-04-04', 'A', '081911437177', '0', 'root123@gmail.com', 'IKA-SMA3-root-1590193058.jpg', 'Indonesia', 'Jawa Barat', 'Kab. Cirebon', 'Jl. Nusa Indah No. 27 Wiratama - Tuparev', 'SMA', '1', 'Informatika', 'CEO Apple', 'Apple, Inc', '1', NULL, NULL, 'c', 'c', NULL, NULL, NULL, NULL, '1', 1),
 (4, 'Dedi (Maryun) E Wirahadikusumah', NULL, '3174070606510003', 70, '1', NULL, '1951-06-06', 'A', '0811948436', NULL, NULL, NULL, NULL, NULL, NULL, 'Jl. Lamandau 2 No 14 Kebayoran Baru, Jakarta Selatan', 'S1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', NULL, '0', 0),
 (5, 'Fatsfiar Erfaba Enoch', NULL, '3273111404520003', 70, '1', NULL, '1952-04-14', 'B', '0815222414386', NULL, NULL, NULL, NULL, NULL, NULL, 'Komp. Bumi Parahyangan Kencana  Jl. Rajawali Raya Blok  23 No.29  Rt.03 Rw 07 Desa Nagrak, Kec. Cangkuang Kab. Bandung 40377', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', NULL, '0', 0),
 (6, 'Ida Sofia Sidawati (Ida Gursida Djoewarsa)', NULL, '3171075401510001', 70, '2', NULL, '1951-01-14', 'O', '0811854770', '08998854770', NULL, NULL, NULL, NULL, NULL, 'Jl. Pam Baru V NO 15 Pejompongan, Jakarta Pusat 10210', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', NULL, '0', 0),
@@ -1291,7 +1291,8 @@ INSERT INTO `tb_anggota` (`id_anggota`, `nama_lengkap`, `nama_panggilan_alias`, 
 (1219, 'Lut Dinar Fadila', 'Dinar', '3204050109940003', 2014, '1', 'Bandung', '1994-09-01', '0', '087820093686', '', 'lutdinar@icloud.com', 'anggota-Lut_Dinar_Fadila-1562225244.jpg', '', '', '', '', 'SMK', '0', NULL, NULL, NULL, '1', '1', '0', '0', '0', '0', '0', '0', 0, '1', 21),
 (1220, 'Kiki Hadiansyah', 'Kiki', NULL, 2014, NULL, NULL, '2019-07-01', NULL, '08211223344', NULL, 'kiki@gmail.com', 'anggota-Kiki_Hadiansyah-1562822761.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', NULL, NULL, '1', 28),
 (1223, 'Adhy Wiranto Sudjana', 'Adhy', NULL, 2017, NULL, NULL, '1999-04-04', NULL, '081911437177', NULL, 'adhywiranto68@gmail.com', 'anggota-Adhy_Wiranto_Sudjana-1588685708.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 0),
-(1224, 'Myoui Mina', 'Minari', NULL, 2015, NULL, NULL, '1997-03-24', NULL, '0', NULL, 'mina@gmail.com', 'anggota-Myoui_Mina-1588686920.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 31);
+(1224, 'Myoui Mina', 'Minari', NULL, 2015, NULL, NULL, '1997-03-24', NULL, '0', NULL, 'mina@gmail.com', 'anggota-Myoui_Mina-1588686920.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 31),
+(1226, 'sue', 'suekarno', NULL, 2020, NULL, NULL, '2020-04-30', NULL, '081', NULL, 'aaa@gmail.com', 'anggota-sue-1590755803.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 32);
 
 -- --------------------------------------------------------
 
@@ -1353,8 +1354,9 @@ CREATE TABLE `tb_komunitas` (
   `tautat_komunitas` varchar(255) NOT NULL,
   `logo_komunitas` varchar(255) NOT NULL,
   `date_created` date NOT NULL,
-  `time_created` int(11) NOT NULL,
-  `id_pengupload` int(11) NOT NULL
+  `time_created` time NOT NULL DEFAULT current_timestamp(),
+  `id_pengupload` int(11) NOT NULL,
+  `stat_komunitas` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -1387,7 +1389,8 @@ INSERT INTO `tb_user` (`id_user`, `username`, `password`, `status_akun`, `role`)
 (21, 'lutdinar', 'b7b29c3296ae49ea1fd22927e79f97c3', '1', '2'),
 (28, '08211223344', '62f563d94164c8991ba0861988f8d048', '1', '3'),
 (30, '0811948436', '4d0938f43a9c1f2bd155460bedc1e7c1', '1', '3'),
-(31, '0', 'cfcd208495d565ef66e7dff9f98764da', '1', '3');
+(31, '0', 'cfcd208495d565ef66e7dff9f98764da', '1', '3'),
+(32, '081', '25d55ad283aa400af464c76d713c07ad', '1', '3');
 
 --
 -- Indexes for dumped tables
@@ -1444,7 +1447,7 @@ ALTER TABLE `db_berita`
 -- AUTO_INCREMENT for table `tb_anggota`
 --
 ALTER TABLE `tb_anggota`
-  MODIFY `id_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1226;
+  MODIFY `id_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1227;
 
 --
 -- AUTO_INCREMENT for table `tb_forum_bisnis`
@@ -1459,10 +1462,16 @@ ALTER TABLE `tb_jenis_bisnis`
   MODIFY `id_jenis_bisnis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `tb_komunitas`
+--
+ALTER TABLE `tb_komunitas`
+  MODIFY `id_komunitas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
