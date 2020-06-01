@@ -225,7 +225,7 @@
 </div>
 
 <!-- MESSAGE BOX ACCEPT CALON ANGGOTA -->
-<div class="message-box animated zoomIn" data-sound="alert" id="message-box-terima">
+<div class="message-box animated zoomIn" data-sound="alert" id="message-box-terima" style="margin-top: -100px;">
 
     <div class="mb-container">
         <div class="mb-middle">
@@ -275,10 +275,17 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="col-md-3 control-label">Password : </label>
+                            <div class="col-md-9">
+                                <label class="control-label" id="passwordAnggota">12345678 (default)</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label class="col-md-3 control-label">Keanggotaan : </label>
                             <div class="col-md-3">
                                 <select name="role" id="role" class="select form-control validate[required]">
-                                    <option value="">Pilih</option>
+                                    <option value="">-- Pilih --</option>
                                     <option value="1">Admin</option>
                                     <option value="2">Koordinator</option>
                                     <option value="3">Anggota</option>
@@ -391,18 +398,26 @@ $(".btn-terima").click(function() {
             document.getElementById('idAnggota').value = data_obj.anggota[0].id_anggota;
             document.getElementById('namaAnggota').innerHTML = namaLengkap;
 
-            if (email == null) {
-                console.log("Email is : " + email);
-                document.getElementById('emailAnggota').innerHTML = "Email belum diisi";
-            } else if (email != null) {
-                document.getElementById('emailAnggota').innerHTML = email;
-            }
+            // if (email == null) {
+            //     console.log("Email is : " + email);
+            //     document.getElementById('emailAnggota').innerHTML = "Email belum diisi";
+            // } else {
+            //     document.getElementById('emailAnggota').innerHTML = email;
+            // }
 
-            if (angkatan == null) {
-                document.getElementById('angkatanAnggota').innerHTML = "Angkatan belum diisi";
-            } else {
-                document.getElementById('angkatanAnggota').innerHTML = data_obj.anggota[0].angkatan;
-            }
+            // if (angkatan == null) {
+            //     document.getElementById('angkatanAnggota').innerHTML = "Angkatan belum diisi";
+            // } else {
+            //     document.getElementById('angkatanAnggota').innerHTML = data_obj.anggota[0].angkatan;
+            // }
+
+            // document.getElementById('usernameAnggota').innerHTML = email.toLowerCase() +
+            //         " (Default Username & Password sesuai yang tertera)";
+            // document.getElementById('angkatanAnggota').innerHTML = angkatan.toLowerCase();
+            // document.getElementById('emailAnggota').innerHTML = email.toLowerCase();
+
+            // document.getElementById('userName').value = email.toLowerCase();
+            // document.getElementById('passWord').value = 12345678;
 
             if (noTelp != null) {
                 document.getElementById('usernameAnggota').innerHTML = noTelp +
