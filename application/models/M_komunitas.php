@@ -19,18 +19,10 @@ class M_komunitas extends CI_Model
         return $this->db->get('tb_komunitas')->result();
     }
 
-    function findKomunitasAndUser($where)
-    {
-        $this->db->where($where);
-        $this->db->join('tb_user', 'tb_komunitas.user_id = tb_user.id_user');
-
-        return $this->db->get('tb_komunitas')->result();
-    }
-
     function findKomunitasLikeNama($where, $nama)
     {
         $this->db->where($where);
-        $this->db->like('nama_lengkap', $nama, 'both');
+        $this->db->like('nama_komunitas', $nama, 'both');
 
         return $this->db->get('tb_komunitas')->result();
     }

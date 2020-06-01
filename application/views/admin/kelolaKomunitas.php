@@ -371,12 +371,6 @@ $(".btn-terima").click(function() {
             // document.getElementById('idPengupload').innerHTML = idPengupload;
             document.getElementById('dateCreated').innerHTML = dateCreated;
 
-            if (stat_komunitas == null) {
-                document.getElementById('statKomunitas').value = 0;
-            } else {
-                document.getElementById('statKomunitas').value = 1;
-            }
-
         });
 });
 
@@ -403,11 +397,6 @@ $(".btn-tolak").click(function() {
             document.getElementById('tautatCalonKomunitas').innerHTML = tautatCalonKomunitas;
             document.getElementById('idCalonPengupload').innerHTML = idCalonPengupload;
 
-             if (stat_komunitas == null) {
-                document.getElementById('statKomunitas').value = 0;
-            } else {
-                document.getElementById('statKomunitas').value = 1;
-            }
         });
 });
 </script>
