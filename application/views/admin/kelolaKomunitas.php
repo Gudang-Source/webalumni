@@ -40,7 +40,7 @@
                                                 <th width="1000">Tautan Komunitas</th>
                                                 <th width="100">Tanggal Permohonan</th>
                                                 <th width="100">Waktu Permohonan</th>
-                                                <th width="100">Id Pengupload</th>
+                                                <th width="100">Pengupload</th>
                                                 <th width="100">Aksi</th>
                                             </tr>
                                         </thead>
@@ -86,7 +86,7 @@
                                                 <?php if ($CA->id_pengupload == null) { ?>
                                                 <td>Belum di isi</td>
                                                 <?php } else { ?>
-                                                <td><?= $CA->id_pengupload; ?></td>
+                                                <td><?= $CA->username; ?></td>
                                                 <?php } ?>
                                                 <td>
                                                     <button type="button" class="btn btn-primary mb-control btn-terima"
@@ -130,36 +130,6 @@
                                         <label class="col-md-2 control-label">Tautat Komunitas</label>
                                         <div class="col-md-8"  >
                                             <textarea   class="form-control" name="tautatKomunitas" placeholder="Diskripsi Komunitas berserta linknya" rows="4" cols="50"></textarea>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-md-2 control-label">Tanggal Pengajuan Calon Komunitas</label>
-                                        <div class="col-md-8">
-                                            <div class="input-group">
-                                                <input type="text" id="dp-3" class="form-control datepicker"
-                                                    data-date="06-06-2014" data-date-format="dd-mm-yyyy"
-                                                    data-date-viewmode="years" name="tglPengajuan"
-                                                    placeholder="<?php
-                                                    $tanggal = mktime(date('m'), date("d"), date('Y'));
-                                                    echo date("d-m-Y", $tanggal)?>" required />
-                                                <span class="input-group-addon"><span
-                                                        class="glyphicon glyphicon-calendar"></span></span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-md-2 control-label">Waktu Pengajuan</label>
-                                        <div class="col-md-8">
-                                            <input type="text" class="form-control" name="waktuPengajuan"
-                                                placeholder="" 
-                                                <?php  
-                                                date_default_timezone_set("Asia/Jakarta");
-                                                $jam = date ("H:i:s");
-                                                 
-                                                ?> 
-                                                value="<?= $jam ?>"/> 
                                         </div>
                                     </div>
 

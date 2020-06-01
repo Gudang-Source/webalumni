@@ -40,15 +40,18 @@ class Komunitas extends MY_Controller
 
         public function tambahCalonKomunitas()
     {
+        date_default_timezone_set("Asia/Jakarta");
+        $jam = date ("H:i:s");
+        $tanggal = date("Y-m-d", mktime(date('m'), date("d"), date('Y')));
+
         $this->load->model('M_anggota');
 
         $namaKomunitas = $this->input->post('namaKomunitas');
         $tautatKomunitas = $this->input->post('tautatKomunitas');
-        $tglPengajuan = $this->input->post('tglPengajuan');
-        $waktuPengajuan = $this->input->post('waktuPengajuan');
+        $tglPengajuan = $tanggal;
+        $waktuPengajuan = $jam;
         $idPengupload = $this->input->post('idPengupload');
-
-
+        
         $filename = "komunitas-" . $namaKomunitas . "-" . time();
 
         // Set preferences
@@ -67,11 +70,15 @@ class Komunitas extends MY_Controller
 
             $data['nama_komunitas'] = $namaKomunitas;
             $data['tautat_komunitas'] = $tautatKomunitas;
-            $data['date_created'] = $this->input->post('tglPengajuan');
+            $data['date_created'] = $tglPengajuan;
             $data['time_created'] = $waktuPengajuan;
             $data['logo_komunitas'] = $upload_data['file_name'];
             $data['id_pengupload'] = $idPengupload;
-            $data['stat_komunitas'] = '0';
+            if($this->session->userdata('role') == 1) {
+                $data['stat_komunitas'] = '1';
+            } else {
+                $data['stat_komunitas'] = '0';
+            }
 
             // echo json_encode($data);
             $sukses = $this->M_komunitas->insertNewKomunitas($data);

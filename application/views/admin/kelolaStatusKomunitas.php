@@ -90,7 +90,7 @@
                          <?php if ($A->id_pengupload == "") { ?>
                             <p><small>ID Pengupload Komunitas</small><br>Belum di isi</p>
                         <?php } else { ?>
-                            <p><small>ID Pengupload Komunitas</small><br><?= $A->id_pengupload; ?></p>
+                            <p><small>Pengupload Komunitas</small><br><?= $A->username; ?></p>
                         <?php } ?>
 
                     </div>
