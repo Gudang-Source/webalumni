@@ -71,7 +71,7 @@
                                         <td><strong><?= $forbis->nama_bisnis_usaha; ?></strong></td>
                                         <td><?= $forbis->nama_lengkap; ?></td>
                                         <td><?= $forbis->angkatan; ?></td>
-                                        <td><?= $forbis->alamat; ?></td>
+                                        <td><?= $forbis->alamat_bisnis; ?></td>
                                         <td><?= $forbis->nama_jenis_bisnis; ?></td>
                                         <td><?= $forbis->no_telp_bisnis; ?></td>
                                         <td>

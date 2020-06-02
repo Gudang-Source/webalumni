@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2020 at 11:40 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.3
+-- Waktu pembuatan: 02 Jun 2020 pada 13.52
+-- Versi server: 10.1.34-MariaDB
+-- Versi PHP: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_anggota`
+-- Struktur dari tabel `db_berita`
+--
+
+CREATE TABLE `db_berita` (
+  `id_berita` int(11) NOT NULL,
+  `judul_berita` varchar(255) NOT NULL,
+  `date_created` date NOT NULL,
+  `time_created` int(11) NOT NULL,
+  `isi_berita` varchar(10240) DEFAULT NULL,
+  `sumber` varchar(255) NOT NULL,
+  `credit` varchar(255) NOT NULL,
+  `foto` varchar(255) NOT NULL,
+  `id_penulis` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_anggota`
 --
 
 CREATE TABLE `tb_anggota` (
@@ -45,7 +63,7 @@ CREATE TABLE `tb_anggota` (
   `negara` varchar(100) DEFAULT NULL,
   `provinsi` varchar(100) DEFAULT NULL,
   `kabupaten_kota` varchar(100) DEFAULT NULL,
-  `alamat` text DEFAULT NULL,
+  `alamat` text,
   `pendidikan_terakhir` varchar(10) DEFAULT NULL,
   `status_bekerja` varchar(30) DEFAULT NULL,
   `bidang_industri` varchar(100) DEFAULT NULL,
@@ -65,7 +83,7 @@ CREATE TABLE `tb_anggota` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_anggota`
+-- Dumping data untuk tabel `tb_anggota`
 --
 
 INSERT INTO `tb_anggota` (`id_anggota`, `nama_lengkap`, `nama_panggilan_alias`, `NIK`, `angkatan`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `golongan_darah`, `no_telp`, `no_telp_alternatif`, `email`, `nama_foto`, `negara`, `provinsi`, `kabupaten_kota`, `alamat`, `pendidikan_terakhir`, `status_bekerja`, `bidang_industri`, `jabatan`, `nama_perusahaan`, `bisnis_usaha`, `sosial_pendidikan`, `sosial_kemanusiaan`, `pengembangan_sarana_prasarana`, `silaturahim_kebersamaan`, `penawaran_sponsorship_donasi`, `support`, `loyalist`, `iuran_sukarela`, `status_anggota`, `user_id`) VALUES
@@ -1281,62 +1299,31 @@ INSERT INTO `tb_anggota` (`id_anggota`, `nama_lengkap`, `nama_panggilan_alias`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_berita`
---
-
-CREATE TABLE `tb_berita` (
-  `id_berita` int(11) NOT NULL,
-  `judul_berita` varchar(255) NOT NULL,
-  `date_created` date NOT NULL,
-  `time_created` int(11) NOT NULL,
-  `isi_berita` varchar(10240) DEFAULT NULL,
-  `sumber` varchar(255) NOT NULL,
-  `credit` varchar(255) NOT NULL,
-  `foto` varchar(255) NOT NULL,
-  `id_penulis` int(11) NOT NULL,
-  `stat_berita` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tb_berita`
---
-
-INSERT INTO `tb_berita` (`id_berita`, `judul_berita`, `date_created`, `time_created`, `isi_berita`, `sumber`, `credit`, `foto`, `id_penulis`, `stat_berita`) VALUES
-(1, 'sdfds', '2020-06-02', 16, 'Praktikum menggunakan platform yang\r\nsama dengan PBM FT Unpas yaitu LMS\r\nberbasis moodle sebagai platform utama\r\npada alamat\r\nhttp://elearningft.unpas.ac.id\r\n• Platform interaktif merupakan\r\ntambahan/opsional untuk masing\r\n-masing\r\nmata praktikum, disesuaikan dengan\r\nketentuan asisten masing\r\n-masing mata\r\npraktikum berkoordinasi dengan Koor.\r\nMata Kuliah\r\n• Platform komputasi adalah virtual pc / lab\r\nyang sampai saat ini masih dalam tahap uji\r\ncoba. Akan diumumkan secara terpisah\r\njika sudah siap digunakan.', 'fsd', 'fs', 'berita-sdfds-1591088903.png', 1, 0),
-(2, 'asd', '2020-06-02', 16, 'Jika aplikasi diluncurkan, sistem akan membuat thread eksekusi untuk aplikasi tersebut, yang\r\ndiberi nama, \"main\". Thread ini sangat penting karena bertugas mengirim kejadian ke widget\r\nantarmuka pengguna yang sesuai, termasuk peristiwa menggambar. Ini juga hampir selalu\r\nmerupakan thread yang membuat aplikasi berinteraksi dengan komponen dari toolkit Android UI\r\n(komponen dari paket android.widget dan android.view). Karena itu, thread \'main\' juga terkadang\r\ndisebut thread UI.\r\nSaat aplikasi melakukan pekerjaan intensif sebagai respons terhadap interaksi pengguna,\r\nmodel thread tunggal ini bisa menghasilkan kinerja yang buruk kecuali jika Anda\r\nmengimplementasikan aplikasi dengan benar. Khususnya jika semua terjadi di thread UI, \r\nmelakukan operasi yang panjang seperti akses ke jaringan atau query database akan memblokir\r\nseluruh UI. Jika thread diblokir, tidak ada event yang bisa dikirim,. Dari sudut pandang pengguna,\r\naplikasi ini akan terjadi hang atau mogok sehingga pengguna nanti bisa memutuskan untuk keluar\r\ndari aplikasi dan menghapus aplikasi jika tidak suka.', 'asd', 'asd', 'berita-asd-1591088911.png', 1, 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_forum_bisnis`
+-- Struktur dari tabel `tb_forum_bisnis`
 --
 
 CREATE TABLE `tb_forum_bisnis` (
   `id_forbis` int(11) NOT NULL,
   `nama_bisnis_usaha` varchar(255) NOT NULL,
   `id_jenis_bisnis` int(11) NOT NULL,
-  `deskripsi_bisnis` text DEFAULT NULL,
-  `alamat` text NOT NULL,
+  `deskripsi_bisnis` text,
+  `alamat_bisnis` text NOT NULL,
   `no_telp_bisnis` varchar(16) DEFAULT NULL,
   `nama_foto_bisnis` varchar(255) DEFAULT NULL,
   `pemilik_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_forum_bisnis`
+-- Dumping data untuk tabel `tb_forum_bisnis`
 --
 
-INSERT INTO `tb_forum_bisnis` (`id_forbis`, `nama_bisnis_usaha`, `id_jenis_bisnis`, `deskripsi_bisnis`, `alamat`, `no_telp_bisnis`, `nama_foto_bisnis`, `pemilik_id`) VALUES
-(1, 'Cafetaria Mhs', 2, 'asdasd', 'Jl. Buah Batu', '0227809922', NULL, 131),
-(2, 'Bengkel Jaya Motor', 3, 'Jual sparepart', 'Jl. Banceut', '087820093686', NULL, 130),
-(3, 'Warung', 1, 'warung kopi roko', 'jl. bhayangkara', '081922001144', NULL, 131),
-(4, 'Dalgona Coffee', 1, 'Mantappu Jiwa Pokoe!', 'cirebon', '1', NULL, 1220),
-(5, 'Bakso Cuangki', 1, 'Bakso Ujang Nyai', 'Bandung', '1828182812', NULL, 0);
+INSERT INTO `tb_forum_bisnis` (`id_forbis`, `nama_bisnis_usaha`, `id_jenis_bisnis`, `deskripsi_bisnis`, `alamat_bisnis`, `no_telp_bisnis`, `nama_foto_bisnis`, `pemilik_id`) VALUES
+(1, 'Bakso Cuangki', 1, 'Bakso Enak', 'Bandung', '0911', NULL, 1220);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_jenis_bisnis`
+-- Struktur dari tabel `tb_jenis_bisnis`
 --
 
 CREATE TABLE `tb_jenis_bisnis` (
@@ -1345,7 +1332,7 @@ CREATE TABLE `tb_jenis_bisnis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_jenis_bisnis`
+-- Dumping data untuk tabel `tb_jenis_bisnis`
 --
 
 INSERT INTO `tb_jenis_bisnis` (`id_jenis_bisnis`, `nama_jenis_bisnis`) VALUES
@@ -1357,7 +1344,7 @@ INSERT INTO `tb_jenis_bisnis` (`id_jenis_bisnis`, `nama_jenis_bisnis`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_komunitas`
+-- Struktur dari tabel `tb_komunitas`
 --
 
 CREATE TABLE `tb_komunitas` (
@@ -1372,17 +1359,16 @@ CREATE TABLE `tb_komunitas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_komunitas`
+-- Dumping data untuk tabel `tb_komunitas`
 --
 
 INSERT INTO `tb_komunitas` (`id_komunitas`, `nama_komunitas`, `tautat_komunitas`, `logo_komunitas`, `date_created`, `time_created`, `id_pengupload`, `stat_komunitas`) VALUES
-(15, 'Ujang Amen', 'Ujang Amen BEC', 'komunitas-Ujang_Amen-1591079184.png', '2020-06-02', '13:26:24', 1, 1),
-(16, 'asdasdrertert', 'asdadsdfggjf', 'komunitas-asdasdrertert-1591090596.png', '2020-06-02', '16:36:36', 1, 1);
+(15, 'Ujang Amen', 'Ujang Amen BEC', 'komunitas-Ujang_Amen-1591079184.png', '2020-06-02', '13:26:24', 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_user`
+-- Struktur dari tabel `tb_user`
 --
 
 CREATE TABLE `tb_user` (
@@ -1394,7 +1380,7 @@ CREATE TABLE `tb_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_user`
+-- Dumping data untuk tabel `tb_user`
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `password`, `status_akun`, `role`) VALUES
@@ -1417,7 +1403,7 @@ INSERT INTO `tb_user` (`id_user`, `username`, `password`, `status_akun`, `role`)
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_user_role`
+-- Struktur dari tabel `tb_user_role`
 --
 
 CREATE TABLE `tb_user_role` (
@@ -1426,7 +1412,7 @@ CREATE TABLE `tb_user_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_user_role`
+-- Dumping data untuk tabel `tb_user_role`
 --
 
 INSERT INTO `tb_user_role` (`id`, `role`) VALUES
@@ -1441,90 +1427,90 @@ INSERT INTO `tb_user_role` (`id`, `role`) VALUES
 --
 
 --
--- Indexes for table `tb_anggota`
+-- Indeks untuk tabel `db_berita`
+--
+ALTER TABLE `db_berita`
+  ADD PRIMARY KEY (`id_berita`);
+
+--
+-- Indeks untuk tabel `tb_anggota`
 --
 ALTER TABLE `tb_anggota`
   ADD PRIMARY KEY (`id_anggota`);
 
 --
--- Indexes for table `tb_berita`
---
-ALTER TABLE `tb_berita`
-  ADD PRIMARY KEY (`id_berita`);
-
---
--- Indexes for table `tb_forum_bisnis`
+-- Indeks untuk tabel `tb_forum_bisnis`
 --
 ALTER TABLE `tb_forum_bisnis`
   ADD PRIMARY KEY (`id_forbis`),
   ADD UNIQUE KEY `nama_foto_bisnis` (`nama_foto_bisnis`);
 
 --
--- Indexes for table `tb_jenis_bisnis`
+-- Indeks untuk tabel `tb_jenis_bisnis`
 --
 ALTER TABLE `tb_jenis_bisnis`
   ADD PRIMARY KEY (`id_jenis_bisnis`);
 
 --
--- Indexes for table `tb_komunitas`
+-- Indeks untuk tabel `tb_komunitas`
 --
 ALTER TABLE `tb_komunitas`
   ADD PRIMARY KEY (`id_komunitas`);
 
 --
--- Indexes for table `tb_user`
+-- Indeks untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- Indexes for table `tb_user_role`
+-- Indeks untuk tabel `tb_user_role`
 --
 ALTER TABLE `tb_user_role`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `tb_anggota`
+-- AUTO_INCREMENT untuk tabel `db_berita`
+--
+ALTER TABLE `db_berita`
+  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_anggota`
 --
 ALTER TABLE `tb_anggota`
   MODIFY `id_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1230;
 
 --
--- AUTO_INCREMENT for table `tb_berita`
---
-ALTER TABLE `tb_berita`
-  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `tb_forum_bisnis`
+-- AUTO_INCREMENT untuk tabel `tb_forum_bisnis`
 --
 ALTER TABLE `tb_forum_bisnis`
-  MODIFY `id_forbis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_forbis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `tb_jenis_bisnis`
+-- AUTO_INCREMENT untuk tabel `tb_jenis_bisnis`
 --
 ALTER TABLE `tb_jenis_bisnis`
   MODIFY `id_jenis_bisnis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `tb_komunitas`
+-- AUTO_INCREMENT untuk tabel `tb_komunitas`
 --
 ALTER TABLE `tb_komunitas`
-  MODIFY `id_komunitas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_komunitas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `tb_user`
+-- AUTO_INCREMENT untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
--- AUTO_INCREMENT for table `tb_user_role`
+-- AUTO_INCREMENT untuk tabel `tb_user_role`
 --
 ALTER TABLE `tb_user_role`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
