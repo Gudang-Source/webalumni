@@ -21,8 +21,12 @@ class ForumBisnis extends MY_Controller
             redirect('login');
         } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == 2) {
             redirect('koordinator');
-        } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == 3 || $this->session->userdata('role') == 4) {
+        } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == 3) {
             redirect('anggota');
+        } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == 4) {
+            redirect('alumni');
+        } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == 5) {
+            redirect('umum');
         }
     }
 
@@ -75,7 +79,7 @@ class ForumBisnis extends MY_Controller
     {
         $id = $this->input->post('id');
 
-        $data['forbis'] = $this->M_forumBisnis->findForumBisnis(array('tb_forum_bisnis.id_forum_bisnis = ' => $id));
+        $data['forbis'] = $this->M_forumBisnis->findForumBisnis(array('tb_forum_bisnis.id_forbis = ' => $id));
 
         echo json_encode($data);
     }
@@ -106,6 +110,21 @@ class ForumBisnis extends MY_Controller
             redirect('admin/ForumBisnis');
         } else {
             flashMessage('error', 'Bisnis / Usaha Anggota gagal diperbarui! Silahkan coba lagi.');
+            redirect('admin/ForumBisnis');
+        }
+    }
+
+    public function setDeleteForumBisnis()
+    {
+        $id = $this->input->post('idForbisDelete');
+
+        $sukses = $this->M_forumBisnis->deleteForumBisnis($id);
+
+        if (!$sukses) {
+            flashMessage('success', 'Forum Bisnis berhasil dihapus');
+            redirect('admin/ForumBisnis');
+        } else {
+            flashMessage('error', 'Forum Bisnis gagal dihapus! Silahkan coba lagi');
             redirect('admin/ForumBisnis');
         }
     }
