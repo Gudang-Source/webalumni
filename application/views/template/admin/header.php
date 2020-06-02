@@ -50,7 +50,7 @@
             <!-- START X-NAVIGATION -->
             <ul class="x-navigation">
                 <li class="xn-logo">
-                    <a href="<?= base_url('admin'); ?>" style="font-size:35px;">IKASMA3BDG</a>
+                    <a href="<?= base_url(''); ?>" style="font-size:35px;">IKASMA3BDG</a>
                     <a href="#" class="x-navigation-control"></a>
                 </li>
                 <li class="xn-profile">
@@ -97,6 +97,17 @@
                     </ul>
                 </li>
                 
+                <li class="xn-openable">
+                    <a href="#"><span class="fa fa-file-o"></span> <span class="xn-text">Berita</span></a>
+                    <ul>
+                        <li><a href="<?= base_url('admin/Berita'); ?>"><span class="fa fa-file-o"></span> <span
+                                    class="xn-text">Kelola Calon Berita</span></a></li>
+                        <li><a href="<?= base_url('admin/Berita/kelolaBerita'); ?>"><span
+                                    class="fa fa-file-o"></span> <span class="xn-text">Kelola Berita Aktif</span></a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="xn-openable">
                     <a href="#"><span class="fa fa-file-o"></span> <span class="xn-text">Forum Bisnis</span></a>
                     <ul>
