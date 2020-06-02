@@ -289,6 +289,8 @@
                                     <option value="1">Admin</option>
                                     <option value="2">Koordinator</option>
                                     <option value="3">Anggota</option>
+                                    <option value="4">Alumni</option>
+                                    <option value="5">Umum</option>
                                 </select>
                             </div>
                         </div>
