@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2020 at 06:15 AM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.3.9
+-- Waktu pembuatan: 02 Jun 2020 pada 08.58
+-- Versi server: 10.1.34-MariaDB
+-- Versi PHP: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_cobaalumni`
+-- Database: `db_alumni`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `db_berita`
+-- Struktur dari tabel `db_berita`
 --
 
 CREATE TABLE `db_berita` (
@@ -43,7 +43,7 @@ CREATE TABLE `db_berita` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_anggota`
+-- Struktur dari tabel `tb_anggota`
 --
 
 CREATE TABLE `tb_anggota` (
@@ -63,7 +63,7 @@ CREATE TABLE `tb_anggota` (
   `negara` varchar(100) DEFAULT NULL,
   `provinsi` varchar(100) DEFAULT NULL,
   `kabupaten_kota` varchar(100) DEFAULT NULL,
-  `alamat` text DEFAULT NULL,
+  `alamat` text,
   `pendidikan_terakhir` varchar(10) DEFAULT NULL,
   `status_bekerja` varchar(30) DEFAULT NULL,
   `bidang_industri` varchar(100) DEFAULT NULL,
@@ -83,11 +83,11 @@ CREATE TABLE `tb_anggota` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_anggota`
+-- Dumping data untuk tabel `tb_anggota`
 --
 
 INSERT INTO `tb_anggota` (`id_anggota`, `nama_lengkap`, `nama_panggilan_alias`, `NIK`, `angkatan`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `golongan_darah`, `no_telp`, `no_telp_alternatif`, `email`, `nama_foto`, `negara`, `provinsi`, `kabupaten_kota`, `alamat`, `pendidikan_terakhir`, `status_bekerja`, `bidang_industri`, `jabatan`, `nama_perusahaan`, `bisnis_usaha`, `sosial_pendidikan`, `sosial_kemanusiaan`, `pengembangan_sarana_prasarana`, `silaturahim_kebersamaan`, `penawaran_sponsorship_donasi`, `support`, `loyalist`, `iuran_sukarela`, `status_anggota`, `user_id`) VALUES
-(1, 'root', 'admin', '173040038', 2017, '1', 'Bandung', '1999-04-04', 'A', '081911437177', '0', 'root123@gmail.com', 'IKA-SMA3-root-1590193058.jpg', 'Indonesia', 'Jawa Barat', 'Kab. Cirebon', 'Jl. Nusa Indah No. 27 Wiratama - Tuparev', 'SMA', '1', 'Informatika', 'CEO Apple', 'Apple, Inc', '1', NULL, NULL, 'c', 'c', NULL, NULL, NULL, NULL, '1', 1),
+(1, 'root', 'admin', '173040046', 2017, '1', 'Bandung', '2020-06-23', 'A', '081911437177', '0', 'root123@gmail.com', 'IKA-SMA3-root-1590193058.jpg', 'Indonesia', 'Jawa Barat', 'Kab. Cirebon', 'Jl. Nusa Indah No. 27 Wiratama - Tuparev', 'SMA', '1', 'Informatika', 'CEO Apple', 'Apple, Inc', '1', 'c', 'c', 'c', 'c', 'c', NULL, NULL, NULL, '1', 1),
 (4, 'Dedi (Maryun) E Wirahadikusumah', NULL, '3174070606510003', 70, '1', NULL, '1951-06-06', 'A', '0811948436', NULL, NULL, NULL, NULL, NULL, NULL, 'Jl. Lamandau 2 No 14 Kebayoran Baru, Jakarta Selatan', 'S1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', NULL, '0', 0),
 (5, 'Fatsfiar Erfaba Enoch', NULL, '3273111404520003', 70, '1', NULL, '1952-04-14', 'B', '0815222414386', NULL, NULL, NULL, NULL, NULL, NULL, 'Komp. Bumi Parahyangan Kencana  Jl. Rajawali Raya Blok  23 No.29  Rt.03 Rw 07 Desa Nagrak, Kec. Cangkuang Kab. Bandung 40377', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', NULL, '0', 0),
 (6, 'Ida Sofia Sidawati (Ida Gursida Djoewarsa)', NULL, '3171075401510001', 70, '2', NULL, '1951-01-14', 'O', '0811854770', '08998854770', NULL, NULL, NULL, NULL, NULL, 'Jl. Pam Baru V NO 15 Pejompongan, Jakarta Pusat 10210', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', NULL, '0', 0),
@@ -1292,19 +1292,21 @@ INSERT INTO `tb_anggota` (`id_anggota`, `nama_lengkap`, `nama_panggilan_alias`, 
 (1220, 'Kiki Hadiansyah', 'Kiki', NULL, 2014, NULL, NULL, '2019-07-01', NULL, '08211223344', NULL, 'kiki@gmail.com', 'anggota-Kiki_Hadiansyah-1562822761.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', NULL, NULL, '1', 28),
 (1223, 'Adhy Wiranto Sudjana', 'Adhy', NULL, 2017, NULL, NULL, '1999-04-04', NULL, '081911437177', NULL, 'adhywiranto68@gmail.com', 'anggota-Adhy_Wiranto_Sudjana-1588685708.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 0),
 (1224, 'Myoui Mina', 'Minari', NULL, 2015, NULL, NULL, '1997-03-24', NULL, '0', NULL, 'mina@gmail.com', 'anggota-Myoui_Mina-1588686920.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 31),
-(1226, 'sue', 'suekarno', NULL, 2020, NULL, NULL, '2020-04-30', NULL, '081', NULL, 'aaa@gmail.com', 'anggota-sue-1590755803.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 32);
+(1227, 'Dicky Ardianto', 'Dicky', NULL, 2017, NULL, NULL, '2020-06-02', NULL, '08212191919191', NULL, 'dikiardianto19@gmail.com', 'anggota-Dicky_Ardianto-1591073513.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 33),
+(1228, 'Dicky Aja', 'Dicky', '', 2019, '', '', '2020-06-30', '', '021', '', 'dikiardianto19@gmail.com', 'anggota-Dicky_Aja-1591077249.jpg', '', '', '', '', '', '', NULL, NULL, NULL, '', '1', '0', '0', '0', '0', '0', '0', 0, '1', 34),
+(1229, 'Anggota Ujang', 'a/n ujang', NULL, 2014, NULL, NULL, '2020-06-24', NULL, '919', NULL, 'diki@mail.com', 'anggota-Anggota_Ujang-1591079333.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 35);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_forum_bisnis`
+-- Struktur dari tabel `tb_forum_bisnis`
 --
 
 CREATE TABLE `tb_forum_bisnis` (
   `id_forbis` int(11) NOT NULL,
   `nama_bisnis_usaha` varchar(255) NOT NULL,
   `id_jenis_bisnis` int(11) NOT NULL,
-  `deskripsi_bisnis` text DEFAULT NULL,
+  `deskripsi_bisnis` text,
   `alamat` text NOT NULL,
   `no_telp_bisnis` varchar(16) DEFAULT NULL,
   `nama_foto_bisnis` varchar(255) DEFAULT NULL,
@@ -1312,19 +1314,20 @@ CREATE TABLE `tb_forum_bisnis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_forum_bisnis`
+-- Dumping data untuk tabel `tb_forum_bisnis`
 --
 
 INSERT INTO `tb_forum_bisnis` (`id_forbis`, `nama_bisnis_usaha`, `id_jenis_bisnis`, `deskripsi_bisnis`, `alamat`, `no_telp_bisnis`, `nama_foto_bisnis`, `pemilik_id`) VALUES
 (1, 'Cafetaria Mhs', 2, 'asdasd', 'Jl. Buah Batu', '0227809922', NULL, 131),
 (2, 'Bengkel Jaya Motor', 3, 'Jual sparepart', 'Jl. Banceut', '087820093686', NULL, 130),
 (3, 'Warung', 1, 'warung kopi roko', 'jl. bhayangkara', '081922001144', NULL, 131),
-(4, 'Dalgona Coffee', 1, 'Mantappu Jiwa Pokoe!', 'cirebon', '1', NULL, 1220);
+(4, 'Dalgona Coffee', 1, 'Mantappu Jiwa Pokoe!', 'cirebon', '1', NULL, 1220),
+(5, 'Bakso Cuangki', 1, 'Bakso Ujang Nyai', 'Bandung', '1828182812', NULL, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_jenis_bisnis`
+-- Struktur dari tabel `tb_jenis_bisnis`
 --
 
 CREATE TABLE `tb_jenis_bisnis` (
@@ -1333,7 +1336,7 @@ CREATE TABLE `tb_jenis_bisnis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_jenis_bisnis`
+-- Dumping data untuk tabel `tb_jenis_bisnis`
 --
 
 INSERT INTO `tb_jenis_bisnis` (`id_jenis_bisnis`, `nama_jenis_bisnis`) VALUES
@@ -1345,7 +1348,7 @@ INSERT INTO `tb_jenis_bisnis` (`id_jenis_bisnis`, `nama_jenis_bisnis`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_komunitas`
+-- Struktur dari tabel `tb_komunitas`
 --
 
 CREATE TABLE `tb_komunitas` (
@@ -1354,15 +1357,22 @@ CREATE TABLE `tb_komunitas` (
   `tautat_komunitas` varchar(255) NOT NULL,
   `logo_komunitas` varchar(255) NOT NULL,
   `date_created` date NOT NULL,
-  `time_created` time NOT NULL DEFAULT current_timestamp(),
+  `time_created` time NOT NULL,
   `id_pengupload` int(11) NOT NULL,
   `stat_komunitas` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `tb_komunitas`
+--
+
+INSERT INTO `tb_komunitas` (`id_komunitas`, `nama_komunitas`, `tautat_komunitas`, `logo_komunitas`, `date_created`, `time_created`, `id_pengupload`, `stat_komunitas`) VALUES
+(15, 'Ujang Amen', 'Ujang Amen BEC', 'komunitas-Ujang_Amen-1591079184.png', '2020-06-02', '13:26:24', 1, 1);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_user`
+-- Struktur dari tabel `tb_user`
 --
 
 CREATE TABLE `tb_user` (
@@ -1374,7 +1384,7 @@ CREATE TABLE `tb_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_user`
+-- Dumping data untuk tabel `tb_user`
 --
 
 INSERT INTO `tb_user` (`id_user`, `username`, `password`, `status_akun`, `role`) VALUES
@@ -1390,88 +1400,124 @@ INSERT INTO `tb_user` (`id_user`, `username`, `password`, `status_akun`, `role`)
 (28, '08211223344', '62f563d94164c8991ba0861988f8d048', '1', '3'),
 (30, '0811948436', '4d0938f43a9c1f2bd155460bedc1e7c1', '1', '3'),
 (31, '0', 'cfcd208495d565ef66e7dff9f98764da', '1', '3'),
-(32, '081', '25d55ad283aa400af464c76d713c07ad', '1', '3');
+(33, '08212191919191', '25d55ad283aa400af464c76d713c07ad', '1', '3'),
+(34, '021', '25d55ad283aa400af464c76d713c07ad', '1', '4'),
+(35, '919', '25d55ad283aa400af464c76d713c07ad', '1', '3');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_user_role`
+--
+
+CREATE TABLE `tb_user_role` (
+  `id` int(11) NOT NULL,
+  `role` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tb_user_role`
+--
+
+INSERT INTO `tb_user_role` (`id`, `role`) VALUES
+(1, 'Admin'),
+(2, 'Koordinator'),
+(3, 'Anggota'),
+(4, 'Alumni'),
+(5, 'Umum');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `db_berita`
+-- Indeks untuk tabel `db_berita`
 --
 ALTER TABLE `db_berita`
   ADD PRIMARY KEY (`id_berita`);
 
 --
--- Indexes for table `tb_anggota`
+-- Indeks untuk tabel `tb_anggota`
 --
 ALTER TABLE `tb_anggota`
   ADD PRIMARY KEY (`id_anggota`);
 
 --
--- Indexes for table `tb_forum_bisnis`
+-- Indeks untuk tabel `tb_forum_bisnis`
 --
 ALTER TABLE `tb_forum_bisnis`
   ADD PRIMARY KEY (`id_forbis`),
   ADD UNIQUE KEY `nama_foto_bisnis` (`nama_foto_bisnis`);
 
 --
--- Indexes for table `tb_jenis_bisnis`
+-- Indeks untuk tabel `tb_jenis_bisnis`
 --
 ALTER TABLE `tb_jenis_bisnis`
   ADD PRIMARY KEY (`id_jenis_bisnis`);
 
 --
--- Indexes for table `tb_komunitas`
+-- Indeks untuk tabel `tb_komunitas`
 --
 ALTER TABLE `tb_komunitas`
   ADD PRIMARY KEY (`id_komunitas`);
 
 --
--- Indexes for table `tb_user`
+-- Indeks untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Indeks untuk tabel `tb_user_role`
+--
+ALTER TABLE `tb_user_role`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `db_berita`
+-- AUTO_INCREMENT untuk tabel `db_berita`
 --
 ALTER TABLE `db_berita`
   MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tb_anggota`
+-- AUTO_INCREMENT untuk tabel `tb_anggota`
 --
 ALTER TABLE `tb_anggota`
-  MODIFY `id_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1227;
+  MODIFY `id_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1230;
 
 --
--- AUTO_INCREMENT for table `tb_forum_bisnis`
+-- AUTO_INCREMENT untuk tabel `tb_forum_bisnis`
 --
 ALTER TABLE `tb_forum_bisnis`
-  MODIFY `id_forbis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_forbis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `tb_jenis_bisnis`
+-- AUTO_INCREMENT untuk tabel `tb_jenis_bisnis`
 --
 ALTER TABLE `tb_jenis_bisnis`
   MODIFY `id_jenis_bisnis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `tb_komunitas`
+-- AUTO_INCREMENT untuk tabel `tb_komunitas`
 --
 ALTER TABLE `tb_komunitas`
-  MODIFY `id_komunitas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_komunitas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `tb_user`
+-- AUTO_INCREMENT untuk tabel `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT untuk tabel `tb_user_role`
+--
+ALTER TABLE `tb_user_role`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
