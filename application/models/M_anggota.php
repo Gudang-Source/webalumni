@@ -51,4 +51,8 @@ class M_anggota extends CI_Model
         $this->db->where('id_anggota', $id);
         $this->db->delete('tb_anggota');
     }
+
+
+    function pemilikForbis()
+    { }
 }

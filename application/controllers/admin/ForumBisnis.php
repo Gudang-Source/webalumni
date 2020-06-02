@@ -36,8 +36,14 @@ class ForumBisnis extends MY_Controller
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
         $data['forumBisnis'] = $this->M_forumBisnis->getAllForumBisnis();
         $data['jenisBisnis'] = $this->M_jenisBisnis->getAllJenisBisnis();
-        $data['pemilikForbis'] = $this->M_anggota->findAnggota('*', array('tb_anggota.support = ' => '1'));
+        // $data['pemilikForbis'] = $this->M_anggota->findAnggota('*', array('tb_anggota.support = ' => '1'));
 
+        $where = array(
+            'tb_anggota.status_anggota !=' => '0',
+            'tb_anggota.user_id != ' => $this->session->userdata('uid')
+        );
+
+        $data['pemilikForbis'] = $this->M_anggota->findAnggota('*', $where);
 
         if ($this->session->userdata('role') == 1) {
             $this->admin_render('admin/kelolaForumBisnis', $data);
