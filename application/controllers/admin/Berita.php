@@ -42,7 +42,7 @@ class Berita extends MY_Controller
     public function tambahCalonBerita()
     {
         date_default_timezone_set("Asia/Jakarta");
-        $jam = date ("H:i:s");
+        $jam = date("H:i:s");
         $tanggal = date("Y-m-d", mktime(date('m'), date("d"), date('Y')));
 
         $this->load->model('M_berita');
