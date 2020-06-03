@@ -170,7 +170,7 @@ class Komunitas extends MY_Controller
     }
 
     
-     public function setUpdateKomunitas()
+    public function setUpdateKomunitas()
     {
         $this->load->model('M_komunitas');
 

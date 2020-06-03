@@ -4,12 +4,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_berita extends CI_Model
 {
-    function getAllBerita()
+    public function getAllBerita()
     {
-        $queryBerita = "SELECT tb_berita.*, tb_user.username, tb_kategori_berita.kategori FROM (tb_berita JOIN tb_user ON tb_berita.id_penulis = tb_user.id_user) JOIN tb_kategori_berita ON tb_berita.id_kategori = tb_kategori_berita.id";
-        $berita = $this->db->query($queryBerita)->result();
+        $this->db->select('tb_berita.*, tb_user.username, tb_kategori_berita.kategori');
+        $this->db->from('tb_berita');
+        $this->db->join('tb_user', 'tb_berita.id_penulis=tb_user.id_user');
+        $this->db->join('tb_kategori_berita', 'tb_berita.id_kategori = tb_kategori_berita.id');
 
-        return $berita;
+        return $this->db->get()->result();
 
     }
 
@@ -20,6 +22,18 @@ class M_berita extends CI_Model
         $this->db->where($where);
 
         return $this->db->get('tb_berita')->result();
+    }
+
+    function findBeritaLikeJudul($where, $judul)
+    {
+        $this->db->select('tb_berita.*, tb_user.username, tb_kategori_berita.kategori');
+        $this->db->from('tb_berita');
+        $this->db->join('tb_user', 'tb_berita.id_penulis=tb_user.id_user');
+        $this->db->join('tb_kategori_berita', 'tb_berita.id_kategori = tb_kategori_berita.id');
+        $this->db->where($where);
+        $this->db->like('judul_berita', $judul, 'both');
+
+        return $this->db->get()->result();
     }
 
     function insertNewBerita($berita)

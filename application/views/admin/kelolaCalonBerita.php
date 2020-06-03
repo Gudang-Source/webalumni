@@ -308,7 +308,7 @@
                     <div class="panel-body">
                         <p>Anda yakin akan menolak berita ini?</p>
 
-                        <div class="form-group">
+                        <div class="form-group hidden">
                             <input type="text" id="idCalonBerita" name="idCalonBerita" class="form-control">
                         </div>
 
@@ -361,11 +361,12 @@ $(".btn-terima").click(function() {
         function(data) {
             var data_obj = JSON.parse(data);
 
+            var idBerita = data_obj.berita[0].id_berita;
             var judulBerita = data_obj.berita[0].judul_berita;
             var isiBerita = data_obj.berita[0].isi_berita;
             // var penulis = data_obj.berita[0].penulis;
 
-            document.getElementById('idBerita').value = data_obj.berita[0].id_berita;
+            document.getElementById('idBerita').value = idBerita;
             document.getElementById('judulBerita').innerHTML = judulBerita;
             document.getElementById('isiBerita').innerHTML = isiBerita;
             // document.getElementById('penulis').innerHTML = penulis;
@@ -383,11 +384,12 @@ $(".btn-tolak").click(function() {
         function(data) {
             var data_obj = JSON.parse(data);
 
+            var idBerita = data_obj.berita[0].id_berita;
             var judulCalonBerita = data_obj.berita[0].judul_berita;
             var isiCalonBerita = data_obj.berita[0].isi_berita;
             // var penulis = data_obj.berita[0].penulis;
 
-            document.getElementById('idCalonBerita').value = data_obj.berita[0].id_berita;
+            document.getElementById('idCalonBerita').value = idBerita;
             document.getElementById('judulCalonBerita').innerHTML = judulCalonBerita;
             document.getElementById('isiCalonBerita').innerHTML = isiCalonBerita;
             // document.getElementById('penulis').innerHTML = penulis;
