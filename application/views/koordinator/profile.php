@@ -183,7 +183,7 @@
                                             <label class="control-label">Ya</label>    
                                         <?php } else { ?>
                                             <label class="control-label">Tidak</label>
-                                        <? } ?>
+                                        <?php } ?>
                                         
                                     </div>
                                 </div>

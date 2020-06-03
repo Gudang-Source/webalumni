@@ -57,9 +57,24 @@
                     <li>
                         <a href="<?php echo base_url('anggota') ?>"><span class="fa fa-home"></span> <span class="xn-text">Beranda</span></a>                        
                     </li>
-                    <li>
-                        <a href="<?php echo base_url('anggota/Anggota'); ?>"><span class="glyphicon glyphicon-user"></span> <span class="xn-text">Lihat Anggota</span></a>
+                  
+                    <li class="xn-openable">
+                        <a href="#"><span class="fa fa-users"></span> <span class="xn-text">Anggota</span></a>
+                        <ul>
+                            <li><a href="<?= base_url('anggota/Anggota') ?>"><span class="fa fa-user"></span> Lihat Anggota</a></li>
+                            <li><a href="<?= base_url('anggota/Anggota/KelolaAnggota') ?>"><span class="fa fa-users"></span> Tambahkan Anggota </a></li>
+                        </ul>
                     </li>
+                    
+                    
+                    <li class="xn-openable">
+                        <a href="#"><span class="fa fa-users"></span> <span class="xn-text">Komunitas</span></a>
+                        <ul>
+                            <li><a href="<?= base_url('anggota/Komunitas') ?>"><span class="fa fa-user"></span> Lihat Komunitas</a></li>
+                            <li><a href="<?= base_url('anggota/Komunitas/tambahKomunitas') ?>"><span class="fa fa-users"></span> Tambah Calon Komunitas </a></li>
+                        </ul>
+                    </li>
+
                     <?php if ($info[0]->support == 0) { ?>
                         <li class ="hidden">
                         <a href="<?= base_url('anggota/Forbis'); ?>"><span class="glyphicon glyphicon-file"></span> <span class="xn-text">Forum Bisnis</span></a>

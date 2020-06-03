@@ -67,7 +67,7 @@
 							<p><small>Mobile</small><br>Belum di isi</p>
 						<?php } else { ?>
 							<p><small>Mobile</small><br><?= $A->no_telp; ?></p>
-						<? } ?>
+						<?php } ?>
 
 						<?php if ($A->email == null) { ?>
 							<p><small>Email</small><br>Belum di isi</p>

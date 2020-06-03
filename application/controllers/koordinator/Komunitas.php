@@ -1,0 +1,251 @@
+<?php
+
+if (defined('BASEPATH') or exit('No direct script access allowed'));
+
+class Komunitas extends MY_Controller
+{
+    function __construct() {
+        parent::__construct();
+        $this->load->model('M_anggota');
+        $this->load->model('M_user');
+        $this->load->model('M_komunitas');
+
+        if ($this->session->userdata('logged_in') == '' && $this->session->userdata('username') == '' && $this->session->userdata('role') == '') {
+            redirect('login');
+        } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == '1') {
+            redirect('admin');
+        } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == '3' || $this->session->userdata('role') == '4') {
+            redirect('anggota');
+        }
+    }
+
+    function index()
+    {
+        $data['title'] = 'Kelola Komunitas';
+        $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+
+        $data['calonKomunitas'] = $this->M_komunitas->getAllKomunitas();
+
+        if ($this->session->userdata('role') == 2) {
+            $this->koordinator_render('koordinator/KelolaKomunitas', $data);
+        }
+        //         echo json_encode($data);
+    }
+
+        public function tambahCalonKomunitas()
+    {
+        date_default_timezone_set("Asia/Jakarta");
+        $jam = date ("H:i:s");
+        $tanggal = date("Y-m-d", mktime(date('m'), date("d"), date('Y')));
+
+        $this->load->model('M_anggota');
+
+        $namaKomunitas = $this->input->post('namaKomunitas');
+        $tautatKomunitas = $this->input->post('tautatKomunitas');
+        $tglPengajuan = $tanggal;
+        $waktuPengajuan = $jam;
+        $idPengupload = $this->input->post('idPengupload');
+        
+        $filename = "komunitas-" . $namaKomunitas . "-" . time();
+
+        // Set preferences
+        $config['upload_path'] = './uploads/avatars';
+        $config['allowed_types'] = 'png|jpg|jpeg';
+        $config['file_name'] = $filename;
+
+        //load upload class library
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('fileSaya')) {
+            flashMessage('error', 'Maaf, Upload gambar calon anggota gagal! Silahkan coba lagi');
+            redirect('koordinator/Komunitas');
+        } else {
+            $upload_data = $this->upload->data();
+
+            $data['nama_komunitas'] = $namaKomunitas;
+            $data['tautat_komunitas'] = $tautatKomunitas;
+            $data['date_created'] = $tglPengajuan;
+            $data['time_created'] = $waktuPengajuan;
+            $data['logo_komunitas'] = $upload_data['file_name'];
+            $data['id_pengupload'] = $idPengupload;
+            if($this->session->userdata('role') == 1) {
+                $data['stat_komunitas'] = '1';
+            } else {
+                $data['stat_komunitas'] = '0';
+            }
+
+            // echo json_encode($data);
+            $sukses = $this->M_komunitas->insertNewKomunitas($data);
+
+            if (!$sukses) {
+                flashMessage('success', 'Calon Komunitas Baru berhasil di daftarkan. Silahkan verifikasi di Permohonan Calon Anggota');
+                redirect('koordinator/Komunitas');
+            } else {
+                flashMessage('error', 'Calon Komunitas Baru gagal di daftarkan! Silahkan coba lagi');
+                redirect('koordinator/Komunitas');
+            }
+        }
+    }
+
+    function komunitasJSON()
+    {
+        $id = $this->input->post('id');
+
+        $data['komunitas'] = $this->M_komunitas->findKomunitas('*', array('tb_komunitas.id_komunitas = ' => $id));
+
+        echo json_encode($data);
+    }
+
+
+    function aktivasiCalonKomunitas()
+    {
+        $this->load->model('M_komunitas');
+
+        $komunitas['stat_komunitas'] = $this->input->post('statKomunitas');
+        $idKomunitas = $this->input->post('idKomunitas');
+
+        // echo json_encode($user);
+        $sukses = $this->M_komunitas->updateKomunitas($komunitas, $idKomunitas);
+
+
+        if ($sukses != 0) {
+
+            $komunitas['user_id'] = $sukses;
+            $updateKomunitas = $this->M_komunitas->updateKomunitas($komunitas, $idKomunitas);
+
+    
+            if (!$updateKomunitas) {
+                flashMessage('success', 'Calon Komunitas berhasil di aktifkan dan dapat masuk menggunakan Username & Password sesuai yang tertera pada saat Aktivasi');
+                redirect('koordinator/Komunitas');
+            } else {
+                flashMessage('error', 'Aktivasi Calon Komunitas gagal! Silahkan coba lagi...');
+                redirect('koordinator/Komunitas');
+            }
+        } else {
+            flashMessage('error', 'Maaf, Terjadi kesalahan pada saat proses pembuatan akun Komunitas baru');
+            redirect('koordinator/Komunitas');
+        }
+    }
+
+    function tolakCalonKomunitas()
+    {
+        $idKomunitas = $this->input->post('idCalonKomunitas');
+
+        $sukses = $this->M_komunitas->deleteKomunitas($idKomunitas);
+
+        if (!$sukses) {
+            flashMessage('success', 'Calon Komunitas berhasil ditolak sebagai Komunitasan');
+            redirect('koordinator/Komunitas');
+        } else {
+            flashMessage('error', 'Calon Komunitas gagal ditolak sebagai keKomunitasan! Silahkan coba lagi');
+            redirect('koordinator/Komunitas');
+        }
+        // echo json_encode($idKomunitas);
+    }
+
+    function KelolaStatusKomunitas()
+    {
+        $data['title'] = 'Kelola Status Komunitas';
+        $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+        $data['komunitas'] = $this->M_komunitas->getAllKomunitas();
+
+        if ($this->session->userdata('role') == 2) {
+            $this->koordinator_render('koordinator/KelolaStatusKomunitas', $data);
+        }
+    }
+
+    public function getKomunitasById($id)
+    {
+        $data['komunitas'] = $this->M_komunitas->findKomunitasAndUser(array('tb_komunitas.id_komunitas = ' => $id));
+
+        echo json_encode($data);
+    }
+
+    
+     public function setUpdateKomunitas()
+    {
+        $this->load->model('M_komunitas');
+
+        $idKomunitas = $this->input->post('idKomunitas');
+        $namaKomunitas = $this->input->post('namaKomunitas');
+        $tautatKomunitas = $this->input->post('tautatKomunitas');
+        // $tglPengajuan = $this->input->post('tglPengajuan');
+        // $waktuPengajuan = $this->input->post('waktuPengajuan');
+        // $idPengupload = $this->input->post('idPengupload');
+
+
+        $filename = "komunitas-" . $namaKomunitas . "-" . time();
+
+        // Set preferences
+        $config['upload_path'] = './uploads/avatars';
+        $config['allowed_types'] = 'png|jpg|jpeg';
+        $config['file_name'] = $filename;
+
+        //load upload class library
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('fileSaya')) {
+            flashMessage('error', 'Maaf, Upload gambar calon anggota gagal! Silahkan coba lagi');
+            redirect('koordinator/komunitas/kelolaStatusKomunitas');
+        } else {
+            $upload_data = $this->upload->data();
+
+            $komunitas['nama_komunitas'] = $namaKomunitas;
+            $komunitas['tautat_komunitas'] = $tautatKomunitas;
+            // $data['date_created'] = $this->input->post('tglPengajuan');
+            // $data['time_created'] = $waktuPengajuan;
+            $komunitas['logo_komunitas'] = $upload_data['file_name'];
+            // $data['id_pengupload'] = $idPengupload;
+            // $data['stat_komunitas'] = '0';
+// 
+            // echo json_encode($data);
+            $sukses = $this->M_komunitas->updateKomunitas($komunitas, $idKomunitas);
+
+            if (!$sukses) {
+                flashMessage('success', 'Calon Komunitas Baru berhasil di daftarkan. Silahkan verifikasi di Permohonan Calon Anggota');
+                redirect('koordinator/komunitas/kelolaStatusKomunitas');
+            } else {
+                flashMessage('error', 'Calon Komunitas Baru gagal di daftarkan! Silahkan coba lagi');
+                redirect('koordinator/komunitas/kelolaStatusKomunitas');
+            }
+        }
+    }
+
+    public function hapusKomunitas()
+    {
+        $this->load->model('M_komunitas');
+
+        $id = $this->input->post('idKomunitasHapus');
+
+        $deleteKomunitas = $this->M_komunitas->deleteKomunitas($id);
+
+        if (!$deleteKomunitas) {
+            flashMessage('success', 'Komunitas berhasil dihapus');
+            redirect('koordinator/Komunitas/kelolaStatusKomunitas');
+        } else {
+            flashMessage('error', 'Komunitas gagal dihapus! Silahkan coba lagi');
+            redirect('koordinator/Komunitas/kelolaStatusKomunitas');
+        }
+    }
+
+
+    function cariStatusKomunitas()
+    {
+        $data['title'] = 'Kelola Status Komunitas';
+
+        $nama = $this->input->post('namaKomunitas');
+
+        $where = "tb_komunitas.stat_komunitas != 0";
+        $data['komunitas'] = $this->M_komunitas->findKomunitasLikeNama($where, $nama);
+
+        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+        if ($this->session->userdata('role') == 1) {
+            $this->koordinator_render('koordinator/kelolaStatusKomunitas', $data);
+        }
+
+    }
+
+}

@@ -70,6 +70,15 @@
                             <!-- <li><a href="<?= base_url('koordinator/Anggota/dataMaster'); ?>"><span class="fa fa-plus"></span> Data Master</a></li> -->
                         </ul>
                     </li>
+
+                    <li class="xn-openable">
+                        <a href="#"><span class="fa fa-users"></span> <span class="xn-text">Komunitas</span></a>
+                        <ul>
+                            <li><a href="<?= base_url('koordinator/Komunitas') ?>"><span class="fa fa-user"></span> Kelola Calon Komunitas</a></li>
+                            <li><a href="<?= base_url('koordinator/Komunitas/kelolaStatusKomunitas') ?>"><span class="fa fa-users"></span> Kelola Status Komunitas </a></li>
+                        </ul>
+                    </li>
+
                     <!-- <li class="xn-openable">
                         <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Forum Bisnis</span></a>
                         <ul>
@@ -77,6 +86,10 @@
                             <li><a href="<?php echo base_url('koordinator/ForumBisnis/kelolaJenisBisnis'); ?>"><span class="fa fa-file-o"></span> Kelola Jenis Bisnis </a></li>
                         </ul>   
                     </li> -->
+
+
+                   
+
                     <li>
                         <a href="<?= base_url('koordinator/Pengaturan'); ?>"><span class="glyphicon glyphicon-cog"></span> <span class="xn-text">Pengaturan</span></a>                        
                     </li>
