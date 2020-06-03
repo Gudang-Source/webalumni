@@ -41,6 +41,7 @@
                                                 <th width="100">Credit</th>
                                                 <th width="100">Foto</th>
                                                 <th width="100">Penulis</th>
+                                                <th width="100">Kategori</th>
                                                 <th width="100">Tanggal Ditambahkan</th>
                                                 <th width="100">Waktu Ditambahkan</th>
                                                 <th width="100">Aksi</th>
@@ -91,6 +92,12 @@
                                                 <?php } else { ?>
                                                 <td><?= $CB->username; ?></td>
                                                 <?php } ?>
+
+                                                <?php if ($CB->kategori == null) { ?>
+                                                <td>Tidak Ada Kategori</td>
+                                                <?php } else { ?>
+                                                <td><?= $CB->kategori; ?></td>
+                                                <?php } ?>
                                                 
                                                 <?php if ($CB->date_created == null) { ?>
                                                 <td>Belum di isi</td>
@@ -130,7 +137,7 @@
 
                         <div class="form-group">
                             <form action="<?= base_url('admin/Berita/tambahCalonBerita'); ?>" class="form-horizontal"
-                                id="form-tambah-komunitas-validate" method="post" enctype="multipart/form-data">
+                                id="form-tambah-berita-validate" method="post" enctype="multipart/form-data">
                                 <div class="panel-body">
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Judul Berita</label>
@@ -162,6 +169,17 @@
                                         <div class="col-md-8">
                                             <input type="text" class="form-control" name="creditBerita"
                                                 placeholder="Daftar nama kontributor untuk berita ini" required clear />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label">Kategori : </label>
+                                        <div class="col-md-8">
+                                            <select name="idKategori" id="idKategori" class="select form-control validate[required]">
+                                                <?php foreach($daftarKategori as $kategori) : ?>
+                                                    <option value="<?= $kategori->id; ?>"><?= $kategori->kategori; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
                                         </div>
                                     </div>
 
@@ -228,7 +246,7 @@
 
 </div>
 
-<!-- MESSAGE BOX ACCEPT CALON ANGGOTA -->
+<!-- MESSAGE BOX ACCEPT CALON BERITA -->
 <div class="message-box animated zoomIn" data-sound="alert" id="message-box-terima">
 
     <div class="mb-container">
@@ -243,24 +261,15 @@
 
                         <div class="form-group hidden">
                             <div class="col-md-12">
-                                <input type="text" class="form-control" name="idKomunitas" id="idKomunitas" />
-                                <input type="text" class="form-control" name="idPengupload" id="idPengupload">
-                                <input type="text" class="form-control" name="statKomunitas" id="statKomunitas" value="1">
+                                <input type="text" class="form-control" name="idBerita" id="idBerita">
+                                <input type="text" class="form-control" name="statBerita" id="statBerita" value="1">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-3 control-label">Judul Berita : </label>
                             <div class="col-md-9">
-                                <label class="control-label" id="judulBerita"><?= $CB->judul_berita; ?></label>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Id Penulis : </label>
-                            <div class="col-md-9">
-                                <label class="control-label" id="idPengupload"></label>
-
+                                <label class="control-label" id="judulBerita"></label>
                             </div>
                         </div>
 
@@ -270,6 +279,7 @@
                                 <label class="control-label" id="isiBerita"></label>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="mb-footer">
@@ -283,9 +293,9 @@
     </div>
 
 </div>
-<!-- END MESSAGE BOX ACCEPT CALON ANGGOTA -->
+<!-- END MESSAGE BOX ACCEPT CALON BERITA -->
 
-<!-- MESSAGE BOX REJECT CALON ANGGOTA -->
+<!-- MESSAGE BOX REJECT CALON BERITA -->
 <div class="message-box message-box-danger animated zoomIn" data-sound="alert" id="message-box-tolak">
 
     <div class="mb-container">
@@ -293,35 +303,26 @@
             <div class="mb-title">
                 <span class="fa fa-times"></span> Tolak <strong>Komunitas</strong>
             </div>
-            <form action="<?= base_url('admin/Komunitas/tolakCalonKomunitas'); ?>" class="form-horizontal" method="post">
+            <form action="<?= base_url('admin/Berita/tolakCalonBerita'); ?>" class="form-horizontal" method="post">
                 <div class="mb-content">
                     <div class="panel-body">
-                        <p>Anda yakin akan menolak sebagai keanggotaan IKASMA3BDG dengan identitas Calon Anggota sebagai
-                            berikut :</p>
+                        <p>Anda yakin akan menolak berita ini?</p>
 
-                        <div class="form-group hidden">
-                            <input type="text" id="idCalonKomunitas" name="idCalonKomunitas" class="form-control">
+                        <div class="form-group">
+                            <input type="text" id="idCalonBerita" name="idCalonBerita" class="form-control">
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-3 control-label">Nama Komunitas : </label>
+                            <label class="col-md-3 control-label">Judul Berita : </label>
                             <div class="col-md-9">
-                                <label class="control-label" id="namaCalonKomunitas"></label>
-                            </div>
-                        </div>
-
-                      <div class="form-group">
-                            <label class="col-md-3 control-label">Tautat Komunitas : </label>
-                            <div class="col-md-9">
-                                <label class="control-label" id="tautatCalonKomunitas"></label>
-
+                                <label class="control-label" id="judulCalonBerita"></label>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-3 control-label">Pengupload : </label>
+                            <label class="col-md-3 control-label">Isi Berita : </label>
                             <div class="col-md-9">
-                                <label class="control-label" id="idCalonPengupload"></label>
+                                <label class="control-label" id="isiCalonBerita"></label>
                             </div>
                         </div>
                     </div>
@@ -338,10 +339,10 @@
     </div>
 
 </div>
-<!-- END MESSAGE BOX REJECT CALON ANGGOTA -->
+<!-- END MESSAGE BOX REJECT CALON BERITA -->
 
 <script type="text/javascript">
-$("#form-tambah-komunitas-validate").validate();
+$("#form-tambah-berita-validate").validate();
 
 $("#file-simple").fileinput({
     showUpload: false,
@@ -352,53 +353,44 @@ $("#file-simple").fileinput({
 
 $(".btn-terima").click(function() {
     console.log(this.id);
-    var idKomunitas = this.id;
+    var idBerita = this.id;
 
-    $.post("<?= base_url('admin/Komunitas/komunitasJSON/'); ?>", {
-            id: idKomunitas
+    $.post("<?= base_url('admin/Berita/beritaJSON/'); ?>", {
+            id: idBerita
         },
         function(data) {
             var data_obj = JSON.parse(data);
 
-            var namaKomunitas = data_obj.komunitas[0].nama_komunitas;
-            var tautatKomunitas = data_obj.komunitas[0].tautat_komunitas;
-            // var logoKomunitas = data_obj.komunitas[0].logo_komunitas;
-            var dateCreated = data_obj.komunitas[0].date_created;
-            // var timeCreated = data_obj.komunitas[0].time_created;
-            // var idPengupload = data_obj.komunitas[0].id_pengupload;
-            var statKomunitas = data_obj.komunitas[0].stat_komunitas;
+            var judulBerita = data_obj.berita[0].judul_berita;
+            var isiBerita = data_obj.berita[0].isi_berita;
+            // var penulis = data_obj.berita[0].penulis;
 
-            document.getElementById('idKomunitas').value = data_obj.komunitas[0].id_komunitas;
-            document.getElementById('namaKomun').innerHTML = namaKomunitas;
-            document.getElementById('tautatKomunitas').innerHTML = tautatKomunitas;
-            // document.getElementById('idPengupload').innerHTML = idPengupload;
-            document.getElementById('dateCreated').innerHTML = dateCreated;
+            document.getElementById('idBerita').value = data_obj.berita[0].id_berita;
+            document.getElementById('judulBerita').innerHTML = judulBerita;
+            document.getElementById('isiBerita').innerHTML = isiBerita;
+            // document.getElementById('penulis').innerHTML = penulis;
 
         });
 });
 
 $(".btn-tolak").click(function() {
     console.log(this.id);
-    var idCalonKomunitas = this.id;
+    var idCalonBerita = this.id;
 
-    $.post("<?= base_url('admin/Komunitas/KomunitasJSON/') ?>", {
-            id: idCalonKomunitas
+    $.post("<?= base_url('admin/Berita/beritaJSON/') ?>", {
+            id: idCalonBerita
         },
         function(data) {
             var data_obj = JSON.parse(data);
 
-            var namaCalonKomunitas = data_obj.komunitas[0].nama_komunitas;
-            var tautatCalonKomunitas = data_obj.komunitas[0].tautat_komunitas;
-            // var logoKomunitas = data_obj.komunitas[0].logo_komunitas;
-            // var dateCreated = data_obj.komunitas[0].dateCreated;
-            // var timeCreated = data_obj.komunitas[0].time_created;
-            var idCalonPengupload = data_obj.komunitas[0].id_pengupload;
-            var statKomunitas = data_obj.komunitas[0].stat_komunitas;
+            var judulCalonBerita = data_obj.berita[0].judul_berita;
+            var isiCalonBerita = data_obj.berita[0].isi_berita;
+            // var penulis = data_obj.berita[0].penulis;
 
-            document.getElementById('idCalonKomunitas').value = data_obj.komunitas[0].id_komunitas;
-            document.getElementById('namaCalonKomunitas').innerHTML = data_obj.komunitas[0].nama_komunitas;
-            document.getElementById('tautatCalonKomunitas').innerHTML = tautatCalonKomunitas;
-            document.getElementById('idCalonPengupload').innerHTML = idCalonPengupload;
+            document.getElementById('idCalonBerita').value = data_obj.berita[0].id_berita;
+            document.getElementById('judulCalonBerita').innerHTML = judulCalonBerita;
+            document.getElementById('isiCalonBerita').innerHTML = isiCalonBerita;
+            // document.getElementById('penulis').innerHTML = penulis;
 
         });
 });

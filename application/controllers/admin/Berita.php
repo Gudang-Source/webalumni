@@ -33,6 +33,7 @@ class Berita extends MY_Controller
         $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
         $data['calonBerita'] = $this->M_berita->getAllBerita();
+        $data['daftarKategori'] = $this->M_berita->getAllKategori();
 
         if ($this->session->userdata('role') == 1) {
             $this->admin_render('admin/kelolaCalonBerita', $data);
@@ -53,6 +54,7 @@ class Berita extends MY_Controller
         $waktuPengajuan = $jam;
         $sumberBerita = $this->input->post('sumberBerita');
         $creditBerita = $this->input->post('creditBerita');
+        $idKategori = $this->input->post('idKategori');
         $idPengupload = $this->input->post('idPengupload');
         
         $filename = "berita-" . $judulBerita . "-" . time();
@@ -79,6 +81,7 @@ class Berita extends MY_Controller
             $data['credit'] = $creditBerita;
             $data['foto'] = $upload_data['file_name'];
             $data['id_penulis'] = $idPengupload;
+            $data['id_kategori'] = $idKategori;
             if($this->session->userdata('role') == 1 || $this->session->userdata('role') == 2) {
                 $data['stat_berita'] = '1';
             } else {
@@ -96,5 +99,62 @@ class Berita extends MY_Controller
                 redirect('admin/Berita');
             }
         }
+    }
+
+    function beritaJSON()
+    {
+        $id = $this->input->post('id');
+
+        $data['berita'] = $this->M_berita->findBerita('*', array('tb_berita.id_berita = ' => $id));
+
+        echo json_encode($data);
+    }
+
+    function aktivasiCalonBerita()
+    {
+        $this->load->model('M_berita');
+
+        $berita['stat_berita'] = $this->input->post('statBerita');
+        $idBerita = $this->input->post('idBerita');
+
+        // echo json_encode($user);
+        $sukses = $this->M_berita->updateBerita($berita, $idBerita);
+
+        if ($sukses != 0) {
+
+            $berita['stat_berita'] = $sukses;
+            $updateBerita = $this->M_berita->updateBerita($berita, $idBerita);
+
+    
+            if (!$updateBerita) {
+                flashMessage('success', 'Calon Berita berhasil di aktifkan.');
+                redirect('admin/Berita');
+            } else {
+                flashMessage('error', 'Aktivasi Calon Berita gagal! Silahkan coba lagi...');
+                redirect('admin/Berita');
+            }
+        } else {
+            flashMessage('error', 'Maaf, Terjadi kesalahan pada saat proses pembuatan Berita baru');
+            redirect('admin/Berita');
+        }
+    }
+
+    function tolakCalonBerita()
+    {
+        $idCalonBerita = $this->input->post('idCalonBerita');
+        $data = $this->M_berita->findBerita('foto', array('tb_berita.id_berita = ' => $idCalonBerita));
+
+        $sukses = $this->M_berita->deleteBerita($idCalonBerita);
+
+        unlink(FCPATH . 'uploads/content/berita/' . $data[0]->foto);
+
+        if (!$sukses) {
+            flashMessage('success', 'Calon Berita berhasil ditolak!');
+            redirect('admin/Berita');
+        } else {
+            flashMessage('error', 'Calon Berita gagal ditolak! Silahkan coba lagi');
+            redirect('admin/Berita');
+        }
+        // echo json_encode($idKomunitas);
     }
 }
