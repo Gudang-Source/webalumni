@@ -322,31 +322,31 @@
 $("#tambah-forbis-validate").validate();
 $("#ubah-forbis-validate").validate();
 
-// $(".btn-ubah-forbis").click(function() {
-//     console.log(this.id);
-//     var idForbis = this.id;
+$(".btn-ubah-forbis").click(function() {
+    console.log(this.id);
+    var idForbis = this.id;
 
-//     $.post("<?= base_url('admin/ForumBisnis/getForbisById/') ?>", {
-//             id: idForbis
-//         },
-//         function(data, success) {
-//             console.log(data);
-//             var data_obj = JSON.parse(data);
+    $.post("<?= base_url('admin/ForumBisnis/getForbisById/') ?>", {
+            id: idForbis
+        },
+        function(data, success) {
+            console.log(data);
+            var data_obj = JSON.parse(data);
 
-//             document.getElementById('idForbisEdit').value = data_obj.forbis[0].id_forbis;
-//             document.getElementById('namaBisnisEdit').value = data_obj.forbis[0].nama_bisnis_usaha;
-//             document.getElementById('deskripsiBisnisEdit').value = data_obj.forbis[0].deskripsi_bisnis;
-//             document.getElementById('alamatBisnisEdit').value = data_obj.forbis[0].alamat;
-//             document.getElementById('noTelpBisnisEdit').value = data_obj.forbis[0].no_telp_bisnis;
+            document.getElementById('idForbisEdit').value = data_obj.forbis[0].id_forbis;
+            document.getElementById('namaBisnisEdit').value = data_obj.forbis[0].nama_bisnis_usaha;
+            document.getElementById('deskripsiBisnisEdit').value = data_obj.forbis[0].deskripsi_bisnis;
+            document.getElementById('alamatBisnisEdit').value = data_obj.forbis[0].alamat_bisnis;
+            document.getElementById('noTelpBisnisEdit').value = data_obj.forbis[0].no_telp_bisnis;
 
-//             $("#jenisBisnisEdit").val(data_obj.forbis[0].id_jenis_bisnis).change();
-//             $("#pemilikBisnisEdit").val(data_obj.forbis[0].pemilik_id).change();
+            $("#jenisBisnisEdit").val(data_obj.forbis[0].id_jenis_bisnis).change();
+            $("#pemilikBisnisEdit").val(data_obj.forbis[0].pemilik_id).change();
 
 
-//         });
-// });
+        });
+});
 
-// Coba
+
 $(".btn-hapus-forbis").click(function() {
     console.log(this.id);
     var idForbis = this.id;
@@ -363,5 +363,4 @@ $(".btn-hapus-forbis").click(function() {
                 .nama_bisnis_usaha;
         })
 });
-// Akhir Coba
 </script>

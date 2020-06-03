@@ -105,7 +105,7 @@ class ForumBisnis extends MY_Controller
         $forbis['nama_bisnis_usaha'] = $this->input->post('namaBisnisEdit');
         $forbis['id_jenis_bisnis'] = $this->input->post('jenisBisnisEdit');
         $forbis['deskripsi_bisnis'] = $this->input->post('deskripsiBisnisEdit');
-        $forbis['alamat'] = $this->input->post('alamatBisnisEdit');
+        $forbis['alamat_bisnis'] = $this->input->post('alamatBisnisEdit');
         $forbis['no_telp_bisnis'] = $this->input->post('noTelpBisnisEdit');
         $forbis['pemilik_id'] = $this->input->post('pemilikBisnisEdit');
 
