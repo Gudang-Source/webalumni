@@ -25,7 +25,7 @@
                         <img src="<?php echo base_url('uploads/no-image.jpg'); ?> " alt="No Image"
                             title="Default Image">
                         <?php } else { ?>
-                        <img src="<?php echo base_url('uploads/avatars/' . $A->nama_foto_bisnis); ?> "
+                        <img src="<?php echo base_url('uploads/logo-bisnis/' . $A->nama_foto_bisnis); ?> "
                             alt="<?= $A->nama_bisnis_usaha; ?>" title="<?= $A->nama_bisnis_usaha; ?>">
                         <?php } ?>
                     </div>
@@ -49,10 +49,10 @@
                         <?php } ?>
 
                         <!-- <?php if ($A->id_pengupload == "") { ?>
-                                    <p><small>ID Pengupload Komunitas</small><br>Belum di isi</p>
-                                <?php } else { ?>
-                                    <p><small>Pengupload Komunitas</small><br><?= $A->username; ?></p>
-                                <?php } ?> -->
+                                                                                    <p><small>ID Pengupload Komunitas</small><br>Belum di isi</p>
+                                                                <?php } else { ?>
+                                                                                    <p><small>Pengupload Komunitas</small><br><?= $A->username; ?></p>
+                                                                <?php } ?> -->
 
                     </div>
                 </div>

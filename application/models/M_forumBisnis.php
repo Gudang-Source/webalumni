@@ -24,18 +24,11 @@ class M_forumBisnis extends CI_Model
 
         $id = $id_pemilik[0]->id_anggota;
 
-        // var_dump($id);
-        // die;
-
-        // $queryKomunitas = "SELECT tb_komunitas.*, tb_user.username FROM tb_komunitas JOIN tb_user ON tb_komunitas.id_pengupload = tb_user.id_user";
-
         $queryForbisById = "SELECT * FROM tb_forum_bisnis JOIN tb_anggota ON tb_forum_bisnis.pemilik_id = tb_anggota.id_anggota WHERE tb_forum_bisnis.pemilik_id = $id";
 
         $forbis = $this->db->query($queryForbisById)->result();
 
         return $forbis;
-
-        // return $this->db->get('tb_komunitas')->result();
     }
 
     function findForumBisnis($where)

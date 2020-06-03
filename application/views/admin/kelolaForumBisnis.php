@@ -52,6 +52,7 @@
                                 <thead>
                                     <tr>
                                         <th width="50">No</th>
+                                        <th width="100">Logo Bisnis / Usaha</th>
                                         <th width="100">Nama Bisnis / Usaha</th>
                                         <th width="100">Pemilik</th>
                                         <th width="100">Angkatan</th>
@@ -68,6 +69,18 @@
                                         ?>
                                     <tr>
                                         <td class="text-center"><?= $no++; ?></td>
+                                        <!-- <td><strong><?= $forbis->nama_foto_bisnis; ?></strong></td> -->
+
+                                        <?php if ($forbis->nama_foto_bisnis == null) { ?>
+                                        <td><img src="<?= base_url('uploads/no-image.jpg'); ?>"
+                                                alt="<?= $forbis->nama_foto_bisnis; ?>"
+                                                title="<?= $forbis->nama_foto_bisnis; ?>" width="80" /></td>
+                                        <?php } else { ?>
+                                        <td><img src="<?= base_url('uploads/logo-bisnis/' . $forbis->nama_foto_bisnis); ?>"
+                                                alt="<?= $forbis->nama_foto_bisnis; ?>"
+                                                title="<?= $forbis->nama_foto_bisnis; ?>" width="80" height="80" /></td>
+                                        <?php } ?>
+
                                         <td><strong><?= $forbis->nama_bisnis_usaha; ?></strong></td>
                                         <td><?= $forbis->nama_lengkap; ?></td>
                                         <td><?= $forbis->angkatan; ?></td>
@@ -116,8 +129,17 @@
                 <h4 class="modal-title" id="defModalHead">Tambah Forum Bisnis Anggota</h4>
             </div>
             <form action="<?= base_url('admin/ForumBisnis/setAddForbis'); ?>" class="form-horizontal"
-                id="tambah-forbis-validate" method="post">
+                id="tambah-forbis-validate" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
+
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">* Foto Bisnis / Usaha :</label>
+                        <div class="col-md-8">
+                            <input type="file" id="file-simple" name="fileLogo" required />
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label class="col-md-3 control-label">* Nama Bisnis / Usaha :</label>
                         <div class="col-md-9">

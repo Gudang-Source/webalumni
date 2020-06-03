@@ -61,6 +61,7 @@ class Anggota extends MY_Controller
         $config['allowed_types'] = 'png|jpg|jpeg';
         $config['file_name'] = $filename;
 
+
         //load upload class library
         $this->load->library('upload', $config);
 

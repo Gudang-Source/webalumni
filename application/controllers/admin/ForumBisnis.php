@@ -63,21 +63,48 @@ class ForumBisnis extends MY_Controller
 
     public function setAddForbis()
     {
-        $forbis['nama_bisnis_usaha'] = $this->input->post('namaBisnisUsahaModal');
-        $forbis['id_jenis_bisnis'] = $this->input->post('jenisBisnisUsahaModal');
-        $forbis['deskripsi_bisnis'] = $this->input->post('deskripsiBisnisUsahaModal');
-        $forbis['alamat_bisnis'] = $this->input->post('alamatBisnisUsahaModal');
-        $forbis['no_telp_bisnis'] = $this->input->post('noTelpBisnisUsahaModal');
-        $forbis['pemilik_id'] = $this->input->post('pemilikBisnisUsahaModal');
+        $namaBisnisUsaha = $this->input->post('namaBisnisUsahaModal');
+        $jenisBisnisUsaha = $this->input->post('jenisBisnisUsahaModal');
+        $deskripsiBisnis = $this->input->post('deskripsiBisnisUsahaModal');
+        $alamatBisnis = $this->input->post('alamatBisnisUsahaModal');
+        $noTelpBisnis = $this->input->post('noTelpBisnisUsahaModal');
+        $pemilikBisnis = $this->input->post('pemilikBisnisUsahaModal');
 
-        $sukses = $this->M_forumBisnis->insertForumBisnis($forbis);
+        $filename = "anggota-" . $namaBisnisUsaha . "-" . time();
 
-        if (!$sukses) {
-            flashMessage('success', 'Bisnis / Usaha Anggota berhasil ditambahkan dan akan ditampilkan');
+        // Set preferences
+        $config['upload_path'] = './uploads/logo-bisnis';
+        $config['allowed_types'] = 'png|jpg|jpeg';
+        $config['file_name'] = $filename;
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('fileLogo')) {
+            flashMessage('error', 'Maaf, Upload gambar calon anggota gagal! Silahkan coba lagi');
             redirect('admin/ForumBisnis');
         } else {
-            flashMessage('error', 'Bisnis / Usaha Anggota gagal ditambahkan! Silahkan coba lagi.');
-            redirect('admin/ForumBisnis');
+            $upload_data = $this->upload->data();
+
+            $data['nama_bisnis_usaha'] = $namaBisnisUsaha;
+            $data['id_jenis_bisnis'] = $jenisBisnisUsaha;
+            $data['deskripsi_bisnis'] = $deskripsiBisnis;
+            $data['alamat_bisnis'] = $alamatBisnis;
+            $data['no_telp_bisnis'] = $noTelpBisnis;
+            $data['nama_foto_bisnis'] = $upload_data['file_name'];
+            $data['pemilik_id'] = $pemilikBisnis;
+
+            // echo json_encode($data);
+            // $sukses = $this->M_anggota->insertNewAnggota($data);
+
+            $sukses = $this->M_forumBisnis->insertForumBisnis($data);
+
+            if (!$sukses) {
+                flashMessage('success', 'Bisnis / Usaha Anggota berhasil ditambahkan dan akan ditampilkan');
+                redirect('admin/ForumBisnis');
+            } else {
+                flashMessage('error', 'Bisnis / Usaha Anggota gagal ditambahkan! Silahkan coba lagi.');
+                redirect('admin/ForumBisnis');
+            }
         }
     }
 
