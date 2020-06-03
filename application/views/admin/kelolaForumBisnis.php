@@ -224,7 +224,7 @@
                 <h4 class="modal-title" id="defModalHead">Ubah Forum Bisnis Anggota</h4>
             </div>
             <form action="<?= base_url('admin/ForumBisnis/setUpdateForbis'); ?>" class="form-horizontal"
-                id="ubah-forbis-validate" method="post">
+                id="ubah-forbis-validate" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="form-group hidden">
                         <div class="col-md-9">
@@ -233,9 +233,21 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="col-md-3 control-label">* Foto Bisnis / Usaha :</label>
+                        <div class="col-sm-3">
+
+                            <input type="text" class="form-control" id="fileLogoEdit" disabled>
+
+                        </div>
+                        <div class="col-md-3">
+                            <input type="file" name="fileLogoEdit" required />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label class="col-md-3 control-label">* Nama Bisnis / Usaha :</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="namaBisnisEdit" id="namaBisnisEdit"
+                            <input type="disable" class="form-control" name="namaBisnisEdit" id="namaBisnisEdit"
                                 placeholder="Nama Bisnis / Usaha" required />
                         </div>
                     </div>
@@ -360,6 +372,7 @@ $(".btn-ubah-forbis").click(function() {
             document.getElementById('deskripsiBisnisEdit').value = data_obj.forbis[0].deskripsi_bisnis;
             document.getElementById('alamatBisnisEdit').value = data_obj.forbis[0].alamat_bisnis;
             document.getElementById('noTelpBisnisEdit').value = data_obj.forbis[0].no_telp_bisnis;
+            document.getElementById('fileLogoEdit').value = data_obj.forbis[0].nama_foto_bisnis;
 
             $("#jenisBisnisEdit").val(data_obj.forbis[0].id_jenis_bisnis).change();
             $("#pemilikBisnisEdit").val(data_obj.forbis[0].pemilik_id).change();
