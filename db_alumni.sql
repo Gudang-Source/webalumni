@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2020 at 03:44 AM
+-- Generation Time: Jun 03, 2020 at 12:00 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -1294,6 +1294,7 @@ CREATE TABLE `tb_berita` (
   `credit` varchar(255) NOT NULL,
   `foto` varchar(255) NOT NULL,
   `id_penulis` int(11) NOT NULL,
+  `id_kategori` int(11) NOT NULL,
   `stat_berita` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -1301,8 +1302,8 @@ CREATE TABLE `tb_berita` (
 -- Dumping data for table `tb_berita`
 --
 
-INSERT INTO `tb_berita` (`id_berita`, `judul_berita`, `date_created`, `time_created`, `isi_berita`, `sumber`, `credit`, `foto`, `id_penulis`, `stat_berita`) VALUES
-(4, 'pacar saya mina', '2020-06-03', '08:42:23', 'tapi boong hiyaa', 'hoax', 'rafly', 'berita-pacar_saya_mina-1591148543.png', 1, 1);
+INSERT INTO `tb_berita` (`id_berita`, `judul_berita`, `date_created`, `time_created`, `isi_berita`, `sumber`, `credit`, `foto`, `id_penulis`, `id_kategori`, `stat_berita`) VALUES
+(9, 'sadfasd', '2020-06-03', '16:53:42', 'gfsdg', 'dfg', 'dfgdf', 'berita-sadfasd-1591178022.jpg', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1352,6 +1353,24 @@ INSERT INTO `tb_jenis_bisnis` (`id_jenis_bisnis`, `nama_jenis_bisnis`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_kategori_berita`
+--
+
+CREATE TABLE `tb_kategori_berita` (
+  `id` int(11) NOT NULL,
+  `kategori` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_kategori_berita`
+--
+
+INSERT INTO `tb_kategori_berita` (`id`, `kategori`) VALUES
+(1, 'Tidak Ada Kategori');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_komunitas`
 --
 
@@ -1371,7 +1390,8 @@ CREATE TABLE `tb_komunitas` (
 --
 
 INSERT INTO `tb_komunitas` (`id_komunitas`, `nama_komunitas`, `tautat_komunitas`, `logo_komunitas`, `date_created`, `time_created`, `id_pengupload`, `stat_komunitas`) VALUES
-(15, 'Ujang Amen', 'Ujang Amen BEC', 'komunitas-Ujang_Amen-1591079184.png', '2020-06-02', '13:26:24', 1, 1);
+(15, 'Ujang Amen', 'Ujang Amen BEC', 'komunitas-Ujang_Amen-1591079184.png', '2020-06-02', '13:26:24', 1, 0),
+(16, 'ONCE', 'twice.jype.co.id', 'komunitas-ONCE-1591169549.jpg', '2020-06-03', '14:32:29', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -1460,6 +1480,12 @@ ALTER TABLE `tb_jenis_bisnis`
   ADD PRIMARY KEY (`id_jenis_bisnis`);
 
 --
+-- Indexes for table `tb_kategori_berita`
+--
+ALTER TABLE `tb_kategori_berita`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tb_komunitas`
 --
 ALTER TABLE `tb_komunitas`
@@ -1491,7 +1517,7 @@ ALTER TABLE `tb_anggota`
 -- AUTO_INCREMENT for table `tb_berita`
 --
 ALTER TABLE `tb_berita`
-  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tb_forum_bisnis`
@@ -1506,10 +1532,16 @@ ALTER TABLE `tb_jenis_bisnis`
   MODIFY `id_jenis_bisnis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `tb_kategori_berita`
+--
+ALTER TABLE `tb_kategori_berita`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `tb_komunitas`
 --
 ALTER TABLE `tb_komunitas`
-  MODIFY `id_komunitas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_komunitas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
