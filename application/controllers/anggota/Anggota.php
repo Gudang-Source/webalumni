@@ -9,12 +9,12 @@ if (defined('BASEPATH') or exit('No direct script access allowed'));
 
 class Anggota extends MY_Controller
 {
-    
+
     function __construct()
     {
         parent::__construct();
         $this->load->model('M_anggota');
-        
+
         if ($this->session->userdata('logged_in') == '' && $this->session->userdata('username') == '' && $this->session->userdata('role') == '') {
             redirect('login');
         } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == '2') {
@@ -22,14 +22,13 @@ class Anggota extends MY_Controller
         } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == '1') {
             redirect('admin');
         }
-        
     }
 
     function index()
     {
         $data['title'] = 'Anggota - Lihat Anggota';
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
-        
+
         $where = array(
             'tb_anggota.nama_lengkap != ' => 'admin',
             'tb_anggota.status_anggota != ' => '0'
@@ -37,10 +36,10 @@ class Anggota extends MY_Controller
         $data['dataMaster'] = $this->M_anggota->findAnggota('*', $where);
 
         $this->anggota_render('anggota/lihatAnggota', $data);
-        
     }
 
-    function kelolaAnggota() {
+    function kelolaAnggota()
+    {
         $data['title'] = 'Kelola Anggota';
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
         $angkatan = $data['info'][0]->angkatan;
@@ -74,7 +73,7 @@ class Anggota extends MY_Controller
 
         if (!$this->upload->do_upload('fileSaya')) {
             flashMessage('error', 'Maaf, Upload gambar calon anggota gagal! Silahkan coba lagi');
-            redirect('anggota/Anggota/KelolaAnggota');
+            redirect('anggota/Anggota/kelolaAnggota');
         } else {
             $upload_data = $this->upload->data();
 
@@ -92,13 +91,11 @@ class Anggota extends MY_Controller
 
             if (!$sukses) {
                 flashMessage('success', 'Calon Anggota Baru berhasil di daftarkan. Silahkan verifikasi di Permohonan Calon Anggota');
-                redirect('anggota/lihatAnggota');
+                redirect('anggota/Anggota/kelolaAnggota');
             } else {
                 flashMessage('error', 'Calon Anggota Baru gagal di daftarkan! Silahkan coba lagi');
-                redirect('anggota/lihatAnggota');
+                redirect('anggota/Anggota/kelolaAnggota');
             }
         }
     }
-
-
 }

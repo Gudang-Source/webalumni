@@ -410,13 +410,13 @@ $(".btn-terima").click(function() {
             // if (angkatan == null) {
             //     document.getElementById('angkatanAnggota').innerHTML = "Angkatan belum diisi";
             // } else {
-            //     document.getElementById('angkatanAnggota').innerHTML = data_obj.anggota[0].angkatan;
+            document.getElementById('angkatanAnggota').innerHTML = data_obj.anggota[0].angkatan;
             // }
 
             // document.getElementById('usernameAnggota').innerHTML = email.toLowerCase() +
             //         " (Default Username & Password sesuai yang tertera)";
             // document.getElementById('angkatanAnggota').innerHTML = angkatan.toLowerCase();
-            // document.getElementById('emailAnggota').innerHTML = email.toLowerCase();
+            document.getElementById('emailAnggota').innerHTML = email.toLowerCase();
 
             // document.getElementById('userName').value = email.toLowerCase();
             // document.getElementById('passWord').value = 12345678;
