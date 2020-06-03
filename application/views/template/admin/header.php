@@ -96,14 +96,14 @@
                         <!-- <li><a href="<?php echo base_url('admin/Anggota/dataMaster') ?>"><span class="fa fa-plus"></span> Data Master</a></li> -->
                     </ul>
                 </li>
-                
+
                 <li class="xn-openable">
                     <a href="#"><span class="fa fa-file-o"></span> <span class="xn-text">Berita</span></a>
                     <ul>
                         <li><a href="<?= base_url('admin/Berita'); ?>"><span class="fa fa-file-o"></span> <span
                                     class="xn-text">Kelola Calon Berita</span></a></li>
-                        <li><a href="<?= base_url('admin/Berita/kelolaBerita'); ?>"><span
-                                    class="fa fa-file-o"></span> <span class="xn-text">Kelola Berita Aktif</span></a>
+                        <li><a href="<?= base_url('admin/Berita/kelolaBerita'); ?>"><span class="fa fa-file-o"></span>
+                                <span class="xn-text">Kelola Berita Aktif</span></a>
                         </li>
                     </ul>
                 </li>
@@ -111,6 +111,9 @@
                 <li class="xn-openable">
                     <a href="#"><span class="fa fa-file-o"></span> <span class="xn-text">Forum Bisnis</span></a>
                     <ul>
+                        <li><a href="<?= base_url('admin/ForumBisnis/kelolaCalonForBis'); ?>"><span
+                                    class="fa fa-file-o"></span> <span class="xn-text">Kelola Calon ForBis</span></a>
+                        </li>
                         <li><a href="<?= base_url('admin/ForumBisnis'); ?>"><span class="fa fa-file-o"></span> <span
                                     class="xn-text">Kelola Forum Bisnis</span></a></li>
                         <li><a href="<?= base_url('admin/ForumBisnis/kelolaJenisBisnis'); ?>"><span
@@ -125,11 +128,12 @@
                         <li><a href="<?= base_url('admin/Komunitas'); ?>"><span class="fa fa-file-o"></span> <span
                                     class="xn-text">Kelola Komunitas Baru</span></a></li>
                         <li><a href="<?= base_url('admin/Komunitas/kelolaStatusKomunitas'); ?>"><span
-                                    class="fa fa-file-o"></span> <span class="xn-text">Kelola Status Komunitas</span></a>
+                                    class="fa fa-file-o"></span> <span class="xn-text">Kelola Status
+                                    Komunitas</span></a>
                         </li>
                     </ul>
                 </li>
-                
+
                 <li>
                     <a href="<?= base_url('admin/Pengaturan'); ?>"><span class="glyphicon glyphicon-cog"></span> <span
                             class="xn-text">Pengaturan</span></a>

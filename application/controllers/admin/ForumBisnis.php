@@ -61,6 +61,17 @@ class ForumBisnis extends MY_Controller
         }
     }
 
+    function kelolaCalonForBis()
+    {
+        $data['title'] = 'Admin - Kelola Calon Bisnis';
+        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+        $data['kelolaCalonForBis'] = $this->M_forumBisnis->getAllCalonForumBisnis();
+
+        if ($this->session->userdata('role') == 1) {
+            $this->admin_render('admin/kelolaCalonForBis', $data);
+        }
+    }
+
     public function setAddForbis()
     {
         $namaBisnisUsaha = $this->input->post('namaBisnisUsahaModal');
@@ -92,6 +103,8 @@ class ForumBisnis extends MY_Controller
             $data['no_telp_bisnis'] = $noTelpBisnis;
             $data['nama_foto_bisnis'] = $upload_data['file_name'];
             $data['pemilik_id'] = $pemilikBisnis;
+            $data['stat_forbis'] = 1;
+
 
             // echo json_encode($data);
             // $sukses = $this->M_anggota->insertNewAnggota($data);
@@ -158,6 +171,7 @@ class ForumBisnis extends MY_Controller
             $data['no_telp_bisnis'] = $noTelpBisnisEdit;
             $data['nama_foto_bisnis'] = $upload_data['file_name'];
             $data['pemilik_id'] = $pemilikBisnisEdit;
+            $data['stat_forbis'] = 1;
 
             $sukses = $this->M_forumBisnis->updateForumBisnis($data, $id);
 
@@ -231,5 +245,42 @@ class ForumBisnis extends MY_Controller
             flashMessage('error', 'Jenis Bisnis gagal diperbarui! Silahkan coba lagi');
             redirect('admin/ForumBisnis/kelolaJenisBisnis');
         }
+    }
+
+
+    function aktivasiCalonForBis()
+    {
+        $this->load->model('M_forumBisnis');
+
+        $forbis['stat_forbis'] = $this->input->post('statForbis');
+        $idCalonForBis = $this->input->post('idCalonForbis');
+
+        // echo json_encode($user);
+        $sukses = $this->M_forumBisnis->updateForumBisnis($forbis, $idCalonForBis);
+
+
+        if (!$sukses) {
+            flashMessage('success', 'Calon Forum Bisnis telah  berhasil di aktifkan');
+            redirect('admin/ForumBisnis');
+        } else {
+            flashMessage('error', 'Aktivasi Calon Forum Bisnis gagal! Silahkan coba lagi...');
+            redirect('admin/ForumBisnis');
+        }
+    }
+
+    function tolakCalonForBis()
+    {
+        $idCalonForBis = $this->input->post('idCalonForbisTolak');
+
+        $sukses = $this->M_forumBisnis->deleteForumBisnis($idCalonForBis);
+
+        if (!$sukses) {
+            flashMessage('success', 'Calon Forum Bisnis berhasil ditolak');
+            redirect('admin/ForumBisnis/kelolaCalonForBis');
+        } else {
+            flashMessage('error', 'Calon Forum Bisnis gagal ditolak ! Silahkan coba lagi . . .');
+            redirect('admin/ForumBisnis/kelolaCalonForBis');
+        }
+        // echo json_encode($idKomunitas);
     }
 }
