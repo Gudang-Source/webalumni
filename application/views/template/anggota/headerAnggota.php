@@ -81,7 +81,7 @@
                 </li>
 
                 <li class="xn-openable">
-                    <a href="#"><span class="fa fa-users"></span> <span class="xn-text">Anggota</span></a>
+                    <a href="#"><span class="fa fa-user"></span> <span class="xn-text">Anggota</span></a>
                     <ul>
                         <li><a href="<?= base_url('anggota/Anggota') ?>"><span class="fa fa-user"></span> Lihat
                                 Anggota</a></li>
@@ -90,6 +90,16 @@
                     </ul>
                 </li>
 
+                <li class="xn-openable">
+                    <a href="#"><span class="fa fa-file-o"></span> <span class="xn-text">Forum Bisnis</span></a>
+                    <ul>
+                        <li><a href="<?= base_url('anggota/ForumBisnis') ?>"><span class="fa fa-file-o"></span> Lihat
+                                Forum Bisnis</a></li>
+                        <li><a href="<?= base_url('anggota/Anggota/KelolaAnggota') ?>"><span
+                                    class="fa fa-file-o"></span>
+                                Tambah Calon ForBis </a></li>
+                    </ul>
+                </li>
 
                 <li class="xn-openable">
                     <a href="#"><span class="fa fa-users"></span> <span class="xn-text">Komunitas</span></a>
