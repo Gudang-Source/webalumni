@@ -98,37 +98,38 @@
                 </li>
 
                 <li class="xn-openable">
-                    <a href="#"><span class="fa fa-file-o"></span> <span class="xn-text">Berita</span></a>
+                    <a href="#"><span class="fa fa-envelope-o"></span> <span class="xn-text">Berita</span></a>
                     <ul>
-                        <li><a href="<?= base_url('admin/Berita'); ?>"><span class="fa fa-file-o"></span> <span
+                        <li><a href="<?= base_url('admin/Berita'); ?>"><span class="fa fa-align-left"></span> <span
                                     class="xn-text">Kelola Calon Berita</span></a></li>
-                        <li><a href="<?= base_url('admin/Berita/kelolaBerita'); ?>"><span class="fa fa-file-o"></span>
+                        <li><a href="<?= base_url('admin/Berita/kelolaBerita'); ?>"><span
+                                    class="fa fa-align-left"></span>
                                 <span class="xn-text">Kelola Berita Aktif</span></a>
                         </li>
                     </ul>
                 </li>
 
                 <li class="xn-openable">
-                    <a href="#"><span class="fa fa-file-o"></span> <span class="xn-text">Forum Bisnis</span></a>
+                    <a href="#"><span class="fa fa-briefcase"></span> <span class="xn-text">Forum Bisnis</span></a>
                     <ul>
                         <li><a href="<?= base_url('admin/ForumBisnis/kelolaCalonForBis'); ?>"><span
-                                    class="fa fa-file-o"></span> <span class="xn-text">Kelola Calon ForBis</span></a>
+                                    class="fa fa-clipboard"></span> <span class="xn-text">Kelola Calon ForBis</span></a>
                         </li>
-                        <li><a href="<?= base_url('admin/ForumBisnis'); ?>"><span class="fa fa-file-o"></span> <span
+                        <li><a href="<?= base_url('admin/ForumBisnis'); ?>"><span class="fa fa-bullhorn"></span> <span
                                     class="xn-text">Kelola Forum Bisnis</span></a></li>
                         <li><a href="<?= base_url('admin/ForumBisnis/kelolaJenisBisnis'); ?>"><span
-                                    class="fa fa-file-o"></span> <span class="xn-text">Kelola Jenis Bisnis</span></a>
+                                    class="fa fa-book"></span> <span class="xn-text">Kelola Jenis Bisnis</span></a>
                         </li>
                     </ul>
                 </li>
 
                 <li class="xn-openable">
-                    <a href="#"><span class="fa fa-file-o"></span> <span class="xn-text">Komunitas</span></a>
+                    <a href="#"><span class="fa fa-camera-retro"></span> <span class="xn-text">Komunitas</span></a>
                     <ul>
-                        <li><a href="<?= base_url('admin/Komunitas'); ?>"><span class="fa fa-file-o"></span> <span
+                        <li><a href="<?= base_url('admin/Komunitas'); ?>"><span class="fa fa-cube"></span> <span
                                     class="xn-text">Kelola Komunitas Baru</span></a></li>
                         <li><a href="<?= base_url('admin/Komunitas/kelolaStatusKomunitas'); ?>"><span
-                                    class="fa fa-file-o"></span> <span class="xn-text">Kelola Status
+                                    class="fa fa-cubes"></span> <span class="xn-text">Kelola Status
                                     Komunitas</span></a>
                         </li>
                     </ul>
