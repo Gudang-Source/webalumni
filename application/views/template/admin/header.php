@@ -77,7 +77,6 @@
                         </div>
                     </div>
                 </li>
-                <!-- <li class="xn-title">Navigation</li> -->
                 <li>
                     <a href="<?php echo base_url('admin') ?>"><span class="fa fa-desktop"></span> <span
                             class="xn-text">Beranda</span></a>
@@ -105,6 +104,10 @@
                         <li><a href="<?= base_url('admin/Berita/kelolaBerita'); ?>"><span
                                     class="fa fa-align-left"></span>
                                 <span class="xn-text">Kelola Berita Aktif</span></a>
+                        </li>
+                        <li><a href="<?= base_url('admin/Berita/kelolaKategori'); ?>"><span
+                                    class="fa fa-align-left"></span>
+                                <span class="xn-text">Kelola Kategori</span></a>
                         </li>
                     </ul>
                 </li>
