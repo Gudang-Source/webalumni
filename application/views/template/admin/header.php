@@ -77,7 +77,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="xn-title">Navigation</li>
+                <!-- <li class="xn-title">Navigation</li> -->
                 <li>
                     <a href="<?php echo base_url('admin') ?>"><span class="fa fa-desktop"></span> <span
                             class="xn-text">Beranda</span></a>
