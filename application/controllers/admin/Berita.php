@@ -157,4 +157,99 @@ class Berita extends MY_Controller
         }
         // echo json_encode($idKomunitas);
     }
+
+    function kelolaBerita()
+    {
+        $data['title'] = 'Kelola Berita Aktif';
+        $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+        $data['berita'] = $this->M_berita->getAllBerita();
+        $data['daftarKategori'] = $this->M_berita->getAllKategori();
+
+        if ($this->session->userdata('role') == 1) {
+            $this->admin_render('admin/kelolaBeritaAktif', $data);
+        }
+    }
+
+    public function setUpdateBerita()
+    {
+        $this->load->model('M_berita');
+
+        $idBerita = $this->input->post('idUbahBerita');
+        $judulBerita = $this->input->post('judulBerita');
+        $isiBerita = $this->input->post('isiBerita');
+        $sumberBerita = $this->input->post('sumberBerita');
+        $creditBerita = $this->input->post('creditBerita');
+        $kategoriBerita = $this->input->post('idKategori');
+
+        $filename = "berita-" . $judulBerita . "-" . time();
+
+        // Set preferences
+        $config['upload_path'] = './uploads/content/berita';
+        $config['allowed_types'] = 'png|jpg|jpeg';
+        $config['file_name'] = $filename;
+
+        //load upload class library
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('fileSaya')) {
+            flashMessage('error', 'Maaf, Upload gambar calon anggota gagal! Silahkan coba lagi');
+            redirect('admin/Berita/kelolaBerita');
+        } else {
+            $upload_data = $this->upload->data();
+
+            $berita['judul_berita'] = $judulBerita;
+            $berita['isi_berita'] = $isiBerita;
+            $berita['sumber'] = $sumberBerita;
+            $berita['credit'] = $creditBerita;
+            $berita['id_kategori'] = $kategoriBerita;
+            $berita['foto'] = $upload_data['file_name'];
+
+            // echo json_encode($data);
+            $sukses = $this->M_berita->updateBerita($berita, $idBerita);
+
+            if (!$sukses) {
+                flashMessage('success', 'Berita berhasil di sunting.');
+                redirect('admin/Berita/kelolaBerita');
+            } else {
+                flashMessage('error', 'Berita gagal di sunting! Silahkan coba lagi');
+                redirect('admin/Berita/kelolaBerita');
+            }
+        }
+    }
+
+    public function hapusBerita()
+    {
+        $this->load->model('M_berita');
+
+        $id = $this->input->post('idBeritaHapus');
+
+        $deleteBerita = $this->M_berita->deleteBerita($id);
+
+        if (!$deleteBerita) {
+            flashMessage('success', 'Berita berhasil dihapus');
+            redirect('admin/Berita/kelolaBerita');
+        } else {
+            flashMessage('error', 'Berita gagal dihapus! Silahkan coba lagi');
+            redirect('admin/Berita/kelolaBerita');
+        }
+    }
+
+
+    function cariBerita()
+    {
+        $data['title'] = 'Kelola Berita';
+
+        $judul = $this->input->post('judulBerita');
+
+        $where = "tb_berita.stat_berita != 0";
+        $data['berita'] = $this->M_berita->findBeritaLikeJudul($where, $judul);
+
+        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+        if ($this->session->userdata('role') == 1) {
+            $this->admin_render('admin/kelolaBeritaAktif', $data);
+        }
+
+    }
 }
