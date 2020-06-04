@@ -17,7 +17,7 @@
 
     <style>
     .alert {
-        animation: autoHide 0s ease-in 3s forwards;
+        animation: autoHide 0s ease-in 8s forwards;
     }
 
     @keyframes autoHide {
@@ -95,7 +95,7 @@
                     <ul>
                         <li><a href="<?= base_url('anggota/ForumBisnis') ?>"><span class="fa fa-file-o"></span> Lihat
                                 Forum Bisnis</a></li>
-                        <li><a href="<?= base_url('anggota/Anggota/KelolaAnggota') ?>"><span
+                        <li><a href="<?= base_url('anggota/ForumBisnis/tambahCalonForbis') ?>"><span
                                     class="fa fa-file-o"></span>
                                 Tambah Calon ForBis </a></li>
                     </ul>

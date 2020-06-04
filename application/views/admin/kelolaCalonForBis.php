@@ -13,14 +13,7 @@
 <?= showFlashMessage(); ?>
 
 <div class="page-content-wrap">
-    <!-- <div class="row" style="margin-bottom:10px;">
-        <div class="col-md-2">
-            <button class="btn btn-primary" data-toggle="modal" data-target="#tambahForbis">
-                <i class="fa fa-plus-circle"></i>
-                <span>Tambah Forum Bisnis</span>
-            </button>
-        </div>
-    </div> -->
+
 
     <div class="row">
 
@@ -46,7 +39,9 @@
                     </ul>
                 </div>
 
+
                 <div class="panel-body panel-body-table">
+
                     <div class="table-responsive">
                         <div class="panel-body">
                             <table class="table table-bordered table-striped table-actions datatable">
@@ -102,6 +97,8 @@
                             </table>
                         </div>
                     </div>
+
+
                 </div>
 
                 <div class="panel-footer">

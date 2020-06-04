@@ -18,7 +18,7 @@
 
     <style>
     .alert {
-        animation: autoHide 0s ease-in 3s forwards;
+        animation: autoHide 0s ease-in 8s forwards;
     }
 
     @keyframes autoHide {

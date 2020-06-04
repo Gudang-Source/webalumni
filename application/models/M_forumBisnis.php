@@ -33,7 +33,7 @@ class M_forumBisnis extends CI_Model
 
         $id = $id_pemilik[0]->id_anggota;
 
-        $queryForbisById = "SELECT * FROM tb_forum_bisnis JOIN tb_anggota ON tb_forum_bisnis.pemilik_id = tb_anggota.id_anggota WHERE tb_forum_bisnis.pemilik_id = $id";
+        $queryForbisById = "SELECT * FROM tb_forum_bisnis JOIN tb_anggota ON tb_forum_bisnis.pemilik_id = tb_anggota.id_anggota WHERE tb_forum_bisnis.pemilik_id = $id AND `tb_forum_bisnis`.`stat_forbis` = 1 ORDER BY `tb_forum_bisnis`.`id_forbis` DESC";
 
         $forbis = $this->db->query($queryForbisById)->result();
 

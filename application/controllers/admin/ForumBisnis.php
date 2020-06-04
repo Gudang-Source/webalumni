@@ -261,10 +261,10 @@ class ForumBisnis extends MY_Controller
 
         if (!$sukses) {
             flashMessage('success', 'Calon Forum Bisnis telah  berhasil di aktifkan');
-            redirect('admin/ForumBisnis');
+            redirect('admin/ForumBisnis/kelolaCalonForBis');
         } else {
             flashMessage('error', 'Aktivasi Calon Forum Bisnis gagal! Silahkan coba lagi...');
-            redirect('admin/ForumBisnis');
+            redirect('admin/ForumBisnis/kelolaCalonForBis');
         }
     }
 
