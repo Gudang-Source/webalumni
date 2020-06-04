@@ -87,7 +87,7 @@
                             <p><small>Penulis</small><br><?= $B->username; ?></p>
                         <?php } ?>
 
-                        <button type="button" class="btn btn-primary mb-control btn-isi-berita" data-box="#message-box-isi-berita" id="<?= $B->id_berita; ?>">Isi Berita</button>
+                        <a class="btn btn-primary btn-isi-berita" title="Isi Berita" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-isi-berita">Isi Berita</a>
 
                     </div>
                 </div>
@@ -218,41 +218,29 @@
             </div>
 
         </div>
-
-        <!-- <div class="message-box message-box-danger animated zoomIn" data-sound="alert" id="message-box-hapus-berita">
-                    
-            <form action="<?= base_url('admin/Berita/hapusBerita'); ?>" class="form-horizontal" method="post">
-                <div class="mb-container">
-                    <div class="mb-middle">
-                        <div class="mb-title">
-                            <span class="fa fa-times"></span> Hapus <strong>Berita</strong>
-                        </div>
-                        <div class="mb-content">
-                            <div class="panel-body">
-                                <p>Anda yakin akan menghapus berita dari IKASMA3BDG dengan detail sebagai berikut :</p>
-                                
-                                <div class="form-group hidden">
-                                    <input type="text" id="idBeritaHapus" name="idBeritaHapus" class="form-control" value="<?= $berita[0]->id_berita ?>">
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label">Judul Berita : </label>
-                                    <div class="col-md-9">
-                                        <label class="control-label" id="judulAktifBerita"></label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-footer">
-                            <div class="pull-right">
-                                <button type="submit" class="btn btn-primary btn-lg mb-control-yes">Hapus</button>
-                                <button class="btn btn-default btn-lg mb-control-close">Batal</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div> -->
         <!-- END MODAL DELETE BERITA -->
+
+        <!-- MODAL ISI BERITA -->
+        <div class="modal animated zoomIn" id="message-box-isi-berita" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h2 class="modal-title" id="judulIsiBerita"></h2>
+
+                        
+                        <div class="form-group hidden">
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="idIsiBerita" name="idIsiBerita">
+                            </div>
+                        </div>
+                        <br>
+                        <p class="h4" id="isiBeritaOpened" name="isiBeritaOpened"></p>
+                    </div>
+                </>
+            </div>
+        </div>
+        <!-- END MODAL ISI BERITA -->
 
 <script>
 $("#form-ubah-berita-validate").validate();
@@ -304,6 +292,25 @@ $(".btn-hapus-berita").click(function() {
 
             document.getElementById('idBeritaHapus').value = data_obj.berita[0].id_berita;
             document.getElementById('judulAktifBerita').innerHTML = data_obj.berita[0].judul_berita;
+
+        });
+});
+
+$(".btn-isi-berita").click(function() {
+    console.log(this.id);
+    var idIsiBerita = this.id;
+
+    $.post("<?= base_url('admin/Berita/beritaJSON/') ?>", {
+            id: idIsiBerita
+        },
+        function(data) {
+            var data_obj = JSON.parse(data);
+
+            var judulIsiBerita = data_obj.berita[0].judul_berita;
+            var isiBeritaOpened = data_obj.berita[0].isi_berita;
+
+            document.getElementById('judulIsiBerita').innerHTML = judulIsiBerita;
+            document.getElementById('isiBeritaOpened').innerHTML = isiBeritaOpened;
 
         });
 });
