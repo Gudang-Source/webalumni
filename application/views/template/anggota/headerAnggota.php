@@ -91,23 +91,23 @@
                 </li>
 
                 <li class="xn-openable">
-                    <a href="#"><span class="fa fa-file-o"></span> <span class="xn-text">Forum Bisnis</span></a>
+                    <a href="#"><span class="fa fa-briefcase"></span> <span class="xn-text">Forum Bisnis</span></a>
                     <ul>
-                        <li><a href="<?= base_url('anggota/ForumBisnis') ?>"><span class="fa fa-file-o"></span> Lihat
+                        <li><a href="<?= base_url('anggota/ForumBisnis') ?>"><span class="fa fa-bullhorn"></span> Lihat
                                 Forum Bisnis</a></li>
                         <li><a href="<?= base_url('anggota/ForumBisnis/tambahCalonForbis') ?>"><span
-                                    class="fa fa-file-o"></span>
+                                    class="fa fa-plus"></span>
                                 Tambah Calon ForBis </a></li>
                     </ul>
                 </li>
 
                 <li class="xn-openable">
-                    <a href="#"><span class="fa fa-users"></span> <span class="xn-text">Komunitas</span></a>
+                    <a href="#"><span class="fa fa-camera-retro"></span> <span class="xn-text">Komunitas</span></a>
                     <ul>
-                        <li><a href="<?= base_url('anggota/Komunitas') ?>"><span class="fa fa-user"></span> Lihat
+                        <li><a href="<?= base_url('anggota/Komunitas') ?>"><span class="fa fa-cube"></span> Lihat
                                 Komunitas</a></li>
                         <li><a href="<?= base_url('anggota/Komunitas/tambahKomunitas') ?>"><span
-                                    class="fa fa-users"></span> Tambah Calon Komunitas </a></li>
+                                    class="fa fa-plus"></span> Tambah Calon Komunitas </a></li>
                     </ul>
                 </li>
 
