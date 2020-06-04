@@ -182,6 +182,72 @@ class Berita extends MY_Controller
         $creditBerita = $this->input->post('creditBerita');
         $kategoriBerita = $this->input->post('idKategori');
 
+        // $filename = "berita-" . $judulBerita . "-" . time();
+
+        // Set preferences
+        // $config['upload_path'] = './uploads/content/berita';
+        // $config['allowed_types'] = 'png|jpg|jpeg';
+        // $config['file_name'] = $filename;
+
+        //load upload class library
+        // $this->load->library('upload', $config);
+
+            $berita['judul_berita'] = $judulBerita;
+            $berita['isi_berita'] = $isiBerita;
+            $berita['sumber'] = $sumberBerita;
+            $berita['credit'] = $creditBerita;
+            $berita['id_kategori'] = $kategoriBerita;
+
+            // echo json_encode($data);
+            $sukses = $this->M_berita->updateBerita($berita, $idBerita);
+
+            if (!$sukses) {
+                flashMessage('success', 'Berita berhasil di ubah.');
+                redirect('admin/Berita/kelolaBerita');
+            } else {
+                flashMessage('error', 'Berita gagal di ubah! Silahkan coba lagi');
+                redirect('admin/Berita/kelolaBerita');
+            }
+        
+
+        // if (!$this->upload->do_upload('fileSaya')) {
+        //     flashMessage('error', 'Maaf, Upload gambar calon anggota gagal! Silahkan coba lagi');
+        //     redirect('admin/Berita/kelolaBerita');
+        // } else {
+        //     $upload_data = $this->upload->data();
+
+        //     $data = $this->M_berita->findBerita('foto', array('tb_berita.id_berita = ' => $idBerita));
+
+        //     $berita['judul_berita'] = $judulBerita;
+        //     $berita['isi_berita'] = $isiBerita;
+        //     $berita['sumber'] = $sumberBerita;
+        //     $berita['credit'] = $creditBerita;
+        //     $berita['id_kategori'] = $kategoriBerita;
+            
+        //     $berita['foto'] = $upload_data['file_name'];
+            
+        //     unlink(FCPATH . 'uploads/content/berita/' . $data[0]->foto);
+
+        //     // echo json_encode($data);
+        //     $sukses = $this->M_berita->updateBerita($berita, $idBerita);
+
+        // }
+        
+        // if (!$sukses) {
+        //     flashMessage('success', 'Berita berhasil di sunting.');
+        //     redirect('admin/Berita/kelolaBerita');
+        // } else {
+        //     flashMessage('error', 'Berita gagal di sunting! Silahkan coba lagi');
+        //     redirect('admin/Berita/kelolaBerita');
+        // }
+    }
+
+    public function setUpdateFoto()
+    {
+        $this->load->model('M_berita');
+
+        $idBerita = $this->input->post('idUbahFoto');
+
         $filename = "berita-" . $judulBerita . "-" . time();
 
         // Set preferences
@@ -189,30 +255,29 @@ class Berita extends MY_Controller
         $config['allowed_types'] = 'png|jpg|jpeg';
         $config['file_name'] = $filename;
 
-        //load upload class library
+        // load upload class library
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('fileSaya')) {
-            flashMessage('error', 'Maaf, Upload gambar calon anggota gagal! Silahkan coba lagi');
+            flashMessage('error', 'Maaf, Upload gambar berita gagal! Silahkan coba lagi');
             redirect('admin/Berita/kelolaBerita');
         } else {
             $upload_data = $this->upload->data();
 
-            $berita['judul_berita'] = $judulBerita;
-            $berita['isi_berita'] = $isiBerita;
-            $berita['sumber'] = $sumberBerita;
-            $berita['credit'] = $creditBerita;
-            $berita['id_kategori'] = $kategoriBerita;
+            $data = $this->M_berita->findBerita('foto', array('tb_berita.id_berita = ' => $idBerita));
+            
             $berita['foto'] = $upload_data['file_name'];
+            
+            unlink(FCPATH . 'uploads/content/berita/' . $data[0]->foto);
 
             // echo json_encode($data);
             $sukses = $this->M_berita->updateBerita($berita, $idBerita);
-
+            
             if (!$sukses) {
-                flashMessage('success', 'Berita berhasil di sunting.');
+                flashMessage('success', 'Foto berhasil di ubah.');
                 redirect('admin/Berita/kelolaBerita');
             } else {
-                flashMessage('error', 'Berita gagal di sunting! Silahkan coba lagi');
+                flashMessage('error', 'Foto gagal di ubah! Silahkan coba lagi');
                 redirect('admin/Berita/kelolaBerita');
             }
         }

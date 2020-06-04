@@ -47,7 +47,7 @@
     <div class="row">
         <?php foreach ($berita as $B) { ?>
             <?php if ($B->stat_berita == 1): ?>
-        <div class="col-md-4    ">
+        <div class="col-md-4">
             <!-- CONTACT ITEM -->
             <div class="panel panel-default">
                 <div class="panel-body profile">
@@ -62,7 +62,7 @@
                         <div class="profile-data-name"><?= $B->judul_berita; ?></div>
                     </div>
                     <div class="profile-controls">
-                        <a class="profile-control-left btn-ubah-berita" title="Ubah" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-ubah-berita"><span class="fa fa-edit"></span></a>
+                        <a class="profile-control-left btn-ubah-foto" title="Ubah Foto" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-ubah-foto"><span class="fa fa-edit"></span></a>
                         <a class="profile-control-right btn-hapus-berita" title="Hapus" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-hapus-berita"><span class="fa fa-trash-o"></span></a>
                     </div>
                 </div>
@@ -88,6 +88,8 @@
                         <?php } ?>
 
                         <a class="btn btn-primary btn-isi-berita" title="Isi Berita" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-isi-berita">Isi Berita</a>
+
+                        <a class="btn btn-info btn-ubah-berita" title="Ubah Berita" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-ubah-berita"><span class="fa fa-edit"></span></a>
 
                     </div>
                 </div>
@@ -159,14 +161,6 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label class="col-md-2 control-label">Foto</label>
-                                <div class="col-md-8">
-                                    <!-- <img id="ubahFotoBerita" src="<?= base_url('uploads/content/berita/'); ?>" width="150"/> -->
-                                    <input type="file" class="file" id="file-simple" name="fileSaya" required />
-                                </div>
-                            </div>
-
                             <div class="modal-footer">
                             <div class="col-md-12" style="text-align: left;">
                                 <label class="control-label">* harus diisi</label>
@@ -180,6 +174,48 @@
             </div>
         </div>
         <!-- END MODAL UBAH BERITA -->
+
+        <!-- MODAL UBAH FOTO -->
+        <div class="modal animated zoomIn" id="message-box-ubah-foto" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="<?= base_url('admin/Berita/setUpdateFoto'); ?>" class="form-horizontal" id="form-ubah-berita-validate" method="post" enctype="multipart/form-data">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title" id="defModalHead">Ubah Foto</h4>
+                        </div>
+                            <div>
+                                <div class="panel-body tab-content">
+                                <div class="form-group hidden">
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" id="idUbahFoto" name="idUbahFoto">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Foto</label>
+                            <div class="col-md-8">
+                                <img id="namaFotoBerita" src="<?= base_url('uploads/content/berita/'); ?>" width="150"/>
+                                <input type="text" class="form-control" id="ubahFotoBerita" name="ubahFotoBerita" readonly/>
+                                <input type="file" class="file" id="file-simple" name="fileSaya" />
+                            </div>
+                        </div>
+
+                            <div class="modal-footer">
+                            <div class="col-md-12" style="text-align: left;">
+                                <label class="control-label">* harus diisi</label>
+                            </div>
+                            
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                            <button type="submit" class="btn btn-success">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- END MODAL UBAH FOTO -->
 
 
         <!-- MODAL DELETE BERITA -->
@@ -268,7 +304,6 @@ $(".btn-ubah-berita").click(function() {
             var sumberBerita = data_obj.berita[0].sumber;
             var creditBerita = data_obj.berita[0].credit;
             var idKategori = data_obj.berita[0].id_kategori;
-            var foto = data_obj.berita[0].foto;
 
             document.getElementById('idUbahBerita').value = idBerita;
             document.getElementById('judulBerita').value = judulBerita;
@@ -276,7 +311,25 @@ $(".btn-ubah-berita").click(function() {
             document.getElementById('sumberBerita').value = sumberBerita;
             document.getElementById('creditBerita').value = creditBerita;
             document.getElementById('idKategori').value = idKategori;
-            document.getElementById('ubahFotoBerita').src += foto;
+        });
+});
+
+$(".btn-ubah-foto").click(function() {
+    console.log(this.id);
+    var idUbahBerita = this.id;
+
+    $.post("<?= base_url('admin/Berita/beritaJSON/') ?>", {
+            id: idUbahBerita
+        },
+        function(data) {
+            var data_obj = JSON.parse(data);
+
+            var idUbahFoto = data_obj.berita[0].id_berita;
+            var foto = data_obj.berita[0].foto;
+
+            document.getElementById('idUbahFoto').value = idUbahFoto;
+            document.getElementById('namaFotoBerita').src += foto;
+            document.getElementById('ubahFotoBerita').value = foto;
         });
 });
 
