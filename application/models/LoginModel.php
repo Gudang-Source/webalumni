@@ -18,7 +18,27 @@ class LoginModel extends CI_Model
         
         return $this->db->get('tb_user')->result();
     }
+
+    function get_id($user)
+    {
+        $this->db->select('username');
+        $this->db->where('username', $user);
+
+        return $this->db->get('tb_pemulihan')->result();
+    }
     
+    function cek_akun($user)
+    {
+        $this->db->select('id_user, username, status_akun');
+        $this->db->where('username', $user);
+
+        return $this->db->get('tb_user')->result();
+    }
+    
+    function saveForgotPasswordAkun($anggota) {
+      $this->db->insert('tb_pemulihan', $anggota);
+      }
+
     function saveRegisterAnggota($anggota) {
 		$this->db->insert('tb_anggota', $anggota);
     }

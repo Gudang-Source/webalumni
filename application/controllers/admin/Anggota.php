@@ -339,4 +339,83 @@ class Anggota extends MY_Controller
             redirect('admin/Anggota/kelolaAnggota');
         }
     }
+
+    function kelolaPemulihanAnggota()
+    {
+        $data['title'] = 'Kelola Pemulihan Anggota';
+
+        $where = array(
+            'tb_anggota.status_anggota !=' => '0',
+            'tb_anggota.user_id != ' => $this->session->userdata('uid')
+        );
+        $data['pemulihan'] = $this->M_anggota->getAllPemulihanAnggota();
+        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id' => $this->session->userdata('uid')));
+
+        if ($this->session->userdata('role') == 1) {
+            $this->admin_render('admin/kelolaPemulihanAnggota', $data);
+        }
+    }
+
+    
+    function aktivasiPemulihanAnggota()
+    {
+        $this->load->model('M_user');
+
+        $idPemulihan = $this->input->post('idPemulihan');
+        $getIdUser = $this->M_anggota->findIdUserPemulihan($idPemulihan);
+
+        // $user['username'] = $this->input->post('username');
+        // $user['status_pemulihan'] = '0';
+        // echo json_encode($user);
+        $user['status_pemulihan'] = '1';
+        $sukses = $this->M_anggota->updatePemulihan($user, $idPemulihan);
+
+        // $pass = "12345678";
+        // $passWord = md5($pass);
+        // $anggota['password'] = $passWord;
+        // $updateAnggota = $this->M_user->updateUser($anggota, 36);
+        
+        if ($sukses != 0) {
+            $pass = "12345678";
+            $passWord = md5($pass);
+            $anggota['password'] = $passWord;
+            $updateAnggota = $this->M_user->updateUser($anggota, $getIdUser);
+            
+            if (!$updateAnggota) {
+                flashMessage('success', 'Calon Anggota berhasil di aktifkan dan dapat masuk menggunakan Username & Password sesuai yang tertera pada saat Aktivasi');
+                redirect('admin/Anggota/kelolaPemulihanAnggota');
+            } else {
+                flashMessage('error', 'Aktivasi Calon Anggota gagal! Silahkan coba lagi...');
+                redirect('admin/Anggota/kelolaPemulihanAnggota');
+            }
+        }
+        flashMessage('error', 'Error');
+        redirect('admin/Anggota/kelolaPemulihanAnggota');
+    }
+
+    
+    function tolakPemulihanAnggota()
+    {
+        $idPemulihan = $this->input->post('idCalonPemulihan');
+
+        $sukses = $this->M_anggota->deletePemulihan($idPemulihan);
+
+        if (!$sukses) {
+            flashMessage('success', 'Calon Anggota berhasil ditolak sebagai keanggotaan');
+            redirect('admin/Anggota/kelolaPemulihanAnggota');
+        } else {
+            flashMessage('error', 'Calon Anggota gagal ditolak sebagai keanggotaan! Silahkan coba lagi');
+            redirect('admin/Anggota/kelolaPemulihanAnggota');
+        }
+        // echo json_encode($idAnggota);
+    }
+
+    
+    function pemulihanJSON()
+    {
+        $id = $this->input->post('id');
+        $data['pemulihan'] = $this->M_anggota->findPemulihan('*', array('tb_pemulihan.id_pemulihan = ' => $id));
+        echo json_encode($data);
+    }
+
 }
