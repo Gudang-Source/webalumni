@@ -93,6 +93,8 @@
                                 Calon Anggota</a></li>
                         <li><a href="<?php echo base_url('admin/Anggota/kelolaAnggota') ?>"><span
                                     class="fa fa-users"></span> Kelola Anggota </a></li>
+                        <li><a href="<?php echo base_url('admin/Anggota/kelolaPemulihanAnggota') ?>"><span
+                                    class="fa fa-users"></span> Kelola Pemulihan Anggota </a></li>            
                         <!-- <li><a href="<?php echo base_url('admin/Anggota/dataMaster') ?>"><span class="fa fa-plus"></span> Data Master</a></li> -->
                     </ul>
                 </li>

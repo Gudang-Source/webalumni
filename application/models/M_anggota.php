@@ -52,6 +52,39 @@ class M_anggota extends CI_Model
         $this->db->delete('tb_anggota');
     }
 
+    function deletePemulihan($id)
+    {
+        $this->db->where('id_pemulihan', $id);
+        $this->db->delete('tb_pemulihan');
+    }
+
+    function getAllPemulihanAnggota()
+    {
+        return $this->db->get('tb_pemulihan')->result();
+    }
+
+    function findPemulihan($select, $where)
+    {
+        $this->db->select($select);
+        $this->db->order_by('id_pemulihan', 'DESC');
+        $this->db->where($where);
+
+        return $this->db->get('tb_anggota')->result();
+    }
+
+    function findIdUserPemulihan($user)
+    {
+        $this->db->select('id_user');
+        $this->db->where('id_pemulihan', $user);
+
+        return $this->db->get('tb_pemulihan')->result();
+    }
+
+    function updatePemulihan($anggota, $id)
+    {
+        $this->db->where('id_pemulihan', $id);
+        $this->db->update('tb_pemulihan', $anggota);
+    }
 
     function pemilikForbis()
     { }
