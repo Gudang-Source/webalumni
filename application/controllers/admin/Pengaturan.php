@@ -9,7 +9,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Pengaturan extends MY_Controller
 {
-    
+
     function __construct()
     {
         parent::__construct();
@@ -23,7 +23,6 @@ class Pengaturan extends MY_Controller
         } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == '3') {
             redirect('anggota');
         }
-        
     }
 
     function index()
@@ -36,7 +35,8 @@ class Pengaturan extends MY_Controller
         }
     }
 
-    function setUpdateUsername() {
+    function setUpdateUsername()
+    {
         $idUser = $this->input->post('idUserUsername');
         $user['username'] = $this->input->post('usernameBaru');
 
@@ -52,16 +52,17 @@ class Pengaturan extends MY_Controller
         // echo json_encode($username);
     }
 
-    function setUpdatePassword() {
+    function setUpdatePassword()
+    {
         $idUser = $this->input->post('idUserPassword');
         $password = $this->input->post('passwordBaru');
         $ulangiPassword = $this->input->post('ulangiPasswordBaru');
 
         if ($password == $ulangiPassword) {
-            
+
             $user['password'] = $password;
             $sukses = $this->M_user->updateUser($user, $idUser);
-            
+
             if (!$sukses) {
                 flashMessage('success', 'Username Anda telah diperbarui. Silahkan masuk kembali menggunakan Username Baru');
                 redirect('login/Logout');
@@ -69,38 +70,40 @@ class Pengaturan extends MY_Controller
                 flashMessage('error', 'Username Anda gagal diperbarui! Silahkan coba lagi');
                 redirect('admin/Pengaturan');
             }
-
         } else {
             flashMessage('error', 'Password Anda tidak sama! Silahkan coba lagi.');
             redirect('admin/Pengaturan');
-            
         }
-
     }
 
-    function setUpdateImageProfile() {
+    function setUpdateImageProfile()
+    {
+
+        $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
         $idAnggota = $_POST['idPengguna'];
-        $namaLengkap = $_POST['namaPengguna'];
+        // $namaLengkap = $_POST['namaPengguna'];
 
-        $filename = "IKA-SMA3-".$namaLengkap."-".time();
+        $filename = "IKA-SMA3-" . time();
 
         // Set preferences
-        $config['upload_path'] = './uploads/avatars';
+        $config['upload_path'] = './uploads/avatars/gambar-admin/';
         $config['allowed_types'] = 'png|jpg|jpeg';
         $config['file_name'] = $filename;
 
         //load upload class library
         $this->load->library('upload', $config);
 
-        if (!$this->upload->do_upload('fileSaya')) {
-            flashMessage('error', 'Maaf, Upload gambar profil baru Anda gagal! Silahkan coba lagi');
-            redirect('admin/Pengaturan');
-        } else {
-            $upload_data = $this->upload->data();
 
-            $anggota['nama_foto'] = $upload_data['file_name'];
+        if ($this->upload->do_upload('fileSaya')) {
+            $old_image = $data['info'][0]->nama_foto;
+            if ($old_image != 'no-image.jpg') {
+                unlink(FCPATH . 'uploads/avatars/gambar-admin/' . $old_image);
+            }
+            $new_image = $this->upload->data();
+            // $this->db->set('nama_foto', $new_image['file_name']);
 
+            $anggota['nama_foto'] = $new_image['file_name'];
             $sukses = $this->M_anggota->updateAnggota($anggota, $idAnggota);
 
             if (!$sukses) {
@@ -110,8 +113,29 @@ class Pengaturan extends MY_Controller
                 flashMessage('error', 'Foto profil Anda gagal diperbarui! Silahkan coba lagi');
                 redirect('admin/Pengaturan');
             }
+        } else {
+            flashMessage('error', 'Foto profil Anda gagal diperbarui! Silahkan coba lagi');
+            redirect('admin/Pengaturan');
         }
 
-    }
 
+
+
+        // if (!$this->upload->do_upload('fileSaya')) {
+        //     flashMessage('error', 'Maaf, Upload gambar profil baru Anda gagal! Silahkan coba lagi');
+        //     redirect('admin/Pengaturan');
+        // } else {
+        //     $upload_data = $this->upload->data();
+        //     $anggota['nama_foto'] = $upload_data['file_name'];
+        //     $sukses = $this->M_anggota->updateAnggota($anggota, $idAnggota);
+
+        //     if (!$sukses) {
+        //         flashMessage('success', 'Foto profil Anda berhasil diperbarui');
+        //         redirect('admin/Pengaturan');
+        //     } else {
+        //         flashMessage('error', 'Foto profil Anda gagal diperbarui! Silahkan coba lagi');
+        //         redirect('admin/Pengaturan');
+        //     }
+        // }
+    }
 }

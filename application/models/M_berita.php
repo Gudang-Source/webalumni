@@ -52,9 +52,4 @@ class M_berita extends CI_Model
         $this->db->where('id_berita', $id);
         $this->db->delete('tb_berita');
     }
-
-    function getAllKategori()
-    {
-        return $this->db->get('tb_kategori_berita')->result();
-    }
 }

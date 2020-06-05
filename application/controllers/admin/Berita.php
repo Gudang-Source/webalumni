@@ -17,6 +17,7 @@ class Berita extends MY_Controller
         $this->load->model('AdminHomeModel');
         $this->load->model('M_anggota');
         $this->load->model('M_berita');
+        $this->load->model('M_kategori');
 
         if ($this->session->userdata('logged_in') == '' && $this->session->userdata('username') == '' && $this->session->userdata('role') == '') {
             redirect('login');
@@ -110,6 +111,15 @@ class Berita extends MY_Controller
         echo json_encode($data);
     }
 
+    function kategoriJSON()
+    {
+        $id = $this->input->post('id_kategori');
+
+        $data['kategori'] = $this->M_kategori->findKategori('*', array('tb_kategori_berita.id = ' => $id));
+
+        echo json_encode($data);
+    }
+
     function aktivasiCalonBerita()
     {
         $this->load->model('M_berita');
@@ -182,6 +192,72 @@ class Berita extends MY_Controller
         $creditBerita = $this->input->post('creditBerita');
         $kategoriBerita = $this->input->post('idKategori');
 
+        // $filename = "berita-" . $judulBerita . "-" . time();
+
+        // Set preferences
+        // $config['upload_path'] = './uploads/content/berita';
+        // $config['allowed_types'] = 'png|jpg|jpeg';
+        // $config['file_name'] = $filename;
+
+        //load upload class library
+        // $this->load->library('upload', $config);
+
+            $berita['judul_berita'] = $judulBerita;
+            $berita['isi_berita'] = $isiBerita;
+            $berita['sumber'] = $sumberBerita;
+            $berita['credit'] = $creditBerita;
+            $berita['id_kategori'] = $kategoriBerita;
+
+            // echo json_encode($data);
+            $sukses = $this->M_berita->updateBerita($berita, $idBerita);
+
+            if (!$sukses) {
+                flashMessage('success', 'Berita berhasil di ubah.');
+                redirect('admin/Berita/kelolaBerita');
+            } else {
+                flashMessage('error', 'Berita gagal di ubah! Silahkan coba lagi');
+                redirect('admin/Berita/kelolaBerita');
+            }
+        
+
+        // if (!$this->upload->do_upload('fileSaya')) {
+        //     flashMessage('error', 'Maaf, Upload gambar calon anggota gagal! Silahkan coba lagi');
+        //     redirect('admin/Berita/kelolaBerita');
+        // } else {
+        //     $upload_data = $this->upload->data();
+
+        //     $data = $this->M_berita->findBerita('foto', array('tb_berita.id_berita = ' => $idBerita));
+
+        //     $berita['judul_berita'] = $judulBerita;
+        //     $berita['isi_berita'] = $isiBerita;
+        //     $berita['sumber'] = $sumberBerita;
+        //     $berita['credit'] = $creditBerita;
+        //     $berita['id_kategori'] = $kategoriBerita;
+            
+        //     $berita['foto'] = $upload_data['file_name'];
+            
+        //     unlink(FCPATH . 'uploads/content/berita/' . $data[0]->foto);
+
+        //     // echo json_encode($data);
+        //     $sukses = $this->M_berita->updateBerita($berita, $idBerita);
+
+        // }
+        
+        // if (!$sukses) {
+        //     flashMessage('success', 'Berita berhasil di sunting.');
+        //     redirect('admin/Berita/kelolaBerita');
+        // } else {
+        //     flashMessage('error', 'Berita gagal di sunting! Silahkan coba lagi');
+        //     redirect('admin/Berita/kelolaBerita');
+        // }
+    }
+
+    public function setUpdateFoto()
+    {
+        $this->load->model('M_berita');
+
+        $idBerita = $this->input->post('idUbahFoto');
+
         $filename = "berita-" . $judulBerita . "-" . time();
 
         // Set preferences
@@ -189,30 +265,29 @@ class Berita extends MY_Controller
         $config['allowed_types'] = 'png|jpg|jpeg';
         $config['file_name'] = $filename;
 
-        //load upload class library
+        // load upload class library
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('fileSaya')) {
-            flashMessage('error', 'Maaf, Upload gambar calon anggota gagal! Silahkan coba lagi');
+            flashMessage('error', 'Maaf, Upload gambar berita gagal! Silahkan coba lagi');
             redirect('admin/Berita/kelolaBerita');
         } else {
             $upload_data = $this->upload->data();
 
-            $berita['judul_berita'] = $judulBerita;
-            $berita['isi_berita'] = $isiBerita;
-            $berita['sumber'] = $sumberBerita;
-            $berita['credit'] = $creditBerita;
-            $berita['id_kategori'] = $kategoriBerita;
+            $data = $this->M_berita->findBerita('foto', array('tb_berita.id_berita = ' => $idBerita));
+            
             $berita['foto'] = $upload_data['file_name'];
+            
+            unlink(FCPATH . 'uploads/content/berita/' . $data[0]->foto);
 
             // echo json_encode($data);
             $sukses = $this->M_berita->updateBerita($berita, $idBerita);
-
+            
             if (!$sukses) {
-                flashMessage('success', 'Berita berhasil di sunting.');
+                flashMessage('success', 'Foto berhasil di ubah.');
                 redirect('admin/Berita/kelolaBerita');
             } else {
-                flashMessage('error', 'Berita gagal di sunting! Silahkan coba lagi');
+                flashMessage('error', 'Foto gagal di ubah! Silahkan coba lagi');
                 redirect('admin/Berita/kelolaBerita');
             }
         }
@@ -251,5 +326,63 @@ class Berita extends MY_Controller
             $this->admin_render('admin/kelolaBeritaAktif', $data);
         }
 
+    }
+
+    function kelolaKategori()
+    {
+        $data['title'] = 'Kelola Kategori Berita';
+        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+        $data['kategori'] = $this->M_kategori->getAllKategori();
+
+        if ($this->session->userdata('role') == 1) {
+            $this->admin_render('admin/kelolaKategori', $data);
+        }
+    }
+
+    public function setAddKategori()
+    {
+        $data['kategori'] = $this->input->post('namaKategori');
+
+        $sukses = $this->M_kategori->insertKategori($data);
+
+        if (!$sukses) {
+            flashMessage('success', 'Tambah kategori berhasil.');
+            redirect('admin/Berita/kelolaKategori');
+        } else {
+            flashMessage('error', 'Tambah kategori gagal! Silahkan coba lagi.');
+            redirect('admin/Berita/kelolaKategori');
+        }
+    }
+
+    public function setDeleteKategori()
+    {
+        $id = $this->input->post('idKategoriDelete');
+        // $namaJenisDelete = $this->input->post('namaJenisBisnisDelete');
+
+        $sukses = $this->M_kategori->deleteKategori($id);
+
+        if (!$sukses) {
+            flashMessage('success', 'Kategori berhasil dihapus');
+            redirect('admin/Berita/kelolaKategori');
+        } else {
+            flashMessage('error', 'Kategori gagal dihapus! Silahkan coba lagi');
+            redirect('admin/Berita/kelolaKategori');
+        }
+    }
+
+    public function setUpdateKategori()
+    {
+        $id = $this->input->post('idKategoriEdit');
+        $kategori = $this->input->post('namaKategoriEdit', true);
+
+        $sukses = $this->M_kategori->updateKategori($kategori, $id);
+
+        if (!$sukses) {
+            flashMessage('success', 'Kategori berhasil diperbarui');
+            redirect('admin/Berita/kelolaKategori');
+        } else {
+            flashMessage('error', 'Kategori gagal diperbarui! Silahkan coba lagi');
+            redirect('admin/Berita/kelolaKategori');
+        }
     }
 }
