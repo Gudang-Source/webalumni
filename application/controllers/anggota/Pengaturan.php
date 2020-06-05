@@ -9,7 +9,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Pengaturan extends MY_Controller
 {
-    
+
     function __construct()
     {
         parent::__construct();
@@ -20,12 +20,13 @@ class Pengaturan extends MY_Controller
     function index()
     {
         $data['title'] = 'Anggota - Pengaturan';
-        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+        $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
         $this->anggota_render('anggota/pengaturan', $data);
     }
 
-    function setUpdateUsername() {
+    function setUpdateUsername()
+    {
         $idUser = $this->input->post('idUserUsername');
         $user['username'] = $this->input->post('usernameBaru');
 
@@ -38,19 +39,19 @@ class Pengaturan extends MY_Controller
             flashMessage('error', 'Username Anda gagal diperbarui! Silahkan coba lagi');
             redirect('anggota/Pengaturan');
         }
-        
     }
 
-    function setUpdatePassword() {
+    function setUpdatePassword()
+    {
         $idUser = $this->input->post('idUserPassword');
         $password = $this->input->post('passwordBaru');
         $ulangiPassword = $this->input->post('ulangiPasswordBaru');
 
         if ($password == $ulangiPassword) {
-            
+
             $user['password'] = $password;
             $sukses = $this->M_user->updateUser($user, $idUser);
-            
+
             if (!$sukses) {
                 flashMessage('success', 'Username Anda telah diperbarui. Silahkan masuk kembali menggunakan Username Baru');
                 redirect('login/Logout');
@@ -58,20 +59,19 @@ class Pengaturan extends MY_Controller
                 flashMessage('error', 'Username Anda gagal diperbarui! Silahkan coba lagi');
                 redirect('anggota/Pengaturan');
             }
-
         } else {
             flashMessage('error', 'Password Anda tidak sama! Silahkan coba lagi.');
             redirect('anggota/Pengaturan');
         }
-
     }
 
-    function setUpdateImageProfile() {
+    function setUpdateImageProfile()
+    {
 
         $idAnggota = $_POST['idPengguna'];
         $namaLengkap = $_POST['namaPengguna'];
 
-        $filename = "IKA-SMA3-".$namaLengkap."-".time();
+        $filename = "IKA-SMA3-" . $namaLengkap . "-" . time();
 
         // Set preferences
         $config['upload_path'] = './uploads/avatars';
@@ -100,7 +100,5 @@ class Pengaturan extends MY_Controller
                 redirect('admin/Pengaturan');
             }
         }
-
     }
-
 }

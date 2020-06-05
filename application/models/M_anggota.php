@@ -63,13 +63,10 @@ class M_anggota extends CI_Model
         return $this->db->get('tb_pemulihan')->result();
     }
 
-    function findPemulihan($select, $where)
+    function findPemulihan($where)
     {
-        $this->db->select($select);
-        $this->db->order_by('id_pemulihan', 'DESC');
-        $this->db->where($where);
-
-        return $this->db->get('tb_anggota')->result();
+        $query = "SELECT * FROM `tb_pemulihan` WHERE tb_pemulihan.id_pemulihan = $where";
+        return $this->db->query($query)->result();
     }
 
     function findIdUserPemulihan($user)

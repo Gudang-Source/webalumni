@@ -356,7 +356,7 @@ class Anggota extends MY_Controller
         }
     }
 
-    
+
     function aktivasiPemulihanAnggota()
     {
         $this->load->model('M_user');
@@ -364,24 +364,17 @@ class Anggota extends MY_Controller
         $idPemulihan = $this->input->post('idPemulihan');
         $getIdUser = $this->M_anggota->findIdUserPemulihan($idPemulihan);
 
-        // $user['username'] = $this->input->post('username');
-        // $user['status_pemulihan'] = '0';
-        // echo json_encode($user);
         $user['status_pemulihan'] = '1';
         $sukses = $this->M_anggota->updatePemulihan($user, $idPemulihan);
 
-        // $pass = "12345678";
-        // $passWord = md5($pass);
-        // $anggota['password'] = $passWord;
-        // $updateAnggota = $this->M_user->updateUser($anggota, 36);
-        
+
         if ($sukses != 0) {
             $pass = "12345678";
             $passWord = md5($pass);
             $anggota['password'] = $passWord;
             $updateAnggota = $this->M_user->updateUser($anggota, $getIdUser);
-            
-            if (!$updateAnggota) {
+
+            if ($updateAnggota) {
                 flashMessage('success', 'Calon Anggota berhasil di aktifkan dan dapat masuk menggunakan Username & Password sesuai yang tertera pada saat Aktivasi');
                 redirect('admin/Anggota/kelolaPemulihanAnggota');
             } else {
@@ -393,7 +386,7 @@ class Anggota extends MY_Controller
         redirect('admin/Anggota/kelolaPemulihanAnggota');
     }
 
-    
+
     function tolakPemulihanAnggota()
     {
         $idPemulihan = $this->input->post('idCalonPemulihan');
@@ -410,12 +403,12 @@ class Anggota extends MY_Controller
         // echo json_encode($idAnggota);
     }
 
-    
+
     function pemulihanJSON()
     {
         $id = $this->input->post('id');
-        $data['pemulihan'] = $this->M_anggota->findPemulihan('*', array('tb_pemulihan.id_pemulihan = ' => $id));
+        $data['pemulihan'] = $this->M_anggota->findPemulihan($id);
+
         echo json_encode($data);
     }
-
 }

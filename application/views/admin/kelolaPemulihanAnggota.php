@@ -1,7 +1,8 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
     <li>Anggota</li>
-    <li class="active"><a href="<?= base_url('anggota/Anggota/kelolaPemulihanAnggota'); ?>">Kelola Pemulihan Anggota</li></a>
+    <li class="active"><a href="<?= base_url('anggota/Anggota/kelolaPemulihanAnggota'); ?>">Kelola Pemulihan Anggota
+    </li></a>
 </ul>
 <!-- END BREADCRUMB -->
 
@@ -44,7 +45,7 @@
                                             $no = 1;
 
                                             foreach ($pemulihan as $CA) { ?>
-                                            <?php if ($CA->status_pemulihan == 0): ?>
+                                            <?php if ($CA->status_pemulihan == 0) : ?>
                                             <tr id="trow_1">
                                                 <td class="text-center"><?= $no; ?></td>
                                                 <td><strong><?= $CA->username; ?></strong></td>
@@ -53,14 +54,14 @@
                                                 <td>
                                                     <button type="button" class="btn btn-primary mb-control btn-terima"
                                                         data-box="#message-box-terima"
-                                                        id="<?= $CA->id_pemulihan;?>" >Terima</button>
+                                                        id="<?= $CA->id_pemulihan; ?>">Terima</button>
                                                     <button type="button" class="btn btn-danger mb-control btn-tolak"
                                                         data-box="#message-box-tolak"
                                                         id="<?= $CA->id_pemulihan;
-                                                         ?>">Tolak</button>
+                                                                                                                                                                ?>">Tolak</button>
                                                 </td>
                                             </tr>
-                                                <?php endif ?>
+                                            <?php endif ?>
                                             <?php
                                                 $no++;
                                             } ?>
@@ -89,16 +90,18 @@
             <div class="mb-title">
                 <span class="fa fa-check"></span> Terima <strong> Pemulihan Akun Anggota baru di IKASMA3BDG </strong>
             </div>
-            <form action="<?= base_url('admin/Anggota/aktivasiPemulihanAnggota'); ?>" class="form-horizontal" method="post">
+            <form action="<?= base_url('admin/Anggota/aktivasiPemulihanAnggota'); ?>" class="form-horizontal"
+                method="post">
                 <div class="mb-content">
                     <div class="panel-body">
-                        <p>Apakah benar bahwa Akun Anggota di bawah ini akan diaktifkan Pemulihan Akun Anggota di IKASMA3BDG
+                        <p>Apakah benar bahwa Akun Anggota di bawah ini akan diaktifkan Pemulihan Akun Anggota di
+                            IKASMA3BDG
                             dan merupakan Alumni SMA 3 Bandung dengan identitas Pemulihan berikut: </p><br>
 
                         <div class="form-group hidden">
                             <div class="col-md-12">
-                                <input type="text" class="form-control" name="idPemulihan" id="idPemulihan"/>
-                                <input type="text" class="form-control" name="UserId" id="UserId"/>
+                                <input type="text" class="form-control" name="idPemulihan" id="idPemulihan" />
+                                <input type="text" class="form-control" name="userId" id="userId" />
                             </div>
                         </div>
 
@@ -138,14 +141,16 @@
             <div class="mb-title">
                 <span class="fa fa-times"></span> Tolak <strong>Pemulihan</strong>
             </div>
-            <form action="<?= base_url('admin/Anggota/tolakPemulihanAnggota'); ?>" class="form-horizontal" method="post">
+            <form action="<?= base_url('admin/Anggota/tolakPemulihanAnggota'); ?>" class="form-horizontal"
+                method="post">
                 <div class="mb-content">
                     <div class="panel-body">
                         <p>Anda yakin akan menolak sebagai keanggotaan IKASMA3BDG dengan identitas Calon Anggota sebagai
                             berikut :</p>
 
                         <div class="form-group hidden">
-                            <input type="text" id="idCalonPemulihan" name="idCalonPemulihan" class="form-control" value="<?= $pemulihan[0]->id_pemulihan ?>">
+                            <input type="text" id="idCalonPemulihan" name="idCalonPemulihan" class="form-control"
+                                value="<?= $pemulihan[0]->id_pemulihan ?>">
                         </div>
 
                         <div class="form-group">
@@ -178,7 +183,6 @@
 <!-- END MESSAGE BOX REJECT CALON ANGGOTA -->
 
 <script type="text/javascript">
-
 $(".btn-terima").click(function() {
     console.log(this.id);
     var idPemulihan = this.id;
@@ -187,16 +191,16 @@ $(".btn-terima").click(function() {
             id: idPemulihan
         },
         function(data) {
+            console.log(data);
             var data_obj = JSON.parse(data);
 
-            var namaUser = data_obj.pemulihan[0].username;
-            var userId = data_obj.pemulihan[0].id_user;
-            var dateCreated = data_obj.pemulihan[0].date_created;
+            document.getElementById('idPemulihan').value = data_obj.pemulihan[0].id_pemulihan;
+            document.getElementById('userId').value = data_obj.pemulihan[0].id_user;
+            document.getElementById('namaUser').value = data_obj.pemulihan[0].username;
+            document.getElementById('dateCreated').value = data_obj.pemulihan[0].date_created;
 
-            document.getElementById('IdPemulihan').value = dataObj.pemulihan[0].id_pemulihan;
-            document.getElementById('UserId').value = dataObj.pemulihan[0].id_user;
-            document.getElementById('namaUser').value = dataObj.pemulihan[0].username;
-            document.getElementById('dateCreated').value = dataObj.pemulihan[0].date_created;
+            document.getElementById('namaUser').innerHTML = data_obj.pemulihan[0].username;
+            document.getElementById('dateCreated').innerHTML = data_obj.pemulihan[0].date_created;
 
         });
 });

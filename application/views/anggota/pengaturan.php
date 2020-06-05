@@ -7,7 +7,7 @@
 <!--    <h2> Pengaturan</h2>-->
 <!--</div>-->
 <!---->
-<? 
+<?
 ?>
 <!---->
 <!--<div class="page-content-wrap">-->
@@ -36,7 +36,7 @@
 <!--                            <label class="col-md-2 control-label">Username :</label>  -->
 <!--                            <div class="col-md-3">-->
 <!--                                <label class="control-label">-->
-<? 
+<?
 ?>
 <!--</label>-->
 <!--                            </div>-->
