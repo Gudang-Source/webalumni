@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2020 at 05:17 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.4
+-- Generation Time: Jun 14, 2020 at 10:40 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -45,7 +45,7 @@ CREATE TABLE `tb_anggota` (
   `negara` varchar(100) DEFAULT NULL,
   `provinsi` varchar(100) DEFAULT NULL,
   `kabupaten_kota` varchar(100) DEFAULT NULL,
-  `alamat` text,
+  `alamat` text DEFAULT NULL,
   `pendidikan_terakhir` varchar(10) DEFAULT NULL,
   `status_bekerja` varchar(30) DEFAULT NULL,
   `bidang_industri` varchar(100) DEFAULT NULL,
@@ -69,7 +69,7 @@ CREATE TABLE `tb_anggota` (
 --
 
 INSERT INTO `tb_anggota` (`id_anggota`, `nama_lengkap`, `nama_panggilan_alias`, `NIK`, `angkatan`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `golongan_darah`, `no_telp`, `no_telp_alternatif`, `email`, `nama_foto`, `negara`, `provinsi`, `kabupaten_kota`, `alamat`, `pendidikan_terakhir`, `status_bekerja`, `bidang_industri`, `jabatan`, `nama_perusahaan`, `bisnis_usaha`, `sosial_pendidikan`, `sosial_kemanusiaan`, `pengembangan_sarana_prasarana`, `silaturahim_kebersamaan`, `penawaran_sponsorship_donasi`, `support`, `loyalist`, `iuran_sukarela`, `status_anggota`, `user_id`) VALUES
-(1, 'root', 'admin', '173040046', 2017, '1', 'Bandung', '2020-06-23', 'A', '081911437177', '0', 'root123@gmail.com', 'IKA-SMA3-root-1591182854.PNG', 'Indonesia', 'Jawa Barat', 'Kab. Cirebon', 'Jl. Nusa Indah No. 27 Wiratama - Tuparev', 'SMA', '1', 'Informatika', 'CEO Apple', 'Apple, Inc', '1', 'c', 'c', 'c', 'c', 'c', NULL, NULL, NULL, '1', 1),
+(1, 'root', 'admin', '173040046', 2017, '1', 'Bandung', '2020-06-23', 'A', '081911437177', '0', 'root123@gmail.com', 'IKA-SMA3-1592124009.jpg', 'Indonesia', 'Jawa Barat', 'Kab. Cirebon', 'Jl. Nusa Indah No. 27 Wiratama - Tuparev', 'SMA', '1', 'Informatika', 'CEO Apple', 'Apple, Inc', '1', 'c', 'c', 'c', 'c', 'c', NULL, NULL, NULL, '1', 1),
 (4, 'Dedi (Maryun) E Wirahadikusumah', NULL, '3174070606510003', 70, '1', NULL, '1951-06-06', 'A', '0811948436', NULL, NULL, NULL, NULL, NULL, NULL, 'Jl. Lamandau 2 No 14 Kebayoran Baru, Jakarta Selatan', 'S1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', NULL, '0', 0),
 (5, 'Fatsfiar Erfaba Enoch', NULL, '3273111404520003', 70, '1', NULL, '1952-04-14', 'B', '0815222414386', NULL, NULL, NULL, NULL, NULL, NULL, 'Komp. Bumi Parahyangan Kencana  Jl. Rajawali Raya Blok  23 No.29  Rt.03 Rw 07 Desa Nagrak, Kec. Cangkuang Kab. Bandung 40377', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', NULL, '0', 0),
 (6, 'Ida Sofia Sidawati (Ida Gursida Djoewarsa)', NULL, '3171075401510001', 70, '2', NULL, '1951-01-14', 'O', '0811854770', '08998854770', NULL, NULL, NULL, NULL, NULL, 'Jl. Pam Baru V NO 15 Pejompongan, Jakarta Pusat 10210', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', NULL, '0', 0),
@@ -1272,13 +1272,11 @@ INSERT INTO `tb_anggota` (`id_anggota`, `nama_lengkap`, `nama_panggilan_alias`, 
 (1218, 'Zulian Lucky Saladin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '081382316531', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', NULL, '0', 0),
 (1219, 'Lut Dinar Fadila', 'Dinar', '3204050109940003', 2014, '1', 'Bandung', '1994-09-01', '0', '087820093686', '', 'lutdinar@icloud.com', 'anggota-Lut_Dinar_Fadila-1562225244.jpg', '', '', '', '', 'SMK', '0', NULL, NULL, NULL, '1', '1', '0', '0', '0', '0', '0', '0', 0, '1', 21),
 (1220, 'Kiki Hadiansyah', 'Kiki', NULL, 2014, NULL, NULL, '2019-07-01', NULL, '08211223344', NULL, 'kiki@gmail.com', 'anggota-Kiki_Hadiansyah-1562822761.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', NULL, NULL, '1', 28),
-(1223, 'Adhy Wiranto Sudjana', 'Adhy', NULL, 2017, NULL, NULL, '1999-04-04', NULL, '081911437177', NULL, 'adhywiranto68@gmail.com', 'anggota-Adhy_Wiranto_Sudjana-1588685708.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 0),
-(1224, 'Myoui Mina', 'Minari', NULL, 2015, NULL, NULL, '1997-03-24', NULL, '0', NULL, 'mina@gmail.com', 'anggota-Myoui_Mina-1588686920.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 31),
-(1227, 'Dicky Ardianto', 'Dicky', NULL, 2017, NULL, NULL, '2020-06-02', NULL, '08212191919191', NULL, 'dikiardianto19@gmail.com', 'anggota-Dicky_Ardianto-1591073513.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 33),
-(1228, 'Dicky Aja', 'Dicky', '', 2019, '', '', '2020-06-30', '', '021', '', 'dikiardianto19@gmail.com', 'anggota-Dicky_Aja-1591077249.jpg', '', '', '', '', '', '', NULL, NULL, NULL, '', '1', '0', '0', '0', '0', '0', '0', 0, '1', 34),
-(1229, 'Anggota Ujang', 'a/n ujang', NULL, 2014, NULL, NULL, '2020-06-24', NULL, '919', NULL, 'diki@mail.com', 'anggota-Anggota_Ujang-1591079333.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 35),
 (1230, 'eee', 'eeeee', NULL, 123, NULL, NULL, '2020-06-21', NULL, '0000', NULL, 'caca1@gmail.com', 'anggota-eee-1591264766.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', 0),
-(1231, 'eee', 'cin', NULL, 123, NULL, NULL, '2020-04-14', NULL, '12345', NULL, 'aaa@gmail.com', 'anggota-eee-1591322981.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', 36);
+(1232, 'My Koordinator', 'pak koor', '9387', 2017, '1', 'Bandung', '2020-06-24', 'O', 'koordinator', '', 'koordinator@ikasma3bdg.com', 'anggota-My_Koordinator-1592123256.jpg', '', '', '', '', '', '', NULL, NULL, NULL, '', '1', '0', '0', '0', '0', '0', '0', 0, '1', 37),
+(1233, 'My Anggota', 'anggota', '232', 2017, '1', 'Bandung', '2020-06-18', 'AB', 'anggota', '', 'anggota@ikasma3bdg.com', 'anggota-My_Anggota-1592123438.jpg', '', '', '', '', '', '', NULL, NULL, NULL, '', '1', '0', '0', '0', '0', '0', '0', 0, '1', 38),
+(1234, 'My Alumni', 'alumni', '1141432', 2017, '2', 'Bandung', '2020-06-16', 'B', 'alumni', '', 'alumni@ikasma3bdg.com', 'anggota-My_Alumni-1592123461.jpg', '', '', '', '', '', '', NULL, NULL, NULL, '', '1', '0', '0', '0', '0', '0', '0', 0, '1', 40),
+(1235, 'My Umum', 'umum', '12', 2015, '1', 'Bandung', '2020-06-01', 'A', 'umum', '', 'umum@ikasma3bdg.com', 'anggota-My_Umum-1592123489.jpg', '', '', '', '', '', '', NULL, NULL, NULL, '', '1', '0', '0', '0', '0', '0', '0', 0, '1', 39);
 
 -- --------------------------------------------------------
 
@@ -1317,7 +1315,7 @@ CREATE TABLE `tb_forum_bisnis` (
   `id_forbis` int(11) NOT NULL,
   `nama_bisnis_usaha` varchar(255) NOT NULL,
   `id_jenis_bisnis` int(11) NOT NULL,
-  `deskripsi_bisnis` text,
+  `deskripsi_bisnis` text DEFAULT NULL,
   `alamat_bisnis` text NOT NULL,
   `no_telp_bisnis` varchar(16) DEFAULT NULL,
   `nama_foto_bisnis` varchar(255) DEFAULT NULL,
@@ -1449,9 +1447,10 @@ INSERT INTO `tb_user` (`id_user`, `username`, `password`, `status_akun`, `role`)
 (12, 'nita', '1eb6d605e0698d0c6d3121c8cd45e6b5', '1', '1'),
 (13, 'dewi', 'ed1d859c50262701d92e5cbf39652792', '1', '1'),
 (21, 'lutdinar', 'b7b29c3296ae49ea1fd22927e79f97c3', '1', '2'),
-(33, '08212191919191', '25d55ad283aa400af464c76d713c07ad', '1', '3'),
-(35, '919', '25d55ad283aa400af464c76d713c07ad', '1', '3'),
-(36, '12345', '222', '1', '2');
+(37, 'koordinator', '25d55ad283aa400af464c76d713c07ad', '1', '2'),
+(38, 'anggota', '25d55ad283aa400af464c76d713c07ad', '1', '3'),
+(39, 'umum', '25d55ad283aa400af464c76d713c07ad', '1', '5'),
+(40, 'alumni', '25d55ad283aa400af464c76d713c07ad', '1', '4');
 
 -- --------------------------------------------------------
 
@@ -1542,7 +1541,7 @@ ALTER TABLE `tb_user_role`
 -- AUTO_INCREMENT for table `tb_anggota`
 --
 ALTER TABLE `tb_anggota`
-  MODIFY `id_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1232;
+  MODIFY `id_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1236;
 
 --
 -- AUTO_INCREMENT for table `tb_berita`
@@ -1578,13 +1577,13 @@ ALTER TABLE `tb_komunitas`
 -- AUTO_INCREMENT for table `tb_pemulihan`
 --
 ALTER TABLE `tb_pemulihan`
-  MODIFY `id_pemulihan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_pemulihan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `tb_user_role`
