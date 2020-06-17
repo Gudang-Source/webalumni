@@ -32,8 +32,7 @@
                     <ul class="panel-controls">
                         <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span
-                                    class="fa fa-cog"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="fa fa-cog"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span>
                                         Collapse</a></li>
@@ -60,8 +59,8 @@
                                     <?php
                                     $no = 1;
                                     foreach ($kategori as $k) {
-                                        ?>
-                                        <?php if ($k->id == 1) {?>
+                                    ?>
+                                        <?php if ($k->id == 1) { ?>
                                             <tr>
                                                 <td class="text-center"><?= $no++; ?></td>
                                                 <td><strong><?= $k->kategori; ?></strong></td>
@@ -71,15 +70,8 @@
                                                 <td class="text-center"><?= $no++; ?></td>
                                                 <td><strong><?= $k->kategori; ?></strong></td>
                                                 <td>
-                                                    <button type="button" class="btn btn-info btn-rounded btn-ubah-kategori"
-                                                        id="<?= $k->id; ?>" title="Ubah Kategori" data-toggle="modal"
-                                                        data-target="#ubahKategori" id="<?= $k->id; ?>"><i
-                                                            class="fa fa-pencil"></i></button>
-                                                    <button type="button"
-                                                        class="btn btn-danger btn-rounded mb-control btn-hapus-kategori"
-                                                        id="<?= $k->id; ?>" title="Hapus"
-                                                        data-box="#hapusKategori" id="<?= $k->id; ?>"><i
-                                                            class="fa fa-times"></i></button>
+                                                    <button type="button" class="btn btn-info btn-rounded btn-ubah-kategori" id="<?= $k->id; ?>" title="Ubah Kategori" data-toggle="modal" name data-target="#ubahKategori"><i class="fa fa-pencil"></i></button>
+                                                    <button type="button" class="btn btn-danger btn-rounded mb-control btn-hapus-kategori" id="<?= $k->id; ?>" title="Hapus" data-box="#hapusKategori"><i class="fa fa-times"></i></button>
                                                 </td>
                                             </tr>
                                         <?php } ?>
@@ -105,23 +97,19 @@
 <!-- END PAGE CONTENT WRAP -->
 
 <!-- MODALS TAMBAH KATEGORI -->
-<div class="modal animated zoomIn" id="tambahKategori" tabindex="-1" role="dialog" aria-labelledby="defModalHead"
-    aria-hidden="true">
+<div class="modal animated zoomIn" id="tambahKategori" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" id="defModalHead">Tambah Kategori</h4>
             </div>
-            <form action="<?= base_url('admin/Berita/setAddKategori'); ?>" class="form-horizontal"
-                id="add-kategori-validate" method="post">
+            <form action="<?= base_url('admin/Berita/setAddKategori'); ?>" class="form-horizontal" id="add-kategori-validate" method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="col-md-3 control-label">* Nama Kategori :</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="namaKategori"
-                                placeholder="Nama Kategori" required />
+                            <input type="text" class="form-control" name="namaKategori" placeholder="Nama Kategori" required />
                         </div>
                     </div>
                 </div>
@@ -141,30 +129,25 @@
 <!-- END MODAL TAMBAH KATEGORI -->
 
 <!-- MODALS UBAH KATEGORI -->
-<div class="modal animated zoomIn" id="ubahKategori" tabindex="-1" role="dialog" aria-labelledby="defModalHead"
-    aria-hidden="true">
+<div class="modal animated zoomIn" id="ubahKategori" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" id="defModalHead">Ubah Kategori</h4>
             </div>
-            <form action="<?= base_url('admin/Berita/setUpdateKategori'); ?>" class="form-horizontal"
-                id="update-kategori-validate" method="post">
+            <form action="<?= base_url('admin/Berita/setUpdateKategori'); ?>" class="form-horizontal" id="update-kategori-validate" method="post">
                 <div class="modal-body">
                     <div class="form-group hidden">
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="idKategoriEdit" id="idKategoriEdit"
-                                required />
+                            <input type="text" class="form-control" name="idKategoriEdit" id="idKategoriEdit" required />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-3 control-label">* Nama Kategori :</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="namaKategoriEdit" id="namaKategoriEdit"
-                                placeholder="Nama Kategori" required />
+                            <input type="text" class="form-control" name="namaKategoriEdit" id="namaKategoriEdit" placeholder="Nama Kategori" required />
                         </div>
                     </div>
                 </div>
@@ -191,14 +174,12 @@
             <div class="mb-title">
                 <span class="fa fa-times"></span> Hapus <strong>Jenis Bisnis</strong>
             </div>
-            <form action="<?= base_url('admin/Berita/setDeleteKategori'); ?>" class="form-horizontal"
-                method="post">
+            <form action="<?= base_url('admin/Berita/setDeleteKategori'); ?>" class="form-horizontal" method="post">
                 <div class="mb-content">
                     <div class="panel-body">
-                        <p style="font-size: 16px;">Anda yakin akan menghapus Jenis Bisnis <label class="control-label"
-                                id="namaKategoriDelete"></label> ?</p>
+                        <p style="font-size: 16px;">Anda yakin akan menghapus Jenis Bisnis <label class="control-label" id="namaKategoriDelete"></label> ?</p>
 
-                        <div class="form-group ">
+                        <div class="form-group hidden">
                             <input type="text" id="idKategoriDelete" name="idKategoriDelete" class="form-control">
                         </div>
                     </div>
@@ -217,40 +198,39 @@
 <!-- END MESSAGE BOX DELETE KATEGORI -->
 
 <script>
-$("#add-kategori-validate").validate();
-$("#update-kategori-validate").validate();
+    $("#add-kategori-validate").validate();
+    $("#update-kategori-validate").validate();
 
-$(".btn-ubah-kategori").click(function() {
-    console.log(this.id);
-    var idKategori = this.id;
+    $(".btn-ubah-kategori").click(function() {
+        console.log(this.id);
+        var idKategori = this.id;
 
-    $.post("<?= base_url('admin/Berita/kategoriJSON/') ?>", {
-            id: idKategori
-        },
-        function(data, success) {
-            console.log(data);
-            var data_obj = JSON.parse(data);
+        $.post("<?= base_url('admin/Berita/kategoriJSON/') ?>", {
+                id: idKategori
+            },
+            function(data, success) {
+                console.log(data);
+                var data_obj = JSON.parse(data);
 
-            document.getElementById('idKategoriEdit').value = data_obj.kategori[0].id;
-            document.getElementById('namaKategoriEdit').value = data_obj.kategori[0]
-                .kategori;
-        });
-});
+                document.getElementById('idKategoriEdit').value = data_obj.kategori[0].id;
+                document.getElementById('namaKategoriEdit').value = data_obj.kategori[0].kategori;
+            });
+    });
 
-$(".btn-hapus-kategori").click(function() {
-    console.log(this.id);
-    var idKategori = this.id;
+    $(".btn-hapus-kategori").click(function() {
+        console.log(this.id);
+        var idKategori = this.id;
 
-    $.post("<?= base_url('admin/Berita/kategoriJSON') ?>", {
-            id: idKategori
-        },
-        function(data, success) {
-            console.log(data);
-            var data_obj = JSON.parse(data);
+        $.post("<?= base_url('admin/Berita/kategoriJSON') ?>", {
+                id: idKategori
+            },
+            function(data, success) {
+                console.log(data);
+                var data_obj = JSON.parse(data);
 
-            document.getElementById('idKategoriDelete').value = data_obj.kategori[0].id;
-            document.getElementById('namaKategoriDelete').innerHTML = data_obj.kategori[0]
-                .kategori;
-        })
-});
+                document.getElementById('idKategoriDelete').value = data_obj.kategori[0].id;
+                document.getElementById('namaKategoriDelete').innerHTML = data_obj.kategori[0]
+                    .kategori;
+            })
+    });
 </script>

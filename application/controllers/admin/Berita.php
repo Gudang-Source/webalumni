@@ -113,7 +113,7 @@ class Berita extends MY_Controller
 
     function kategoriJSON()
     {
-        $id = $this->input->post('id_kategori');
+        $id = $this->input->post('id');
 
         $data['kategori'] = $this->M_kategori->findKategori('*', array('tb_kategori_berita.id = ' => $id));
 
@@ -122,8 +122,6 @@ class Berita extends MY_Controller
 
     function aktivasiCalonBerita()
     {
-        $this->load->model('M_berita');
-
         $berita['stat_berita'] = $this->input->post('statBerita');
         $idBerita = $this->input->post('idBerita');
 
@@ -190,17 +188,7 @@ class Berita extends MY_Controller
         $isiBerita = $this->input->post('isiBerita');
         $sumberBerita = $this->input->post('sumberBerita');
         $creditBerita = $this->input->post('creditBerita');
-        $kategoriBerita = $this->input->post('idKategori');
-
-        // $filename = "berita-" . $judulBerita . "-" . time();
-
-        // Set preferences
-        // $config['upload_path'] = './uploads/content/berita';
-        // $config['allowed_types'] = 'png|jpg|jpeg';
-        // $config['file_name'] = $filename;
-
-        //load upload class library
-        // $this->load->library('upload', $config);
+        $kategoriBerita = $this->input->post('kategoriBerita');
 
         $berita['judul_berita'] = $judulBerita;
         $berita['isi_berita'] = $isiBerita;
@@ -218,38 +206,6 @@ class Berita extends MY_Controller
             flashMessage('error', 'Berita gagal di ubah! Silahkan coba lagi');
             redirect('admin/Berita/kelolaBerita');
         }
-
-
-        // if (!$this->upload->do_upload('fileSaya')) {
-        //     flashMessage('error', 'Maaf, Upload gambar calon anggota gagal! Silahkan coba lagi');
-        //     redirect('admin/Berita/kelolaBerita');
-        // } else {
-        //     $upload_data = $this->upload->data();
-
-        //     $data = $this->M_berita->findBerita('foto', array('tb_berita.id_berita = ' => $idBerita));
-
-        //     $berita['judul_berita'] = $judulBerita;
-        //     $berita['isi_berita'] = $isiBerita;
-        //     $berita['sumber'] = $sumberBerita;
-        //     $berita['credit'] = $creditBerita;
-        //     $berita['id_kategori'] = $kategoriBerita;
-
-        //     $berita['foto'] = $upload_data['file_name'];
-
-        //     unlink(FCPATH . 'uploads/content/berita/' . $data[0]->foto);
-
-        //     // echo json_encode($data);
-        //     $sukses = $this->M_berita->updateBerita($berita, $idBerita);
-
-        // }
-
-        // if (!$sukses) {
-        //     flashMessage('success', 'Berita berhasil di sunting.');
-        //     redirect('admin/Berita/kelolaBerita');
-        // } else {
-        //     flashMessage('error', 'Berita gagal di sunting! Silahkan coba lagi');
-        //     redirect('admin/Berita/kelolaBerita');
-        // }
     }
 
     public function setUpdateFoto()
@@ -356,8 +312,11 @@ class Berita extends MY_Controller
 
     public function setDeleteKategori()
     {
+
         $id = $this->input->post('idKategoriDelete');
         // $namaJenisDelete = $this->input->post('namaJenisBisnisDelete');
+
+        $this->M_berita->resetKategoriBerita($id);
 
         $sukses = $this->M_kategori->deleteKategori($id);
 

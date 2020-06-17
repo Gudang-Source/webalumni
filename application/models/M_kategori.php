@@ -15,7 +15,7 @@ class M_kategori extends CI_Model
         $this->db->order_by('id', 'DESC');
         $this->db->where($where);
 
-        return $this->db->get('tb_berita')->result();
+        return $this->db->get('tb_kategori_berita')->result();
     }
 
     function insertKategori($kategori)

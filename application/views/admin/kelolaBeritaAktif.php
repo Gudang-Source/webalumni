@@ -152,7 +152,7 @@
                 <div class="form-group">
                     <label class="col-md-2 control-label">Kategori : </label>
                     <div class="col-md-8">
-                        <select name="idKategori" id="idKategori" class="select form-control validate[required]">
+                        <select name="kategoriBerita" id="kategoriBerita" class="validate[required] select form-control">
                             <?php foreach ($daftarKategori as $kategori) : ?>
                                 <option value="<?= $kategori->id; ?>"><?= $kategori->kategori; ?></option>
                             <?php endforeach; ?>
@@ -185,7 +185,7 @@
                 </div>
                 <div>
                     <div class="panel-body tab-content">
-                        <div class="form-group ">
+                        <div class="form-group hidden">
                             <div class="col-md-9">
                                 <input type="text" class="form-control" id="idUbahFoto" name="idUbahFoto">
                                 <input type="text" class="form-control" id="judulUbahFotoBerita" name="judulUbahFotoBerita">
@@ -310,7 +310,8 @@
                     document.getElementById('isiBerita').value = isiBerita;
                     document.getElementById('sumberBerita').value = sumberBerita;
                     document.getElementById('creditBerita').value = creditBerita;
-                    document.getElementById('idKategori').value = idKategori;
+
+                    $("#kategoriBerita").val(idKategori).change();
                 });
         });
 
