@@ -29,11 +29,12 @@ class Anggota extends MY_Controller
         $data['title'] = 'Anggota - Lihat Anggota';
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
-        $where = array(
-            'tb_anggota.nama_lengkap != ' => 'admin',
-            'tb_anggota.status_anggota != ' => '0'
-        );
-        $data['dataMaster'] = $this->M_anggota->findAnggota('*', $where);
+        // $where = array(
+        //     'tb_anggota.nama_lengkap != ' => 'root',
+        //     'tb_anggota.status_anggota != ' => '0',
+        //     'tb_user.role = ' => '3',
+        // );
+        $data['anggota'] = $this->M_anggota->findAnggotaByRole();
 
         $this->anggota_render('anggota/lihatAnggota', $data);
     }
@@ -96,6 +97,17 @@ class Anggota extends MY_Controller
                 flashMessage('error', 'Calon Anggota Baru gagal di daftarkan! Silahkan coba lagi');
                 redirect('anggota/Anggota/kelolaAnggota');
             }
+        }
+    }
+
+    function detailAnggota($id)
+    {
+        $data['title'] = 'Detail Anggota';
+        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+        $data['anggota'] = $this->M_anggota->findAnggota('*', array('tb_anggota.id_anggota = ' => $id));
+
+        if ($this->session->userdata('role') == 3) {
+            $this->anggota_render('anggota/detailAnggota', $data);
         }
     }
 }
