@@ -27,14 +27,14 @@ class Berita extends MY_Controller
             redirect('anggota');
         }
     }
-    
+
     function index()
     {
         $data['title'] = 'Kelola Berita';
         $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
         $data['calonBerita'] = $this->M_berita->getAllBerita();
-        $data['daftarKategori'] = $this->M_berita->getAllKategori();
+        $data['daftarKategori'] = $this->M_kategori->getAllKategori();
 
         if ($this->session->userdata('role') == 1) {
             $this->admin_render('admin/kelolaCalonBerita', $data);
@@ -57,7 +57,7 @@ class Berita extends MY_Controller
         $creditBerita = $this->input->post('creditBerita');
         $idKategori = $this->input->post('idKategori');
         $idPengupload = $this->input->post('idPengupload');
-        
+
         $filename = "berita-" . $judulBerita . "-" . time();
 
         // Set preferences
@@ -83,7 +83,7 @@ class Berita extends MY_Controller
             $data['foto'] = $upload_data['file_name'];
             $data['id_penulis'] = $idPengupload;
             $data['id_kategori'] = $idKategori;
-            if($this->session->userdata('role') == 1 || $this->session->userdata('role') == 2) {
+            if ($this->session->userdata('role') == 1 || $this->session->userdata('role') == 2) {
                 $data['stat_berita'] = '1';
             } else {
                 $data['stat_berita'] = '0';
@@ -135,7 +135,7 @@ class Berita extends MY_Controller
             $berita['stat_berita'] = $sukses;
             $updateBerita = $this->M_berita->updateBerita($berita, $idBerita);
 
-    
+
             if (!$updateBerita) {
                 flashMessage('success', 'Calon Berita berhasil di aktifkan.');
                 redirect('admin/Berita');
@@ -174,7 +174,7 @@ class Berita extends MY_Controller
         $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
         $data['berita'] = $this->M_berita->getAllBerita();
-        $data['daftarKategori'] = $this->M_berita->getAllKategori();
+        $data['daftarKategori'] = $this->M_kategori->getAllKategori();
 
         if ($this->session->userdata('role') == 1) {
             $this->admin_render('admin/kelolaBeritaAktif', $data);
@@ -202,23 +202,23 @@ class Berita extends MY_Controller
         //load upload class library
         // $this->load->library('upload', $config);
 
-            $berita['judul_berita'] = $judulBerita;
-            $berita['isi_berita'] = $isiBerita;
-            $berita['sumber'] = $sumberBerita;
-            $berita['credit'] = $creditBerita;
-            $berita['id_kategori'] = $kategoriBerita;
+        $berita['judul_berita'] = $judulBerita;
+        $berita['isi_berita'] = $isiBerita;
+        $berita['sumber'] = $sumberBerita;
+        $berita['credit'] = $creditBerita;
+        $berita['id_kategori'] = $kategoriBerita;
 
-            // echo json_encode($data);
-            $sukses = $this->M_berita->updateBerita($berita, $idBerita);
+        // echo json_encode($data);
+        $sukses = $this->M_berita->updateBerita($berita, $idBerita);
 
-            if (!$sukses) {
-                flashMessage('success', 'Berita berhasil di ubah.');
-                redirect('admin/Berita/kelolaBerita');
-            } else {
-                flashMessage('error', 'Berita gagal di ubah! Silahkan coba lagi');
-                redirect('admin/Berita/kelolaBerita');
-            }
-        
+        if (!$sukses) {
+            flashMessage('success', 'Berita berhasil di ubah.');
+            redirect('admin/Berita/kelolaBerita');
+        } else {
+            flashMessage('error', 'Berita gagal di ubah! Silahkan coba lagi');
+            redirect('admin/Berita/kelolaBerita');
+        }
+
 
         // if (!$this->upload->do_upload('fileSaya')) {
         //     flashMessage('error', 'Maaf, Upload gambar calon anggota gagal! Silahkan coba lagi');
@@ -233,16 +233,16 @@ class Berita extends MY_Controller
         //     $berita['sumber'] = $sumberBerita;
         //     $berita['credit'] = $creditBerita;
         //     $berita['id_kategori'] = $kategoriBerita;
-            
+
         //     $berita['foto'] = $upload_data['file_name'];
-            
+
         //     unlink(FCPATH . 'uploads/content/berita/' . $data[0]->foto);
 
         //     // echo json_encode($data);
         //     $sukses = $this->M_berita->updateBerita($berita, $idBerita);
 
         // }
-        
+
         // if (!$sukses) {
         //     flashMessage('success', 'Berita berhasil di sunting.');
         //     redirect('admin/Berita/kelolaBerita');
@@ -275,14 +275,14 @@ class Berita extends MY_Controller
             $upload_data = $this->upload->data();
 
             $data = $this->M_berita->findBerita('foto', array('tb_berita.id_berita = ' => $idBerita));
-            
+
             $berita['foto'] = $upload_data['file_name'];
-            
+
             unlink(FCPATH . 'uploads/content/berita/' . $data[0]->foto);
 
             // echo json_encode($data);
             $sukses = $this->M_berita->updateBerita($berita, $idBerita);
-            
+
             if (!$sukses) {
                 flashMessage('success', 'Foto berhasil di ubah.');
                 redirect('admin/Berita/kelolaBerita');
@@ -325,7 +325,6 @@ class Berita extends MY_Controller
         if ($this->session->userdata('role') == 1) {
             $this->admin_render('admin/kelolaBeritaAktif', $data);
         }
-
     }
 
     function kelolaKategori()
