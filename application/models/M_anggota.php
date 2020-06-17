@@ -77,10 +77,10 @@ class M_anggota extends CI_Model
         return $this->db->get('tb_pemulihan')->result();
     }
 
-    function updatePemulihan($anggota, $id)
+    function updatePemulihan($statusPemuliahn, $id)
     {
         $this->db->where('id_pemulihan', $id);
-        $this->db->update('tb_pemulihan', $anggota);
+        $this->db->update('tb_pemulihan', $statusPemuliahn);
     }
 
     function findAnggotaByRole()

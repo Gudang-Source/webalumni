@@ -10,6 +10,8 @@
     <h2>Kelola Pemulihan Anggota</h2>
 </div>
 
+<?= showFlashMessage(); ?>
+
 
 <div class="page-content-wrap">
 
