@@ -378,6 +378,7 @@ class Anggota extends MY_Controller
             $passWord = md5($pass);
             $user['password'] = $passWord;
             $updateAnggota = $this->M_user->updateUser($user, $userIdPemulihan);
+
             $this->M_anggota->deletePemulihan($idPemulihan);
 
             if (!$updateAnggota) {
