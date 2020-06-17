@@ -89,4 +89,11 @@ class M_anggota extends CI_Model
 
         return $this->db->query($query)->result();
     }
+
+    function findAnggotaLikeNamaByRole($nama)
+    {
+        $query = "SELECT * FROM `tb_anggota` JOIN `tb_user` ON `tb_anggota`.`user_id` = `tb_user`.`id_user` WHERE `tb_anggota`.`nama_lengkap` LIKE '%$nama%' AND `tb_anggota`.`status_anggota` != '0' AND `tb_user`.`role` = '3' ORDER BY `id_anggota` DESC";
+
+        return $this->db->query($query)->result();
+    }
 }

@@ -19,7 +19,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <p>Cari Anggota</p>
-                    <form action="<?= base_url('admin/Anggota/cariAnggota'); ?>" method="post">
+                    <form action="<?= base_url('anggota/Anggota/cariAnggota'); ?>" method="post">
                         <div class="form-group">
                             <div class="col-md-10">
                                 <div class="input-group">
@@ -36,7 +36,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-2">
-                                <a href="<?= base_url('admin/Anggota/kelolaAnggota'); ?>" class="btn btn-primary">Reset
+                                <a href="<?= base_url('anggota/Anggota'); ?>" class="btn btn-primary">Reset
                                     Search</a>
                             </div>
                         </div>
@@ -47,6 +47,14 @@
     </div>
 
     <div class="row">
+        <?php if (empty($anggota)) : ?>
+        <tr>
+            <td colspan="7">
+                <h2 class="text-center">Data tidak ditemukan</h2>
+            </td>
+        </tr>
+        <?php else : ?>
+
         <?php foreach ($anggota as $A) { ?>
         <div class="col-md-3">
             <!-- CONTACT ITEM -->
@@ -106,6 +114,8 @@
         </div>
         <?php } ?>
     </div>
+
+    <?php endif; ?>
 
 </div>
 <!-- END PAGE CONTENT WRAP -->
