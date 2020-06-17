@@ -257,6 +257,7 @@ class Berita extends MY_Controller
         $this->load->model('M_berita');
 
         $idBerita = $this->input->post('idUbahFoto');
+        $judulBerita = $this->input->post('judulUbahFotoBerita');
 
         $filename = "berita-" . $judulBerita . "-" . time();
 
