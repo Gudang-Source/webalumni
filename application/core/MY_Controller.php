@@ -34,6 +34,22 @@ class MY_Controller extends CI_Controller{
         $this->load->view('template/koordinator/indexKoordinator', $data);
     }
 
+    public function alumni_render($content, $data = NULL){
+        $data['header'] = $this->load->view('template/alumni/headerAlumni', $data, TRUE);
+        $data['contentnya'] = $this->load->view($content, $data, TRUE);
+        $data['footer'] = $this->load->view('template/alumni/footerAlumni', $data, TRUE);
+         
+        $this->load->view('template/alumni/indexAlumni', $data);
+    }
+
+    public function umum_render($content, $data = NULL){
+        $data['header'] = $this->load->view('template/umum/headerUmum', $data, TRUE);
+        $data['contentnya'] = $this->load->view($content, $data, TRUE);
+        $data['footer'] = $this->load->view('template/umum/footerUmum', $data, TRUE);
+         
+        $this->load->view('template/umum/indexUmum', $data);
+    }
+
     public function login_render($content, $data = NULL)
     {
         $data['header'] = $this->load->view('template/login/headerLogin', $data, TRUE);
