@@ -21,6 +21,7 @@ class ForgotPassword extends MY_Controller
     public function forgotP()
     {
         $user = $this->input->post('userName');
+        $alamat_email = $this->input->post('emailName');
         $tanggal = date("Y-m-d", mktime(date('m'), date("d"), date('Y')));
 
         $cekAkun = $this->LoginModel->cek_akun($user);
@@ -38,6 +39,7 @@ class ForgotPassword extends MY_Controller
                 $anggota['date_created'] = $tanggal;
                 $anggota['username'] = $user;
                 $anggota['status_pemulihan'] = 0;
+                $anggota['alamat_email'] = $alamat_email;
                 $this->LoginModel->saveForgotPasswordAkun($anggota);
                 flashMessage('success', 'Berhasil! .. Silahkan Tunggu verivikasi admin 1x24 jam');
                 redirect('login/forgotPassword');

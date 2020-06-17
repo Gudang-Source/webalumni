@@ -104,6 +104,7 @@
                             <div class="col-md-12">
                                 <input type="text" class="form-control" name="idPemulihan" id="idPemulihan" />
                                 <input type="text" class="form-control" name="userId" id="userId" />
+                                <input type="text" class="form-control" name="emailName" id="emailName" />
                             </div>
                         </div>
 
@@ -200,6 +201,7 @@ $(".btn-terima").click(function() {
             document.getElementById('userId').value = data_obj.pemulihan[0].id_user;
             document.getElementById('namaUser').value = data_obj.pemulihan[0].username;
             document.getElementById('dateCreated').value = data_obj.pemulihan[0].date_created;
+            document.getElementById('emailName').value = data_obj.pemulihan[0].alamat_email;
 
             document.getElementById('namaUser').innerHTML = data_obj.pemulihan[0].username;
             document.getElementById('dateCreated').innerHTML = data_obj.pemulihan[0].date_created;
