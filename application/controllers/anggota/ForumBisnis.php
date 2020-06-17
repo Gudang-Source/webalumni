@@ -18,9 +18,7 @@ class ForumBisnis extends MY_Controller
             redirect('koordinator');
         } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == '1') {
             redirect('admin');
-        } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == '4') {
-            redirect('alumni');
-        }
+        } 
     }
 
 
