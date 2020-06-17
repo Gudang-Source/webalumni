@@ -15,6 +15,7 @@ class Pengaturan extends MY_Controller
         parent::__construct();
         $this->load->model('M_anggota');
         $this->load->model('M_anggota');
+        $this->load->model('M_user');
 
         if ($this->session->userdata('logged_in') == '' && $this->session->userdata('username') == '' && $this->session->userdata('role') == '') {
             redirect('login');
@@ -59,8 +60,7 @@ class Pengaturan extends MY_Controller
         $ulangiPassword = $this->input->post('ulangiPasswordBaru');
 
         if ($password == $ulangiPassword) {
-
-            $user['password'] = $password;
+            $user['password'] = md5($password);
             $sukses = $this->M_user->updateUser($user, $idUser);
 
             if (!$sukses) {
