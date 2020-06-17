@@ -83,7 +83,7 @@ class Pengaturan extends MY_Controller
 
         if (!$this->upload->do_upload('fileSaya')) {
             flashMessage('error', 'Maaf, Upload gambar profil baru Anda gagal! Silahkan coba lagi');
-            redirect('admin/Pengaturan');
+            redirect('anggota/Pengaturan');
         } else {
             $upload_data = $this->upload->data();
 
@@ -94,10 +94,10 @@ class Pengaturan extends MY_Controller
 
             if (!$sukses) {
                 flashMessage('success', 'Foto profil Anda berhasil diperbarui');
-                redirect('admin/Pengaturan');
+                redirect('anggota/Pengaturan');
             } else {
                 flashMessage('error', 'Foto profil Anda gagal diperbarui! Silahkan coba lagi');
-                redirect('admin/Pengaturan');
+                redirect('anggota/Pengaturan');
             }
         }
     }

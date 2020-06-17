@@ -116,7 +116,7 @@
                     </div>
                     <br>
                     <div class="row">
-                        <form action="<?= base_url('admin/Pengaturan/setUpdateImageProfile'); ?>" method="post"
+                        <form action="<?= base_url('anggota/Pengaturan/setUpdateImageProfile'); ?>" method="post"
                             enctype="multipart/form-data" id="form-update-profile-image">
                             <div class="hidden">
                                 <input type="text" name="namaPengguna" value="<?= $info[0]->nama_lengkap; ?>">
