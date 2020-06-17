@@ -185,9 +185,10 @@
                 </div>
                 <div>
                     <div class="panel-body tab-content">
-                        <div class="form-group hidden">
+                        <div class="form-group ">
                             <div class="col-md-9">
                                 <input type="text" class="form-control" id="idUbahFoto" name="idUbahFoto">
+                                <input type="text" class="form-control" id="judulUbahFotoBerita" name="judulUbahFotoBerita">
                             </div>
                         </div>
                     </div>
@@ -324,11 +325,13 @@
                     var data_obj = JSON.parse(data);
 
                     var idUbahFoto = data_obj.berita[0].id_berita;
+                    var judulUbahFotoBerita = data_obj.berita[0].judul_berita;
                     var foto = data_obj.berita[0].foto;
 
                     document.getElementById('idUbahFoto').value = idUbahFoto;
                     document.getElementById('namaFotoBerita').src += foto;
                     document.getElementById('ubahFotoBerita').value = foto;
+                    document.getElementById('judulUbahFotoBerita').value = judulUbahFotoBerita;
                 });
         });
 
