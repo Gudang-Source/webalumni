@@ -362,19 +362,26 @@ class Anggota extends MY_Controller
         $this->load->model('M_user');
 
         $idPemulihan = $this->input->post('idPemulihan');
-        $getIdUser = $this->M_anggota->findIdUserPemulihan($idPemulihan);
+        $userIdPemulihan = $this->input->post('userId');
 
-        $user['status_pemulihan'] = '1';
-        $sukses = $this->M_anggota->updatePemulihan($user, $idPemulihan);
+        //$getIdUser = $this->M_anggota->findIdUserPemulihan($idPemulihan);
+
+        $statusPemulihan['status_pemulihan'] = '1';
+
+        $sukses = $this->M_anggota->updatePemulihan($statusPemulihan, $idPemulihan);
 
 
-        if ($sukses != 0) {
+        if ($sukses != NULL) {
+            flashMessage('error', 'Error');
+        } else {
             $pass = "12345678";
             $passWord = md5($pass);
-            $anggota['password'] = $passWord;
-            $updateAnggota = $this->M_user->updateUser($anggota, $getIdUser);
+            $user['password'] = $passWord;
+            $updateAnggota = $this->M_user->updateUser($user, $userIdPemulihan);
 
-            if ($updateAnggota) {
+            $this->M_anggota->deletePemulihan($idPemulihan);
+
+            if (!$updateAnggota) {
                 flashMessage('success', 'Calon Anggota berhasil di aktifkan dan dapat masuk menggunakan Username & Password sesuai yang tertera pada saat Aktivasi');
                 redirect('admin/Anggota/kelolaPemulihanAnggota');
             } else {
@@ -382,7 +389,6 @@ class Anggota extends MY_Controller
                 redirect('admin/Anggota/kelolaPemulihanAnggota');
             }
         }
-        flashMessage('error', 'Error');
         redirect('admin/Anggota/kelolaPemulihanAnggota');
     }
 
