@@ -6,12 +6,18 @@
             <strong><?= showFlashMessage(); ?></strong>
 
             <div class="login-title"><strong>Recovery</strong> Akun Anda</div>
-            <p>Ketik email atau nomor telepon Anda untuk mencari akun Anda.</p>
+            <p>Ketik nomor telepon dan email Anda untuk mencari akun Anda.</p>
             <form action="<?= base_url('login/ForgotPassword/forgotP'); ?>" class="form-horizontal" method="post"
                 id="form-login-validate">
                 <div class="form-group">
                     <div class="col-md-12">
-                        <input type="text" class="form-control" placeholder="Username" name="userName" maxlength="50"
+                        <input type="text" class="form-control" placeholder="Username Anda" name="userName"
+                            maxlength="50" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input type="email" class="form-control" placeholder="Email aktif anda" name="emailName"
                             required />
                     </div>
                 </div>

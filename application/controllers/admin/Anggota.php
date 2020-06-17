@@ -380,6 +380,7 @@ class Anggota extends MY_Controller
             $updateAnggota = $this->M_user->updateUser($user, $userIdPemulihan);
 
             $this->M_anggota->deletePemulihan($idPemulihan);
+            $this->sendEmail();
 
             if (!$updateAnggota) {
                 flashMessage('success', 'Calon Anggota berhasil di aktifkan dan dapat masuk menggunakan Username & Password sesuai yang tertera pada saat Aktivasi');
@@ -416,5 +417,33 @@ class Anggota extends MY_Controller
         $data['pemulihan'] = $this->M_anggota->findPemulihan($id);
 
         echo json_encode($data);
+    }
+
+    private function sendEmail()
+    {
+        $emailName = $this->input->post('emailName');
+
+        $config['mailtype'] = 'html';
+        $config['protocol'] = 'smtp';
+        $config['smtp_host'] = 'ssl://smtp.googlemail.com';
+        $config['smtp_user'] = 'dikiardianto19@gmail.com';
+        $config['smtp_pass'] = 'Sumatra-1998';
+        $config['smtp_port'] = 465;
+        $config['newline'] = "\r\n";
+
+
+        $this->load->library('email', $config);
+        $this->email->from('no-reply@alumni.com', 'AlumniIKASMA3BDG.com');
+        $this->email->to($emailName);
+        $this->email->subject('Lupa Password ?');
+        $this->email->message('Permintaan lupa password berhasil disetujui oleh pihak admin, password anda saat ini | 12345678 | Harap untuk segera di ubah');
+
+        if ($this->email->send()) {
+            flashMessage('success', 'Calon Anggota berhasil di aktifkan dan dapat masuk menggunakan Username & Password sesuai yang tertera pada saat Aktivasi');
+            redirect('admin/Anggota/kelolaPemulihanAnggota');
+        } else {
+            flashMessage('error', 'Aktivasi Calon Anggota gagal! Silahkan coba lagi...');
+            redirect('admin/Anggota/kelolaPemulihanAnggota');
+        }
     }
 }
