@@ -14,9 +14,14 @@
     <link href="<?= base_url('assets/back-end/vendor/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="<?= base_url('assets/back-end/vendor/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href="<?= base_url('assets/back-end/vendor/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet"
+        type="text/css">
+    <link
+        href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+        rel='stylesheet' type='text/css'>
+    <link
+        href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
+        rel='stylesheet' type='text/css'>
 
     <!-- Plugin CSS -->
     <link href="<?= base_url('assets/back-end/vendor/magnific-popup/magnific-popup.css') ?>" rel="stylesheet">
@@ -39,7 +44,8 @@
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">IKASMA3BDG</a>
