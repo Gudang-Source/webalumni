@@ -52,70 +52,79 @@
                                             $no = 1;
 
                                             foreach ($calonBerita as $CB) { ?>
-                                                <?php if ($CB->stat_berita == 0) : ?>
-                                                    <tr id="trow_1">
+                                            <?php if ($CB->stat_berita == 0) : ?>
+                                            <tr id="trow_1">
 
-                                                        <td class="text-center"><?= $no; ?></td>
+                                                <td class="text-center"><?= $no; ?></td>
 
-                                                        <td><strong><?= $CB->judul_berita; ?></strong></td>
+                                                <td><strong><?= $CB->judul_berita; ?></strong></td>
 
-                                                        <?php if ($CB->isi_berita == null) { ?>
-                                                            <td>Belum di isi</td>
-                                                        <?php } else { ?>
-                                                            <td>
-                                                                <textarea class="text-primary" cols="40" rows="10" readonly><?= $CB->isi_berita; ?></textarea>
-                                                            </td>
-                                                            <!-- <td><?= $CB->isi_berita; ?></td> -->
-                                                        <?php } ?>
+                                                <?php if ($CB->isi_berita == null) { ?>
+                                                <td>Belum di isi</td>
+                                                <?php } else { ?>
+                                                <td>
+                                                    <textarea class="text-primary" cols="40" rows="10"
+                                                        readonly><?= $CB->isi_berita; ?></textarea>
+                                                </td>
+                                                <!-- <td><?= $CB->isi_berita; ?></td> -->
+                                                <?php } ?>
 
-                                                        <?php if ($CB->sumber == null) { ?>
-                                                            <td>Belum di isi</td>
-                                                        <?php } else { ?>
-                                                            <td><?= $CB->sumber; ?></td>
-                                                        <?php } ?>
+                                                <?php if ($CB->sumber == null) { ?>
+                                                <td>Belum di isi</td>
+                                                <?php } else { ?>
+                                                <td><?= $CB->sumber; ?></td>
+                                                <?php } ?>
 
-                                                        <?php if ($CB->credit == null) { ?>
-                                                            <td>Belum di isi</td>
-                                                        <?php } else { ?>
-                                                            <td><?= $CB->credit; ?></td>
-                                                        <?php } ?>
+                                                <?php if ($CB->credit == null) { ?>
+                                                <td>Belum di isi</td>
+                                                <?php } else { ?>
+                                                <td><?= $CB->credit; ?></td>
+                                                <?php } ?>
 
-                                                        <?php if ($CB->foto == null) { ?>
-                                                            <td><img src="<?= base_url('uploads/no-image.jpg'); ?>" alt="<?= $CB->judul_berita; ?>" title="<?= $CB->judul_berita; ?>" width="80" /></td>
-                                                        <?php } else { ?>
-                                                            <td><img src="<?= base_url('uploads/content/berita/' . $CB->foto); ?>" alt="<?= $CB->judul_berita; ?>" title="<?= $CB->judul_berita; ?>" width="80" height="80" /></td>
-                                                        <?php } ?>
+                                                <?php if ($CB->foto == null) { ?>
+                                                <td><img src="<?= base_url('uploads/no-image.jpg'); ?>"
+                                                        alt="<?= $CB->judul_berita; ?>"
+                                                        title="<?= $CB->judul_berita; ?>" width="80" /></td>
+                                                <?php } else { ?>
+                                                <td><img src="<?= base_url('uploads/content/berita/' . $CB->foto); ?>"
+                                                        alt="<?= $CB->judul_berita; ?>"
+                                                        title="<?= $CB->judul_berita; ?>" width="80" height="80" /></td>
+                                                <?php } ?>
 
-                                                        <?php if ($CB->id_penulis == null) { ?>
-                                                            <td>Belum di isi</td>
-                                                        <?php } else { ?>
-                                                            <td><?= $CB->username; ?></td>
-                                                        <?php } ?>
+                                                <?php if ($CB->id_penulis == null) { ?>
+                                                <td>Belum di isi</td>
+                                                <?php } else { ?>
+                                                <td><?= $CB->username; ?></td>
+                                                <?php } ?>
 
-                                                        <?php if ($CB->kategori == null) { ?>
-                                                            <td>Tidak Ada Kategori</td>
-                                                        <?php } else { ?>
-                                                            <td><?= $CB->kategori; ?></td>
-                                                        <?php } ?>
+                                                <?php if ($CB->kategori == null) { ?>
+                                                <td>Tidak Ada Kategori</td>
+                                                <?php } else { ?>
+                                                <td><?= $CB->kategori; ?></td>
+                                                <?php } ?>
 
-                                                        <?php if ($CB->date_created == null) { ?>
-                                                            <td>Belum di isi</td>
-                                                        <?php } else { ?>
-                                                            <td><?= $CB->date_created; ?></td>
-                                                        <?php } ?>
+                                                <?php if ($CB->date_created == null) { ?>
+                                                <td>Belum di isi</td>
+                                                <?php } else { ?>
+                                                <td><?= $CB->date_created; ?></td>
+                                                <?php } ?>
 
-                                                        <?php if ($CB->time_created == null) { ?>
-                                                            <td>Belum di isi</td>
-                                                        <?php } else { ?>
-                                                            <td><?= $CB->time_created; ?></td>
-                                                        <?php } ?>
+                                                <?php if ($CB->time_created == null) { ?>
+                                                <td>Belum di isi</td>
+                                                <?php } else { ?>
+                                                <td><?= $CB->time_created; ?></td>
+                                                <?php } ?>
 
-                                                        <td>
-                                                            <button type="button" class="btn btn-primary mb-control btn-terima" data-box="#message-box-terima" id="<?= $CB->id_berita; ?>">Terima</button>
-                                                            <button type="button" class="btn btn-danger mb-control btn-tolak" data-box="#message-box-tolak" id="<?= $CB->id_berita; ?>">Tolak</button>
-                                                        </td>
-                                                    </tr>
-                                                <?php endif ?>
+                                                <td>
+                                                    <button type="button" class="btn btn-primary mb-control btn-terima"
+                                                        data-box="#message-box-terima"
+                                                        id="<?= $CB->id_berita; ?>">Terima</button>
+                                                    <button type="button" class="btn btn-danger mb-control btn-tolak"
+                                                        data-box="#message-box-tolak"
+                                                        id="<?= $CB->id_berita; ?>">Tolak</button>
+                                                </td>
+                                            </tr>
+                                            <?php endif ?>
                                             <?php
                                                 $no++;
                                             } ?>
@@ -131,44 +140,52 @@
                         <h5>Tambah Calon Berita Baru IKASMA3BDG</h5>
 
                         <div class="form-group">
-                            <form action="<?= base_url('admin/Berita/tambahCalonBerita'); ?>" class="form-horizontal" id="form-tambah-berita-validate" method="post" enctype="multipart/form-data">
+                            <form action="<?= base_url('admin/Berita/tambahCalonBerita'); ?>" class="form-horizontal"
+                                id="form-tambah-berita-validate" method="post" enctype="multipart/form-data">
                                 <div class="panel-body">
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Judul Berita</label>
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control" name="judulBerita" placeholder="Judul Berita" required clear />
+                                            <input type="text" class="form-control" name="judulBerita"
+                                                placeholder="Judul Berita" required clear />
                                         </div>
                                     </div>
 
-                                    <input type="hidden" class="form-control" name="idPengupload" value="<?= $info[0]->id_user ?>">
+                                    <input type="hidden" class="form-control" name="idPengupload"
+                                        value="<?= $info[0]->id_user ?>">
 
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Isi Berita</label>
                                         <div class="col-md-8">
-                                            <textarea class="form-control" name="isiBerita" placeholder="Isi Berita" rows="4" cols="50"></textarea>
+                                            <textarea class="form-control" name="isiBerita" placeholder="Isi Berita"
+                                                rows="4" cols="50"></textarea>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Sumber</label>
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control" name="sumberBerita" placeholder="Sumber Berita" required clear />
+                                            <input type="text" class="form-control" name="sumberBerita"
+                                                placeholder="Sumber Berita" required clear />
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Credit</label>
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control" name="creditBerita" placeholder="Daftar nama kontributor untuk berita ini" required clear />
+                                            <input type="text" class="form-control" name="creditBerita"
+                                                placeholder="Daftar nama kontributor untuk berita ini" required clear />
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Kategori : </label>
                                         <div class="col-md-8">
-                                            <select name="idKategori" id="idKategori" class="select form-control validate[required]">
+                                            <select name="idKategori" id="idKategori"
+                                                class="select form-control validate[required]">
                                                 <?php foreach ($daftarKategori as $kategori) : ?>
-                                                    <option value="<?= $kategori->id; ?>"><?= $kategori->kategori; ?></option>
+                                                <option value="<?= $kategori->id; ?>"><?= $kategori->kategori; ?>
+                                                </option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>
@@ -193,7 +210,8 @@
                                     <ol>
                                         <li>Berita Baru harus diverifikasi terlebih dahulu agar terdaftar sebagai
                                             Berita aktif.</li>
-                                        <li>Kecuali berita ditambahkan oleh Admin dan Koordinator akan otomatis aktif.</li>
+                                        <li>Kecuali berita ditambahkan oleh Admin dan Koordinator akan otomatis aktif.
+                                        </li>
                                         <li>Setelah di verifikasi, maka Berita baru dapat dipublikasi di halaman
                                             user</li>
                                     </ol>
@@ -207,7 +225,8 @@
 
                         <div class="form-group">
 
-                            <form action="<?= base_url('admin/Anggota/uploadGambar'); ?>" method="post" class="form-horizontal" id="upload-gambar-validate">
+                            <form action="<?= base_url('admin/Anggota/uploadGambar'); ?>" method="post"
+                                class="form-horizontal" id="upload-gambar-validate">
                                 <div class="panel-body">
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Nama Panggilan / Alias</label>
@@ -247,7 +266,8 @@
             <form action="<?= base_url('admin/Berita/aktivasiCalonBerita'); ?>" class="form-horizontal" method="post">
                 <div class="mb-content">
                     <div class="panel-body">
-                        <p>Apakah benar bahwa Berita di bawah ini akan diaktifkan sebagai Berita valid di IKASMA3BDG</p><br>
+                        <p>Apakah benar bahwa Berita di bawah ini akan diaktifkan sebagai Berita valid di IKASMA3BDG</p>
+                        <br>
 
                         <div class="form-group hidden">
                             <div class="col-md-12">
@@ -266,7 +286,8 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label">Isi Berita : </label>
                             <div class="col-md-9">
-                                <textarea class="text-primary" name="isiBerita" id="isiBerita" cols="80" rows="10" readonly></textarea>
+                                <textarea class="text-primary" name="isiBerita" id="isiBerita" cols="80" rows="10"
+                                    readonly></textarea>
                                 <!-- <label class="control-label" id="isiBerita"></label> -->
                             </div>
                         </div>
@@ -287,7 +308,8 @@
 <!-- END MESSAGE BOX ACCEPT CALON BERITA -->
 
 <!-- MESSAGE BOX REJECT CALON BERITA -->
-<div class="message-box message-box-danger animated zoomIn" data-sound="alert" id="message-box-tolak" style="margin-top: -100px;">
+<div class="message-box message-box-danger animated zoomIn" data-sound="alert" id="message-box-tolak"
+    style="margin-top: -100px;">
 
     <div class="mb-container">
         <div class="mb-middle">
@@ -313,7 +335,8 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label">Isi Berita : </label>
                             <div class="col-md-9">
-                                <textarea class="text-primary" name="isiCalonBerita" id="isiCalonBerita" cols="80" rows="10" readonly></textarea>
+                                <textarea class="text-primary" name="isiCalonBerita" id="isiCalonBerita" cols="80"
+                                    rows="10" readonly></textarea>
                                 <!-- <label class="control-label" id="isiCalonBerita"></label> -->
                             </div>
                         </div>
@@ -334,58 +357,58 @@
 <!-- END MESSAGE BOX REJECT CALON BERITA -->
 
 <script type="text/javascript">
-    $("#form-tambah-berita-validate").validate();
+$("#form-tambah-berita-validate").validate();
 
-    $("#file-simple").fileinput({
-        showUpload: false,
-        showCaption: false,
-        browseClass: "btn btn-danger",
-        fileType: "any"
-    });
+$("#file-simple").fileinput({
+    showUpload: false,
+    showCaption: false,
+    browseClass: "btn btn-danger",
+    fileType: "any"
+});
 
-    $(".btn-terima").click(function() {
-        console.log(this.id);
-        var idBerita = this.id;
+$(".btn-terima").click(function() {
+    console.log(this.id);
+    var idBerita = this.id;
 
-        $.post("<?= base_url('admin/Berita/beritaJSON/'); ?>", {
-                id: idBerita
-            },
-            function(data) {
-                var data_obj = JSON.parse(data);
+    $.post("<?= base_url('admin/Berita/beritaJSON/'); ?>", {
+            id: idBerita
+        },
+        function(data) {
+            var data_obj = JSON.parse(data);
 
-                var idBerita = data_obj.berita[0].id_berita;
-                var judulBerita = data_obj.berita[0].judul_berita;
-                var isiBerita = data_obj.berita[0].isi_berita;
-                // var penulis = data_obj.berita[0].penulis;
+            var idBerita = data_obj.berita[0].id_berita;
+            var judulBerita = data_obj.berita[0].judul_berita;
+            var isiBerita = data_obj.berita[0].isi_berita;
+            // var penulis = data_obj.berita[0].penulis;
 
-                document.getElementById('idBerita').value = idBerita;
-                document.getElementById('judulBerita').innerHTML = judulBerita;
-                document.getElementById('isiBerita').value = isiBerita;
-                // document.getElementById('penulis').innerHTML = penulis;
+            document.getElementById('idBerita').value = idBerita;
+            document.getElementById('judulBerita').innerHTML = judulBerita;
+            document.getElementById('isiBerita').value = isiBerita;
+            // document.getElementById('penulis').innerHTML = penulis;
 
-            });
-    });
+        });
+});
 
-    $(".btn-tolak").click(function() {
-        console.log(this.id);
-        var idCalonBerita = this.id;
+$(".btn-tolak").click(function() {
+    console.log(this.id);
+    var idCalonBerita = this.id;
 
-        $.post("<?= base_url('admin/Berita/beritaJSON/') ?>", {
-                id: idCalonBerita
-            },
-            function(data) {
-                var data_obj = JSON.parse(data);
+    $.post("<?= base_url('admin/Berita/beritaJSON/') ?>", {
+            id: idCalonBerita
+        },
+        function(data) {
+            var data_obj = JSON.parse(data);
 
-                var idBerita = data_obj.berita[0].id_berita;
-                var judulCalonBerita = data_obj.berita[0].judul_berita;
-                var isiCalonBerita = data_obj.berita[0].isi_berita;
-                // var penulis = data_obj.berita[0].penulis;
+            var idBerita = data_obj.berita[0].id_berita;
+            var judulCalonBerita = data_obj.berita[0].judul_berita;
+            var isiCalonBerita = data_obj.berita[0].isi_berita;
+            // var penulis = data_obj.berita[0].penulis;
 
-                document.getElementById('idCalonBerita').value = idBerita;
-                document.getElementById('judulCalonBerita').innerHTML = judulCalonBerita;
-                document.getElementById('isiCalonBerita').value = isiCalonBerita;
-                // document.getElementById('penulis').innerHTML = penulis;
+            document.getElementById('idCalonBerita').value = idBerita;
+            document.getElementById('judulCalonBerita').innerHTML = judulCalonBerita;
+            document.getElementById('isiCalonBerita').value = isiCalonBerita;
+            // document.getElementById('penulis').innerHTML = penulis;
 
-            });
-    });
+        });
+});
 </script>
