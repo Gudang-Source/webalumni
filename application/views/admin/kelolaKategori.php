@@ -60,21 +60,16 @@
                                     $no = 1;
                                     foreach ($kategori as $k) {
                                     ?>
-                                        <?php if ($k->id == 1) { ?>
-                                            <tr>
-                                                <td class="text-center"><?= $no++; ?></td>
-                                                <td><strong><?= $k->kategori; ?></strong></td>
-                                            </tr>
-                                        <?php } else { ?>
-                                            <tr>
-                                                <td class="text-center"><?= $no++; ?></td>
-                                                <td><strong><?= $k->kategori; ?></strong></td>
+                                        <tr>
+                                            <td class="text-center"><?= $no++; ?></td>
+                                            <td><strong><?= $k->kategori; ?></strong></td>
+                                            <?php if ($k->id > 1) { ?>
                                                 <td>
                                                     <button type="button" class="btn btn-info btn-rounded btn-ubah-kategori" id="<?= $k->id; ?>" title="Ubah Kategori" data-toggle="modal" name data-target="#ubahKategori"><i class="fa fa-pencil"></i></button>
                                                     <button type="button" class="btn btn-danger btn-rounded mb-control btn-hapus-kategori" id="<?= $k->id; ?>" title="Hapus" data-box="#hapusKategori"><i class="fa fa-times"></i></button>
                                                 </td>
-                                            </tr>
-                                        <?php } ?>
+                                            <?php } ?>
+                                        </tr>
                                     <?php } ?>
                                 </tbody>
                             </table>
