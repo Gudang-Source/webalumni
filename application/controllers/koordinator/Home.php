@@ -36,6 +36,4 @@ class Home extends MY_Controller
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
         $this->koordinator_render('koordinator/home', $data);
     }
-;
-    }
-
+}
