@@ -55,7 +55,7 @@ class Anggota extends MY_Controller
         $noTelepon = $this->input->post('noTelepon');
         $email = $this->input->post('email');
 
-        $filename = "anggota-" . $namaLengkap . "-" . time();
+        $filename = "IKA-SMA3-" . $namaLengkap . "-" . time();
 
         // Set preferences
         $config['upload_path'] = './uploads/avatars';
