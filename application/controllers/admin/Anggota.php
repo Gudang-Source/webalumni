@@ -38,6 +38,7 @@ class Anggota extends MY_Controller
         );
 
         $data['calonAnggota'] = $this->M_anggota->findAnggota('*', $where);
+        $data['daftarHakAkses'] = $this->M_anggota->getAllRole();
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id' => $this->session->userdata('uid')));
 
         if ($this->session->userdata('role') == 1) {
@@ -198,6 +199,12 @@ class Anggota extends MY_Controller
     {
         $idAnggota = $this->input->post('idCalonAnggota');
 
+        $data = $this->M_anggota->findAnggota('nama_foto', array('tb_anggota.id_anggota = ' => $idAnggota));
+
+        // menghapus file foto dahulu
+        unlink(FCPATH . 'uploads/avatars/' . $data[0]->nama_foto);
+
+        // menghapus data di database
         $sukses = $this->M_anggota->deleteAnggota($idAnggota);
 
         if (!$sukses) {
@@ -327,6 +334,11 @@ class Anggota extends MY_Controller
 
         $id = $this->input->post('idAnggotaHapus');
         $idUser = $this->input->post('idUserHapus');
+
+        $data = $this->M_anggota->findAnggota('nama_foto', array('tb_anggota.id_anggota = ' => $id));
+
+        // menghapus file foto dahulu
+        unlink(FCPATH . 'uploads/avatars/' . $data[0]->nama_foto);
 
         $deleteAnggota = $this->M_anggota->deleteAnggota($id);
         $deleteUser = $this->M_user->deleteUser($idUser);
