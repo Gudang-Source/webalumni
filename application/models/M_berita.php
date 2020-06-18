@@ -12,7 +12,6 @@ class M_berita extends CI_Model
         $this->db->join('tb_kategori_berita', 'tb_berita.id_kategori = tb_kategori_berita.id');
 
         return $this->db->get()->result();
-
     }
 
     function findBerita($select, $where)
@@ -51,5 +50,13 @@ class M_berita extends CI_Model
     {
         $this->db->where('id_berita', $id);
         $this->db->delete('tb_berita');
+    }
+
+    function resetKategoriBerita($id)
+    {
+        $data['id_kategori'] = 1;
+
+        $this->db->where('id_kategori', $id);
+        $this->db->update('tb_berita', $data);
     }
 }
