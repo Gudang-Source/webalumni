@@ -12,6 +12,11 @@ class Register extends MY_Controller {
     function index() {
         $data['title'] = 'Registrasi Calon Anggota IKASMA3BDG';
         $this->login_render('login/Register', $data);
+	}
+	
+	function NotifRegister() {
+        $data['title'] = 'Registrasi Calon Anggota IKASMA3BDG';
+        $this->login_render('login/Register', $data);
     }
     
     function createRegisterAnggota() {
@@ -57,8 +62,7 @@ class Register extends MY_Controller {
 //			echo json_encode($dataGambar);
 //			echo json_encode($anggota);
 
-			flashMessage('success', 'Anda berhasil mendaftar. Tunggu konfirmasi dari Admin / Koordinator jika Keanggotaan Anda telah di aktifkan / verifikasi');
-            redirect('register');
+            redirect('login/NotifRegister', $data);
 		}
         
     }
