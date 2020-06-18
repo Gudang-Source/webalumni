@@ -51,7 +51,7 @@
                             <table class="table table-bordered table-striped table-actions datatable">
                                 <thead>
                                     <tr>
-                                        <th width="50">No</th>
+                                        <th width="50" class="text-center">No</th>
                                         <th width="100">Nama Kategori</th>
                                         <th width="100" class="text-center">Aksi</th>
                                     </tr>
