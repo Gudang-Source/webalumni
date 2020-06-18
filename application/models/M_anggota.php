@@ -10,6 +10,11 @@ class M_anggota extends CI_Model
         return $this->db->get('tb_anggota')->result();
     }
 
+    function getAllRole()
+    {
+        return $this->db->get('tb_user_role')->result();
+    }
+
     function findAnggota($select, $where)
     {
         $this->db->select($select);

@@ -7,9 +7,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
  * Created by Lut Dinar Fadila 2018
 */
 
-class Anggota extends MY_Controller {
-    
-    function __construct() {
+class Anggota extends MY_Controller
+{
+
+    function __construct()
+    {
         parent::__construct();
         $this->load->model('M_anggota');
         $this->load->model('M_user');
@@ -21,23 +23,27 @@ class Anggota extends MY_Controller {
         } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == '3' || $this->session->userdata('role') == '4') {
             redirect('anggota');
         }
-        
     }
-    
-    function index() {
+
+    function index()
+    {
         $data['title'] = 'Kelola Calon Anggota';
-        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
-        $angkatan = $data['info'][0]->angkatan;
 
         $where = array(
             'tb_anggota.status_anggota = ' => '0',
-            'tb_anggota.angkatan = ' => $angkatan
+            'tb_anggota.nama_lengkap != ' => 'admin'
         );
+
         $data['calonAnggota'] = $this->M_anggota->findAnggota('*', $where);
-        $this->koordinator_render('koordinator/anggotaBaru', $data);
+        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id' => $this->session->userdata('uid')));
+
+        if ($this->session->userdata('role') == 2) {
+            $this->koordinator_render('koordinator/anggotaBaru', $data);
+        }
     }
-    
-    function kelolaAnggota() {
+
+    function kelolaAnggota()
+    {
         $data['title'] = 'Kelola Anggota';
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
         $angkatan = $data['info'][0]->angkatan;
@@ -50,7 +56,7 @@ class Anggota extends MY_Controller {
         $data['anggota'] = $this->M_anggota->findAnggota('*', $where);
         $this->koordinator_render('koordinator/kelolaAnggota', $data);
     }
-    
+
     // function dataMaster() {
     //     $data['title'] = 'Data Anggota Master';
     //     $data['info'] = $this->KoordinatorAnggotaModel->getInfoBySessionId($this->session->userdata('aid'));
@@ -67,83 +73,85 @@ class Anggota extends MY_Controller {
         $noTelepon = $this->input->post('noTelepon');
         $email = $this->input->post('email');
 
-        $filename = "IKA-SMA3-".$namaLengkap."-".time();
+        $filename = "anggota-" . $namaLengkap . "-" . time();
 
-        // Set preferences for upload
-		$config['upload_path'] = './uploads/avatars';
-		$config['allowed_types'] = 'png|jpg|jpeg';
-		$config['file_name'] = $filename;
+        // Set preferences
+        $config['upload_path'] = './uploads/avatars';
+        $config['allowed_types'] = 'png|jpg|jpeg';
+        $config['file_name'] = $filename;
 
-		// load upload class library
-		$this->load->library('upload', $config);
 
-		if (!$this->upload->do_upload('fileSaya')) {
-			// FAIL
-			flashMessage('error', 'Maaf, Upload gambar calon anggota gagal! Silahkan coba lagi');
-			redirect('koordinator/Anggota');
-		} else {
-			// SUCCESS
-			$upload_data = $this->upload->data();
+        //load upload class library
+        $this->load->library('upload', $config);
 
-			$data['nama_lengkap'] = $namaLengkap;
-			$data['nama_panggilan_alias'] = $namaPanggilan;
-			$data['tanggal_lahir'] = $this->input->post('tglLahir');
-			$data['angkatan'] = $angkatan;
-			$data['no_telp'] = $noTelepon;
-			$data['email'] = $email;
-        	$data['nama_foto'] = $upload_data['file_name'];
-			$data['status_anggota'] = '0';
+        if (!$this->upload->do_upload('fileSaya')) {
+            flashMessage('error', 'Maaf, Upload gambar calon anggota gagal! Silahkan coba lagi');
+            redirect('koordinator/Anggota');
+        } else {
+            $upload_data = $this->upload->data();
 
-			$sukses = $this->M_anggota->insertNewAnggota($data);
+            $data['nama_lengkap'] = $namaLengkap;
+            $data['nama_panggilan_alias'] = $namaPanggilan;
+            $data['tanggal_lahir'] = $this->input->post('tglLahir');
+            $data['angkatan'] = $angkatan;
+            $data['no_telp'] = $noTelepon;
+            $data['email'] = $email;
+            $data['nama_foto'] = $upload_data['file_name'];
+            $data['status_anggota'] = '0';
 
-			if (!$sukses) {
-				flashMessage('success', 'Calon Anggota Baru berhasil di daftarkan. Silahkan verifikasi di Permohonan Calon Anggota');
-				redirect('koordinator/Anggota');
-			} else {
-				flashMessage('error', 'Calon Anggota Baru gagal di daftarkan! Silahkan coba lagi');
-				redirect('koordinator/Anggota');
-			}
-		}
+            // echo json_encode($data);
+            $sukses = $this->M_anggota->insertNewAnggota($data);
 
+            if (!$sukses) {
+                flashMessage('success', 'Calon Anggota Baru berhasil di daftarkan. Silahkan verifikasi di Permohonan Calon Anggota');
+                redirect('koordinator/Anggota');
+            } else {
+                flashMessage('error', 'Calon Anggota Baru gagal di daftarkan! Silahkan coba lagi');
+                redirect('koordinator/Anggota');
+            }
+        }
     }
 
-    function anggotaJSON($id) {
-        
+    function anggotaJSON($id)
+    {
+
         $data['anggota'] = $this->M_anggota->findAnggota('*', array('tb_anggota.id_anggota = ' => $id));
-        
+
         echo json_encode($data);
     }
-    
-    function aktivasiCalonAnggota() {
+
+    function aktivasiCalonAnggota()
+    {
+        $this->load->model('M_user');
+
+        $pass = $this->input->post('password');
         $idAnggota = $this->input->post('idAnggota');
-        $pass = md5($this->input->post('password'));
+
         $user['username'] = $this->input->post('username');
-        $user['password'] = $pass;
+        $user['password'] = md5($pass);
         $user['status_akun'] = '1';
         $user['role'] = $this->input->post('role');
-        
-        $userId = $this->M_user->insertUser($user);
-        
-        if ($userId != 0) {
 
-            $anggota['user_id'] = $userId;
+        // echo json_encode($user);
+        $sukses = $this->M_user->insertUser($user);
+
+        if ($sukses != 0) {
+
+            $anggota['user_id'] = $sukses;
             $anggota['status_anggota'] = '1';
+            $updateAnggota = $this->M_anggota->updateAnggota($anggota, $idAnggota);
 
-            $updateCalonAnggota = $this->M_anggota->updateAnggota($anggota, $idAnggota);
-
-            if (!$updateCalonAnggota) {
-                flashMessage('success', 'Calon Anggota berhasil di aktifkan dan dapat masuk menggunakan No. Telepon yang didaftarkan');
+            if (!$updateAnggota) {
+                flashMessage('success', 'Calon Anggota berhasil di aktifkan dan dapat masuk menggunakan Username & Password sesuai yang tertera pada saat Aktivasi');
                 redirect('koordinator/Anggota');
             } else {
                 flashMessage('error', 'Aktivasi Calon Anggota gagal! Silahkan coba lagi...');
-                redirect('admin/Anggota');
+                redirect('koordinator/Anggota');
             }
-            
         } else {
             flashMessage('error', 'Maaf, Terjadi kesalahan pada saat proses pembuatan akun anggota baru');
-            redirect('admin/Anggota');
+            redirect('koordinator/Anggota');
         }
-
     }
 
     function tolakCalonAnggota()
@@ -159,7 +167,6 @@ class Anggota extends MY_Controller {
             flashMessage('error', 'Calon Anggota gagal ditolak sebagai keanggotaan! Silahkan coba lagi');
             redirect('koordinator/Anggota');
         }
-        
     }
 
     function getAnggotaByIds($id)
@@ -202,7 +209,7 @@ class Anggota extends MY_Controller {
         $anggota['jabatan'] = $this->input->post('jabatan');
         $anggota['nama_perusahaan'] = $this->input->post('namaPerusahaan');
         $anggota['bisnis_usaha'] = $this->input->post('bisnisUsaha');
-        
+
         // if ($sosialPendidikan == "on") {
         //     $anggota['sosial_pendidikan'] = "1";
         // } else {
@@ -255,7 +262,7 @@ class Anggota extends MY_Controller {
         if (!$updateAnggota) {
 
             $updateUser = $this->M_user->updateUser($user, $idUser);
-            
+
             if (!$updateUser) {
                 flashMessage('success', 'Data anggota berhasil diubah');
                 redirect('admin/Anggota/kelolaAnggota');
@@ -263,12 +270,10 @@ class Anggota extends MY_Controller {
                 flashMessage('error', 'Data anggota gagal diubah! Silahkan coba lagi');
                 redirect('admin/Anggota/kelolaAnggota');
             }
-            
         } else {
             flashMessage('error', 'Maaf, Terjadi kesalahan pada perubahan data anggota');
             redirect('admin/Anggota/kelolaAnggota');
         }
-
     }
 
     public function hapusAnggota()
@@ -282,30 +287,29 @@ class Anggota extends MY_Controller {
 
             $deleteUser = $this->M_user->deleteUser($idUser);
             if ($deleteUser) {
-                flashMessage('success','Anggota berhasil dihapus');
+                flashMessage('success', 'Anggota berhasil dihapus');
                 redirect('koordinator/Anggota/kelolaAnggota');
             } else {
                 flashMessage('error', 'Anggota gagal dihapus! Silahkan coba lagi');
                 redirect('koordinator/Anggota/kelolaAnggota');
             }
-            
         } else {
             flashMessage('error', 'Maaf, Terjadi kesalahan pada saat penghapusan data anggota');
             redirect('koordinator/Anggota/kelolaAnggota');
         }
     }
 
-    function cariAnggota() {
+    function cariAnggota()
+    {
         $nama = $this->input->post('namaAnggota');
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('aid')));
         $angkatan = $data['info'][0]->angkatan;
 
-        $where = "tb_anggota.angkatan = ".$angkatan;
+        $where = "tb_anggota.angkatan = " . $angkatan;
         $anggota['anggota'] = $this->KoordinatorAnggotaModel->getAnggotaByName($where, $nama);
-            
+
         echo json_encode($anggota);
         echo '<br>';
         echo json_encode($nama);
     }
-
 }
