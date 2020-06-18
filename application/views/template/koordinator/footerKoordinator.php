@@ -3,7 +3,7 @@
         </div>
         <!-- END PAGE CONTAINER -->
 
-        <!-- MESSAGE BOX SIGN-OUT -->
+        <!-- MESSAGE BOX-->
         <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
             <div class="mb-container">
                 <div class="mb-middle">
@@ -21,17 +21,18 @@
                 </div>
             </div>
         </div>
-        <!-- END MESSAGE BOX SIGN-OUT -->
+        <!-- END MESSAGE BOX-->
 
         <!-- START PRELOADS -->
         <audio id="audio-alert" src="<?php echo base_url('assets/html/audio/alert.mp3') ?>" preload="auto"></audio>
         <audio id="audio-fail" src="<?php echo base_url('assets/html/audio/fail.mp3') ?>" preload="auto"></audio>
         <!-- END PRELOADS -->                  
         
-        <!-- START SCRIPTS -->
-        <script type="text/javascript" src="<?php echo base_url('assets/html/js/plugins/bootstrap/bootstrap.min.js') ?>"></script>
-        
-        <!-- START THIS PAGE PLUGINS-->
+        <!-- START PLUGINS -->
+        <script type="text/javascript" src="<?php echo base_url('assets/html/js/plugins/bootstrap/bootstrap.min.js') ?>"></script>        
+        <!-- END PLUGINS -->
+
+        <!-- START THIS PAGE PLUGINS-->        
         <script type='text/javascript' src="<?php echo base_url('assets/html/js/plugins/icheck/icheck.min.js') ?>"></script>        
         <script type="text/javascript" src="<?php echo base_url('assets/html/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js') ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/html/js/plugins/scrolltotop/scrolltopcontrol.js') ?>"></script>
@@ -52,13 +53,13 @@
         <!-- TAB  PLUGINS -->
         <script type='text/javascript' src='<?php echo base_url('assets/html/js/plugins/icheck/icheck.min.js') ?>'></script>
         <script type="text/javascript" src="<?php echo base_url('assets/html/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js') ?>"></script>
-
+                       
         <script type="text/javascript" src="<?php echo base_url('assets/html/js/plugins/bootstrap/bootstrap-file-input.js') ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/html/js/plugins/bootstrap/bootstrap-select.js') ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/html/js/plugins/tagsinput/jquery.tagsinput.min.js') ?>"></script>
         <!-- TAB PLUGINS -->    
 
-        <!--TABLE PLUGINS -->
+          <!--TABLE PLUGINS -->
         <script type='text/javascript' src='<?php echo base_url('assets/html/js/plugins/icheck/icheck.min.js') ?>'></script>
         <script type="text/javascript" src="<?php echo base_url('assets/html/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js') ?>"></script>
         
@@ -66,7 +67,7 @@
         <!--TABLE PLUGINS -->  
 
         <script type="text/javascript" src="<?php echo base_url('assets/html/js/plugins/dropzone/dropzone.min.js') ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('assets/html/js/plugins/fileinput/fileinput.min.js') ?>"></script> 
+        <script type="text/javascript" src="<?php echo base_url('assets/html/js/plugins/fileinput/fileinput.min.js') ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('assets/html/js/plugins/filetree/jqueryFileTree.js'); ?>"></script>    
 
         <!-- START TEMPLATE -->

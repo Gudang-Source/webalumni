@@ -8,11 +8,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
  */
 class KoordinatorHomeModel extends CI_Model
 {
-
-	function getInfoBySessionId()
+	
+	function getInfoBySessionId($id)
 	{
 		$this->db->select('nama_lengkap, nama_foto');
-		$this->db->where('user_id', $this->session->userdata('uid'));
+		$this->db->where('user_id', $id);
 
 		return $this->db->get('tb_anggota')->result();
 	}
