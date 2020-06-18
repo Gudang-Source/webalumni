@@ -66,7 +66,7 @@
                                 <a class="profile-control-right btn-hapus-berita" title="Hapus" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-hapus-berita"><span class="fa fa-trash-o"></span></a>
                             </div>
                         </div>
-                        <div class="panel-body" style="height: 200px;">
+                        <div class="panel-body" style="height: 100%;">
                             <div class="contact-info">
 
                                 <?php if ($B->date_created == "") { ?>
@@ -85,6 +85,12 @@
                                     <p><small>Penulis</small><br>Belum di isi</p>
                                 <?php } else { ?>
                                     <p><small>Penulis</small><br><?= $B->username; ?></p>
+                                <?php } ?>
+
+                                <?php if ($B->kategori == "") { ?>
+                                    <p><small>Kategori</small><br>Belum di isi</p>
+                                <?php } else { ?>
+                                    <p><small>Kategori</small><br><?= $B->kategori; ?></p>
                                 <?php } ?>
 
                                 <a class="btn btn-primary btn-isi-berita" title="Isi Berita" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-isi-berita">Isi Berita</a>
@@ -131,7 +137,7 @@
                 <div div class="form-group">
                     <label class="col-md-2 control-label">Isi Berita</label>
                     <div class="col-md-8">
-                        <textarea class="form-control" id="isiBerita" name="isiBerita" placeholder="Isi berita" rows="4" cols="50"></textarea>
+                        <textarea class="form-control" id="isiBerita" name="isiBerita" placeholder="Isi berita" rows="20" cols="50"></textarea>
                     </div>
                 </div>
 
@@ -263,15 +269,16 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h2 class="modal-title" id="judulIsiBerita"></h2>
-
-
                 <div class="form-group hidden">
                     <div class="col-md-9">
                         <input type="text" class="form-control" id="idIsiBerita" name="idIsiBerita">
                     </div>
                 </div>
-                <br>
+                <hr>
                 <p class="h4" id="isiBeritaOpened" name="isiBeritaOpened"></p>
+                <hr>
+                <p id="sumberBeritaOpened" name="sumberBeritaOpened"><small>Sumber</small> : </p>
+                <p id="creditBeritaOpened" name="creditBeritaOpened"><small>Credit</small> : </p>
             </div>
             </>
         </div>
@@ -364,10 +371,13 @@
 
                     var judulIsiBerita = data_obj.berita[0].judul_berita;
                     var isiBeritaOpened = data_obj.berita[0].isi_berita;
+                    var sumberBeritaOpened = data_obj.berita[0].sumber;
+                    var creditBeritaOpened = data_obj.berita[0].credit;
 
                     document.getElementById('judulIsiBerita').innerHTML = judulIsiBerita;
-                    document.getElementById('isiBeritaOpened').innerHTML = isiBeritaOpened;
-
+                    document.getElementById('isiBeritaOpened').innerHTML = isiBeritaOpened.replace(/\r\n|\r|\n/g, "<br />");
+                    document.getElementById('sumberBeritaOpened').innerHTML += sumberBeritaOpened;
+                    document.getElementById('creditBeritaOpened').innerHTML += creditBeritaOpened;
                 });
         });
     </script>
