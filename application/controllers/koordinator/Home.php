@@ -9,7 +9,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Home extends MY_Controller
 {
-    
+
     function __construct()
     {
         parent::__construct();
@@ -21,8 +21,11 @@ class Home extends MY_Controller
             redirect('admin');
         } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == '3') {
             redirect('anggota');
+        } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == '4') {
+            redirect('alumni');
+        } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == '5') {
+            redirect('umum');
         }
-        
     }
 
     public function index()
@@ -31,5 +34,4 @@ class Home extends MY_Controller
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
         $this->koordinator_render('koordinator/home', $data);
     }
-
 }
