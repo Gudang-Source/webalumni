@@ -10,6 +10,9 @@ if (defined('BASEPATH') or exit('No direct script access allowed'));
 class Anggota extends MY_Controller
 {
 
+    // ==================================================
+    // ------------------ CONTSTRUCTOR ------------------
+    // ==================================================
     function __construct()
     {
         parent::__construct();
@@ -25,9 +28,21 @@ class Anggota extends MY_Controller
             redirect('koordinator');
         } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == '3') {
             redirect('anggota');
+        } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == '4') {
+            redirect('alumni');
+        } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == '5') {
+            redirect('umum');
         }
     }
-
+    // ==================================================
+    // ------------------ CONTSTRUCTOR ------------------
+    // ==================================================
+    //
+    //
+    //
+    // ==================================================
+    // ---------------------- READ ----------------------
+    // ==================================================
     function index()
     {
         $data['title'] = 'Kelola Calon Anggota';
@@ -44,9 +59,59 @@ class Anggota extends MY_Controller
         if ($this->session->userdata('role') == 1) {
             $this->admin_render('admin/anggotaBaru', $data);
         }
-        //         echo json_encode($data);
     }
 
+    function kelolaAnggota()
+    {
+        $data['title'] = 'Kelola Anggota';
+
+        $where = array(
+            'tb_anggota.status_anggota !=' => '0',
+            'tb_anggota.user_id != ' => $this->session->userdata('uid')
+        );
+        $data['anggota'] = $this->M_anggota->findAnggota('*', $where);
+        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id' => $this->session->userdata('uid')));
+
+        if ($this->session->userdata('role') == 1) {
+            $this->admin_render('admin/kelolaAnggota', $data);
+        }
+    }
+
+    function detailAnggota($id)
+    {
+        $data['title'] = 'Detail Anggota';
+        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+        $data['anggota'] = $this->M_anggota->findAnggota('*', array('tb_anggota.id_anggota = ' => $id));
+
+        if ($this->session->userdata('role') == 1) {
+            $this->admin_render('admin/detailAnggota', $data);
+        }
+    }
+
+    function kelolaPemulihanAnggota()
+    {
+        $data['title'] = 'Kelola Pemulihan Anggota';
+
+        $where = array(
+            'tb_anggota.status_anggota !=' => '0',
+            'tb_anggota.user_id != ' => $this->session->userdata('uid')
+        );
+        $data['pemulihan'] = $this->M_anggota->getAllPemulihanAnggota();
+        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id' => $this->session->userdata('uid')));
+
+        if ($this->session->userdata('role') == 1) {
+            $this->admin_render('admin/kelolaPemulihanAnggota', $data);
+        }
+    }
+    // ==================================================
+    // ---------------------- READ ----------------------
+    // ==================================================
+    //
+    //
+    //
+    // ==================================================
+    // --------------------- CREATE ---------------------
+    // ==================================================
     public function tambahCalonAnggota()
     {
         $namaLengkap = $this->input->post('namaLengkap');
@@ -81,7 +146,6 @@ class Anggota extends MY_Controller
             $data['nama_foto'] = $upload_data['file_name'];
             $data['status_anggota'] = '0';
 
-            // echo json_encode($data);
             $sukses = $this->M_anggota->insertNewAnggota($data);
 
             if (!$sukses) {
@@ -93,74 +157,15 @@ class Anggota extends MY_Controller
             }
         }
     }
-
-    function kelolaAnggota()
-    {
-        $data['title'] = 'Kelola Anggota';
-
-        $where = array(
-            'tb_anggota.status_anggota !=' => '0',
-            'tb_anggota.user_id != ' => $this->session->userdata('uid')
-        );
-        $data['anggota'] = $this->M_anggota->findAnggota('*', $where);
-        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id' => $this->session->userdata('uid')));
-
-        if ($this->session->userdata('role') == 1) {
-            $this->admin_render('admin/kelolaAnggota', $data);
-        }
-    }
-
-    function detailAnggota($id)
-    {
-        $data['title'] = 'Detail Anggota';
-        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
-        $data['anggota'] = $this->M_anggota->findAnggota('*', array('tb_anggota.id_anggota = ' => $id));
-
-        if ($this->session->userdata('role') == 1) {
-            $this->admin_render('admin/detailAnggota', $data);
-        }
-    }
-
-    function cariAnggota()
-    {
-        $data['title'] = 'Kelola Anggota';
-
-        $nama = $this->input->post('namaAnggota');
-
-        $where = "tb_anggota.status_anggota != 0";
-        $data['anggota'] = $this->M_anggota->findAnggotaLikeNama($where, $nama);
-        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
-
-        if ($this->session->userdata('role') == 1) {
-            $this->admin_render('admin/kelolaAnggota', $data);
-        }
-
-        // echo json_encode($data);
-        // echo '<br>';
-        // echo json_encode($nama);
-    }
-
-    function dataMaster()
-    {
-        $data['title'] = 'Tambah Data Anggota Master';
-        $data['dataMaster'] = $this->AdminAnggotaModel->getAllDataMaster();
-        $data['info'] = $this->AdminHomeModel->getInfoBySessionId($this->session->userdata('aid'));
-
-        //        echo json_encode($data);
-        if ($this->session->userdata('role') == 1) {
-            $this->admin_render('admin/dataMasterAnggota', $data);
-        }
-    }
-
-    function anggotaJSON()
-    {
-        $id = $this->input->post('id');
-
-        $data['anggota'] = $this->M_anggota->findAnggota('*', array('tb_anggota.id_anggota = ' => $id));
-
-        echo json_encode($data);
-    }
-
+    // ==================================================
+    // --------------------- CREATE ---------------------
+    // ==================================================
+    //
+    //
+    //
+    // ==================================================
+    // --------------------- UPDATE ---------------------
+    // ==================================================
     function aktivasiCalonAnggota()
     {
         $this->load->model('M_user');
@@ -173,7 +178,6 @@ class Anggota extends MY_Controller
         $user['status_akun'] = '1';
         $user['role'] = $this->input->post('role');
 
-        // echo json_encode($user);
         $sukses = $this->M_user->insertUser($user);
 
         if ($sukses != 0) {
@@ -193,35 +197,6 @@ class Anggota extends MY_Controller
             flashMessage('error', 'Maaf, Terjadi kesalahan pada saat proses pembuatan akun anggota baru');
             redirect('admin/Anggota');
         }
-    }
-
-    function tolakCalonAnggota()
-    {
-        $idAnggota = $this->input->post('idCalonAnggota');
-
-        $data = $this->M_anggota->findAnggota('nama_foto', array('tb_anggota.id_anggota = ' => $idAnggota));
-
-        // menghapus file foto dahulu
-        unlink(FCPATH . 'uploads/avatars/' . $data[0]->nama_foto);
-
-        // menghapus data di database
-        $sukses = $this->M_anggota->deleteAnggota($idAnggota);
-
-        if (!$sukses) {
-            flashMessage('success', 'Calon Anggota berhasil ditolak sebagai keanggotaan');
-            redirect('admin/Anggota');
-        } else {
-            flashMessage('error', 'Calon Anggota gagal ditolak sebagai keanggotaan! Silahkan coba lagi');
-            redirect('admin/Anggota');
-        }
-        // echo json_encode($idAnggota);
-    }
-
-    public function getAnggotaById($id)
-    {
-        $data['anggota'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.id_anggota = ' => $id));
-
-        echo json_encode($data);
     }
 
     public function setUpdateAnggota()
@@ -357,7 +332,6 @@ class Anggota extends MY_Controller
 
             unlink(FCPATH . 'uploads/avatars/' . $data[0]->nama_foto);
 
-            // echo json_encode($data);
             $sukses = $this->M_anggota->updateAnggota($anggota, $idAnggota);
 
             if (!$sukses) {
@@ -369,47 +343,6 @@ class Anggota extends MY_Controller
             }
         }
     }
-
-    public function hapusAnggota()
-    {
-        $this->load->model('M_user');
-
-        $id = $this->input->post('idAnggotaHapus');
-        $idUser = $this->input->post('idUserHapus');
-
-        $data = $this->M_anggota->findAnggota('nama_foto', array('tb_anggota.id_anggota = ' => $id));
-
-        // menghapus file foto dahulu
-        unlink(FCPATH . 'uploads/avatars/' . $data[0]->nama_foto);
-
-        $deleteAnggota = $this->M_anggota->deleteAnggota($id);
-        $deleteUser = $this->M_user->deleteUser($idUser);
-
-        if (!$deleteUser) {
-            flashMessage('success', 'Anggota berhasil dihapus');
-            redirect('admin/Anggota/kelolaAnggota');
-        } else {
-            flashMessage('error', 'Anggota gagal dihapus! Silahkan coba lagi');
-            redirect('admin/Anggota/kelolaAnggota');
-        }
-    }
-
-    function kelolaPemulihanAnggota()
-    {
-        $data['title'] = 'Kelola Pemulihan Anggota';
-
-        $where = array(
-            'tb_anggota.status_anggota !=' => '0',
-            'tb_anggota.user_id != ' => $this->session->userdata('uid')
-        );
-        $data['pemulihan'] = $this->M_anggota->getAllPemulihanAnggota();
-        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id' => $this->session->userdata('uid')));
-
-        if ($this->session->userdata('role') == 1) {
-            $this->admin_render('admin/kelolaPemulihanAnggota', $data);
-        }
-    }
-
 
     function aktivasiPemulihanAnggota()
     {
@@ -446,7 +379,59 @@ class Anggota extends MY_Controller
         }
         redirect('admin/Anggota/kelolaPemulihanAnggota');
     }
+    // ==================================================
+    // --------------------- UPDATE ---------------------
+    // ==================================================
+    //
+    //
+    //
+    // ==================================================
+    // --------------------- DELETE ---------------------
+    // ==================================================
+    function tolakCalonAnggota()
+    {
+        $idAnggota = $this->input->post('idCalonAnggota');
 
+        $data = $this->M_anggota->findAnggota('nama_foto', array('tb_anggota.id_anggota = ' => $idAnggota));
+
+        // menghapus file foto dahulu
+        unlink(FCPATH . 'uploads/avatars/' . $data[0]->nama_foto);
+
+        // menghapus data di database
+        $sukses = $this->M_anggota->deleteAnggota($idAnggota);
+
+        if (!$sukses) {
+            flashMessage('success', 'Calon Anggota berhasil ditolak sebagai keanggotaan');
+            redirect('admin/Anggota');
+        } else {
+            flashMessage('error', 'Calon Anggota gagal ditolak sebagai keanggotaan! Silahkan coba lagi');
+            redirect('admin/Anggota');
+        }
+    }
+
+    public function hapusAnggota()
+    {
+        $this->load->model('M_user');
+
+        $id = $this->input->post('idAnggotaHapus');
+        $idUser = $this->input->post('idUserHapus');
+
+        $data = $this->M_anggota->findAnggota('nama_foto', array('tb_anggota.id_anggota = ' => $id));
+
+        // menghapus file foto dahulu
+        unlink(FCPATH . 'uploads/avatars/' . $data[0]->nama_foto);
+
+        $deleteAnggota = $this->M_anggota->deleteAnggota($id);
+        $deleteUser = $this->M_user->deleteUser($idUser);
+
+        if (!$deleteUser) {
+            flashMessage('success', 'Anggota berhasil dihapus');
+            redirect('admin/Anggota/kelolaAnggota');
+        } else {
+            flashMessage('error', 'Anggota gagal dihapus! Silahkan coba lagi');
+            redirect('admin/Anggota/kelolaAnggota');
+        }
+    }
 
     function tolakPemulihanAnggota()
     {
@@ -461,14 +446,70 @@ class Anggota extends MY_Controller
             flashMessage('error', 'Calon Anggota gagal ditolak sebagai keanggotaan! Silahkan coba lagi');
             redirect('admin/Anggota/kelolaPemulihanAnggota');
         }
-        // echo json_encode($idAnggota);
     }
+    // ==================================================
+    // --------------------- DELETE ---------------------
+    // ==================================================
+    //
+    //
+    //
+    // ==================================================
+    // --------------------- SEARCH ---------------------
+    // ==================================================
+    function cariAnggota()
+    {
+        $data['title'] = 'Kelola Anggota';
 
+        $nama = $this->input->post('namaAnggota');
+
+        $where = "tb_anggota.status_anggota != 0";
+        $data['anggota'] = $this->M_anggota->findAnggotaLikeNama($where, $nama);
+        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+        if ($this->session->userdata('role') == 1) {
+            $this->admin_render('admin/kelolaAnggota', $data);
+        }
+    }
+    // ==================================================
+    // --------------------- SEARCH ---------------------
+    // ==================================================
+    //
+    //
+    //
+    // ==================================================
+    // --------------------- OTHERS ---------------------
+    // ==================================================
+    function anggotaJSON()
+    {
+        $id = $this->input->post('id');
+
+        $data['anggota'] = $this->M_anggota->findAnggota('*', array('tb_anggota.id_anggota = ' => $id));
+
+        echo json_encode($data);
+    }
 
     function pemulihanJSON()
     {
         $id = $this->input->post('id');
         $data['pemulihan'] = $this->M_anggota->findPemulihan($id);
+
+        echo json_encode($data);
+    }
+
+    function dataMaster()
+    {
+        $data['title'] = 'Tambah Data Anggota Master';
+        $data['dataMaster'] = $this->AdminAnggotaModel->getAllDataMaster();
+        $data['info'] = $this->AdminHomeModel->getInfoBySessionId($this->session->userdata('aid'));
+
+        if ($this->session->userdata('role') == 1) {
+            $this->admin_render('admin/dataMasterAnggota', $data);
+        }
+    }
+
+    public function getAnggotaById($id)
+    {
+        $data['anggota'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.id_anggota = ' => $id));
 
         echo json_encode($data);
     }
@@ -500,4 +541,7 @@ class Anggota extends MY_Controller
             redirect('admin/Anggota/kelolaPemulihanAnggota');
         }
     }
+    // ==================================================
+    // --------------------- OTHERS ---------------------
+    // ==================================================
 }
