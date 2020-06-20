@@ -77,7 +77,7 @@
 
                         </div>
                         <div class="profile-controls">
-                            <a class="profile-control-left btn-ubah-anggota" title="Ubah" id="<?= $A->id_anggota; ?>" data-toggle="modal" data-target="#ubahAnggota"><span class="fa fa-edit"></span></a>
+                            <a class="profile-control-left btn-ubah-foto-anggota" title="Ubah Foto" id="<?= $A->id_anggota; ?>" data-toggle="modal" data-target="#message-box-ubah-foto-anggota"><span class="fa fa-edit"></span></a>
                             <a class="profile-control-right btn-hapus-anggota" title="Hapus" id="<?= $A->id_anggota; ?>" data-toggle="modal" data-target="#message-box-delete-anggota"><span class="fa fa-trash-o"></span></a>
                         </div>
                     </div>
@@ -97,6 +97,7 @@
                         </div>
                     </div>
                     <div class="panel-footer text-center">
+                        <a class="btn btn-primary btn-rounded btn-block btn-ubah-anggota" title="Ubah" id="<?= $A->id_anggota; ?>" data-toggle="modal" data-target="#ubahAnggota"><span class="fa fa-edit"></span></a>
                         <a class="btn btn-info btn-rounded btn-block btn-detail-anggota" id="<?= $A->id_anggota; ?>" title="Lihat">Lihat</a>
                     </div>
                 </div>
@@ -107,6 +108,49 @@
 
 </div>
 <!-- END PAGE CONTENT WRAP -->
+
+<!-- MODAL UBAH FOTO -->
+<div class="modal animated zoomIn" id="message-box-ubah-foto-anggota" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="<?= base_url('admin/anggota/setUpdateFoto'); ?>" class="form-horizontal" id="ubah-anggota-validate" method="post" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="defModalHead">Ubah Foto</h4>
+                </div>
+                <div>
+                    <div class="panel-body tab-content">
+                        <div class="form-group hidden">
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="idUbahFotoAnggota" name="idUbahFotoAnggota" readonly>
+                                <input type="text" class="form-control" id="namaUbahFotoAnggota" name="namaUbahFotoAnggota" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Foto</label>
+                    <div class="col-md-8">
+                        <img id="namaFotoAnggota" src="<?= base_url('uploads/avatars/'); ?>" width="150" />
+                        <input type="text" class="form-control" id="ubahFotoAnggota" name="ubahFotoAnggota" readonly />
+                        <input type="file" class="file" id="file-simple" name="fileSaya" />
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="col-md-12" style="text-align: left;">
+                        <label class="control-label">* harus diisi</label>
+                    </div>
+
+                    <a href="<?= base_url('admin/anggota/kelolaAnggota'); ?>" class="btn btn-danger">Tutup</a> <!-- data-dismiss="modal" -->
+                    <button type="submit" class="btn btn-success">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- END MODAL UBAH FOTO -->
 
 <!-- MODAL UBAH ANGGOTA -->
 <div class="modal animated zoomIn" id="ubahAnggota" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
@@ -492,6 +536,34 @@
 
 <script>
     $("#ubah-anggota-validate").validate();
+
+    $("#file-simple").fileinput({
+        showUpload: false,
+        showCaption: false,
+        browseClass: "btn btn-danger",
+        fileType: "any"
+    });
+
+    $(".btn-ubah-foto-anggota").click(function() {
+        console.log(this.id);
+        var idUbahAnggota = this.id;
+
+        $.post("<?= base_url('admin/anggota/anggotaJSON/') ?>", {
+                id: idUbahAnggota
+            },
+            function(data) {
+                var data_obj = JSON.parse(data);
+
+                var idUbahFotoAnggota = data_obj.anggota[0].id_anggota;
+                var namaUbahFotoAnggota = data_obj.anggota[0].nama_lengkap;
+                var fotoAnggota = data_obj.anggota[0].nama_foto;
+
+                document.getElementById('idUbahFotoAnggota').value = idUbahFotoAnggota;
+                document.getElementById('namaFotoAnggota').src += fotoAnggota;
+                document.getElementById('ubahFotoAnggota').value = fotoAnggota;
+                document.getElementById('namaUbahFotoAnggota').value = namaUbahFotoAnggota;
+            });
+    });
 
     $(".btn-ubah-anggota").click(function() {
         console.log(this.id);

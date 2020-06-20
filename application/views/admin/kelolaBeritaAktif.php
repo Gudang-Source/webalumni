@@ -93,11 +93,11 @@
                                     <p><small>Kategori</small><br><?= $B->kategori; ?></p>
                                 <?php } ?>
 
-                                <a class="btn btn-primary btn-isi-berita" title="Isi Berita" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-isi-berita">Isi Berita</a>
-
-                                <a class="btn btn-info btn-ubah-berita" title="Ubah Berita" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-ubah-berita"><span class="fa fa-edit"></span></a>
-
                             </div>
+                        </div>
+                        <div class="panel-footer text-center">
+                            <a class="btn btn-primary btn-rounded btn-block btn-ubah-berita" title="Ubah Berita" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-ubah-berita"><span class="fa fa-edit"></span></a>
+                            <a class="btn btn-info btn-rounded btn-block btn-isi-berita" title="Isi Berita" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-isi-berita">Isi Berita</a>
                         </div>
                         <!-- END CONTACT ITEM -->
                     </div>

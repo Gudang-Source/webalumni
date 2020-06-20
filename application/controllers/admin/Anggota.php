@@ -328,6 +328,48 @@ class Anggota extends MY_Controller
         }
     }
 
+    public function setUpdateFoto()
+    {
+        $this->load->model('M_anggota');
+
+        $idAnggota = $this->input->post('idUbahFotoAnggota');
+        $namaAnggota = $this->input->post('namaUbahFotoAnggota');
+
+        $filename = "IKA-SMA3-" . $namaAnggota . "-" . time();
+
+        // Set preferences
+        $config['upload_path'] = './uploads/avatars/';
+        $config['allowed_types'] = 'png|jpg|jpeg';
+        $config['file_name'] = $filename;
+
+        // load upload class library
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('fileSaya')) {
+            flashMessage('error', 'Maaf, Upload gambar anggota gagal! Silahkan coba lagi');
+            redirect('admin/anggota/kelolaAnggota');
+        } else {
+            $upload_data = $this->upload->data();
+
+            $data = $this->M_anggota->findAnggota('nama_foto', array('tb_anggota.id_anggota = ' => $idAnggota));
+
+            $anggota['nama_foto'] = $upload_data['file_name'];
+
+            unlink(FCPATH . 'uploads/avatars/' . $data[0]->nama_foto);
+
+            // echo json_encode($data);
+            $sukses = $this->M_anggota->updateAnggota($anggota, $idAnggota);
+
+            if (!$sukses) {
+                flashMessage('success', 'Foto berhasil di ubah.');
+                redirect('admin/anggota/kelolaAnggota');
+            } else {
+                flashMessage('error', 'Foto gagal di ubah! Silahkan coba lagi');
+                redirect('admin/anggota/kelolaAnggota');
+            }
+        }
+    }
+
     public function hapusAnggota()
     {
         $this->load->model('M_user');
