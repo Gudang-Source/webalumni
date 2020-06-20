@@ -93,11 +93,11 @@
                                     <p><small>Kategori</small><br><?= $B->kategori; ?></p>
                                 <?php } ?>
 
-                                <a class="btn btn-primary btn-isi-berita" title="Isi Berita" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-isi-berita">Isi Berita</a>
-
-                                <a class="btn btn-info btn-ubah-berita" title="Ubah Berita" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-ubah-berita"><span class="fa fa-edit"></span></a>
-
                             </div>
+                        </div>
+                        <div class="panel-footer text-center">
+                            <a class="btn btn-primary btn-rounded btn-block btn-ubah-berita" title="Ubah Berita" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-ubah-berita"><span class="fa fa-edit"></span></a>
+                            <a class="btn btn-info btn-rounded btn-block btn-isi-berita" title="Isi Berita" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-isi-berita">Isi Berita</a>
                         </div>
                         <!-- END CONTACT ITEM -->
                     </div>
@@ -213,7 +213,6 @@
                     <div class="col-md-12" style="text-align: left;">
                         <label class="control-label">* harus diisi</label>
                     </div>
-
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
                     <button type="submit" class="btn btn-success">Simpan</button>
                 </div>
@@ -337,7 +336,7 @@
                     var foto = data_obj.berita[0].foto;
 
                     document.getElementById('idUbahFoto').value = idUbahFoto;
-                    document.getElementById('namaFotoBerita').src += foto;
+                    document.getElementById('namaFotoBerita').src = '<?= base_url('uploads/content/berita/'); ?>' + foto;
                     document.getElementById('ubahFotoBerita').value = foto;
                     document.getElementById('judulUbahFotoBerita').value = judulUbahFotoBerita;
                 });

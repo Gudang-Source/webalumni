@@ -27,22 +27,6 @@
 
             <!-- START PANEL WITH STATIC CONTROLS -->
             <div class="panel panel-default">
-                <div class="panel-heading ui-draggable-handle">
-                    <h3 class="panel-title">Kategori</h3>
-                    <ul class="panel-controls">
-                        <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="fa fa-cog"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span>
-                                        Collapse</a></li>
-                                <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span> Refresh</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
-                    </ul>
-                </div>
 
                 <div class="panel-body panel-body-table">
                     <div class="table-responsive">
@@ -77,9 +61,9 @@
                     </div>
                 </div>
 
-                <div class="panel-footer">
+                <!-- <div class="panel-footer">
 
-                </div>
+            </div> -->
             </div>
             <!-- END PANEL WITH STATIC CONTROLS -->
 
