@@ -97,7 +97,7 @@
                         </div>
                     </div>
                     <div class="panel-footer text-center">
-                        <a class="btn btn-primary btn-rounded btn-block btn-ubah-anggota" title="Ubah" id="<?= $A->id_anggota; ?>" data-toggle="modal" data-target="#ubahAnggota"><span class="fa fa-edit"></span></a>
+                        <a class="btn btn-primary btn-rounded btn-block btn-ubah-anggota" title="Ubah" id="<?= $A->id_anggota; ?>" data-toggle="modal" data-target="#ubahAnggota"><span class="fa fa-edit"></span>Ubah</a>
                         <a class="btn btn-info btn-rounded btn-block btn-detail-anggota" id="<?= $A->id_anggota; ?>" title="Lihat">Lihat</a>
                     </div>
                 </div>
@@ -178,7 +178,7 @@
                             <div class="tab-pane active" id="tab-data-diri">
 
                                 <div class="panel-body" style="z-index: 2000;">
-                                    <div class="form-group hidden">
+                                    <div class="form-group ">
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" id="idAnggota" name="idAnggota" required />
                                             <input type="text" name="idUser" id="idUser" class="form-control" required>
