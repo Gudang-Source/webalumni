@@ -110,13 +110,12 @@
 <!-- END PAGE CONTENT WRAP -->
 
 <!-- MODAL UBAH FOTO -->
-<div class="modal animated zoomIn" id="message-box-ubah-foto-anggota" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true" data-backdrop="static">
+<div class="modal animated zoomIn" id="message-box-ubah-foto-anggota" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="<?= base_url('admin/anggota/setUpdateFoto'); ?>" class="form-horizontal" id="ubah-anggota-validate" method="post" enctype="multipart/form-data">
                 <div class="modal-header">
-                    <a href="<?= base_url('admin/anggota/kelolaAnggota'); ?>" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></a>
-                    <!-- <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> -->
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                     <h4 class="modal-title" id="defModalHead">Ubah Foto</h4>
                 </div>
                 <div>
@@ -144,8 +143,7 @@
                         <label class="control-label">* harus diisi</label>
                     </div>
 
-                    <a href="<?= base_url('admin/anggota/kelolaAnggota'); ?>" class="btn btn-danger">Tutup</a>
-                    <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>  -->
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
                     <button type="submit" class="btn btn-success">Simpan</button>
                 </div>
             </form>
@@ -155,13 +153,12 @@
 <!-- END MODAL UBAH FOTO -->
 
 <!-- MODAL UBAH ANGGOTA -->
-<div class="modal animated zoomIn" id="ubahAnggota" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true" data-backdrop="static">
+<div class="modal animated zoomIn" id="ubahAnggota" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="<?= base_url('admin/Anggota/setUpdateAnggota'); ?>" class="form-horizontal" id="ubah-anggota-validate" method="post">
                 <div class="modal-header">
-                    <a href="<?= base_url('admin/anggota/kelolaAnggota'); ?>" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></a>
-                    <!-- <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> -->
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                     <h4 class="modal-title" id="defModalHead">Ubah Anggota</h4>
                 </div>
                 <div>
@@ -461,8 +458,7 @@
                         <label class="control-label">* harus diisi</label>
                     </div>
 
-                    <a href="<?= base_url('admin/anggota/kelolaAnggota'); ?>" class="btn btn-danger">Tutup</a>
-                    <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button> -->
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
                     <button type="submit" class="btn btn-success">Simpan</button>
                 </div>
             </form>
@@ -563,7 +559,7 @@
                 var fotoAnggota = data_obj.anggota[0].nama_foto;
 
                 document.getElementById('idUbahFotoAnggota').value = idUbahFotoAnggota;
-                document.getElementById('namaFotoAnggota').src += fotoAnggota;
+                document.getElementById('namaFotoAnggota').src = '<?= base_url('uploads/avatars/') ?>' + fotoAnggota;
                 document.getElementById('ubahFotoAnggota').value = fotoAnggota;
                 document.getElementById('namaUbahFotoAnggota').value = namaUbahFotoAnggota;
             });

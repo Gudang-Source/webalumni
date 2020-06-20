@@ -213,7 +213,6 @@
                     <div class="col-md-12" style="text-align: left;">
                         <label class="control-label">* harus diisi</label>
                     </div>
-
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
                     <button type="submit" class="btn btn-success">Simpan</button>
                 </div>
@@ -337,7 +336,7 @@
                     var foto = data_obj.berita[0].foto;
 
                     document.getElementById('idUbahFoto').value = idUbahFoto;
-                    document.getElementById('namaFotoBerita').src += foto;
+                    document.getElementById('namaFotoBerita').src = '<?= base_url('uploads/content/berita/'); ?>' + foto;
                     document.getElementById('ubahFotoBerita').value = foto;
                     document.getElementById('judulUbahFotoBerita').value = judulUbahFotoBerita;
                 });
