@@ -113,7 +113,7 @@
 <div class="modal animated zoomIn" id="message-box-ubah-foto-anggota" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="<?= base_url('koordinator/anggota/setUpdateFoto'); ?>" class="form-horizontal" id="ubah-anggota-validate" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url('koordinator/anggota/setUpdateFoto'); ?>" class="form-horizontal" id="ubah-foto-anggota-validate" method="post" enctype="multipart/form-data">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                     <h4 class="modal-title" id="defModalHead">Ubah Foto</h4>
@@ -178,7 +178,7 @@
                             <div class="tab-pane active" id="tab-data-diri">
 
                                 <div class="panel-body" style="z-index: 2000;">
-                                    <div class="form-group ">
+                                    <div class="form-group hidden">
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" id="idAnggota" name="idAnggota" required />
                                             <input type="text" name="idUser" id="idUser" class="form-control" required>
@@ -536,6 +536,7 @@
 
 <script>
     $("#ubah-anggota-validate").validate();
+    $("#ubah-foto-anggota-validate").validate();
 
     $("#file-simple").fileinput({
         showUpload: false,
