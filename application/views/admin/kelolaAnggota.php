@@ -110,12 +110,13 @@
 <!-- END PAGE CONTENT WRAP -->
 
 <!-- MODAL UBAH FOTO -->
-<div class="modal animated zoomIn" id="message-box-ubah-foto-anggota" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
+<div class="modal animated zoomIn" id="message-box-ubah-foto-anggota" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="<?= base_url('admin/anggota/setUpdateFoto'); ?>" class="form-horizontal" id="ubah-anggota-validate" method="post" enctype="multipart/form-data">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <a href="<?= base_url('admin/anggota/kelolaAnggota'); ?>" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></a>
+                    <!-- <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> -->
                     <h4 class="modal-title" id="defModalHead">Ubah Foto</h4>
                 </div>
                 <div>
@@ -143,7 +144,8 @@
                         <label class="control-label">* harus diisi</label>
                     </div>
 
-                    <a href="<?= base_url('admin/anggota/kelolaAnggota'); ?>" class="btn btn-danger">Tutup</a> <!-- data-dismiss="modal" -->
+                    <a href="<?= base_url('admin/anggota/kelolaAnggota'); ?>" class="btn btn-danger">Tutup</a>
+                    <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>  -->
                     <button type="submit" class="btn btn-success">Simpan</button>
                 </div>
             </form>
@@ -153,12 +155,13 @@
 <!-- END MODAL UBAH FOTO -->
 
 <!-- MODAL UBAH ANGGOTA -->
-<div class="modal animated zoomIn" id="ubahAnggota" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
+<div class="modal animated zoomIn" id="ubahAnggota" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="<?= base_url('admin/Anggota/setUpdateAnggota'); ?>" class="form-horizontal" id="ubah-anggota-validate" method="post">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <a href="<?= base_url('admin/anggota/kelolaAnggota'); ?>" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></a>
+                    <!-- <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> -->
                     <h4 class="modal-title" id="defModalHead">Ubah Anggota</h4>
                 </div>
                 <div>
@@ -458,7 +461,8 @@
                         <label class="control-label">* harus diisi</label>
                     </div>
 
-                    <a href="" class="btn btn-danger" data-dismiss="modal">Tutup</a>
+                    <a href="<?= base_url('admin/anggota/kelolaAnggota'); ?>" class="btn btn-danger">Tutup</a>
+                    <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button> -->
                     <button type="submit" class="btn btn-success">Simpan</button>
                 </div>
             </form>
