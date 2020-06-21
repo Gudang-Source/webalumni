@@ -9,7 +9,9 @@
     <h2> Kelola calon Komunitas</h2>
 </div>
 
+<?= showFlashMessage(); ?>
 
+<!-- PAGE CONTENT WRAP -->
 <div class="page-content-wrap">
 
     <div class="row">
@@ -23,7 +25,8 @@
                 </ul>
 
                 <div class="panel-body tab-content">
-
+                    
+                    <!-- TAB 1 -->
                     <div class="tab-pane active" id="tab-first">
                         <p>Daftar Permohonan Calon Komunitas IKASMA3BDG.</p>
 
@@ -108,7 +111,10 @@
                             </div>
                         </div>
                     </div>
+                    <!-- TAB 1 -->
 
+
+                    <!-- TAB 2 -->
                     <div class="tab-pane" id="tab-second">
                         <h5>Tambah Calon Komunitas Baru IKASMA3BDG</h5>
 
@@ -150,6 +156,7 @@
                                 <div class="panel-footer">
                                     <label class="text-muted">Catatan : </label>
                                     <ol>
+                                        <li>Admin : Menambahkan Calon Komunitas Baru dapat langsung terverifikasi sebagai Komunitas aktif.</li>
                                         <li>Calon Komunitas Baru harus diverifikasi terlebih dahulu agar terdaftar sebagai
                                             Komunitas aktif.</li>
                                         <li>Setelah di verifikasi, maka  Komunitas baru dapat ditampilkan di halaman user</li>
@@ -158,7 +165,9 @@
                             </form>
                         </div>
                     </div>
+                    <!-- TAB 2 -->
 
+                    <!-- TAB 3 -->
                     <div class="tab-pane" id="tab-three">
                         <h5>Tes Upload Gambar</h5>
 
@@ -185,6 +194,7 @@
                         </div>
 
                     </div>
+                    <!-- TAB 3 -->
 
                 </div>
             </div>

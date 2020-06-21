@@ -3,12 +3,22 @@
 if (defined('BASEPATH') or exit('No direct script access allowed'));
 
 /*
- * class Home Admin
- * Created by Lut Dinar Fadila 2018
+ * class Anggota Admin
+ * Created by 
+ *      Adhy Wiranto Sudjana
+ *      Dicky Ardianto
+ *      Rafly Yunandi Aliansyah
+ * Architecture by 
+ *      Lut Dinar Fadila
+ * 
+ * 2020
 */
 
-class Home extends MY_Controller {
-    
+class Home extends MY_Controller 
+{
+    // ==================================================
+    // ------------------ CONTSTRUCTOR ------------------
+    // ==================================================    
     function __construct() {
         parent::__construct();
         $this->load->model('AdminHomeModel');
@@ -21,7 +31,15 @@ class Home extends MY_Controller {
             redirect('anggota');
         }
     }
-
+    // ==================================================
+    // ------------------ CONTSTRUCTOR ------------------
+    // ==================================================
+    //
+    //
+    //
+    // ==================================================
+    // ---------------------- READ ----------------------
+    // ==================================================
     function index() {
         $data['title'] = 'Beranda Admin';
         $data['info'] = $this->AdminHomeModel->getInfoBySessionId();
@@ -30,4 +48,8 @@ class Home extends MY_Controller {
             $this->admin_render('admin/home', $data);
         }
     }
+    // ==================================================
+    // ---------------------- READ ----------------------
+    // ==================================================
+
 }

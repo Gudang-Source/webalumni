@@ -3,13 +3,22 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
- * class Pengaturan Admin
- * Created by Lut Dinar Fadila 2018
+ * class Anggota Admin
+ * Created by 
+ *      Adhy Wiranto Sudjana
+ *      Dicky Ardianto
+ *      Rafly Yunandi Aliansyah
+ * Architecture by 
+ *      Lut Dinar Fadila
+ * 
+ * 2020
 */
 
 class Pengaturan extends MY_Controller
 {
-
+    // ==================================================
+    // ------------------ CONTSTRUCTOR ------------------
+    // ==================================================
     function __construct()
     {
         parent::__construct();
@@ -25,7 +34,15 @@ class Pengaturan extends MY_Controller
             redirect('anggota');
         }
     }
-
+    // ==================================================
+    // ------------------ CONTSTRUCTOR ------------------
+    // ==================================================
+    //
+    //
+    //
+    // ==================================================
+    // ---------------------- READ ----------------------
+    // ==================================================
     function index()
     {
         $data['title'] = 'Admin - Pengaturan';
@@ -35,7 +52,15 @@ class Pengaturan extends MY_Controller
             $this->admin_render('admin/pengaturan', $data);
         }
     }
-
+    // ==================================================
+    // ---------------------- READ ----------------------
+    // ==================================================
+    //
+    //
+    //
+    // ==================================================
+    // --------------------- UPDATE ---------------------
+    // ==================================================
     function setUpdateUsername()
     {
         $idUser = $this->input->post('idUserUsername');
@@ -118,9 +143,6 @@ class Pengaturan extends MY_Controller
             redirect('admin/Pengaturan');
         }
 
-
-
-
         // if (!$this->upload->do_upload('fileSaya')) {
         //     flashMessage('error', 'Maaf, Upload gambar profil baru Anda gagal! Silahkan coba lagi');
         //     redirect('admin/Pengaturan');
@@ -138,4 +160,7 @@ class Pengaturan extends MY_Controller
         //     }
         // }
     }
+    // ==================================================
+    // --------------------- UPDATE ---------------------
+    // ==================================================
 }
