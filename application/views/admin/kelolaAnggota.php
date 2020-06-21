@@ -97,7 +97,7 @@
                         </div>
                     </div>
                     <div class="panel-footer text-center">
-                        <a class="btn btn-primary btn-rounded btn-block btn-ubah-anggota" title="Ubah" id="<?= $A->id_anggota; ?>" data-toggle="modal" data-target="#ubahAnggota"><span class="fa fa-edit"></span></a>
+                        <a class="btn btn-primary btn-rounded btn-block btn-ubah-anggota" title="Ubah" id="<?= $A->id_anggota; ?>" data-toggle="modal" data-target="#ubahAnggota"><span class="fa fa-edit"></span>Ubah</a>
                         <a class="btn btn-info btn-rounded btn-block btn-detail-anggota" id="<?= $A->id_anggota; ?>" title="Lihat">Lihat</a>
                     </div>
                 </div>
@@ -113,7 +113,7 @@
 <div class="modal animated zoomIn" id="message-box-ubah-foto-anggota" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="<?= base_url('admin/anggota/setUpdateFoto'); ?>" class="form-horizontal" id="ubah-anggota-validate" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url('admin/anggota/setUpdateFoto'); ?>" class="form-horizontal" id="ubah-foto-anggota-validate" method="post" enctype="multipart/form-data">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                     <h4 class="modal-title" id="defModalHead">Ubah Foto</h4>
@@ -536,6 +536,7 @@
 
 <script>
     $("#ubah-anggota-validate").validate();
+    $("#ubah-foto-anggota-validate").validate();
 
     $("#file-simple").fileinput({
         showUpload: false,

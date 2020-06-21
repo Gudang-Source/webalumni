@@ -68,7 +68,21 @@
                     <ul>
                         <li><a href="<?= base_url('koordinator/Anggota') ?>"><span class="fa fa-user"></span> Kelola Calon Anggota</a></li>
                         <li><a href="<?= base_url('koordinator/Anggota/kelolaAnggota') ?>"><span class="fa fa-users"></span> Kelola Anggota </a></li>
+                        <li><a href="<?= base_url('koordinator/Anggota/kelolaPemulihanAnggota') ?>"><span class="fa fa-users"></span> Kelola Pemulihan Anggota</a></li>
                         <!-- <li><a href="<?= base_url('koordinator/Anggota/dataMaster'); ?>"><span class="fa fa-plus"></span> Data Master</a></li> -->
+                    </ul>
+                </li>
+
+                <li class="xn-openable">
+                    <a href="#"><span class="fa fa-envelope-o"></span> <span class="xn-text">Berita</span></a>
+                    <ul>
+                        <li><a href="<?= base_url('koordinator/Berita'); ?>"><span class="fa fa-align-left"></span> <span class="xn-text">Kelola Calon Berita</span></a></li>
+                        <li><a href="<?= base_url('koordinator/Berita/kelolaBerita'); ?>"><span class="fa fa-align-left"></span>
+                                <span class="xn-text">Kelola Berita Aktif</span></a>
+                        </li>
+                        <li><a href="<?= base_url('koordinator/Berita/kelolaKategori'); ?>"><span class="fa fa-align-left"></span>
+                                <span class="xn-text">Kelola Kategori</span></a>
+                        </li>
                     </ul>
                 </li>
 

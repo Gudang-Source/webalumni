@@ -4,7 +4,14 @@ if (defined('BASEPATH') or exit('No direct script access allowed'));
 
 /*
  * class Anggota Admin
- * Created by Lut Dinar Fadila 2018
+ * Created by 
+ *      Adhy Wiranto Sudjana
+ *      Dicky Ardianto
+ *      Rafly Yunandi Aliansyah
+ * Architecture by 
+ *      Lut Dinar Fadila
+ * 
+ * 2020
 */
 
 class Anggota extends MY_Controller

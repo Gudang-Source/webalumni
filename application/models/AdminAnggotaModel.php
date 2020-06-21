@@ -4,7 +4,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
  * class Admin Anggota Model
- * Created by Lut Dinar Fadila 2018
+ * Created by 
+ *      Adhy Wiranto Sudjana
+ *      Dicky Ardianto
+ *      Rafly Yunandi Aliansyah
+ * Architecture by 
+ *      Lut Dinar Fadila
+ * 
+ * 2020
 */
 
 class AdminAnggotaModel extends CI_Model
