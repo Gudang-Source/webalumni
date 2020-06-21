@@ -2,9 +2,23 @@
 
 if (defined('BASEPATH') or exit('No direct script access allowed'));
 
+/*
+ * class Anggota Admin
+ * Created by 
+ *      Adhy Wiranto Sudjana
+ *      Dicky Ardianto
+ *      Rafly Yunandi Aliansyah
+ * Architecture by 
+ *      Lut Dinar Fadila
+ * 
+ * 2020
+*/
+
 class Komunitas extends MY_Controller
 {
-
+    // ==================================================
+    // ------------------ CONTSTRUCTOR ------------------
+    // ==================================================
     function __construct()
     {
         parent::__construct();
@@ -23,7 +37,15 @@ class Komunitas extends MY_Controller
             redirect('anggota');
         }
     }
-
+    // ==================================================
+    // ------------------ CONTSTRUCTOR ------------------
+    // ==================================================
+    //
+    //
+    //
+    // ==================================================
+    // ---------------------- READ ----------------------
+    // ==================================================
     function index()
     {
         $data['title'] = 'Kelola Komunitas';
@@ -37,8 +59,16 @@ class Komunitas extends MY_Controller
         }
         //         echo json_encode($data);
     }
-
-        public function tambahCalonKomunitas()
+    // ==================================================
+    // ---------------------- READ ----------------------
+    // ==================================================
+    //
+    //
+    //
+    // ==================================================
+    // --------------------- CREATE ---------------------
+    // ==================================================
+    public function tambahCalonKomunitas()
     {
         date_default_timezone_set("Asia/Jakarta");
         $jam = date ("H:i:s");
@@ -84,25 +114,23 @@ class Komunitas extends MY_Controller
             $sukses = $this->M_komunitas->insertNewKomunitas($data);
 
             if (!$sukses) {
-                flashMessage('success', 'Calon Komunitas Baru berhasil di daftarkan. Silahkan verifikasi di Permohonan Calon Anggota');
-                redirect('admin/Komunitas');
+                flashMessage('success', 'Calon Komunitas Baru berhasil di daftarkan dan telah diaktifkan. Silahkan cek kembali!');
+                redirect('admin/Komunitas/kelolaStatusKomunitas');
             } else {
-                flashMessage('error', 'Calon Komunitas Baru gagal di daftarkan! Silahkan coba lagi');
-                redirect('admin/Komunitas');
+                flashMessage('error', 'Calon Komunitas Baru gagal di daftarkan! Silahkan coba lagi!');
+                redirect('admin/Komunitas/kelolaStatusKomunitas');
             }
         }
     }
-
-    function komunitasJSON()
-    {
-        $id = $this->input->post('id');
-
-        $data['komunitas'] = $this->M_komunitas->findKomunitas('*', array('tb_komunitas.id_komunitas = ' => $id));
-
-        echo json_encode($data);
-    }
-
-
+    // ==================================================
+    // --------------------- CREATE ---------------------
+    // ==================================================
+    //
+    //
+    //
+    // ==================================================
+    // --------------------- UPDATE ---------------------
+    // ==================================================
     function aktivasiCalonKomunitas()
     {
         $this->load->model('M_komunitas');
@@ -113,13 +141,11 @@ class Komunitas extends MY_Controller
         // echo json_encode($user);
         $sukses = $this->M_komunitas->updateKomunitas($komunitas, $idKomunitas);
 
-
         if ($sukses != 0) {
 
             $komunitas['user_id'] = $sukses;
             $updateKomunitas = $this->M_komunitas->updateKomunitas($komunitas, $idKomunitas);
 
-    
             if (!$updateKomunitas) {
                 flashMessage('success', 'Calon Komunitas berhasil di aktifkan dan dapat masuk menggunakan Username & Password sesuai yang tertera pada saat Aktivasi');
                 redirect('admin/Komunitas');
@@ -131,22 +157,6 @@ class Komunitas extends MY_Controller
             flashMessage('error', 'Maaf, Terjadi kesalahan pada saat proses pembuatan akun Komunitas baru');
             redirect('admin/Komunitas');
         }
-    }
-
-    function tolakCalonKomunitas()
-    {
-        $idKomunitas = $this->input->post('idCalonKomunitas');
-
-        $sukses = $this->M_komunitas->deleteKomunitas($idKomunitas);
-
-        if (!$sukses) {
-            flashMessage('success', 'Calon Komunitas berhasil ditolak sebagai Komunitasan');
-            redirect('admin/Komunitas');
-        } else {
-            flashMessage('error', 'Calon Komunitas gagal ditolak sebagai keKomunitasan! Silahkan coba lagi');
-            redirect('admin/Komunitas');
-        }
-        // echo json_encode($idKomunitas);
     }
 
     function KelolaStatusKomunitas()
@@ -162,14 +172,6 @@ class Komunitas extends MY_Controller
         }
     }
 
-    public function getKomunitasById($id)
-    {
-        $data['komunitas'] = $this->M_komunitas->findKomunitasAndUser(array('tb_komunitas.id_komunitas = ' => $id));
-
-        echo json_encode($data);
-    }
-
-    
     public function setUpdateKomunitas()
     {
         $this->load->model('M_komunitas');
@@ -177,10 +179,6 @@ class Komunitas extends MY_Controller
         $idKomunitas = $this->input->post('idKomunitas');
         $namaKomunitas = $this->input->post('namaKomunitas');
         $tautatKomunitas = $this->input->post('tautatKomunitas');
-        // $tglPengajuan = $this->input->post('tglPengajuan');
-        // $waktuPengajuan = $this->input->post('waktuPengajuan');
-        // $idPengupload = $this->input->post('idPengupload');
-
 
         $filename = "komunitas-" . $namaKomunitas . "-" . time();
 
@@ -200,12 +198,8 @@ class Komunitas extends MY_Controller
 
             $komunitas['nama_komunitas'] = $namaKomunitas;
             $komunitas['tautat_komunitas'] = $tautatKomunitas;
-            // $data['date_created'] = $this->input->post('tglPengajuan');
-            // $data['time_created'] = $waktuPengajuan;
             $komunitas['logo_komunitas'] = $upload_data['file_name'];
-            // $data['id_pengupload'] = $idPengupload;
-            // $data['stat_komunitas'] = '0';
-// 
+
             // echo json_encode($data);
             $sukses = $this->M_komunitas->updateKomunitas($komunitas, $idKomunitas);
 
@@ -218,7 +212,15 @@ class Komunitas extends MY_Controller
             }
         }
     }
-
+    // ==================================================
+    // --------------------- UPDATE ---------------------
+    // ==================================================
+    //
+    //
+    //
+    // ==================================================
+    // --------------------- DELETE ---------------------
+    // ==================================================	
     public function hapusKomunitas()
     {
         $this->load->model('M_komunitas');
@@ -236,7 +238,30 @@ class Komunitas extends MY_Controller
         }
     }
 
+    function tolakCalonKomunitas()
+    {
+        $idKomunitas = $this->input->post('idCalonKomunitas');
 
+        $sukses = $this->M_komunitas->deleteKomunitas($idKomunitas);
+
+        if (!$sukses) {
+            flashMessage('success', 'Calon Komunitas berhasil ditolak sebagai Komunitasan');
+            redirect('admin/Komunitas');
+        } else {
+            flashMessage('error', 'Calon Komunitas gagal ditolak sebagai keKomunitasan! Silahkan coba lagi');
+            redirect('admin/Komunitas');
+        }
+        // echo json_encode($idKomunitas);
+    }
+    // ==================================================
+    // --------------------- DELETE ---------------------
+    // ==================================================	
+    //
+    //
+    //
+	// ==================================================
+    // --------------------- SEARCH ---------------------
+    // ==================================================
     function cariStatusKomunitas()
     {
         $data['title'] = 'Kelola Status Komunitas';
@@ -253,5 +278,32 @@ class Komunitas extends MY_Controller
         }
 
     }
+    // ==================================================
+    // --------------------- SEARCH ---------------------
+    // ==================================================
+    //
+    //
+    //
+	// ==================================================
+    // --------------------- OTHERS ---------------------
+    // ==================================================
+    function komunitasJSON()
+    {
+        $id = $this->input->post('id');
+
+        $data['komunitas'] = $this->M_komunitas->findKomunitas('*', array('tb_komunitas.id_komunitas = ' => $id));
+
+        echo json_encode($data);
+    }
+
+    public function getKomunitasById($id)
+    {
+        $data['komunitas'] = $this->M_komunitas->findKomunitasAndUser(array('tb_komunitas.id_komunitas = ' => $id));
+
+        echo json_encode($data);
+    }
+	// ==================================================
+    // --------------------- OTHERS ---------------------
+    // ==================================================
 
 }

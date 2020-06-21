@@ -2,8 +2,23 @@
 
 if (defined('BASEPATH') or exit('No direct script access allowed'));
 
+/*
+ * class Anggota Admin
+ * Created by 
+ *      Adhy Wiranto Sudjana
+ *      Dicky Ardianto
+ *      Rafly Yunandi Aliansyah
+ * Architecture by 
+ *      Lut Dinar Fadila
+ * 
+ * 2020
+*/
+
 class Komunitas extends MY_Controller
 {
+    // ==================================================
+    // ------------------ CONTSTRUCTOR ------------------
+    // ==================================================
     function __construct() {
         parent::__construct();
         $this->load->model('M_anggota');
@@ -18,7 +33,15 @@ class Komunitas extends MY_Controller
             redirect('admin');
         }
     }
-
+    // ==================================================
+    // ------------------ CONTSTRUCTOR ------------------
+    // ==================================================
+    //
+    //
+    //
+    // ==================================================
+    // ---------------------- READ ----------------------
+    // ==================================================
     function index()
     {
         $data['title'] = 'Kelola Komunitas';
@@ -28,7 +51,15 @@ class Komunitas extends MY_Controller
 
         $this->anggota_render('anggota/lihatKomunitas', $data);
     }
-
+    // ==================================================
+    // ---------------------- READ ----------------------
+    // ==================================================
+    //
+    //
+    //    
+    // ==================================================
+    // --------------------- CREATE ---------------------
+    // ==================================================
     function tambahKomunitas()
     {
         $data['title'] = 'Kelola Komunitas';
@@ -91,5 +122,8 @@ class Komunitas extends MY_Controller
             }
         }
     }
+    // ==================================================
+    // --------------------- CREATE ---------------------
+    // ==================================================
 
 }
