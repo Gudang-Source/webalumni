@@ -2,33 +2,38 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Register extends MY_Controller {
-    
-    function __construct() {
-        parent::__construct();
-        $this->load->model('LoginModel');
-    }
-    
-    function index() {
-        $data['title'] = 'Registrasi Calon Anggota IKASMA3BDG';
-        $this->login_render('login/Register', $data);
-	}
-	
-	function NotifRegister() {
-        $data['title'] = 'Registrasi Calon Anggota IKASMA3BDG';
-        $this->login_render('login/Register', $data);
-    }
-    
-    function createRegisterAnggota() {
-        
-        $namaLengkap = $this->input->post('namaLengkap');
-        $namaPanggilanAlias = $this->input->post('namaPanggilanAlias');
-        $angkatan = $this->input->post('angkatan');
-        $email = $this->input->post('email');
-        $noTelepon = $this->input->post('noTelepon');
-        $tglLahir = $this->input->post('tglLahir');
+class Register extends MY_Controller
+{
 
-		$filename = "anggota-".$namaLengkap."-".time();
+	function __construct()
+	{
+		parent::__construct();
+		$this->load->model('LoginModel');
+	}
+
+	function index()
+	{
+		$data['title'] = 'Registrasi Calon Anggota IKASMA3BDG';
+		$this->login_render('login/Register', $data);
+	}
+
+	function NotifRegister()
+	{
+		$data['title'] = 'Registrasi Calon Anggota IKASMA3BDG';
+		$this->login_render('login/Register', $data);
+	}
+
+	function createRegisterAnggota()
+	{
+
+		$namaLengkap = $this->input->post('namaLengkap');
+		$namaPanggilanAlias = $this->input->post('namaPanggilanAlias');
+		$angkatan = $this->input->post('angkatan');
+		$email = $this->input->post('email');
+		$noTelepon = $this->input->post('noTelepon');
+		$tglLahir = $this->input->post('tglLahir');
+
+		$filename = "anggota-" . $namaLengkap . "-" . time();
 
 		//set preferences
 		$config['upload_path'] = './uploads/avatars';
@@ -38,14 +43,11 @@ class Register extends MY_Controller {
 		//load upload class library
 		$this->load->library('upload', $config);
 
-		if (!$this->upload->do_upload('fileSaya'))
-		{
+		if (!$this->upload->do_upload('fileSaya')) {
 			// case - failure
 			flashMessage('error', 'Maaf, Registrasi anggota SMAIKA3BDG gagal! Silahkan coba lagi.');
-            redirect('register');
-		}
-		else
-		{
+			redirect('register');
+		} else {
 			// case - success
 			$upload_data = $this->upload->data();
 
@@ -59,12 +61,10 @@ class Register extends MY_Controller {
 			$anggota['status_anggota'] = '0';
 
 			$this->LoginModel->saveRegisterAnggota($anggota);
-//			echo json_encode($dataGambar);
-//			echo json_encode($anggota);
+			//			echo json_encode($dataGambar);
+			//			echo json_encode($anggota);
 
-            redirect('login/NotifRegister', $data);
+			redirect('login/NotifRegister', $anggota);
 		}
-        
-    }
-    
+	}
 }
