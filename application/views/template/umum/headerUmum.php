@@ -86,11 +86,15 @@
                             class="xn-text">Berita</span></a>
                 </li>
 
+                <li><a href="<?= base_url('umum/Anggota') ?>"><span class="fa fa-users"></span>
+                        Tambahkan Anggota </a>
+                </li>
+
                 <li>
                     <a href="<?= base_url('umum/Pengaturan'); ?>"><span class="glyphicon glyphicon-cog"></span> <span
                             class="xn-text">Pengaturan</span></a>
                 </li>
-                
+
                 <!-- <li class="xn-openable">
                         <a href="#"><span class="fa fa-users"></span> <span class="xn-text">Anggota</span></a>
                         <ul>
