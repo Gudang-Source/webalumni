@@ -1,7 +1,7 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
     <li>Anggota</li>
-    <li class="active"><a href="<?= base_url('admin/Anggota/kelolaPemulihanAnggota'); ?>">Kelola Pemulihan Anggota
+    <li class="active"><a href="<?= base_url('koordinator/Anggota/kelolaPemulihanAnggota'); ?>">Kelola Pemulihan Anggota
     </li></a>
 </ul>
 <!-- END BREADCRUMB -->
@@ -88,7 +88,7 @@
             <div class="mb-title">
                 <span class="fa fa-check"></span> Terima <strong> Pemulihan Akun Anggota baru di IKASMA3BDG </strong>
             </div>
-            <form action="<?= base_url('admin/Anggota/aktivasiPemulihanAnggota'); ?>" class="form-horizontal" method="post">
+            <form action="<?= base_url('koordinator/Anggota/aktivasiPemulihanAnggota'); ?>" class="form-horizontal" method="post">
                 <div class="mb-content">
                     <div class="panel-body">
                         <p>Apakah benar bahwa Akun Anggota di bawah ini akan diaktifkan Pemulihan Akun Anggota di
@@ -139,7 +139,7 @@
             <div class="mb-title">
                 <span class="fa fa-times"></span> Tolak <strong>Pemulihan</strong>
             </div>
-            <form action="<?= base_url('admin/Anggota/tolakPemulihanAnggota'); ?>" class="form-horizontal" method="post">
+            <form action="<?= base_url('koordinator/Anggota/tolakPemulihanAnggota'); ?>" class="form-horizontal" method="post">
                 <div class="mb-content">
                     <div class="panel-body">
                         <p>Anda yakin akan menolak sebagai keanggotaan IKASMA3BDG dengan identitas Calon Anggota sebagai
@@ -183,7 +183,7 @@
         console.log(this.id);
         var idPemulihan = this.id;
 
-        $.post("<?= base_url('admin/Anggota/pemulihanJSON/'); ?>", {
+        $.post("<?= base_url('koordinator/Anggota/pemulihanJSON/'); ?>", {
                 id: idPemulihan
             },
             function(data) {
@@ -206,7 +206,7 @@
         console.log(this.id);
         var idCalonPemulihan = this.id;
 
-        $.post("<?= base_url('admin/Anggota/PemulihanJSON/') ?>", {
+        $.post("<?= base_url('koordinator/Anggota/PemulihanJSON/') ?>", {
                 id: idCalonPemulihan
             },
             function(data) {

@@ -68,6 +68,7 @@
                     <ul>
                         <li><a href="<?= base_url('koordinator/Anggota') ?>"><span class="fa fa-user"></span> Kelola Calon Anggota</a></li>
                         <li><a href="<?= base_url('koordinator/Anggota/kelolaAnggota') ?>"><span class="fa fa-users"></span> Kelola Anggota </a></li>
+                        <li><a href="<?= base_url('koordinator/Anggota/kelolaPemulihanAnggota') ?>"><span class="fa fa-users"></span> Kelola Pemulihan Anggota</a></li>
                         <!-- <li><a href="<?= base_url('koordinator/Anggota/dataMaster'); ?>"><span class="fa fa-plus"></span> Data Master</a></li> -->
                     </ul>
                 </li>
