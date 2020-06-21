@@ -74,6 +74,19 @@
                 </li>
 
                 <li class="xn-openable">
+                    <a href="#"><span class="fa fa-envelope-o"></span> <span class="xn-text">Berita</span></a>
+                    <ul>
+                        <li><a href="<?= base_url('koordinator/Berita'); ?>"><span class="fa fa-align-left"></span> <span class="xn-text">Kelola Calon Berita</span></a></li>
+                        <li><a href="<?= base_url('koordinator/Berita/kelolaBerita'); ?>"><span class="fa fa-align-left"></span>
+                                <span class="xn-text">Kelola Berita Aktif</span></a>
+                        </li>
+                        <li><a href="<?= base_url('koordinator/Berita/kelolaKategori'); ?>"><span class="fa fa-align-left"></span>
+                                <span class="xn-text">Kelola Kategori</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="xn-openable">
                     <a href="#"><span class="fa fa-users"></span> <span class="xn-text">Komunitas</span></a>
                     <ul>
                         <li><a href="<?= base_url('koordinator/Komunitas') ?>"><span class="fa fa-user"></span> Kelola Calon Komunitas</a></li>

@@ -1,7 +1,7 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
     <li>Berita</li>
-    <li class="active"><a href="<?= base_url('admin/Berita'); ?>">Kelola Calon Berita</li></a>
+    <li class="active"><a href="<?= base_url('koordinator/Berita'); ?>">Kelola Calon Berita</li></a>
 </ul>
 <!-- END BREADCRUMB -->
 
@@ -131,7 +131,7 @@
                         <h5>Tambah Calon Berita Baru IKASMA3BDG</h5>
 
                         <div class="form-group">
-                            <form action="<?= base_url('admin/Berita/tambahCalonBerita'); ?>" class="form-horizontal" id="form-tambah-berita-validate" method="post" enctype="multipart/form-data">
+                            <form action="<?= base_url('koordinator/Berita/tambahCalonBerita'); ?>" class="form-horizontal" id="form-tambah-berita-validate" method="post" enctype="multipart/form-data">
                                 <div class="panel-body">
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Judul Berita</label>
@@ -202,12 +202,12 @@
                         </div>
                     </div>
 
-                    <div class="tab-pane" id="tab-three">
+                    <!-- <div class="tab-pane" id="tab-three">
                         <h5>Tes Upload Gambar</h5>
 
                         <div class="form-group">
 
-                            <form action="<?= base_url('admin/Anggota/uploadGambar'); ?>" method="post" class="form-horizontal" id="upload-gambar-validate">
+                            <form action="<?= base_url('koordinator/Anggota/uploadGambar'); ?>" method="post" class="form-horizontal" id="upload-gambar-validate">
                                 <div class="panel-body">
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Nama Panggilan / Alias</label>
@@ -226,7 +226,7 @@
 
                         </div>
 
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
@@ -244,7 +244,7 @@
             <div class="mb-title">
                 <span class="fa fa-check"></span> Terima <strong> Sebagai Berita baru di IKASMA3BDG </strong>
             </div>
-            <form action="<?= base_url('admin/Berita/aktivasiCalonBerita'); ?>" class="form-horizontal" method="post">
+            <form action="<?= base_url('koordinator/Berita/aktivasiCalonBerita'); ?>" class="form-horizontal" method="post">
                 <div class="mb-content">
                     <div class="panel-body">
                         <p>Apakah benar bahwa Berita di bawah ini akan diaktifkan sebagai Berita valid di IKASMA3BDG</p><br>
@@ -293,7 +293,7 @@
             <div class="mb-title">
                 <span class="fa fa-times"></span> Tolak <strong>Komunitas</strong>
             </div>
-            <form action="<?= base_url('admin/Berita/tolakCalonBerita'); ?>" class="form-horizontal" method="post">
+            <form action="<?= base_url('koordinator/Berita/tolakCalonBerita'); ?>" class="form-horizontal" method="post">
                 <div class="mb-content">
                     <div class="panel-body">
                         <p>Anda yakin akan menolak berita ini?</p>
@@ -345,7 +345,7 @@
         console.log(this.id);
         var idBerita = this.id;
 
-        $.post("<?= base_url('admin/Berita/beritaJSON/'); ?>", {
+        $.post("<?= base_url('koordinator/Berita/beritaJSON/'); ?>", {
                 id: idBerita
             },
             function(data) {
@@ -358,7 +358,7 @@
 
                 document.getElementById('idBerita').value = idBerita;
                 document.getElementById('judulBerita').innerHTML = judulBerita;
-                // document.getElementById('isiBerita').innerHTML = isiBerita;
+                // document.getElementById('isiBerita').value = isiBerita;
                 // document.getElementById('penulis').innerHTML = penulis;
 
             });
@@ -368,7 +368,7 @@
         console.log(this.id);
         var idCalonBerita = this.id;
 
-        $.post("<?= base_url('admin/Berita/beritaJSON/') ?>", {
+        $.post("<?= base_url('koordinator/Berita/beritaJSON/') ?>", {
                 id: idCalonBerita
             },
             function(data) {
@@ -381,7 +381,7 @@
 
                 document.getElementById('idCalonBerita').value = idBerita;
                 document.getElementById('judulCalonBerita').innerHTML = judulCalonBerita;
-                // document.getElementById('isiCalonBerita').innerHTML = isiCalonBerita;
+                // document.getElementById('isiCalonBerita').value = isiCalonBerita;
                 // document.getElementById('penulis').innerHTML = penulis;
 
             });

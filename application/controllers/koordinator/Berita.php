@@ -23,16 +23,16 @@ class Berita extends MY_Controller
     {
         parent::__construct();
 
-        $this->load->model('AdminAnggotaModel');
-        $this->load->model('AdminHomeModel');
+        $this->load->model('KoordinatorAnggotaModel');
+        $this->load->model('KoordinatorHomeModel');
         $this->load->model('M_anggota');
         $this->load->model('M_berita');
         $this->load->model('M_kategori');
 
         if ($this->session->userdata('logged_in') == '' && $this->session->userdata('username') == '' && $this->session->userdata('role') == '') {
             redirect('login');
-        } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == '2') {
-            redirect('koordinator');
+        } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == '1') {
+            redirect('admin');
         } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == '3') {
             redirect('anggota');
         } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == '4') {
@@ -58,8 +58,8 @@ class Berita extends MY_Controller
         $data['calonBerita'] = $this->M_berita->getAllBerita();
         $data['daftarKategori'] = $this->M_kategori->getAllKategori();
 
-        if ($this->session->userdata('role') == 1) {
-            $this->admin_render('admin/kelolaCalonBerita', $data);
+        if ($this->session->userdata('role') == 2) {
+            $this->koordinator_render('koordinator/kelolaCalonBerita', $data);
         }
     }
 
@@ -71,8 +71,8 @@ class Berita extends MY_Controller
         $data['berita'] = $this->M_berita->getAllBerita();
         $data['daftarKategori'] = $this->M_kategori->getAllKategori();
 
-        if ($this->session->userdata('role') == 1) {
-            $this->admin_render('admin/kelolaBeritaAktif', $data);
+        if ($this->session->userdata('role') == 2) {
+            $this->koordinator_render('koordinator/kelolaBeritaAktif', $data);
         }
     }
 
@@ -82,8 +82,8 @@ class Berita extends MY_Controller
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
         $data['kategori'] = $this->M_kategori->getAllKategori();
 
-        if ($this->session->userdata('role') == 1) {
-            $this->admin_render('admin/kelolaKategori', $data);
+        if ($this->session->userdata('role') == 2) {
+            $this->koordinator_render('koordinator/kelolaKategori', $data);
         }
     }
     // ==================================================
@@ -124,7 +124,7 @@ class Berita extends MY_Controller
 
         if (!$this->upload->do_upload('fileSaya')) {
             flashMessage('error', 'Maaf, Upload gambar calon berita gagal! Silahkan coba lagi');
-            redirect('admin/Berita');
+            redirect('koordinator/Berita');
         } else {
             $upload_data = $this->upload->data();
 
@@ -148,10 +148,10 @@ class Berita extends MY_Controller
 
             if (!$sukses) {
                 flashMessage('success', 'Calon Berita Baru berhasil ditambahkan. Silahkan verifikasi di Permohonan Calon Berita');
-                redirect('admin/Berita');
+                redirect('koordinator/Berita');
             } else {
                 flashMessage('error', 'Calon Berita Baru gagal ditambahkan! Silahkan coba lagi');
-                redirect('admin/Berita');
+                redirect('koordinator/Berita');
             }
         }
     }
@@ -164,10 +164,10 @@ class Berita extends MY_Controller
 
         if (!$sukses) {
             flashMessage('success', 'Tambah kategori berhasil.');
-            redirect('admin/Berita/kelolaKategori');
+            redirect('koordinator/Berita/kelolaKategori');
         } else {
             flashMessage('error', 'Tambah kategori gagal! Silahkan coba lagi.');
-            redirect('admin/Berita/kelolaKategori');
+            redirect('koordinator/Berita/kelolaKategori');
         }
     }
     // ==================================================
@@ -195,14 +195,14 @@ class Berita extends MY_Controller
 
             if (!$updateBerita) {
                 flashMessage('success', 'Calon Berita berhasil di aktifkan.');
-                redirect('admin/Berita');
+                redirect('koordinator/Berita');
             } else {
                 flashMessage('error', 'Aktivasi Calon Berita gagal! Silahkan coba lagi...');
-                redirect('admin/Berita');
+                redirect('koordinator/Berita');
             }
         } else {
             flashMessage('error', 'Maaf, Terjadi kesalahan pada saat proses pembuatan Berita baru');
-            redirect('admin/Berita');
+            redirect('koordinator/Berita');
         }
     }
 
@@ -228,10 +228,10 @@ class Berita extends MY_Controller
 
         if (!$sukses) {
             flashMessage('success', 'Berita berhasil di ubah.');
-            redirect('admin/Berita/kelolaBerita');
+            redirect('koordinator/Berita/kelolaBerita');
         } else {
             flashMessage('error', 'Berita gagal di ubah! Silahkan coba lagi');
-            redirect('admin/Berita/kelolaBerita');
+            redirect('koordinator/Berita/kelolaBerita');
         }
     }
 
@@ -254,7 +254,7 @@ class Berita extends MY_Controller
 
         if (!$this->upload->do_upload('fileSaya')) {
             flashMessage('error', 'Maaf, Upload gambar berita gagal! Silahkan coba lagi');
-            redirect('admin/Berita/kelolaBerita');
+            redirect('koordinator/Berita/kelolaBerita');
         } else {
             $upload_data = $this->upload->data();
 
@@ -269,10 +269,10 @@ class Berita extends MY_Controller
 
             if (!$sukses) {
                 flashMessage('success', 'Foto berhasil di ubah.');
-                redirect('admin/Berita/kelolaBerita');
+                redirect('koordinator/Berita/kelolaBerita');
             } else {
                 flashMessage('error', 'Foto gagal di ubah! Silahkan coba lagi');
-                redirect('admin/Berita/kelolaBerita');
+                redirect('koordinator/Berita/kelolaBerita');
             }
         }
     }
@@ -286,10 +286,10 @@ class Berita extends MY_Controller
 
         if (!$sukses) {
             flashMessage('success', 'Kategori berhasil diperbarui');
-            redirect('admin/Berita/kelolaKategori');
+            redirect('koordinator/Berita/kelolaKategori');
         } else {
             flashMessage('error', 'Kategori gagal diperbarui! Silahkan coba lagi');
-            redirect('admin/Berita/kelolaKategori');
+            redirect('koordinator/Berita/kelolaKategori');
         }
     }
     // ==================================================
@@ -312,10 +312,10 @@ class Berita extends MY_Controller
 
         if (!$sukses) {
             flashMessage('success', 'Calon Berita berhasil ditolak!');
-            redirect('admin/Berita');
+            redirect('koordinator/Berita');
         } else {
             flashMessage('error', 'Calon Berita gagal ditolak! Silahkan coba lagi');
-            redirect('admin/Berita');
+            redirect('koordinator/Berita');
         }
         // echo json_encode($idKomunitas);
     }
@@ -337,10 +337,10 @@ class Berita extends MY_Controller
 
         if (!$deleteBerita) {
             flashMessage('success', 'Berita berhasil dihapus');
-            redirect('admin/Berita/kelolaBerita');
+            redirect('koordinator/Berita/kelolaBerita');
         } else {
             flashMessage('error', 'Berita gagal dihapus! Silahkan coba lagi');
-            redirect('admin/Berita/kelolaBerita');
+            redirect('koordinator/Berita/kelolaBerita');
         }
     }
 
@@ -356,10 +356,10 @@ class Berita extends MY_Controller
 
         if (!$sukses) {
             flashMessage('success', 'Kategori berhasil dihapus');
-            redirect('admin/Berita/kelolaKategori');
+            redirect('koordinator/Berita/kelolaKategori');
         } else {
             flashMessage('error', 'Kategori gagal dihapus! Silahkan coba lagi');
-            redirect('admin/Berita/kelolaKategori');
+            redirect('koordinator/Berita/kelolaKategori');
         }
     }
     // ==================================================
@@ -382,8 +382,8 @@ class Berita extends MY_Controller
 
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
-        if ($this->session->userdata('role') == 1) {
-            $this->admin_render('admin/kelolaBeritaAktif', $data);
+        if ($this->session->userdata('role') == 2) {
+            $this->koordinator_render('koordinator/kelolaBeritaAktif', $data);
         }
     }
     // ==================================================
