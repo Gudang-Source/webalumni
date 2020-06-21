@@ -26,15 +26,31 @@ class Anggota extends MY_Controller
 
     function index()
     {
-        $data['title'] = 'Anggota - Lihat Anggota';
+        $data['title'] = 'Alumni - Lihat Anggota';
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
         $where = array(
             'tb_anggota.nama_lengkap != ' => 'admin',
             'tb_anggota.status_anggota != ' => '0'
         );
-        $data['dataMaster'] = $this->M_anggota->findAnggota('*', $where);
+        $data['anggota'] = $this->M_anggota->findAnggota('*', $where);
 
-        $this->alumni_render('alumni/lihatAnggota', $data);
+        $this->alumni_render('alumni/lihatAlumni', $data);
+    }
+
+
+    function cariAnggota()
+    {
+        $data['title'] = 'Cari Anggota';
+
+        $nama = $this->input->post('namaAnggota');
+
+        $where = "tb_anggota.status_anggota != 0";
+        $data['anggota'] = $this->M_anggota->findAnggotaLikeNama($where, $nama);
+        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+        if ($this->session->userdata('role') == 4) {
+            $this->alumni_render('alumni/lihatAlumni', $data);
+        }
     }
 }

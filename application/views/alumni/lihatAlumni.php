@@ -1,6 +1,6 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
-    <li>Anggota</li>
+    <li>Alumni</li>
     <li class="active"><a href="<?= base_url('anggota/Anggota'); ?>">Lihat Anggota</a></li>
 </ul>
 <!-- END BREADCRUMB -->
@@ -19,7 +19,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <p>Cari Anggota</p>
-                    <form action="<?= base_url('anggota/Anggota/cariAnggota'); ?>" method="post">
+                    <form action="<?= base_url('alumni/Anggota/cariAnggota'); ?>" method="post">
                         <div class="form-group">
                             <div class="col-md-10">
                                 <div class="input-group">
@@ -36,7 +36,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-2">
-                                <a href="<?= base_url('anggota/Anggota'); ?>" class="btn btn-primary">Reset
+                                <a href="<?= base_url('alumni/Anggota'); ?>" class="btn btn-primary">Reset
                                     Search</a>
                             </div>
                         </div>
