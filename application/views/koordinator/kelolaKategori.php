@@ -1,7 +1,7 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
-    <li><a href="<?= base_url('admin/Berita'); ?>">Berita</a></li>
-    <li class="active"><a href="<?= base_url('admin/Berita/kelolaKategori'); ?>">Kelola Kategori</a></li>
+    <li><a href="<?= base_url('koordinator/Berita'); ?>">Berita</a></li>
+    <li class="active"><a href="<?= base_url('koordinator/Berita/kelolaKategori'); ?>">Kelola Kategori</a></li>
 </ul>
 <!-- END BREADCRUMB -->
 
@@ -83,7 +83,7 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" id="defModalHead">Tambah Kategori</h4>
             </div>
-            <form action="<?= base_url('admin/Berita/setAddKategori'); ?>" class="form-horizontal" id="add-kategori-validate" method="post">
+            <form action="<?= base_url('koordinator/Berita/setAddKategori'); ?>" class="form-horizontal" id="add-kategori-validate" method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="col-md-3 control-label">* Nama Kategori :</label>
@@ -115,7 +115,7 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" id="defModalHead">Ubah Kategori</h4>
             </div>
-            <form action="<?= base_url('admin/Berita/setUpdateKategori'); ?>" class="form-horizontal" id="update-kategori-validate" method="post">
+            <form action="<?= base_url('koordinator/Berita/setUpdateKategori'); ?>" class="form-horizontal" id="update-kategori-validate" method="post">
                 <div class="modal-body">
                     <div class="form-group hidden">
                         <div class="col-md-9">
@@ -153,7 +153,7 @@
             <div class="mb-title">
                 <span class="fa fa-times"></span> Hapus <strong>Kategori</strong>
             </div>
-            <form action="<?= base_url('admin/Berita/setDeleteKategori'); ?>" class="form-horizontal" method="post">
+            <form action="<?= base_url('koordinator/Berita/setDeleteKategori'); ?>" class="form-horizontal" method="post">
                 <div class="mb-content">
                     <div class="panel-body">
                         <p style="font-size: 16px;">Anda yakin akan menghapus kategori <label class="control-label" id="namaKategoriDelete"></label> ?</p>
@@ -184,7 +184,7 @@
         console.log(this.id);
         var idKategori = this.id;
 
-        $.post("<?= base_url('admin/Berita/kategoriJSON/') ?>", {
+        $.post("<?= base_url('koordinator/Berita/kategoriJSON/') ?>", {
                 id: idKategori
             },
             function(data, success) {
@@ -200,7 +200,7 @@
         console.log(this.id);
         var idKategori = this.id;
 
-        $.post("<?= base_url('admin/Berita/kategoriJSON') ?>", {
+        $.post("<?= base_url('koordinator/Berita/kategoriJSON') ?>", {
                 id: idKategori
             },
             function(data, success) {
