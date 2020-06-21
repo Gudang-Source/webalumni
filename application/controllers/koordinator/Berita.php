@@ -3,7 +3,7 @@
 if (defined('BASEPATH') or exit('No direct script access allowed'));
 
 /*
- * class Anggota Admin
+ * class Berita Koordinator
  * Created by 
  *      Adhy Wiranto Sudjana
  *      Dicky Ardianto
@@ -184,24 +184,14 @@ class Berita extends MY_Controller
         $berita['stat_berita'] = $this->input->post('statBerita');
         $idBerita = $this->input->post('idBerita');
 
-        // echo json_encode($user);
+        $berita['stat_berita'] = 1;
         $sukses = $this->M_berita->updateBerita($berita, $idBerita);
 
-        if ($sukses != 0) {
-
-            $berita['stat_berita'] = $sukses;
-            $updateBerita = $this->M_berita->updateBerita($berita, $idBerita);
-
-
-            if (!$updateBerita) {
-                flashMessage('success', 'Calon Berita berhasil di aktifkan.');
-                redirect('koordinator/Berita');
-            } else {
-                flashMessage('error', 'Aktivasi Calon Berita gagal! Silahkan coba lagi...');
-                redirect('koordinator/Berita');
-            }
+        if (!$sukses) {
+            flashMessage('success', 'Calon Berita berhasil di aktifkan.');
+            redirect('koordinator/Berita');
         } else {
-            flashMessage('error', 'Maaf, Terjadi kesalahan pada saat proses pembuatan Berita baru');
+            flashMessage('error', 'Aktivasi Calon Berita gagal! Silahkan coba lagi...');
             redirect('koordinator/Berita');
         }
     }

@@ -9,6 +9,7 @@
     <h2> Kelola Calon Berita</h2>
 </div>
 
+<?= showFlashMessage(); ?>
 
 <div class="page-content-wrap">
 
