@@ -23,7 +23,7 @@ class ForumBisnis extends MY_Controller
             redirect('koordinator');
         } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == 3) {
             redirect('anggota');
-        } 
+        }
     }
 
     function index()
@@ -59,9 +59,17 @@ class ForumBisnis extends MY_Controller
 
     function kelolaCalonForBis()
     {
-        $data['title'] = 'Admin - Kelola Calon Bisnis';
+        $data['title'] = 'Admin - Kelola Calon Forum Bisnis';
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
         $data['kelolaCalonForBis'] = $this->M_forumBisnis->getAllCalonForumBisnis();
+        $data['jenisBisnis'] = $this->M_jenisBisnis->getAllJenisBisnis();
+
+        $where = array(
+            'tb_anggota.status_anggota !=' => '0',
+            'tb_anggota.user_id != ' => $this->session->userdata('uid')
+        );
+
+        $data['pemilikForbis'] = $this->M_anggota->findAnggota('*', $where);
 
         if ($this->session->userdata('role') == 1) {
             $this->admin_render('admin/kelolaCalonForBis', $data);
@@ -109,10 +117,10 @@ class ForumBisnis extends MY_Controller
 
             if (!$sukses) {
                 flashMessage('success', 'Bisnis / Usaha Anggota berhasil ditambahkan dan akan ditampilkan');
-                redirect('admin/ForumBisnis');
+                redirect('admin/ForumBisnis/kelolaCalonForBis');
             } else {
                 flashMessage('error', 'Bisnis / Usaha Anggota gagal ditambahkan! Silahkan coba lagi.');
-                redirect('admin/ForumBisnis');
+                redirect('admin/ForumBisnis/kelolaCalonForBis');
             }
         }
     }

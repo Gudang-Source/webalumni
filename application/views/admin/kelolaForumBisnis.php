@@ -12,14 +12,14 @@
 <?= showFlashMessage(); ?>
 
 <div class="page-content-wrap">
-    <div class="row" style="margin-bottom:10px;">
+    <!-- <div class="row" style="margin-bottom:10px;">
         <div class="col-md-2">
             <button class="btn btn-primary" data-toggle="modal" data-target="#tambahForbis">
                 <i class="fa fa-plus-circle"></i>
                 <span>Tambah Forum Bisnis</span>
             </button>
         </div>
-    </div>
+    </div> -->
 
     <div class="row">
 
@@ -27,7 +27,7 @@
 
             <!-- START PANEL WITH STATIC CONTROLS -->
             <div class="panel panel-default">
-                <div class="panel-heading ui-draggable-handle">
+                <!-- <div class="panel-heading ui-draggable-handle">
                     <h3 class="panel-title">Forum Bisnis</h3>
                     <ul class="panel-controls">
                         <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
@@ -43,15 +43,16 @@
                         </li>
                         <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                     </ul>
-                </div>
+                </div> -->
 
                 <div class="panel-body panel-body-table">
                     <div class="table-responsive">
                         <div class="panel-body">
-                            <table class="table table-bordered table-striped table-actions datatable">
+                            <table class="table table-bordered table-striped table-actions datatable"
+                                style="margin-bottom:5px;">
                                 <thead>
                                     <tr>
-                                        <th width="50">No</th>
+                                        <th width=" 50">No</th>
                                         <th width="100">Logo Bisnis / Usaha</th>
                                         <th width="100">Nama Bisnis / Usaha</th>
                                         <th width="100">Pemilik</th>
@@ -66,7 +67,7 @@
                                     <?php
                                     $no = 1;
                                     foreach ($forumBisnis as $forbis) {
-                                        ?>
+                                    ?>
                                     <tr>
                                         <td class="text-center"><?= $no++; ?></td>
                                         <!-- <td><strong><?= $forbis->nama_foto_bisnis; ?></strong></td> -->
