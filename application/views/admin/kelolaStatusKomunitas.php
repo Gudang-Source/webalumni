@@ -82,7 +82,7 @@
                                     <?php } ?>
                                
                                     <?php if ($A->jenis_komunitas == "Aktif") { ?>
-                                <p><i class="fa fa-globe" aria-hidden="true"></i> <strong><?= $A->sifat_komunitas ?></strong><br><h5>Semua orang bisa melihat siapa anggota grup ini dan apa yang diposting</h5></p>
+                                <p><i class="fa fa-globe" aria-hidden="true"></i> <strong><?= $A->jenis_komunitas ?></strong><br><h5>Semua orang bisa melihat siapa anggota grup ini dan apa yang diposting</h5></p>
                                     <?php } else { ?>
                                 <p><i class="fa fa-globe" aria-hidden="true"></i> <strong>Pasif</strong><br><h5>Hanya sebagian anggota menggunakan grup ini dan apa yang diposting</h5></p>
                                     <?php } ?>
