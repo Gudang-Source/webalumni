@@ -411,6 +411,7 @@ class Anggota extends MY_Controller
         $sukses = $this->M_anggota->deleteAnggota($idAnggota);
 
         if (!$sukses) {
+            $this->sendEmailTolakKeanggotaan();
             flashMessage('success', 'Calon Anggota berhasil ditolak sebagai keanggotaan');
             redirect('admin/Anggota');
         } else {
@@ -593,7 +594,7 @@ class Anggota extends MY_Controller
         $this->load->library('email', $config);
         $this->email->from('no-reply@alumni.com', 'AlumniIKASMA3BDG.com');
         $this->email->to($emailName);
-        $this->email->subject('Registrasi akun');
+        $this->email->subject('Registrasi akun berhasil');
         $this->email->message($message);
 
         if ($this->email->send()) {
@@ -601,6 +602,40 @@ class Anggota extends MY_Controller
             redirect('admin/Anggota');
         } else {
             flashMessage('error', 'Aktivasi Calon Anggota gagal! Silahkan coba lagi...');
+            redirect('admin/Anggota');
+        }
+    }
+
+
+
+
+    public function sendEmailTolakKeanggotaan()
+    {
+        $emailName = $this->input->post('tolakEmailAnggotaBaru');
+
+        $config['mailtype'] = 'html';
+        $config['protocol'] = 'smtp';
+        $config['smtp_host'] = 'ssl://smtp.googlemail.com';
+        $config['smtp_user'] = 'iika.sma3.bandung@gmail.com';
+        $config['smtp_pass'] = 'ikasma3bdg';
+        $config['smtp_port'] = 465;
+        $config['newline'] = "\r\n";
+
+        $message = "Mohon maaf untuk saat ini anda belum dapat diterima di keanggotaan ikatan alumni SMA Negeri 3 Bandung. <br>
+        <b>Pastikan anda adalah alumni keanggotaan SMA Negeri 3 Bandung</b>. <br>
+        Terimakasih.";
+
+        $this->load->library('email', $config);
+        $this->email->from('no-reply@alumni.com', 'AlumniIKASMA3BDG.com');
+        $this->email->to($emailName);
+        $this->email->subject('Registrasi akun gagal');
+        $this->email->message($message);
+
+        if ($this->email->send()) {
+            flashMessage('success', 'Calon Anggota berhasil di tolak');
+            redirect('admin/Anggota');
+        } else {
+            flashMessage('error', 'Aktivasi Calon Anggota gagal ditolak ! Silahkan coba lagi...');
             redirect('admin/Anggota');
         }
     }

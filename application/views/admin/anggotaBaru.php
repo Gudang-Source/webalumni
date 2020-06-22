@@ -325,6 +325,8 @@
 
                         <div class="form-group hidden">
                             <input type="text" id="idCalonAnggota" name="idCalonAnggota" class="form-control">
+                            <input type="email" class="form-control" name="tolakEmailAnggotaBaru"
+                                id="tolakEmailAnggotaBaru">
                         </div>
 
                         <div class="form-group">
@@ -462,6 +464,7 @@ $(".btn-tolak").click(function() {
         },
         function(data) {
             var data_obj = JSON.parse(data);
+            console.log(data_obj);
 
             var email = data_obj.anggota[0].email;
             var angkatan = data_obj.anggota[0].angkatan;
@@ -469,6 +472,7 @@ $(".btn-tolak").click(function() {
 
             document.getElementById('idCalonAnggota').value = data_obj.anggota[0].id_anggota;
             document.getElementById('namaCalonAnggota').innerHTML = data_obj.anggota[0].nama_lengkap;
+            document.getElementById('tolakEmailAnggotaBaru').value = data_obj.anggota[0].email;
 
             if (angkatan == null) {
                 document.getElementById('angkatanCalonAnggota').innerHTML = "Belum di isi";
