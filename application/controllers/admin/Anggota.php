@@ -24,6 +24,7 @@ class Anggota extends MY_Controller
     {
         parent::__construct();
 
+
         // Load Admin Anggota Model
         $this->load->model('AdminAnggotaModel');
         $this->load->model('AdminHomeModel');
@@ -192,6 +193,8 @@ class Anggota extends MY_Controller
             $anggota['user_id'] = $sukses;
             $anggota['status_anggota'] = '1';
             $updateAnggota = $this->M_anggota->updateAnggota($anggota, $idAnggota);
+
+            $this->sendEmailKeanggotaan();
 
             if (!$updateAnggota) {
                 flashMessage('success', 'Calon Anggota berhasil di aktifkan dan dapat masuk menggunakan Username & Password sesuai yang tertera pada saat Aktivasi');
@@ -546,6 +549,59 @@ class Anggota extends MY_Controller
         } else {
             flashMessage('error', 'Aktivasi Calon Anggota gagal! Silahkan coba lagi...');
             redirect('admin/Anggota/kelolaPemulihanAnggota');
+        }
+    }
+
+
+    private function sendEmailKeanggotaan()
+    {
+        $emailName = $this->input->post('emailAnggotaBaru');
+        $role = $this->input->post('role');
+        $username = $this->input->post('username');
+
+        $namaRole = '';
+        if ($role == '1') {
+            $namaRole = "Admin";
+        } else if ($role == '2') {
+            $namaRole = "Koordinator";
+        } else if ($role == '3') {
+            $namaRole = "Anggota";
+        } else if ($role == '4') {
+            $namaRole = "Alumni";
+        } else {
+            flashMessage('error', 'Mohon pilih kolom kenanggotaan !');
+            redirect('admin/Anggota');
+        }
+
+
+
+        $config['mailtype'] = 'html';
+        $config['protocol'] = 'smtp';
+        $config['smtp_host'] = 'ssl://smtp.googlemail.com';
+        $config['smtp_user'] = 'iika.sma3.bandung@gmail.com';
+        $config['smtp_pass'] = 'ikasma3bdg';
+        $config['smtp_port'] = 465;
+        $config['newline'] = "\r\n";
+
+        $message = "Selamat, Akun anda telah berhasil di verifikasi oleh pihak admin dengan kategori sebagai berikut : <br>
+        <b>Diterima sebagai</b>     | " . $namaRole . "<br>
+        <b>Username Anda</b>        | " . $username . "<br>
+        <b>Password Anda</b>        | 12345678 <br>
+        Harap untuk segera mengubah password anda ! <br>
+        Demikian informasi seputar registrasi akun untuk keanggotaan alumni SMA Negeri 3 Bandung.";
+
+        $this->load->library('email', $config);
+        $this->email->from('no-reply@alumni.com', 'AlumniIKASMA3BDG.com');
+        $this->email->to($emailName);
+        $this->email->subject('Registrasi akun');
+        $this->email->message($message);
+
+        if ($this->email->send()) {
+            flashMessage('success', 'Calon Anggota berhasil di aktifkan dan dapat masuk menggunakan Username & Password sesuai yang tertera pada saat Aktivasi');
+            redirect('admin/Anggota');
+        } else {
+            flashMessage('error', 'Aktivasi Calon Anggota gagal! Silahkan coba lagi...');
+            redirect('admin/Anggota');
         }
     }
     // ==================================================

@@ -48,40 +48,48 @@
                                             <?php
                                             $no = 1;
                                             foreach ($calonAnggota as $CA) { ?>
-                                                <tr id="trow_1">
-                                                    <td class="text-center"><?= $no; ?></td>
-                                                    <?php if ($CA->nama_foto == null) { ?>
-                                                        <td><img src="<?= base_url('uploads/no-image.jpg'); ?>" alt="<?= $CA->nama_lengkap; ?>" title="<?= $CA->nama_lengkap; ?>" width="80" /></td>
-                                                    <?php } else { ?>
-                                                        <td><img src="<?= base_url('uploads/avatars/' . $CA->nama_foto); ?>" alt="<?= $CA->nama_lengkap; ?>" title="<?= $CA->nama_lengkap; ?>" width="80" height="80" /></td>
-                                                    <?php } ?>
+                                            <tr id="trow_1">
+                                                <td class="text-center"><?= $no; ?></td>
+                                                <?php if ($CA->nama_foto == null) { ?>
+                                                <td><img src="<?= base_url('uploads/no-image.jpg'); ?>"
+                                                        alt="<?= $CA->nama_lengkap; ?>"
+                                                        title="<?= $CA->nama_lengkap; ?>" width="80" /></td>
+                                                <?php } else { ?>
+                                                <td><img src="<?= base_url('uploads/avatars/' . $CA->nama_foto); ?>"
+                                                        alt="<?= $CA->nama_lengkap; ?>"
+                                                        title="<?= $CA->nama_lengkap; ?>" width="80" height="80" /></td>
+                                                <?php } ?>
 
-                                                    <td><strong><?= $CA->nama_lengkap; ?></strong></td>
+                                                <td><strong><?= $CA->nama_lengkap; ?></strong></td>
 
-                                                    <?php if ($CA->angkatan == null) { ?>
-                                                        <td>Belum di isi</td>
-                                                    <?php } else { ?>
-                                                        <td><?= $CA->angkatan; ?></td>
-                                                    <?php } ?>
+                                                <?php if ($CA->angkatan == null) { ?>
+                                                <td>Belum di isi</td>
+                                                <?php } else { ?>
+                                                <td><?= $CA->angkatan; ?></td>
+                                                <?php } ?>
 
-                                                    <!-- <td><span class="label label-success">New</span></td> -->
-                                                    <?php if ($CA->no_telp == null) { ?>
-                                                        <td>Belum di isi</td>
-                                                    <?php } else { ?>
-                                                        <td><?= $CA->no_telp; ?></td>
-                                                    <?php } ?>
+                                                <!-- <td><span class="label label-success">New</span></td> -->
+                                                <?php if ($CA->no_telp == null) { ?>
+                                                <td>Belum di isi</td>
+                                                <?php } else { ?>
+                                                <td><?= $CA->no_telp; ?></td>
+                                                <?php } ?>
 
-                                                    <?php if ($CA->email == null) { ?>
-                                                        <td>Belum di isi</td>
-                                                    <?php } else { ?>
-                                                        <td><?= $CA->email; ?></td>
-                                                    <?php } ?>
+                                                <?php if ($CA->email == null) { ?>
+                                                <td>Belum di isi</td>
+                                                <?php } else { ?>
+                                                <td><?= $CA->email; ?></td>
+                                                <?php } ?>
 
-                                                    <td>
-                                                        <button type="button" class="btn btn-primary mb-control btn-terima" data-box="#message-box-terima" id="<?= $CA->id_anggota; ?>">Terima</button>
-                                                        <button type="button" class="btn btn-danger mb-control btn-tolak" data-box="#message-box-tolak" id="<?= $CA->id_anggota; ?>">Tolak</button>
-                                                    </td>
-                                                </tr>
+                                                <td>
+                                                    <button type="button" class="btn btn-primary mb-control btn-terima"
+                                                        data-box="#message-box-terima"
+                                                        id="<?= $CA->id_anggota; ?>">Terima</button>
+                                                    <button type="button" class="btn btn-danger mb-control btn-tolak"
+                                                        data-box="#message-box-tolak"
+                                                        id="<?= $CA->id_anggota; ?>">Tolak</button>
+                                                </td>
+                                            </tr>
                                             <?php
                                                 $no++;
                                             } ?>
@@ -97,19 +105,22 @@
                         <h5>Tambah Calon Anggota Baru IKASMA3BDG</h5>
 
                         <div class="form-group">
-                            <form action="<?= base_url('admin/Anggota/tambahCalonAnggota'); ?>" class="form-horizontal" id="form-tambah-anggota-validate" method="post" enctype="multipart/form-data">
+                            <form action="<?= base_url('admin/Anggota/tambahCalonAnggota'); ?>" class="form-horizontal"
+                                id="form-tambah-anggota-validate" method="post" enctype="multipart/form-data">
                                 <div class="panel-body">
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Nama Lengkap</label>
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control" name="namaLengkap" placeholder="Nama Lengkap" required />
+                                            <input type="text" class="form-control" name="namaLengkap"
+                                                placeholder="Nama Lengkap" required />
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Nama Panggilan / Alias</label>
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control" name="namaPanggilanAlias" placeholder="Nama Panggilan / Alias" required />
+                                            <input type="text" class="form-control" name="namaPanggilanAlias"
+                                                placeholder="Nama Panggilan / Alias" required />
                                         </div>
                                     </div>
 
@@ -117,8 +128,12 @@
                                         <label class="col-md-2 control-label">Tanggal Lahir</label>
                                         <div class="col-md-8">
                                             <div class="input-group">
-                                                <input type="text" id="dp-3" class="form-control datepicker" data-date="06-06-2014" data-date-format="dd-mm-yyyy" data-date-viewmode="years" name="tglLahir" placeholder="Tanggal Lahir" required />
-                                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                                <input type="text" id="dp-3" class="form-control datepicker"
+                                                    data-date="06-06-2014" data-date-format="dd-mm-yyyy"
+                                                    data-date-viewmode="years" name="tglLahir"
+                                                    placeholder="Tanggal Lahir" required />
+                                                <span class="input-group-addon"><span
+                                                        class="glyphicon glyphicon-calendar"></span></span>
                                             </div>
                                         </div>
                                     </div>
@@ -126,21 +141,24 @@
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Angkatan / Tahun Lulus</label>
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control" name="angkatan" placeholder="Angkatan / Tahun Lulus" required />
+                                            <input type="text" class="form-control" name="angkatan"
+                                                placeholder="Angkatan / Tahun Lulus" required />
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">No Telepon</label>
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control" name="noTelepon" id="noTelepon" placeholder="No. Telepon" required />
+                                            <input type="text" class="form-control" name="noTelepon" id="noTelepon"
+                                                placeholder="No. Telepon" required />
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Email</label>
                                         <div class="col-md-8">
-                                            <input type="email" class="form-control form-email " name="email" id="email" placeholder="Email" required />
+                                            <input type="email" class="form-control form-email " name="email" id="email"
+                                                placeholder="Email" required />
                                         </div>
                                     </div>
 
@@ -176,7 +194,8 @@
 
                         <div class="form-group">
 
-                            <form action="<?= base_url('admin/Anggota/uploadGambar'); ?>" method="post" class="form-horizontal" id="upload-gambar-validate">
+                            <form action="<?= base_url('admin/Anggota/uploadGambar'); ?>" method="post"
+                                class="form-horizontal" id="upload-gambar-validate">
                                 <div class="panel-body">
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Nama Panggilan / Alias</label>
@@ -224,6 +243,7 @@
                                 <input type="text" class="form-control" name="idAnggota" id="idAnggota" />
                                 <input type="text" class="form-control" name="username" id="userName">
                                 <input type="password" class="form-control" name="password" id="passWord">
+                                <input type="email" class="form-control" name="emailAnggotaBaru" id="emailAnggotaBaru">
                             </div>
                         </div>
 
@@ -266,9 +286,9 @@
                             <label class="col-md-3 control-label">Keanggotaan : </label>
                             <div class="col-md-3">
                                 <select name="role" id="role" class="select form-control validate[required]">
-                                    <option value="">-- Pilih --</option>
+                                    <!-- <option value="">-- Pilih --</option> -->
                                     <?php foreach ($daftarHakAkses as $hakAkses) : ?>
-                                        <option value="<?= $hakAkses->id; ?>"><?= $hakAkses->role; ?></option>
+                                    <option value="<?= $hakAkses->id; ?>"><?= $hakAkses->role; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
@@ -350,122 +370,123 @@
 <!-- END MESSAGE BOX REJECT CALON ANGGOTA -->
 
 <script type="text/javascript">
-    $("#form-tambah-anggota-validate").validate();
+$("#form-tambah-anggota-validate").validate();
 
-    $("#file-simple").fileinput({
-        showUpload: false,
-        showCaption: false,
-        browseClass: "btn btn-danger",
-        fileType: "any"
-    });
+$("#file-simple").fileinput({
+    showUpload: false,
+    showCaption: false,
+    browseClass: "btn btn-danger",
+    fileType: "any"
+});
 
-    $(".btn-terima").click(function() {
-        console.log(this.id);
-        var idAnggota = this.id;
+$(".btn-terima").click(function() {
+    console.log(this.id);
+    var idAnggota = this.id;
 
-        $.post("<?= base_url('admin/Anggota/anggotaJSON/'); ?>", {
-                id: idAnggota
-            },
-            function(data) {
-                var data_obj = JSON.parse(data);
+    $.post("<?= base_url('admin/Anggota/anggotaJSON/'); ?>", {
+            id: idAnggota
+        },
+        function(data) {
+            var data_obj = JSON.parse(data);
 
-                var email = data_obj.anggota[0].email;
-                var angkatan = data_obj.anggota[0].angkatan;
-                var noTelp = data_obj.anggota[0].no_telp;
-                var namaPanggilan = data_obj.anggota[0].nama_panggilan_alias;
-                var nik = data_obj.anggota[0].NIK;
-                var namaLengkap = data_obj.anggota[0].nama_lengkap;
+            var email = data_obj.anggota[0].email;
+            var angkatan = data_obj.anggota[0].angkatan;
+            var noTelp = data_obj.anggota[0].no_telp;
+            var namaPanggilan = data_obj.anggota[0].nama_panggilan_alias;
+            var nik = data_obj.anggota[0].NIK;
+            var namaLengkap = data_obj.anggota[0].nama_lengkap;
 
-                document.getElementById('idAnggota').value = data_obj.anggota[0].id_anggota;
-                document.getElementById('namaAnggota').innerHTML = namaLengkap;
+            document.getElementById('idAnggota').value = data_obj.anggota[0].id_anggota;
+            document.getElementById('namaAnggota').innerHTML = namaLengkap;
 
-                // if (email == null) {
-                //     console.log("Email is : " + email);
-                //     document.getElementById('emailAnggota').innerHTML = "Email belum diisi";
-                // } else {
-                //     document.getElementById('emailAnggota').innerHTML = email;
-                // }
+            // if (email == null) {
+            //     console.log("Email is : " + email);
+            //     document.getElementById('emailAnggota').innerHTML = "Email belum diisi";
+            // } else {
+            //     document.getElementById('emailAnggota').innerHTML = email;
+            // }
 
-                // if (angkatan == null) {
-                //     document.getElementById('angkatanAnggota').innerHTML = "Angkatan belum diisi";
-                // } else {
-                document.getElementById('angkatanAnggota').innerHTML = data_obj.anggota[0].angkatan;
-                // }
+            // if (angkatan == null) {
+            //     document.getElementById('angkatanAnggota').innerHTML = "Angkatan belum diisi";
+            // } else {
+            document.getElementById('angkatanAnggota').innerHTML = data_obj.anggota[0].angkatan;
+            // }
 
-                // document.getElementById('usernameAnggota').innerHTML = email.toLowerCase() +
-                //         " (Default Username & Password sesuai yang tertera)";
-                // document.getElementById('angkatanAnggota').innerHTML = angkatan.toLowerCase();
-                document.getElementById('emailAnggota').innerHTML = email.toLowerCase();
+            // document.getElementById('usernameAnggota').innerHTML = email.toLowerCase() +
+            //         " (Default Username & Password sesuai yang tertera)";
+            // document.getElementById('angkatanAnggota').innerHTML = angkatan.toLowerCase();
+            document.getElementById('emailAnggota').innerHTML = email.toLowerCase();
+            document.getElementById('emailAnggotaBaru').value = email;
 
-                // document.getElementById('userName').value = email.toLowerCase();
-                // document.getElementById('passWord').value = 12345678;
+            // document.getElementById('userName').value = email.toLowerCase();
+            // document.getElementById('passWord').value = 12345678;
 
-                if (noTelp != null) {
-                    document.getElementById('usernameAnggota').innerHTML = noTelp +
-                        " (Default Username & Password sesuai yang tertera)";
-                    document.getElementById('userName').value = noTelp;
-                    document.getElementById('passWord').value = 12345678;
-                } else if (email != null) {
-                    document.getElementById('usernameAnggota').innerHTML = email.toLowerCase() +
-                        " (Default Username & Password sesuai yang tertera)";
-                    document.getElementById('userName').value = email.toLowerCase();
-                    document.getElementById('passWord').value = 12345678;
-                } else if (nik != null) {
-                    document.getElementById('usernameAnggota').innerHTML = nik +
-                        " (Default Username & Password sesuai yang tertera)";
-                    document.getElementById('userName').value = nik;
-                    document.getElementById('passWord').value = 12345678;
-                } else if (namaPanggilan != null) {
-                    document.getElementById('usernameAnggota').innerHTML = namaPanggilan.toLowerCase() +
-                        " (Default Username & Password sesuai yang tertera)";
-                    document.getElementById('userName').value = namaPanggilan.toLowerCase();
-                    document.getElementById('passWord').value = 12345678;
-                } else if (namaLengkap != null) {
-                    document.getElementById('usernameAnggota').innerHTML = namaLengkap.split(' ').join('')
-                        .toLowerCase() +
-                        " (Default Username & Password sesuai yang tertera)";
-                    document.getElementById('userName').value = namaLengkap.split(' ').join('')
-                        .toLowerCase();
-                    document.getElementById('passWord').value = 12345678;
-                }
+            if (noTelp != null) {
+                document.getElementById('usernameAnggota').innerHTML = noTelp +
+                    " (Default Username & Password sesuai yang tertera)";
+                document.getElementById('userName').value = noTelp;
+                document.getElementById('passWord').value = 12345678;
+            } else if (email != null) {
+                document.getElementById('usernameAnggota').innerHTML = email.toLowerCase() +
+                    " (Default Username & Password sesuai yang tertera)";
+                document.getElementById('userName').value = email.toLowerCase();
+                document.getElementById('passWord').value = 12345678;
+            } else if (nik != null) {
+                document.getElementById('usernameAnggota').innerHTML = nik +
+                    " (Default Username & Password sesuai yang tertera)";
+                document.getElementById('userName').value = nik;
+                document.getElementById('passWord').value = 12345678;
+            } else if (namaPanggilan != null) {
+                document.getElementById('usernameAnggota').innerHTML = namaPanggilan.toLowerCase() +
+                    " (Default Username & Password sesuai yang tertera)";
+                document.getElementById('userName').value = namaPanggilan.toLowerCase();
+                document.getElementById('passWord').value = 12345678;
+            } else if (namaLengkap != null) {
+                document.getElementById('usernameAnggota').innerHTML = namaLengkap.split(' ').join('')
+                    .toLowerCase() +
+                    " (Default Username & Password sesuai yang tertera)";
+                document.getElementById('userName').value = namaLengkap.split(' ').join('')
+                    .toLowerCase();
+                document.getElementById('passWord').value = 12345678;
+            }
 
-            });
-    });
+        });
+});
 
-    $(".btn-tolak").click(function() {
-        console.log(this.id);
-        var idCalonAnggota = this.id;
+$(".btn-tolak").click(function() {
+    console.log(this.id);
+    var idCalonAnggota = this.id;
 
-        $.post("<?= base_url('admin/Anggota/anggotaJSON/') ?>", {
-                id: idCalonAnggota
-            },
-            function(data) {
-                var data_obj = JSON.parse(data);
+    $.post("<?= base_url('admin/Anggota/anggotaJSON/') ?>", {
+            id: idCalonAnggota
+        },
+        function(data) {
+            var data_obj = JSON.parse(data);
 
-                var email = data_obj.anggota[0].email;
-                var angkatan = data_obj.anggota[0].angkatan;
-                var noTelp = data_obj.anggota[0].no_telp;
+            var email = data_obj.anggota[0].email;
+            var angkatan = data_obj.anggota[0].angkatan;
+            var noTelp = data_obj.anggota[0].no_telp;
 
-                document.getElementById('idCalonAnggota').value = data_obj.anggota[0].id_anggota;
-                document.getElementById('namaCalonAnggota').innerHTML = data_obj.anggota[0].nama_lengkap;
+            document.getElementById('idCalonAnggota').value = data_obj.anggota[0].id_anggota;
+            document.getElementById('namaCalonAnggota').innerHTML = data_obj.anggota[0].nama_lengkap;
 
-                if (angkatan == null) {
-                    document.getElementById('angkatanCalonAnggota').innerHTML = "Belum di isi";
-                } else {
-                    document.getElementById('angkatanCalonAnggota').innerHTML = angkatan;
-                }
+            if (angkatan == null) {
+                document.getElementById('angkatanCalonAnggota').innerHTML = "Belum di isi";
+            } else {
+                document.getElementById('angkatanCalonAnggota').innerHTML = angkatan;
+            }
 
-                if (noTelp == null) {
-                    document.getElementById('noTelpCalonAnggota').innerHTML = "Belum di isi";
-                } else {
-                    document.getElementById('noTelpCalonAnggota').innerHTML = noTelp;
-                }
+            if (noTelp == null) {
+                document.getElementById('noTelpCalonAnggota').innerHTML = "Belum di isi";
+            } else {
+                document.getElementById('noTelpCalonAnggota').innerHTML = noTelp;
+            }
 
-                if (email == null) {
-                    document.getElementById('emailCalonAnggota').innerHTML = "Belum di isi";
-                } else {
-                    document.getElementById('emailCalonAnggota').innerHTML = email;
-                }
-            });
-    });
+            if (email == null) {
+                document.getElementById('emailCalonAnggota').innerHTML = "Belum di isi";
+            } else {
+                document.getElementById('emailCalonAnggota').innerHTML = email;
+            }
+        });
+});
 </script>

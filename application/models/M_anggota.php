@@ -12,6 +12,7 @@ class M_anggota extends CI_Model
 
     function getAllRole()
     {
+        $this->db->order_by('id', 'DESC');
         return $this->db->get('tb_user_role')->result();
     }
 
