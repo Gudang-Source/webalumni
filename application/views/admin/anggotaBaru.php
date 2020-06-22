@@ -286,7 +286,7 @@
                             <label class="col-md-3 control-label">Keanggotaan : </label>
                             <div class="col-md-3">
                                 <select name="role" id="role" class="select form-control validate[required]">
-                                    <!-- <option value="">-- Pilih --</option> -->
+                                    <option value="">-- Pilih --</option>
                                     <?php foreach ($daftarHakAkses as $hakAkses) : ?>
                                     <option value="<?= $hakAkses->id; ?>"><?= $hakAkses->role; ?></option>
                                     <?php endforeach; ?>
