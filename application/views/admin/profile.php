@@ -350,10 +350,11 @@
                             </div>
 
                             <div class="panel-body">
+                                <?php if ($info[0]->support == 1) : ?>
                                 <div class="form-group">
                                     <div class="col-md-5">
-                                        <label class="check"><input type="checkbox" class="icheckbox" value="checked"
-                                                id="keanggotaan1" disabled /> Support</label>
+                                        <label class="check"><input type="checkbox" class="icheckbox" checked="checked"
+                                                id="keanggotaan1" /> Support</label>
                                     </div>
                                     <div class="col-md-9">
                                         <p>Iuran Pendaftaran sebesar Rp. 10.000 (sepuluh ribu rupiah) 1x seumur hidup.
@@ -361,11 +362,35 @@
                                         <p>Iuran Wajib Tahunan sebesar Rp. 25.000 (dua puluh lima ribu rupiah).</p>
                                     </div>
                                 </div>
+                                <?php else : ?>
                                 <div class="form-group">
                                     <div class="col-md-5">
-                                        <label class="check"><input type="checkbox" class="icheckbox" value="checked"
-                                                id="keanggotaan2" disabled /> Loyalist</label>
+                                        <label class="check"><input type="checkbox" class="icheckbox" id="keanggotaan1"
+                                                disabled /> Support</label>
                                     </div>
+                                    <div class="col-md-9">
+                                        <p>Iuran Pendaftaran sebesar Rp. 10.000 (sepuluh ribu rupiah) 1x seumur hidup.
+                                        </p>
+                                        <p>Iuran Wajib Tahunan sebesar Rp. 25.000 (dua puluh lima ribu rupiah).</p>
+                                    </div>
+                                </div>
+                                <?php endif; ?>
+
+
+                                <div class="form-group">
+                                    <?php if ($info[0]->loyalist == 1) : ?>
+                                    <div class="col-md-5">
+                                        <label class="check"><input type="checkbox" class="icheckbox" checked="checked"
+                                                id="keanggotaan2" /> Loyalist</label>
+                                    </div>
+                                    <?php else : ?>
+                                    <div class="col-md-5">
+                                        <label class="check"><input type="checkbox" class="icheckbox"
+                                                id="keanggotaan2" /> Loyalist</label>
+                                    </div>
+                                    <?php endif; ?>
+
+
                                     <div class="col-md-9">
                                         <p>Iuran sukarela sebesar : </p>
                                         <!-- <input type="number" class="form-control" id="iuranSukarela" readonly /> -->
@@ -780,22 +805,42 @@
                         </div>
                     </div>
 
+                    <?php if ($info[0]->support == 1) : ?>
                     <div class="form-group">
-                        <div class="col-md-5">
-                            <label class="check"><input type="checkbox" class="icheckbox" id="keanggotaan1"
-                                    name="support" required /> Support</label>
+                        <div class="col-md-9">
+                            <label class="check"><input type="checkbox" class="icheckbox" value="1" checked="checked"
+                                    id="keanggotaan1" name="support" /> Support</label>
                         </div>
                         <div class="col-md-9">
                             <p>Iuran Pendaftaran sebesar Rp. 10.000 (sepuluh ribu rupiah) 1x seumur hidup.</p>
                             <p>Iuran Wajib Tahunan sebesar Rp. 25.000 (dua puluh lima ribu rupiah).</p>
                         </div>
                     </div>
+                    <?php else : ?>
+                    <div class="form-group">
+                        <div class="col-md-9">
+                            <label class="check"><input type="checkbox" class="icheckbox" value="1" id="keanggotaan1"
+                                    name="support" /> Support</label>
+                        </div>
+                        <div class="col-md-9">
+                            <p>Iuran Pendaftaran sebesar Rp. 10.000 (sepuluh ribu rupiah) 1x seumur hidup.</p>
+                            <p>Iuran Wajib Tahunan sebesar Rp. 25.000 (dua puluh lima ribu rupiah).</p>
+                        </div>
+                    </div>
+                    <?php endif; ?>
 
                     <div class="form-group">
+                        <?php if ($info[0]->loyalist == 1) : ?>
                         <div class="col-md-5">
-                            <label class="check"><input type="checkbox" class="icheckbox" id="keanggotaan2"
+                            <label class="check"><input type="checkbox" class="icheckbox" checked="checked" value="1"
+                                    id="keanggotaan2" name="loyalist" /> Loyalist</label>
+                        </div>
+                        <?php else : ?>
+                        <div class="col-md-5">
+                            <label class="check"><input type="checkbox" value="1" class="icheckbox" id="keanggotaan2"
                                     name="loyalist" /> Loyalist</label>
                         </div>
+                        <?php endif; ?>
                         <div class="col-md-9">
                             <p>Iuran sukarela sebesar : </p>
                             <input type="number" class="form-control" id="iuranSukarelaModal" name="iuranSukarela" />
