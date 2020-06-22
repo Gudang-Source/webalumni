@@ -51,7 +51,6 @@ class Komunitas extends MY_Controller
         $data['title'] = 'Kelola Komunitas';
         $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
-
         $data['calonKomunitas'] = $this->M_komunitas->getAllKomunitas();
 
         if ($this->session->userdata('role') == 1) {
@@ -76,6 +75,12 @@ class Komunitas extends MY_Controller
 
         $this->load->model('M_anggota');
 
+        $sifatKomunitas = $this->input->post('sifatKomunitas');
+        $jenisKomunitas = $this->input->post('jenisKomunitas');
+        $lokasiKomunitas = $this->input->post('lokasiKomunitas');
+        $anggotaKomunitas = $this->input->post('anggotaKomunitas');
+        $deskKomunitas = $this->input->post('deskKomunitas');
+
         $namaKomunitas = $this->input->post('namaKomunitas');
         $tautatKomunitas = $this->input->post('tautatKomunitas');
         $tglPengajuan = $tanggal;
@@ -97,6 +102,12 @@ class Komunitas extends MY_Controller
             redirect('admin/Komunitas');
         } else {
             $upload_data = $this->upload->data();
+
+            $data['sifat_komunitas'] = $sifatKomunitas;
+            $data['jenis_komunitas'] = $jenisKomunitas;
+            $data['lokasi_komunitas'] = $lokasiKomunitas;
+            $data['anggota_komunitas'] = $anggotaKomunitas;
+            $data['deskripsi_komunitas'] = $deskKomunitas;
 
             $data['nama_komunitas'] = $namaKomunitas;
             $data['tautat_komunitas'] = $tautatKomunitas;
@@ -176,6 +187,12 @@ class Komunitas extends MY_Controller
     {
         $this->load->model('M_komunitas');
 
+        $sifatKomunitas = $this->input->post('sifatKomunitas');
+        $jenisKomunitas = $this->input->post('jenisKomunitas');
+        $lokasiKomunitas = $this->input->post('lokasiKomunitas');
+        $anggotaKomunitas = $this->input->post('anggotaKomunitas');
+        $deskKomunitas = $this->input->post('deskKomunitas');
+
         $idKomunitas = $this->input->post('idKomunitas');
         $namaKomunitas = $this->input->post('namaKomunitas');
         $tautatKomunitas = $this->input->post('tautatKomunitas');
@@ -190,15 +207,21 @@ class Komunitas extends MY_Controller
         //load upload class library
         $this->load->library('upload', $config);
 
-        if (!$this->upload->do_upload('fileSaya')) {
-            flashMessage('error', 'Maaf, Upload gambar calon anggota gagal! Silahkan coba lagi');
-            redirect('admin/komunitas/kelolaStatusKomunitas');
-        } else {
+        // if (!$this->upload->do_upload('fileSaya')) {
+        //     flashMessage('error', 'Maaf, Upload gambar calon anggota gagal! Silahkan coba lagi');
+        //     redirect('admin/komunitas/kelolaStatusKomunitas');
+        // } else {
             $upload_data = $this->upload->data();
+
+            $komunitas['sifat_komunitas'] = $sifatKomunitas;
+            $komunitas['jenis_komunitas'] = $jenisKomunitas;
+            $komunitas['lokasi_komunitas'] = $lokasiKomunitas;
+            $komunitas['anggota_komunitas'] = $anggotaKomunitas;
+            $komunitas['deskripsi_komunitas'] = $deskKomunitas;
 
             $komunitas['nama_komunitas'] = $namaKomunitas;
             $komunitas['tautat_komunitas'] = $tautatKomunitas;
-            $komunitas['logo_komunitas'] = $upload_data['file_name'];
+            // $komunitas['logo_komunitas'] = $upload_data['file_name'];
 
             // echo json_encode($data);
             $sukses = $this->M_komunitas->updateKomunitas($komunitas, $idKomunitas);
@@ -210,8 +233,51 @@ class Komunitas extends MY_Controller
                 flashMessage('error', 'Calon Komunitas Baru gagal di daftarkan! Silahkan coba lagi');
                 redirect('admin/komunitas/kelolaStatusKomunitas');
             }
+        // }
+    }
+
+    public function setUpdateFotoKomunitas()
+    {
+        $this->load->model('M_komunitas');
+
+        $idKomunitas = $this->input->post('idKomunitas');
+        $namaKomunitas = $this->input->post('namaKomunitas');
+
+        $filename = "komunitas-" . $namaKomunitas . "-" . time();
+
+        // Set preferences
+        $config['upload_path'] = './uploads/content/komunitas';
+        $config['allowed_types'] = 'png|jpg|jpeg';
+        $config['file_name'] = $filename;
+
+        // load upload class library
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('fileSaya')) {
+            flashMessage('error', 'Maaf, Upload gambar berita gagal! Silahkan coba lagi');
+            redirect('admin/komunitas/kelolaStatusKomunitas');
+        } else {
+            $upload_data = $this->upload->data();
+
+            $data = $this->M_komunitas->findKomunitas('logo_komunitas', array('tb_komunitas.id_komunitas = ' => $idKomunitas));
+
+            $komunitas['logo_komunitas'] = $upload_data['file_name'];
+
+            unlink(FCPATH . 'uploads/content/komunitas/' . $data[0]->logo_komunitas);
+
+            // echo json_encode($data);
+            $sukses = $this->M_komunitas->updateKomunitas($komunitas, $idKomunitas);
+
+            if (!$sukses) {
+                flashMessage('success', 'Foto berhasil di ubah.');
+                redirect('admin/komunitas/kelolaStatusKomunitas');
+            } else {
+                flashMessage('error', 'Foto gagal di ubah! Silahkan coba lagi');
+                redirect('aadmin/komunitas/kelolaStatusKomunitas');
+            }
         }
     }
+
     // ==================================================
     // --------------------- UPDATE ---------------------
     // ==================================================

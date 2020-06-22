@@ -26,10 +26,13 @@ class M_komunitas extends CI_Model
 
     function findKomunitasLikeNama($where, $nama)
     {
+        $this->db->select('tb_komunitas.*, tb_user.username');
+        $this->db->from('tb_komunitas');
+        $this->db->join('tb_user', 'tb_komunitas.id_pengupload=tb_user.id_user');
         $this->db->where($where);
         $this->db->like('nama_komunitas', $nama, 'both');
 
-        return $this->db->get('tb_komunitas')->result();
+        return $this->db->get()->result();
     }
 
     function insertNewKomunitas($komunitas)
