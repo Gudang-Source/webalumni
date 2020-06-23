@@ -52,4 +52,66 @@ class Anggota extends MY_Controller
             $this->alumni_render('alumni/lihatAlumni', $data);
         }
     }
+
+
+    public function kelolaAnggota()
+    {
+        $data['title'] = 'Kelola Anggota';
+        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+        $angkatan = $data['info'][0]->angkatan;
+
+        $where = array(
+            'tb_anggota.angkatan' => $angkatan,
+            'tb_anggota.status_anggota = ' => '1',
+            'tb_anggota.user_id != ' => $this->session->userdata('uid')
+        );
+        $data['anggota'] = $this->M_anggota->findAnggota('*', $where);
+        $this->alumni_render('alumni/kelolaAnggota', $data);
+    }
+
+    public function tambahCalonAnggota()
+    {
+        $namaLengkap = $this->input->post('namaLengkap');
+        $namaPanggilan = $this->input->post('namaPanggilanAlias');
+        $angkatan = $this->input->post('angkatan');
+        $noTelepon = $this->input->post('noTelepon');
+        $email = $this->input->post('email');
+
+        $filename = "anggota-" . $namaLengkap . "-" . time();
+
+        // Set preferences
+        $config['upload_path'] = './uploads/avatars';
+        $config['allowed_types'] = 'png|jpg|jpeg';
+        $config['file_name'] = $filename;
+
+        //load upload class library
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('fileSaya')) {
+            flashMessage('error', 'Maaf, Upload gambar calon anggota gagal! Silahkan coba lagi');
+            redirect('alumni/Anggota/kelolaAnggota');
+        } else {
+            $upload_data = $this->upload->data();
+
+            $data['nama_lengkap'] = $namaLengkap;
+            $data['nama_panggilan_alias'] = $namaPanggilan;
+            $data['tanggal_lahir'] = $this->input->post('tglLahir');
+            $data['angkatan'] = $angkatan;
+            $data['no_telp'] = $noTelepon;
+            $data['email'] = $email;
+            $data['nama_foto'] = $upload_data['file_name'];
+            $data['status_anggota'] = '0';
+
+            // echo json_encode($data);
+            $sukses = $this->M_anggota->insertNewAnggota($data);
+
+            if (!$sukses) {
+                flashMessage('success', 'Calon Anggota Baru berhasil di daftarkan. Silahkan verifikasi di Permohonan Calon Anggota');
+                redirect('alumni/Anggota/kelolaAnggota');
+            } else {
+                flashMessage('error', 'Calon Anggota Baru gagal di daftarkan! Silahkan coba lagi');
+                redirect('alumni/Anggota/kelolaAnggota');
+            }
+        }
+    }
 }

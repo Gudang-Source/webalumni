@@ -81,25 +81,26 @@
                 </li>
 
                 <li class="xn-openable">
-                    <a href="#"><span class="fa fa-user"></span> <span class="xn-text">Alumni</span></a>
+                    <a href="#"><span class="fa fa-user"></span> <span class="xn-text">Keanggotaan</span></a>
                     <ul>
                         <li><a href="<?= base_url('alumni/Anggota') ?>"><span class="fa fa-user"></span> Lihat
                                 Alumni</a></li>
-                       
+                        <li><a href="<?= base_url('alumni/Anggota/KelolaAnggota') ?>"><span class="fa fa-users"></span>
+                                Tambahkan Anggota </a></li>
                     </ul>
                 </li>
 
-                <!-- <li class="xn-openable">
+                <li class="xn-openable">
                     <a href="#"><span class="fa fa-briefcase"></span> <span class="xn-text">Forum Bisnis</span></a>
                     <ul>
-                        <li><a href="<?= base_url('anggota/ForumBisnis') ?>"><span class="fa fa-bullhorn"></span> Lihat
+                        <li><a href="<?= base_url('alumni/ForumBisnis') ?>"><span class="fa fa-bullhorn"></span> Lihat
                                 Forum Bisnis</a></li>
-                        <li><a href="<?= base_url('anggota/ForumBisnis/tambahCalonForbis') ?>"><span
+                        <li><a href="<?= base_url('alumni/ForumBisnis/tambahCalonForbis') ?>"><span
                                     class="fa fa-plus"></span>
                                 Tambah Calon ForBis </a></li>
                     </ul>
-                </li> -->
-<!-- 
+                </li>
+                <!-- 
                 <li class="xn-openable">
                     <a href="#"><span class="fa fa-camera-retro"></span> <span class="xn-text">Komunitas</span></a>
                     <ul>
@@ -109,7 +110,7 @@
                                     class="fa fa-plus"></span> Tambah Calon Komunitas </a></li>
                     </ul>
                 </li> -->
-<!-- 
+                <!-- 
                 <?php if ($info[0]->support == 0) { ?>
                 <li class="hidden">
                     <a href="<?= base_url('alumni/Forbis'); ?>"><span class="glyphicon glyphicon-file"></span> <span
@@ -126,7 +127,7 @@
                     <a href="<?= base_url('alumni/Pengaturan'); ?>"><span class="glyphicon glyphicon-cog"></span> <span
                             class="xn-text">Pengaturan</span></a>
                 </li>
-                
+
                 <!-- <li class="xn-openable">
                         <a href="#"><span class="fa fa-users"></span> <span class="xn-text">Anggota</span></a>
                         <ul>

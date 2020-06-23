@@ -21,7 +21,7 @@
                         <li><a href="#tab-domisili" role="tab" data-toggle="tab">Domisili</a></li>
                         <li><a href="#tab-profesi" role="tab" data-toggle="tab">Profesi</a></li>
                         <li><a href="#tab-info-program" role="tab" data-toggle="tab">Info Program</a></li>
-                        <li><a href="#tab-keanggotaan" role="tab" data-toggle="tab">Keanggotaan</a></li>
+                        <!-- <li><a href="#tab-keanggotaan" role="tab" data-toggle="tab">Keanggotaan</a></li> -->
                     </ul>
 
                     <div class="panel-body tab-content">
@@ -339,7 +339,7 @@
                         </div>
 
                         <!-- TAB 5 -->
-                        <div class="tab-pane" id="tab-keanggotaan">
+                        <!-- <div class="tab-pane" id="tab-keanggotaan">
                             <div class="pull-right">
                                 <button type="button" class="btn btn-info btn-keanggotaan" data-toggle="modal"
                                     data-target="#modal_keanggotaan" id="<?= $info[0]->id_anggota; ?>">
@@ -347,9 +347,9 @@
                                         <i class="fa fa-pencil"></i> Ubah
                                     </span>
                                 </button>
-                            </div>
+                            </div> -->
 
-                            <div class="panel-body">
+                        <!-- <div class="panel-body">
                                 <?php if ($info[0]->support == 1) : ?>
                                 <div class="form-group">
                                     <div class="col-md-5">
@@ -374,10 +374,10 @@
                                         <p>Iuran Wajib Tahunan sebesar Rp. 25.000 (dua puluh lima ribu rupiah).</p>
                                     </div>
                                 </div>
-                                <?php endif; ?>
+                                <?php endif; ?> -->
 
 
-                                <div class="form-group">
+                        <!-- <div class="form-group">
                                     <?php if ($info[0]->loyalist == 1) : ?>
                                     <div class="col-md-5">
                                         <label class="check"><input type="checkbox" class="icheckbox" checked="checked"
@@ -388,13 +388,13 @@
                                         <label class="check"><input type="checkbox" class="icheckbox"
                                                 id="keanggotaan2" /> Loyalist</label>
                                     </div>
-                                    <?php endif; ?>
+                                    <?php endif; ?> -->
 
 
-                                    <div class="col-md-9">
-                                        <p>Iuran sukarela sebesar : </p>
-                                        <!-- <input type="number" class="form-control" id="iuranSukarela" readonly /> -->
-                                        <?php if ($info[0]->iuran_sukarela == NULL || $info[0]->iuran_sukarela == 0) { ?>
+                        <!-- <div class="col-md-9">
+                                        <p>Iuran sukarela sebesar : </p> -->
+                        <!-- <input type="number" class="form-control" id="iuranSukarela" readonly /> -->
+                        <!-- <?php if ($info[0]->iuran_sukarela == NULL || $info[0]->iuran_sukarela == 0) { ?>
                                         <label class="control-label">Rp. 0</label>
                                         <?php } else { ?>
                                         <label class="control-label"><?= $info[0]->iuran_sukarela; ?></label>
@@ -402,8 +402,8 @@
                                     </div>
                                 </div>
                             </div>
-
-                        </div>
+                        </div> -->
+                        <!-- END TAB 5 -->
 
                     </div>
                 </div>

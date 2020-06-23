@@ -18,7 +18,7 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <p>Cari Anggota</p>
+                    <p>Cari Alumni</p>
                     <form action="<?= base_url('alumni/Anggota/cariAnggota'); ?>" method="post">
                         <div class="form-group">
                             <div class="col-md-10">
