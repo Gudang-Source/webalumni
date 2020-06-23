@@ -1,30 +1,52 @@
 
+<div class="jumbotron p-2 p-md-5 text-white rounded bg-dark" style="padding-top:5px">
+    <div class="col-md-3 ">
+    </div>
+</div>
+<div class="container">
+
+<br>
+<br>
+
 <ul class="breadcrumb">
-    <li class="active"><a href="<?= base_url('umum/Pengaturan'); ?>">Pengaturan</a></li>
+    <li>Pengaturan</li>
+    <li class="active"><a href="<?= base_url('umum/Komunitas'); ?>">Kelola Akun Anda</a></li>
 </ul>
 
-    <?= showFlashMessage(); ?>
+    <section class="jumbotron text-center">
+          <h1 class="jumbotron-heading">Pengaturan</h1>
+          <p class="lead text-muted"><small>Kelola info, privasi, dan keamanan Anda agar Akun anda berfungsi dengan lebih baik </small></p>
+          <p>
+          <hr>
+            <!-- <a href="#" class="btn btn-primary my-2">Main call to action</a>
+            <a href="#" class="btn btn-info my-2">Secondary action</a> -->
+          </p>
+        </div>
+      </section>
+      
     <div class="container">
-
-    <div class="content-frame">
-        <div class="panel panel-default tabs" style="margin-top: 20px;">
-            <div class="panel-body list-group border-bottom">
-                <ul class="nav nav-tabs-vertical" role="tablist">
-                    <li><a href="#tab-gambar-profile" role="tab" data-toggle="tab" class="list-group-item"><span
-                                class="fa fa-user"></span> Gambar Profil</a></li>
-                    <li><a href="#tab-akun" role="tab" data-toggle="tab" class="list-group-item"><span
-                                class="fa fa-cog"></span> Akun</a></li>
-                </ul>
+      <div class="row">
+      <div class="col-md-4">
+        <div class="content-frame">
+            <div class="panel panel-default tabs">
+                <div class="panel-body list-group border-bottom">
+                    <ul class="nav nav-tabs-vertical" role="tablist">
+                        <li><a href="#tab-gambar-profile" role="tab" data-toggle="tab" class="list-group-item"><span
+                                    class="fa fa-user"></span> Gambar Profil</a></li>
+                        <li><a href="#tab-akun" role="tab" data-toggle="tab" class="list-group-item"><span
+                                    class="fa fa-cog"></span> Akun</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
+        </div>
 
-	<!-- START CONTENT FRAME BODY -->
+    <div class="col-md-8">
 	<div class="content-frame-body">
 		<div class="panel panel-default tab-content">
 			<div class="panel-body tab-pane active" id="tab-gambar-profile">
 				<h3>Gambar Profil</h3>
-				<div class="col-md-12">
+				<div class="col-md-4">
 					<div class="row">
 						<?php if ($info[0]->nama_foto == null) { ?>
 							<img src="<?= base_url('uploads/no-image.jpg'); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" width="150" height="150"/>
@@ -39,12 +61,18 @@
 								<input type="text" name="namaPengguna" value="<?= $info[0]->nama_lengkap; ?>">
 								<input type="text" name="idPengguna" value="<?= $info[0]->id_anggota; ?>">
 							</div>
-							<input type="file" class="file" id="file-simple" name="fileSaya" required>
+                            <div class="form-group panel-body">
+					            <div class="row">
+							        <input type="file" class="file" id="file-aaa" name="fileSaya" required>
+                                </div>
+                            </div>
 							<button type="submit" class="btn btn-success" id="btn-save-image">Simpan</button>
 						</form>
 					</div>
 				</div>
 			</div>
+
+
 			<div class="panel-body tab-pane" id="tab-akun">
 				<h3>Akun</h3>
 				<div class="form-group panel-body">
@@ -55,12 +83,13 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-lg-6">
+						<!-- <div class="col-lg-6">
 							<button class="btn btn-info btn-username" title="Ganti" data-toggle="modal" data-target="#UbahUsernameModal">
 								<i class="fa fa-pencil-square"></i>
 								<span>Ganti Username</span>
 							</button>
-						</div>
+						</div> -->
+                        
 						<div class="col-lg-6">
 							<button class="btn btn-danger" title="Ganti Password" data-toggle="modal" data-target="#UbahPasswordModal">
 								<i class="glyphicon glyphicon-remove"></i>
@@ -100,13 +129,13 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label class="col-md-3 control-label">* Username Baru :</label>                                        
                         <div class="col-md-9">
                             <input type="text" class="form-control" name="usernameBaru" placeholder="Username Baru" required />
                         </div>
                     </div>
-                </div>
+                </div> -->
             
                 <div class="modal-footer">
                     <div class="col-md-12" style="text-align: left;">
@@ -157,7 +186,6 @@
                     <div class="col-md-12" style="text-align: left;">
                         <label class="control-label">* harus diisi</label>
                     </div>
-                    
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
                     <button type="submit" class="btn btn-success">Simpan</button>
                 </div>
@@ -169,11 +197,7 @@
 
 <script type="text/javascript">
 
-    $("#username-validate").validate();
-    $("#password-validate").validate();
-	$("#form-update-profile-image").validate();
-
-	$("#file-simple").fileinput({
+	$("#file-aaa").fileinput({
 		showUpload: false,
 		showCaption: false,
 		browseClass: "btn btn-danger",
