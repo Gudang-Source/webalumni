@@ -1,12 +1,12 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
     <li>Alumni</li>
-    <li class="active"><a href="<?= base_url('anggota/Anggota'); ?>">Lihat Anggota</a></li>
+    <li class="active"><a href="<?= base_url('anggota/Anggota'); ?>">Lihat Alumni</a></li>
 </ul>
 <!-- END BREADCRUMB -->
 
 <div class="page-title">
-    <h2> Anggota IKASMA3BDG</h2>
+    <h2> Alumni IKASMA3BDG</h2>
 </div>
 
 <?= showFlashMessage(); ?>
@@ -50,7 +50,7 @@
         <?php if (empty($anggota)) : ?>
         <tr>
             <td colspan="7">
-                <h2 class="text-center">Upps... Data anggota tidak ditemukan.</h2>
+                <h2 class="text-center">Upps... Data alumni tidak ditemukan.</h2>
             </td>
         </tr>
         <?php else : ?>
