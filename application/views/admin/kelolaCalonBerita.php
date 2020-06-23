@@ -250,8 +250,7 @@
             <form action="<?= base_url('admin/Berita/aktivasiCalonBerita'); ?>" class="form-horizontal" method="post">
                 <div class="mb-content">
                     <div class="panel-body">
-                        <p>Apakah benar bahwa Berita di bawah ini akan diaktifkan sebagai Berita valid di IKASMA3BDG</p>
-                        <br>
+                        <p>Apakah benar bahwa Berita di bawah ini akan diaktifkan sebagai Berita valid di IKASMA3BDG</p><br>
 
                         <div class="form-group hidden">
                             <div class="col-md-12">
@@ -270,138 +269,124 @@
                         <!-- <div class="form-group">
                             <label class="col-md-3 control-label">Isi Berita : </label>
                             <div class="col-md-9">
-                                <textarea class="text-primary" name="isiBerita" id="isiBerita" cols="80" rows="10"
-                                    readonly></textarea>
-                                <label class="control-label" id="isiBerita"></label> -->
-
-                        <label class="control-label" id="isiBerita"></label>
+                                <label class="control-label" id="isiBerita"></label>
+                            </div>
+                        </div> -->
 
                     </div>
                 </div>
-
+                <div class="mb-footer">
+                    <div class="pull-right">
+                        <button type="submit" class="btn btn-info btn-lg mb-control-yes">Terima</button>
+                        <button class="btn btn-default btn-lg mb-control-close">Batal</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-    <div class="mb-footer">
-        <div class="pull-right">
-            <button type="submit" class="btn btn-info btn-lg mb-control-yes">Terima</button>
-            <button class="btn btn-default btn-lg mb-control-close">Batal</button>
-        </div>
-    </div>
-    </form>
-</div>
-</div>
 
 </div>
 <!-- END MESSAGE BOX ACCEPT CALON BERITA -->
 
 <!-- MESSAGE BOX REJECT CALON BERITA -->
-<<<<<<< HEAD <div class="message-box message-box-danger animated zoomIn" data-sound="alert" id="message-box-tolak" style="margin-top: -100px;">
-    =======
-    <div class="message-box message-box-danger animated zoomIn" data-sound="alert" id="message-box-tolak">
-        >>>>>>> 0af102d6c3f3a58577c8629068089c64591f6b92
+<div class="message-box message-box-danger animated zoomIn" data-sound="alert" id="message-box-tolak">
 
-        <div class="mb-container">
-            <div class="mb-middle">
-                <div class="mb-title">
-                    <span class="fa fa-times"></span> Tolak <strong>Komunitas</strong>
-                </div>
-                <form action="<?= base_url('admin/Berita/tolakCalonBerita'); ?>" class="form-horizontal" method="post">
-                    <div class="mb-content">
-                        <div class="panel-body">
-                            <p>Anda yakin akan menolak berita ini?</p>
+    <div class="mb-container">
+        <div class="mb-middle">
+            <div class="mb-title">
+                <span class="fa fa-times"></span> Tolak <strong>Komunitas</strong>
+            </div>
+            <form action="<?= base_url('admin/Berita/tolakCalonBerita'); ?>" class="form-horizontal" method="post">
+                <div class="mb-content">
+                    <div class="panel-body">
+                        <p>Anda yakin akan menolak berita ini?</p>
 
-                            <div class="form-group hidden">
-                                <input type="text" id="idCalonBerita" name="idCalonBerita" class="form-control">
+                        <div class="form-group hidden">
+                            <input type="text" id="idCalonBerita" name="idCalonBerita" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Judul Berita : </label>
+                            <div class="col-md-9">
+                                <label class="control-label" id="judulCalonBerita"></label>
                             </div>
+                        </div>
 
-                            <div class="form-group">
-                                <label class="col-md-3 control-label">Judul Berita : </label>
-                                <div class="col-md-9">
-                                    <label class="control-label" id="judulCalonBerita"></label>
-                                </div>
-                            </div>
-
-                            <!-- <div class="form-group">
+                        <!-- <div class="form-group">
                             <label class="col-md-3 control-label">Isi Berita : </label>
                             <div class="col-md-9">
-<<<<<<< HEAD
-                                <textarea class="text-primary" name="isiCalonBerita" id="isiCalonBerita" cols="80"
-                                    rows="10" readonly></textarea>
-                                <!-- <label class="control-label" id="isiCalonBerita"></label> -->
-                            =======
-                            <label class="control-label" id="isiCalonBerita"></label>
-                            >>>>>>> 0af102d6c3f3a58577c8629068089c64591f6b92
-                        </div>
-                    </div> -->
-            </div>
+                                <label class="control-label" id="isiCalonBerita"></label>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+
+                <div class="mb-footer">
+                    <div class="pull-right">
+                        <button type="submit" class="btn btn-primary btn-lg mb-control-yes">Tolak</button>
+                        <button class="btn btn-default btn-lg mb-control-close">Batal</button>
+                    </div>
+                </div>
+            </form>
         </div>
-
-        <div class="mb-footer">
-            <div class="pull-right">
-                <button type="submit" class="btn btn-primary btn-lg mb-control-yes">Tolak</button>
-                <button class="btn btn-default btn-lg mb-control-close">Batal</button>
-            </div>
-        </div>
-        </form>
-    </div>
     </div>
 
-    </div>
-    <!-- END MESSAGE BOX REJECT CALON BERITA -->
+</div>
+<!-- END MESSAGE BOX REJECT CALON BERITA -->
 
-    <script type="text/javascript">
-        $("#form-tambah-berita-validate").validate();
+<script type="text/javascript">
+    $("#form-tambah-berita-validate").validate();
 
-        $("#file-simple").fileinput({
-            showUpload: false,
-            showCaption: false,
-            browseClass: "btn btn-danger",
-            fileType: "any"
-        });
+    $("#file-simple").fileinput({
+        showUpload: false,
+        showCaption: false,
+        browseClass: "btn btn-danger",
+        fileType: "any"
+    });
 
-        $(".btn-terima").click(function() {
-            console.log(this.id);
-            var idBerita = this.id;
+    $(".btn-terima").click(function() {
+        console.log(this.id);
+        var idBerita = this.id;
 
-            $.post("<?= base_url('admin/Berita/beritaJSON/'); ?>", {
-                    id: idBerita
-                },
-                function(data) {
-                    var data_obj = JSON.parse(data);
+        $.post("<?= base_url('admin/Berita/beritaJSON/'); ?>", {
+                id: idBerita
+            },
+            function(data) {
+                var data_obj = JSON.parse(data);
 
-                    var idBerita = data_obj.berita[0].id_berita;
-                    var judulBerita = data_obj.berita[0].judul_berita;
-                    var isiBerita = data_obj.berita[0].isi_berita;
-                    // var penulis = data_obj.berita[0].penulis;
+                var idBerita = data_obj.berita[0].id_berita;
+                var judulBerita = data_obj.berita[0].judul_berita;
+                var isiBerita = data_obj.berita[0].isi_berita;
+                // var penulis = data_obj.berita[0].penulis;
 
-                    document.getElementById('idBerita').value = idBerita;
-                    document.getElementById('judulBerita').innerHTML = judulBerita;
-                    // document.getElementById('isiBerita').innerHTML = isiBerita;
-                    // document.getElementById('penulis').innerHTML = penulis;
+                document.getElementById('idBerita').value = idBerita;
+                document.getElementById('judulBerita').innerHTML = judulBerita;
+                // document.getElementById('isiBerita').innerHTML = isiBerita;
+                // document.getElementById('penulis').innerHTML = penulis;
 
-                });
-        });
+            });
+    });
 
-        $(".btn-tolak").click(function() {
-            console.log(this.id);
-            var idCalonBerita = this.id;
+    $(".btn-tolak").click(function() {
+        console.log(this.id);
+        var idCalonBerita = this.id;
 
-            $.post("<?= base_url('admin/Berita/beritaJSON/') ?>", {
-                    id: idCalonBerita
-                },
-                function(data) {
-                    var data_obj = JSON.parse(data);
+        $.post("<?= base_url('admin/Berita/beritaJSON/') ?>", {
+                id: idCalonBerita
+            },
+            function(data) {
+                var data_obj = JSON.parse(data);
 
-                    var idBerita = data_obj.berita[0].id_berita;
-                    var judulCalonBerita = data_obj.berita[0].judul_berita;
-                    var isiCalonBerita = data_obj.berita[0].isi_berita;
-                    // var penulis = data_obj.berita[0].penulis;
+                var idBerita = data_obj.berita[0].id_berita;
+                var judulCalonBerita = data_obj.berita[0].judul_berita;
+                var isiCalonBerita = data_obj.berita[0].isi_berita;
+                // var penulis = data_obj.berita[0].penulis;
 
-                    document.getElementById('idCalonBerita').value = idBerita;
-                    document.getElementById('judulCalonBerita').innerHTML = judulCalonBerita;
-                    // document.getElementById('isiCalonBerita').innerHTML = isiCalonBerita;
-                    // document.getElementById('penulis').innerHTML = penulis;
+                document.getElementById('idCalonBerita').value = idBerita;
+                document.getElementById('judulCalonBerita').innerHTML = judulCalonBerita;
+                // document.getElementById('isiCalonBerita').innerHTML = isiCalonBerita;
+                // document.getElementById('penulis').innerHTML = penulis;
 
-                });
-        });
-    </script>
+            });
+    });
+</script>
