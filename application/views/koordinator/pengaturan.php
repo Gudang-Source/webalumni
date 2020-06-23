@@ -1,67 +1,8 @@
 <!-- START BREADCRUMB -->
-<ul class="breadcrumb">               
-    <li class="active"><a href="<?= base_url('koordinator/Pengaturan'); ?>">Pengaturan</a></li>
+<ul class="breadcrumb">
+	<li class="active"><a href="<?= base_url('koordinator/Pengaturan'); ?>">Pengaturan</a></li>
 </ul>
-<!-- END BREADCRUMB -->                       
-<!--<div class="page-title">                    -->
-<!--    <h2> Pengaturan</h2>-->
-<!--</div>-->
-<!---->
-<?//= showFlashMessage(); ?>
-<!---->
-<!--<div class="page-content-wrap">-->
-<!--    -->
-<!--    <div class="row">-->
-<!--        <div class="col-md-12">-->
-<!---->
-<!--            <div class="panel panel-default">-->
-<!--                <div class="panel-heading ui-draggable-handle">-->
-<!--                    <h3 class="panel-title">Pengaturan Akun</h3>-->
-<!--                    <ul class="panel-controls">-->
-<!--                        <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>-->
-<!--                        <li class="dropdown">-->
-<!--                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="fa fa-cog"></span></a>                                            -->
-<!--                            <ul class="dropdown-menu">-->
-<!--                                <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span> Collapse</a></li>-->
-<!--                                <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span> Refresh</a></li>-->
-<!--                            </ul>-->
-<!--                        </li>-->
-<!--                        <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>-->
-<!--                    </ul>-->
-<!--                </div>-->
-<!--                <div class="panel-body">-->
-<!--                    <div class="form-group panel-body">-->
-<!--                        <div class="row">-->
-<!--                            <label class="col-md-2 control-label">Username :</label>  -->
-<!--                            <div class="col-md-3">-->
-<!--                                <label class="control-label">--><?//= $info[0]->username; ?><!--</label>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="panel-body">-->
-<!--                        <div class="col-md-2">-->
-<!--                            <button class="btn btn-info btn-username" title="Ganti" data-toggle="modal" data-target="#UbahUsernameModal">-->
-<!--                                <i class="fa fa-pencil-square"></i>-->
-<!--                                <span>Ganti Username</span>-->
-<!--                            </button>-->
-<!--                        </div>-->
-<!--                        <div class="col-md-2">-->
-<!--                            <button class="btn btn-danger" title="Ganti Password" data-toggle="modal" data-target="#UbahPasswordModal">-->
-<!--                                <i class="glyphicon glyphicon-remove"></i>-->
-<!--                                <span>Ganti Password</span>-->
-<!--                            </button>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="panel-footer">-->
-<!---->
-<!--                </div>-->
-<!--            </div>-->
-<!---->
-<!--        </div>-->
-<!--    </div>-->
-<!---->
-<!--</div>-->
+<!-- END BREADCRUMB -->
 
 <!-- START CONTENT FRAME -->
 <div class="content-frame">
@@ -100,9 +41,9 @@
 				<div class="col-md-12">
 					<div class="row">
 						<?php if ($info[0]->nama_foto == null) { ?>
-							<img src="<?= base_url('uploads/no-image.jpg'); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" width="150" height="150"/>
+							<img src="<?= base_url('uploads/no-image.jpg'); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" width="150" height="150" />
 						<?php } else { ?>
-							<img src="<?= base_url('uploads/avatars/'.$info[0]->nama_foto); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" width="200" height="150"/>
+							<img src="<?= base_url('uploads/avatars/' . $info[0]->nama_foto); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" width="200" />
 						<?php } ?>
 					</div>
 					<br>
@@ -128,14 +69,21 @@
 						</div>
 					</div>
 					<div class="row">
+						<label class="col-md-2 control-label">Password :</label>
+						<div class="col-md-3">
+							<label class="control-label">*********</label>
+						</div>
+					</div>
+					<br>
+					<div class="row">
 						<div class="col-md-4">
 							<button class="btn btn-info btn-username" title="Ganti" data-toggle="modal" data-target="#UbahUsernameModal">
 								<i class="fa fa-pencil-square"></i>
 								<span>Ganti Username</span>
 							</button>
 						</div>
-						<div class="col-md-4">
-							<button class="btn btn-danger" title="Ganti Password" data-toggle="modal" data-target="#UbahPasswordModal">
+						<div class="col-md-12">
+							<button class="btn btn-danger" title="Ganti Password" data-toggle="modal" data-target="#UbahPasswordModal" style="margin-top: 7px;">
 								<i class="glyphicon glyphicon-remove"></i>
 								<span>Ganti Password</span>
 							</button>
@@ -150,100 +98,99 @@
 </div>
 <!-- END CONTENT FRAME -->
 
-<!-- MODALS USERNAME -->        
+<!-- MODALS USERNAME -->
 <div class="modal animated zoomIn" id="UbahUsernameModal" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="defModalHead">Username</h4>
-            </div>
-            <form action="<?= base_url('koordinator/Pengaturan/setUpdateUsername') ?>" class="form-horizontal" id="username-validate" method="post">
-                <div class="modal-body">
-                    <div class="form-group hidden">
-                        <div class="col-md-9">
-                            <input type="text" name="idUserUsername" value="<?= $info[0]->id_user; ?>">
-                        </div>
-                    </div>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title" id="defModalHead">Username</h4>
+			</div>
+			<form action="<?= base_url('koordinator/Pengaturan/setUpdateUsername') ?>" class="form-horizontal" id="username-validate" method="post">
+				<div class="modal-body">
+					<div class="form-group hidden">
+						<div class="col-md-9">
+							<input type="text" name="idUserUsername" value="<?= $info[0]->id_user; ?>">
+						</div>
+					</div>
 
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Username Lama :</label>  
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" value="<?= $info[0]->username; ?>" readonly />
-                        </div>
-                    </div>
+					<div class="form-group">
+						<label class="col-md-3 control-label">Username Lama :</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" value="<?= $info[0]->username; ?>" readonly />
+						</div>
+					</div>
 
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">* Username Baru :</label>                                        
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" name="usernameBaru" placeholder="Username Baru" required />
-                        </div>
-                    </div>
-                </div>
-            
-                <div class="modal-footer">
-                    <div class="col-md-12" style="text-align: left;">
-                        <label class="control-label">* harus diisi</label>
-                    </div>
-                    
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-success">Simpan</button>
-                </div>
-            </form>
-        </div>
-    </div>
+					<div class="form-group">
+						<label class="col-md-3 control-label">* Username Baru :</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" name="usernameBaru" placeholder="Username Baru" required />
+						</div>
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<div class="col-md-12" style="text-align: left;">
+						<label class="control-label">* harus diisi</label>
+					</div>
+
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+					<button type="submit" class="btn btn-success">Simpan</button>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
 <!-- END MODAL USERNAME -->
 
-<!-- MODALS PASSWORD -->        
+<!-- MODALS PASSWORD -->
 <div class="modal animated zoomIn" id="UbahPasswordModal" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="defModalHead">Password Baru</h4>
-            </div>
-            <form action="<?= base_url('koordinator/Pengaturan/setUpdatePassword') ?>" class="form-horizontal" id="password-validate" method="post">
-                <div class="modal-body">
-                    <div class="form-group hidden">
-                        <div class="col-md-9">
-                            <input type="text" name="idUserPassword" value="<?= $info[0]->id_user; ?>">
-                        </div>
-                    </div>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title" id="defModalHead">Password Baru</h4>
+			</div>
+			<form action="<?= base_url('koordinator/Pengaturan/setUpdatePassword') ?>" class="form-horizontal" id="password-validate" method="post">
+				<div class="modal-body">
+					<div class="form-group hidden">
+						<div class="col-md-9">
+							<input type="text" name="idUserPassword" value="<?= $info[0]->id_user; ?>">
+						</div>
+					</div>
 
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">* Password :</label>  
-                        <div class="col-md-9">
-                            <input type="password" class="form-control" name="passwordBaru" placeholder="Password Baru" required />
-                        </div>
-                    </div>
+					<div class="form-group">
+						<label class="col-md-3 control-label">* Password :</label>
+						<div class="col-md-9">
+							<input type="password" class="form-control" name="passwordBaru" placeholder="Password Baru" required />
+						</div>
+					</div>
 
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">* Ulangi Password :</label>                                        
-                        <div class="col-md-9">
-                            <input type="password" class="form-control" name="ulangiPasswordBaru" placeholder="Ulangi Password Baru" required />
-                        </div>
-                    </div>
-                </div>
-            
-                <div class="modal-footer">
-                    <div class="col-md-12" style="text-align: left;">
-                        <label class="control-label">* harus diisi</label>
-                    </div>
-                    
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-success">Simpan</button>
-                </div>
-            </form>
-        </div>
-    </div>
+					<div class="form-group">
+						<label class="col-md-3 control-label">* Ulangi Password :</label>
+						<div class="col-md-9">
+							<input type="password" class="form-control" name="ulangiPasswordBaru" placeholder="Ulangi Password Baru" required />
+						</div>
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<div class="col-md-12" style="text-align: left;">
+						<label class="control-label">* harus diisi</label>
+					</div>
+
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+					<button type="submit" class="btn btn-success">Simpan</button>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
 <!-- END MODAL PASSWORD -->
 
 <script type="text/javascript">
-
-    $("#username-validate").validate();
-    $("#password-validate").validate();
+	$("#username-validate").validate();
+	$("#password-validate").validate();
 	$("#form-update-profile-image").validate();
 
 	$("#file-simple").fileinput({
@@ -252,5 +199,4 @@
 		browseClass: "btn btn-danger",
 		fileType: "any"
 	});
-
 </script>

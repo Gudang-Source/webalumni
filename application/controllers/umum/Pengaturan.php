@@ -49,7 +49,7 @@ class Pengaturan extends MY_Controller
 
         if ($password == $ulangiPassword) {
 
-            $user['password'] = $password;
+            $user['password'] = md5($password);
             $sukses = $this->M_user->updateUser($user, $idUser);
 
             if (!$sukses) {
