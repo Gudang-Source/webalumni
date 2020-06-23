@@ -91,6 +91,17 @@
                 </li>
 
                 <li class="xn-openable">
+                    <a href="#"><span class="fa fa-envelope-o"></span> <span class="xn-text">Berita</span></a>
+                    <ul>
+                        <li><a href="<?= base_url('alumni/Berita'); ?>"><span class="fa fa-align-left"></span> <span
+                                    class="xn-text">Kelola Berita</span></a></li>
+                        <li><a href="<?= base_url('alumni/Berita/beritaNonaktif'); ?>"><span
+                                    class="fa fa-align-left"></span> <span class="xn-text">Berita Nonaktif</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="xn-openable">
                     <a href="#"><span class="fa fa-briefcase"></span> <span class="xn-text">Forum Bisnis</span></a>
                     <ul>
                         <li><a href="<?= base_url('alumni/ForumBisnis') ?>"><span class="fa fa-bullhorn"></span> Lihat
@@ -100,6 +111,7 @@
                                 Tambah Calon ForBis </a></li>
                     </ul>
                 </li>
+
                 <!-- 
                 <li class="xn-openable">
                     <a href="#"><span class="fa fa-camera-retro"></span> <span class="xn-text">Komunitas</span></a>
