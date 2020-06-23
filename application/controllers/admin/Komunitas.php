@@ -73,8 +73,6 @@ class Komunitas extends MY_Controller
         $jam = date ("H:i:s");
         $tanggal = date("Y-m-d", mktime(date('m'), date("d"), date('Y')));
 
-        $this->load->model('M_anggota');
-
         $sifatKomunitas = $this->input->post('sifatKomunitas');
         $jenisKomunitas = $this->input->post('jenisKomunitas');
         $lokasiKomunitas = $this->input->post('lokasiKomunitas');
@@ -90,7 +88,7 @@ class Komunitas extends MY_Controller
         $filename = "komunitas-" . $namaKomunitas . "-" . time();
 
         // Set preferences
-        $config['upload_path'] = './uploads/avatars';
+        $config['upload_path'] = '.uploads/content/komunitas/';
         $config['allowed_types'] = 'png|jpg|jpeg';
         $config['file_name'] = $filename;
 
@@ -144,28 +142,17 @@ class Komunitas extends MY_Controller
     // ==================================================
     function aktivasiCalonKomunitas()
     {
-        $this->load->model('M_komunitas');
-
         $komunitas['stat_komunitas'] = $this->input->post('statKomunitas');
         $idKomunitas = $this->input->post('idKomunitas');
 
         // echo json_encode($user);
         $sukses = $this->M_komunitas->updateKomunitas($komunitas, $idKomunitas);
 
-        if ($sukses != 0) {
-
-            $komunitas['user_id'] = $sukses;
-            $updateKomunitas = $this->M_komunitas->updateKomunitas($komunitas, $idKomunitas);
-
-            if (!$updateKomunitas) {
-                flashMessage('success', 'Calon Komunitas berhasil di aktifkan dan dapat masuk menggunakan Username & Password sesuai yang tertera pada saat Aktivasi');
-                redirect('admin/Komunitas');
-            } else {
-                flashMessage('error', 'Aktivasi Calon Komunitas gagal! Silahkan coba lagi...');
-                redirect('admin/Komunitas');
-            }
+        if ($sukses == 0) {
+            flashMessage('success', 'Calon Komunitas berhasil di aktifkan sebagai Komunitas Aktif');
+            redirect('admin/Komunitas');
         } else {
-            flashMessage('error', 'Maaf, Terjadi kesalahan pada saat proses pembuatan akun Komunitas baru');
+            flashMessage('error', 'Aktivasi Calon Komunitas gagal! Silahkan coba lagi...');
             redirect('admin/Komunitas');
         }
     }
@@ -174,7 +161,6 @@ class Komunitas extends MY_Controller
     {
         $data['title'] = 'Kelola Status Komunitas';
         $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
-
 
         $data['komunitas'] = $this->M_komunitas->getAllKomunitas();
 
@@ -185,8 +171,6 @@ class Komunitas extends MY_Controller
 
     public function setUpdateKomunitas()
     {
-        $this->load->model('M_komunitas');
-
         $sifatKomunitas = $this->input->post('sifatKomunitas');
         $jenisKomunitas = $this->input->post('jenisKomunitas');
         $lokasiKomunitas = $this->input->post('lokasiKomunitas');
@@ -273,11 +257,10 @@ class Komunitas extends MY_Controller
                 redirect('admin/komunitas/kelolaStatusKomunitas');
             } else {
                 flashMessage('error', 'Foto gagal di ubah! Silahkan coba lagi');
-                redirect('aadmin/komunitas/kelolaStatusKomunitas');
+                redirect('admin/komunitas/kelolaStatusKomunitas');
             }
         }
     }
-
     // ==================================================
     // --------------------- UPDATE ---------------------
     // ==================================================

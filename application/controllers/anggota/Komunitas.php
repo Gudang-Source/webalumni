@@ -76,6 +76,12 @@ class Komunitas extends MY_Controller
 
         $this->load->model('M_anggota');
 
+        $sifatKomunitas = $this->input->post('sifatKomunitas');
+        $jenisKomunitas = $this->input->post('jenisKomunitas');
+        $lokasiKomunitas = $this->input->post('lokasiKomunitas');
+        $anggotaKomunitas = $this->input->post('anggotaKomunitas');
+        $deskKomunitas = $this->input->post('deskKomunitas');
+
         $namaKomunitas = $this->input->post('namaKomunitas');
         $tautatKomunitas = $this->input->post('tautatKomunitas');
         $tglPengajuan = $tanggal;
@@ -85,7 +91,7 @@ class Komunitas extends MY_Controller
         $filename = "komunitas-" . $namaKomunitas . "-" . time();
 
         // Set preferences
-        $config['upload_path'] = './uploads/avatars';
+        $config['upload_path'] = './uploads/content/komunitas/';
         $config['allowed_types'] = 'png|jpg|jpeg';
         $config['file_name'] = $filename;
 
@@ -98,16 +104,22 @@ class Komunitas extends MY_Controller
         } else {
             $upload_data = $this->upload->data();
 
+            $data['sifat_komunitas'] = $sifatKomunitas;
+            $data['jenis_komunitas'] = $jenisKomunitas;
+            $data['lokasi_komunitas'] = $lokasiKomunitas;
+            $data['anggota_komunitas'] = $anggotaKomunitas;
+            $data['deskripsi_komunitas'] = $deskKomunitas;
+
             $data['nama_komunitas'] = $namaKomunitas;
             $data['tautat_komunitas'] = $tautatKomunitas;
             $data['date_created'] = $tglPengajuan;
             $data['time_created'] = $waktuPengajuan;
             $data['logo_komunitas'] = $upload_data['file_name'];
             $data['id_pengupload'] = $idPengupload;
-            if($this->session->userdata('role') == 1) {
-                $data['stat_komunitas'] = '1';
-            } else {
+            if($this->session->userdata('role') == 3) {
                 $data['stat_komunitas'] = '0';
+            } else {
+                $data['stat_komunitas'] = '1';
             }
 
             // echo json_encode($data);
@@ -125,5 +137,28 @@ class Komunitas extends MY_Controller
     // ==================================================
     // --------------------- CREATE ---------------------
     // ==================================================
+    //
+    //
+    //
+    // ==================================================
+    // --------------------- SEARCH ---------------------
+    // ==================================================
+    function cariStatusKomunitas()
+    {
+        $data['title'] = 'Kelola Status Komunitas';
 
+        $nama = $this->input->post('namaKomunitas');
+
+        $where = "tb_komunitas.stat_komunitas != 0";
+        $data['komunitas'] = $this->M_komunitas->findKomunitasLikeNama($where, $nama);
+
+        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+        if ($this->session->userdata('role') == 3) {
+            redirect('anggota/Komunitas');
+        }
+    }
+    // ==================================================
+    // --------------------- SEARCH ---------------------
+    // ==================================================
 }

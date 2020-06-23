@@ -13,7 +13,8 @@
 
 <!-- PAGE CONTENT WRAP -->
 <div class="page-content-wrap">
-
+    
+    <!-- SEARCH -->
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
@@ -43,7 +44,9 @@
             </div>
         </div>
     </div>
+    <!-- SEARCH -->
 
+    <!-- KOMUNITAS CONTENT -->
     <div class="row">
         <?php foreach ($komunitas as $A) { ?>
             <?php if ($A->stat_komunitas == 1): ?>
@@ -52,174 +55,278 @@
             <div class="panel panel-default">
                 <div class="panel-body profile">
                     <div class="profile-image">
-                        <?php if ($A->logo_komunitas == NULL) { ?>
-                            <img src="<?php echo base_url('uploads/no-image.jpg'); ?> " alt="No Image" title="Default Image">
+                    <?php if ($A->logo_komunitas == NULL) { ?>
+                            <img src="<?php echo base_url('uploads/content/komunitas/no-image.jpg'); ?> " alt="No Image" title="Default Image">
                         <?php } else { ?>
-                            <img src="<?php echo base_url('uploads/avatars/'.$A->logo_komunitas); ?> " alt="<?= $A->nama_komunitas; ?>" title="<?= $A->nama_komunitas; ?>">
+                            <img src="<?php echo base_url('uploads/content/komunitas/'.$A->logo_komunitas); ?> " alt="<?= $A->nama_komunitas; ?>" title="<?= $A->nama_komunitas; ?>">
                         <?php } ?>
                     </div>
                     <div class="profile-data">
-                        <div class="profile-data-name"><?= $A->nama_komunitas; ?></div>
+                        <div class="profile-data-name"><h3 style="color:white;"><?= $A->nama_komunitas; ?><h3></div>
                        
                     </div>
                     <div class="profile-controls">
-                        <a class="profile-control-left btn-ubah-anggota" title="Ubah" id="<?= $A->id_komunitas; ?>" data-toggle="modal" data-target="#ubahAnggota"><span class="fa fa-edit"></span></a>
+                        <a class="profile-control-left btn-ubah-anggota" title="UbahGambar" id="<?= $A->id_komunitas; ?>" data-toggle="modal" data-target="#message-box-ubah-gambar-komunitas"><span class="fa fa-edit"></span></a>
                         <a class="profile-control-right btn-hapus-anggota" title="Hapus" id="<?= $A->id_komunitas; ?>" data-toggle="modal" data-target="#message-box-delete-anggota"><span class="fa fa-trash-o"></span></a>
                     </div>
                 </div>
-                <div class="panel-body" style="height: 200px;">
-                    <div class="contact-info">
-                        <?php if ($A->tautat_komunitas == "") { ?>
-                            <p><small>Tautan Komunitas</small><br>Belum di isi</p>
-                        <?php } else { ?>
-                            <p><small>Tautan Komunitas</small><br><?= $A->tautat_komunitas; ?></p>
-                        <?php } ?>
-
-                        <?php if ($A->date_created == "") { ?>
-                            <p><small>Tanggal Dibuat</small><br>Belum di isi</p>
-                        <?php } else { ?>
-                            <p><small>Tanggal Dibuat</small><br><?= $A->date_created; ?></p>
-                        <?php } ?>
-
-                        <?php if ($A->time_created == "") { ?>
-                            <p><small>Waktu Dibuat</small><br>Belum di isi</p>
-                        <?php } else { ?>
-                            <p><small>Waktu Dibuat</small><br><?= $A->time_created; ?></p>
-                        <?php } ?>
-
-                         <?php if ($A->id_pengupload == "") { ?>
-                            <p><small>ID Pengupload Komunitas</small><br>Belum di isi</p>
-                        <?php } else { ?>
-                            <p><small>Pengupload Komunitas</small><br><?= $A->username; ?></p>
-                        <?php } ?>
-
+                    <div class="panel-body">
+                        <div class="contact-info">
+                            <h3>Tentang Komunitas ini</h3>
+                            <p> <?= $A->deskripsi_komunitas ?></p>
+                    <div class="panel-body">
+                        <div class="contact-info">
+                                <p><i class="fa fa-link" aria-hidden="true"></i> <strong>Link Komunitas</strong><br><h5><a><?= $A->tautat_komunitas; ?></a></h5></p>
+                                    
+                                    <?php if ($A->sifat_komunitas == "Publik") { ?>
+                                <p><i class="fa fa-eye" aria-hidden="true"></i> <strong> <?= $A->sifat_komunitas ?> </strong><br><h5>Semua orang bisa join ke komunitas ini.</h5></p>
+                                    <?php } else { ?>
+                                <p><i class="fa fa-eye" aria-hidden="true"></i> <strong>Private </strong><br><h5>Tidak semua orang bisa menemukan komunitas ini.</h5></p>
+                                    <?php } ?>
+                               
+                                    <?php if ($A->jenis_komunitas == "Aktif") { ?>
+                                <p><i class="fa fa-globe" aria-hidden="true"></i> <strong><?= $A->jenis_komunitas ?></strong><br><h5>Banyak orang menggunakan komunitas ini</h5></p>
+                                    <?php } else { ?>
+                                <p><i class="fa fa-globe" aria-hidden="true"></i> <strong>Pasif</strong><br><h5>Hanya sebagian anggota menggunakan komunitas ini dan sedikit hal yang diposting</h5></p>
+                                    <?php } ?>
+                                
+                                <p><i class="fa fa-map-marker" aria-hidden="true"></i> <strong>Lokasi</strong><br><h5><?= $A->lokasi_komunitas ?></h5></p>
+                                <p><i class="fa fa-users" aria-hidden="true"></i> <strong>Anggota</strong><br><h5>+- <?= $A->anggota_komunitas ?></h5></p>
+                                <hr>
+                                <p><i class="fa fa-calendar" aria-hidden="true"></i> <small>Tanggal Dibuat</small><br><h5><?= $A->date_created; ?></h5></p>
+                                <p><i class="fa fa-clock-o" aria-hidden="true"></i> <small>Waktu Dibuat</small><br><h5><?= $A->time_created; ?></h5></p>
+                                <p><i class="fa fa-user" aria-hidden="true"></i> <small>Pengupload Komunitas</small><br><h5><?= $A->username; ?></h5></p>
+                        </div>
                     </div>
                 </div>
-            <!-- END CONTACT ITEM -->
+            </div>
+             <!-- BUTTON UBAH  -->
+             <div class="panel-footer text-center">
+                    <a class="btn btn-primary btn-rounded btn-block btn-ubah-berita" title="Ubah Berita" id="<?= $A->id_komunitas; ?>" data-toggle="modal" data-target="#message-box-ubah-komunitas"><i class="fa fa-edit"></i>Ubah Komunitas</a>
+                </div>
+            <!-- BUTTON UBAH -->
+            </div>
         </div>
+            <?php endif ?>
+        <?php } ?>
+        <!-- KOMUNITAS CONTENT -->
     </div>
-        <?php endif ?>
-    <?php } ?>
 </div>
-</div>
+<!-- END CONTACT ITEM -->
 
-
-        <!-- MODAL UBAH ANGGOTA -->
-        <div class="modal animated zoomIn" id="ubahAnggota" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form action="<?= base_url('koordinator/Komunitas/setUpdateKomunitas'); ?>" class="form-horizontal" id="ubah-anggota-validate" method="post" enctype="multipart/form-data">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                            <h4 class="modal-title" id="defModalHead">Ubah Komunitas</h4>
-                        </div>
-                            <div>
-                                <div class="panel-body tab-content">
-                                <div class="form-group hidden">
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control" id="idKomunitas" name="idKomunitas" value="<?= $komunitas[0]->id_komunitas ?>" /> 
-                                    </div>
+    <!-- MODAL UBAH KOMUNITAS -->
+    <div class="modal animated zoomIn" id="message-box-ubah-komunitas" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="<?= base_url('koordinator/Komunitas/setUpdateKomunitas'); ?>" class="form-horizontal" id="ubah-anggota-validate" method="post" enctype="multipart/form-data">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="defModalHead">Ubah Komunitas</h4>
+                    </div>
+                        <div>
+                            <div class="panel-body tab-content">
+                            <div class="form-group hidden">
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="idKomunitas" name="idKomunitas" value="<?= $komunitas[0]->id_komunitas ?>" /> 
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-
-                        <div class="form-group">
-                            <label class="col-md-2 control-label">Nama Komunitas</label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" name="namaKomunitas" placeholder="Nama Komunitas"
-                                      />
-                                </div>
+                    <div class="panel-body">
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Nama Komunitas</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="namaKomunitas"
+                                        placeholder="<?= $komunitas[0]->nama_komunitas ?>" required clear />
+                                    </div>
                             </div>
 
-                           <div class="form-group">
-                                        <label class="col-md-2 control-label">Tautat Komunitas</label>
-                                        <div class="col-md-8"  >
-                                            <textarea   class="form-control" name="tautatKomunitas"  placeholder="Diskripsi Komunitas berserta linknya" rows="4" cols="50"></textarea>
-                                        </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Lokasi Komunitas</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="lokasiKomunitas"
+                                        placeholder="<?= $komunitas[0]->lokasi_komunitas ?>" required clear />
                                     </div>
+                            </div>
 
-                                <div class="form-group">
-                                        <label class="col-md-2 control-label">Logo Komunitas</label>
-                                        <div class="col-md-8">
-                                            <input type="file" class="file" id="file-simple" name="fileSaya" required />
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Tautat Komunitas</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" name="tautatKomunitas"
+                                        placeholder="<?= $komunitas[0]->tautat_komunitas ?>" required clear />
                                     </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Deskripsi Komunitas</label>
+                                <div class="col-md-8"  >
+                                    <textarea   class="form-control" name="deskKomunitas" placeholder="<?= $komunitas[0]->deskripsi_komunitas ?>" rows="4" cols="50"></textarea>
                                 </div>
-
-                            <div class="modal-footer">
-                            <div class="col-md-12" style="text-align: left;">
-                                <label class="control-label">* harus diisi</label>
                             </div>
                             
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
-                            <button type="submit" class="btn btn-success">Simpan</button>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Sifat Komunitas</label>
+                                <div class="col-md-8">
+                                    <select name="sifatKomunitas"  class="select form-control validate[required]">
+                                            <option value="Publik"><?= $komunitas[0]->sifat_komunitas ?> </option>
+                                            <option value="Private">Private </option>
+                                            <option value="Hidden">Hidden </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Jenis Komunitas</label>
+                                <div class="col-md-8">
+                                    <select name="jenisKomunitas"  class="select form-control validate[required]">
+                                            <option value="Aktif"><?= $komunitas[0]->jenis_komunitas ?> </option>
+                                            <option value="Pasif">Pasif </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Jumlah Anggota</label>
+                                <div class="col-md-8">
+                                    <input type="number" class="form-control" name="anggotaKomunitas"
+                                        placeholder="+- <?= $komunitas[0]->anggota_komunitas ?>" required clear />
+                                    </div>
+                            </div>
                         </div>
-                    </form>
-                </div>
+
+                        <div class="modal-footer">
+                        <div class="col-md-12" style="text-align: left;">
+                            <label class="control-label">* harus diisi</label>
+                        </div>
+                        
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-success">Simpan</button>
+                    </div>
+                </form>
             </div>
         </div>
-        <!-- END MODAL UBAH ANGGOTA -->
+    </div>
+    <!-- END MODAL UBAH ANGGOTA -->
 
-
-        <!-- MODAL DELETE ANGGOTA -->
-        <div class="message-box message-box-danger animated zoomIn" data-sound="alert" id="message-box-delete-anggota">
+        <!-- MODAL UBAH GAMBAR KOMUNITAS -->
+        <div class="modal animated zoomIn" id="message-box-ubah-gambar-komunitas" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="<?= base_url('admin/Komunitas/setUpdateFotoKomunitas'); ?>" class="form-horizontal" id="ubah-anggota-validate" method="post" enctype="multipart/form-data">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="defModalHead">Ubah Komunitas</h4>
+                    </div>
+                        <div>
+                            <div class="panel-body tab-content">
+                            <div class="form-group hidden">
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="idKomunitas" name="idKomunitas" value="<?= $komunitas[0]->id_komunitas ?>" /> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     
-            <div class="mb-container">
-                <div class="mb-middle">
-                    <div class="mb-title">
-                        <span class="fa fa-times"></span> Hapus <strong>Komunitas</strong>
+                    <div class="form-group">
+                            <label class="col-md-2 control-label">Logo Komunitas</label>
+                        <div class="col-md-8">
+                            <div class="profile-image">
+                        <?php if ($A->logo_komunitas == NULL) { ?>
+                            <img src="<?php echo base_url('uploads/content/komunitas/no-image.jpg'); ?> " alt="No Image" title="Default Image">
+                        <?php } else { ?>
+                            <p>Gambar Sebelumnya</p>  
+                            <img src="<?php echo base_url('uploads/content/komunitas/'.$A->logo_komunitas); ?> " alt="<?= $A->nama_komunitas; ?>" width="150" title="<?= $A->nama_komunitas; ?>">
+                        <?php } ?>
                     </div>
-                    <form action="<?= base_url('koordinator/Komunitas/hapusKomunitas'); ?>" class="form-horizontal" method="post">
-                        <div class="mb-content">
-                            <div class="panel-body">
-                                <p>Anda yakin akan menghapus komunitas dari IKASMA3BDG dengan identitas sebagai berikut :</p>
-                                
-                                <div class="form-group hidden">
-                            <input type="text" id="idKomunitasHapus" name="idKomunitasHapus" class="form-control" value="<?= $komunitas[0]->id_komunitas ?>">
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Nama Komunitas : </label>
-                            <div class="col-md-9">
-                                <label class="control-label" id="namaAktifKomunitas"></label>
+                    <br>
+                        <p>Gambar Setelahnya</p>  
+                            <br>
+                                <input type="file" class="file" id="file_name" name="fileSaya" required />
                             </div>
                         </div>
 
-                      <div class="form-group">
-                            <label class="col-md-3 control-label">Tautat Komunitas : </label>
-                            <div class="col-md-9">
-                                <label class="control-label" id="tautatAktifKomunitas"></label>
-
-                            </div>
+                        <div class="modal-footer">
+                        <div class="col-md-12" style="text-align: left;">
+                            <label class="control-label">*Harap Logo Komunitas yang sesuai</label>
                         </div>
-
-                        <div class="form-group">
-                            <label class="col-md-3 control-label">Pengupload : </label>
-                            <div class="col-md-9">
-                                <label class="control-label" id="idAktifPengupload"></label>
-                            </div>
-                        </div>
+                        
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-success">Simpan</button>
                     </div>
-
-
-                        </div>
-                        <div class="mb-footer">
-                            <div class="pull-right">
-                                <button type="submit" class="btn btn-primary btn-lg mb-control-yes">Hapus</button>
-                                <button type="button" class="btn btn-default btn-lg mb-control-close">Batal</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                </form>
             </div>
-
         </div>
-        <!-- END MODAL DELETE ANGGOTA -->
+    </div>
+    <!-- MODAL UBAH GAMBAR KOMUNITAS -->  
+
+
+    <!-- MODAL DELETE ANGGOTA -->
+    <div class="message-box message-box-danger animated zoomIn" data-sound="alert" id="message-box-delete-anggota">
+                
+        <div class="mb-container">
+            <div class="mb-middle">
+                <div class="mb-title">
+                    <span class="fa fa-times"></span> Hapus <strong>Komunitas</strong>
+                </div>
+                <form action="<?= base_url('koordinator/Komunitas/hapusKomunitas'); ?>" class="form-horizontal" method="post">
+                    <div class="mb-content">
+                        <div class="panel-body">
+                            <p>Anda yakin akan menghapus komunitas dari IKASMA3BDG dengan identitas sebagai berikut :</p>
+                            
+                            <div class="form-group hidden">
+                        <input type="text" id="idKomunitasHapus" name="idKomunitasHapus" class="form-control" value="<?= $komunitas[0]->id_komunitas ?>">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Nama Komunitas : </label>
+                        <div class="col-md-9">
+                            <label class="control-label" id="namaAktifKomunitas"></label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Tautat Komunitas : </label>
+                        <div class="col-md-9">
+                            <label class="control-label" id="tautatAktifKomunitas"></label>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Pengupload : </label>
+                        <div class="col-md-9">
+                            <label class="control-label" id="idAktifPengupload"></label>
+                        </div>
+                    </div>
+                </div>
+
+
+                    </div>
+                    <div class="mb-footer">
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-primary btn-lg mb-control-yes">Hapus</button>
+                            <button type="button" class="btn btn-default btn-lg mb-control-close">Batal</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!-- END MODAL DELETE ANGGOTA -->
 
 <script>
-$("#form-ubah-komunitas-validate").validate();
+$("#form-ubah-gambar-komunitas-validate").validate();
 
 $("#file-simple").fileinput({
+    showUpload: false,
+    showCaption: false,
+    browseClass: "btn btn-danger",
+    fileType: "any"
+});
+
+$("#file_name").fileinput({
     showUpload: false,
     showCaption: false,
     browseClass: "btn btn-danger",

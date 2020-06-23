@@ -40,7 +40,9 @@
                                                 <th width="50">No</th>
                                                 <th width="100">Logo Komunitas</th>
                                                 <th width="100">Nama Komunitas</th>
-                                                <th width="1000">Tautan Komunitas</th>
+                                                <th width="100">Deskripsi Komunitas</th>
+                                                <th width="100">Tautan Komunitas</th>
+                                                <th width="100">Sifat Komunitas</th>
                                                 <th width="100">Tanggal Permohonan</th>
                                                 <th width="100">Waktu Permohonan</th>
                                                 <th width="100">Pengupload</th>
@@ -56,16 +58,22 @@
                                             <tr id="trow_1">
                                                 <td class="text-center"><?= $no; ?></td>
                                                 <?php if ($CA->logo_komunitas == null) { ?>
-                                                <td><img src="<?= base_url('uploads/no-image.jpg'); ?>"
+                                                <td><img src="<?= base_url('uploads/content/komunitas/no-image.jpg'); ?>"
                                                         alt="<?= $CA->nama_komunitas; ?>"
                                                         title="<?= $CA->nama_komunitas; ?>" width="80" /></td>
                                                 <?php } else { ?>
-                                                <td><img src="<?= base_url('uploads/avatars/' . $CA->logo_komunitas); ?>"
+                                                <td><img src="<?= base_url('uploads/content/komunitas/' . $CA->logo_komunitas); ?>"
                                                         alt="<?= $CA->nama_komunitas; ?>"
                                                         title="<?= $CA->nama_komunitas; ?>" width="80" height="80" /></td>
                                                 <?php } ?>
 
                                                 <td><strong><?= $CA->nama_komunitas; ?></strong></td>
+                                                
+                                                <?php if ($CA->deskripsi_komunitas == null) { ?>
+                                                <td>Belum di isi</td>
+                                                <?php } else { ?>
+                                                <td><?= $CA->deskripsi_komunitas; ?></td>
+                                                <?php } ?>
 
                                                 <?php if ($CA->tautat_komunitas == null) { ?>
                                                 <td>Belum di isi</td>
@@ -73,8 +81,13 @@
                                                 <td><?= $CA->tautat_komunitas; ?></td>
                                                 <?php } ?>
 
-                                                <!-- <td><span class="label label-success">New</span></td> -->
-                                                <?php if ($CA->logo_komunitas == null) { ?>
+                                                <?php if ($CA->sifat_komunitas == null) { ?>
+                                                <td>Belum di isi</td>
+                                                <?php } else { ?>
+                                                <td><?= $CA->sifat_komunitas; ?></td>
+                                                <?php } ?>
+                                     
+                                                <?php if ($CA->date_created == null) { ?>
                                                 <td>Belum di isi</td>
                                                 <?php } else { ?>
                                                 <td><?= $CA->date_created; ?></td>
@@ -199,49 +212,22 @@
                                     </div>
                                 </div>
 
+                                <!-- CATATAN -->
                                 <div class="panel-footer">
                                     <label class="text-muted">Catatan : </label>
                                     <ol>
-                                        <li>Logo Null</li>
-                                        <li>Admin : Menambahkan Calon Komunitas Baru dapat langsung terverifikasi sebagai Komunitas aktif.</li>
-                                        <li>Calon Komunitas Baru harus diverifikasi terlebih dahulu agar terdaftar sebagai
+                                        <li>Menambahkan Calon Komunitas baru dapat langsung terverifikasi sebagai Komunitas aktif.</li>
+                                        <li>Permohonan Calon Komunitas baru harus diverifikasi terlebih dahulu agar terdaftar sebagai
                                             Komunitas aktif.</li>
-                                        <li>Setelah di verifikasi, maka  Komunitas baru dapat ditampilkan di halaman user</li>
+                                        <li>Setelah di verifikasi, maka Komunitas baru dapat ditampilkan di halaman user</li>
+                                        <li>Logo harap disesuaikan dengan logo komunitas sebenarnya</li>
                                     </ol>
                                 </div>
+                                <!-- CATATAN -->
                             </form>
                         </div>
                     </div>
                     <!-- TAB 2 -->
-
-                    <!-- TAB 3 -->
-                    <div class="tab-pane" id="tab-three">
-                        <h5>Tes Upload Gambar</h5>
-
-                        <div class="form-group">
-
-                            <form action="<?= base_url('admin/Anggota/uploadGambar'); ?>" method="post"
-                                class="form-horizontal" id="upload-gambar-validate">
-                                <div class="panel-body">
-                                    <div class="form-group">
-                                        <label class="col-md-2 control-label">Nama Panggilan / Alias</label>
-                                        <div class="col-md-8">
-                                            <input type="file" class="form-control" name="file" required />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-10">
-                                            <button type="submit" class="btn btn-success pull-right">Simpan</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-
-                        </div>
-
-                    </div>
-                    <!-- TAB 3 -->
 
                 </div>
             </div>
@@ -251,7 +237,7 @@
 
 </div>
 
-<!-- MESSAGE BOX ACCEPT CALON ANGGOTA -->
+<!-- MESSAGE BOX ACCEPT CALON KOMUNITAS -->
 <div class="message-box animated zoomIn" data-sound="alert" id="message-box-terima">
 
     <div class="mb-container">
@@ -307,9 +293,9 @@
     </div>
 
 </div>
-<!-- END MESSAGE BOX ACCEPT CALON ANGGOTA -->
+<!-- END MESSAGE BOX ACCEPT CALON KOMUNITAS -->
 
-<!-- MESSAGE BOX REJECT CALON ANGGOTA -->
+<!-- MESSAGE BOX REJECT CALON KOMUNITAS -->
 <div class="message-box message-box-danger animated zoomIn" data-sound="alert" id="message-box-tolak">
 
     <div class="mb-container">
@@ -363,7 +349,7 @@
     </div>
 
 </div>
-<!-- END MESSAGE BOX REJECT CALON ANGGOTA -->
+<!-- END MESSAGE BOX REJECT CALON KOMUNITAS -->
 
 <script type="text/javascript">
 $("#form-tambah-komunitas-validate").validate();
