@@ -2,170 +2,52 @@
 <html lang="en">
 
 <head>
-    <!-- META SECTION -->
-    <title><?= $title; ?></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- CSS INCLUDE -->
+<link rel="stylesheet" type="text/css" id="theme"
+    href="<?php echo base_url('assets/html/css/theme-default.css') ?>" />
+<!-- EOF CSS INCLUDE -->
 
-    <link rel="icon" href="<?= base_url('assets/html/favicon.ico'); ?>" type="image/x-icon" />
-    <!-- END META SECTION -->
-
-    <!-- CSS INCLUDE -->
-    <link rel="stylesheet" type="text/css" id="theme"
-        href="<?php echo base_url('assets/html/css/theme-default.css') ?>" />
-
-    <style>
-    .alert {
-        animation: autoHide 0s ease-in 8s forwards;
-    }
-
-    @keyframes autoHide {
-        to {
-            visibility: hidden;
-            position: absolute;
-        }
-    }
-    </style>
-
-    <!-- jQuery JS -->
-    <script type="text/javascript" src="<?php echo base_url('assets/html/js/plugins/jquery/jquery.min.js') ?>"></script>
-    <script type="text/javascript" src="<?php echo base_url('assets/html/js/plugins/jquery/jquery-ui.min.js') ?>">
-    </script>
-    <script type='text/javascript'
-        src="<?php echo base_url('assets/html/js/plugins/jquery-validation/jquery.validate.js') ?>"></script>
-    <script type="text/javascript" src="<?php echo base_url('assets/html/js/plugins/fileinput/fileinput.min.js') ?>">
-    </script>
 </head>
 
-<body>
-    <!-- START PAGE CONTAINER -->
-    <div class="page-container animated fadeIn page-navigation-top-fixed">
+<body id="page-top">
 
-        <!-- START PAGE SIDEBAR -->
-        <div class="page-sidebar page-sidebar-fixed scroll">
-            <!-- START X-NAVIGATION -->
-            <ul class="x-navigation">
-                <li class="xn-logo">
-                    <a href="<?= base_url('umum'); ?>">IKASMA3BDG</a>
-                    <a href="#" class="x-navigation-control"></a>
-                </li>
-                <li class="xn-profile">
-                    <a href="#" class="profile-mini">
-                        <?php if (empty($info[0]->nama_foto)) { ?>
-                        <img src="<?php echo base_url('uploads/no-image.jpg'); ?>" alt="Belum ada foto" />
-                        <?php } else { ?>
-                        <img src="<?php echo base_url('uploads/avatars/' . $info[0]->nama_foto); ?>"
-                            alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" />
-                        <?php } ?>
-                    </a>
-                    <div class="profile">
-                        <div class="profile-image">
-                            <?php if (empty($info[0]->nama_foto)) { ?>
-                            <img src="<?php echo base_url('uploads/no-image.jpg'); ?>" alt="Belum ada foto" />
-                            <?php } else { ?>
-                            <img src="<?php echo base_url('uploads/avatars/' . $info[0]->nama_foto); ?>"
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="<?= base_url('umum'); ?>">IKASMA3BDG</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="<?= base_url('umum/berita'); ?>" class="page-scroll" href="">Berita</a></li>
+                    <li><a href="<?= base_url('umum/forumbisnis'); ?>" class="page-scroll" href="">Forum Bisnis</a></li>
+                    <li><a href="<?= base_url('umum/komunitas'); ?>" class="page-scroll" href="">Komunitas</a></li>
+                    <li><a href="<?= base_url('umum/anggota'); ?>" class="page-scroll" href="">Anggota</a></li>
+                    <li><a href="<?= base_url('umum/lowongan'); ?>" class="page-scroll" href="">Lowongan</a></li> 
+                     
+                    <li class="dropdown"  style="margin-right:20px">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown"> 
+                        <span class="navbar-avatar">
+                            <img width="20" src="<?php echo base_url('uploads/avatars//' . $info[0]->nama_foto); ?>"
                                 alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" />
-                            <?php } ?>
-                        </div>
-                        <div class="profile-data">
-                            <div class="profile-data-name"><?= $info[0]->nama_lengkap; ?></div>
-                            <div class="profile-data-title">Umum</div>
-                        </div>
-                    </div>
-                </li>
-                <!-- <li class="xn-title">Navigation</li> -->
-                <li>
-                    <a href="<?php echo base_url('umum') ?>"><span class="fa fa-home"></span> <span
-                            class="xn-text">Beranda</span></a>
-                </li>
-
-
-                <li>
-                    <a href="<?php echo base_url('umum/Berita') ?>"><span class="fa fa-align-left"></span> <span
-                            class="xn-text">Berita</span></a>
-                </li>
-
-                <li><a href="<?= base_url('umum/Anggota') ?>"><span class="fa fa-users"></span>
-                        Tambahkan Anggota </a>
-                </li>
-
-                <li>
-                    <a href="<?= base_url('umum/Pengaturan'); ?>"><span class="glyphicon glyphicon-cog"></span> <span
-                            class="xn-text">Pengaturan</span></a>
-                </li>
-
-                <!-- <li class="xn-openable">
-                        <a href="#"><span class="fa fa-users"></span> <span class="xn-text">Anggota</span></a>
-                        <ul>
-                            <li><a href="<?php echo base_url('index.php/welcome/post') ?>"><span class="fa fa-user"></span> Kelola Calon Anggota</a></li>
-                            <li><a href="<?php echo base_url('index.php/welcome/people') ?>"><span class="fa fa-users"></span> Kelola Anggota </a></li>
-                            <li><a href="<?php echo base_url('index.php/welcome/masterdata') ?>"><span class="fa fa-plus"></span> Tambah Data Master</a></li>
+                        </span>  <?= $info[0]->nama_lengkap; ?></a>
+                        
+                        <ul class="dropdown-menu">
+                            <li><a href="<?= base_url('umum/pengaturan'); ?>">Pengaturan <span class="glyphicon glyphicon-cog pull-right">
+                            <li><a href="<?= base_url('umum/profil'); ?>">Profil <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
+                            <li><a href="<?= base_url('Login/Logout'); ?>">Log Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
                         </ul>
-                    </li>                   -->
-            </ul>
-            <!-- END X-NAVIGATION -->
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
-        <!-- END PAGE SIDEBAR -->
-
-        <!-- PAGE CONTENT -->
-        <div class="page-content animated fadeIn">
-
-            <!-- START X-NAVIGATION VERTICAL -->
-            <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
-                <!-- TOGGLE NAVIGATION -->
-                <li class="xn-icon-button">
-                    <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
-                </li>
-                <!-- END TOGGLE NAVIGATION -->
-                <!-- SIGN OUT -->
-                <li class="xn-icon-button pull-right">
-                    <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>
-                </li>
-                <!-- END SIGN OUT -->
-                <!-- MESSAGES -->
-                <!-- <li class="xn-icon-button pull-right">
-                        <a href="#"><span class="fa fa-comments"></span></a>
-                        <div class="informer informer-danger">4</div>
-                        <div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><span class="fa fa-comments"></span> Permohonan Akun</h3>                                
-                                <div class="pull-right">
-                                    <span class="label label-danger">4 new</span>
-                                </div>
-                            </div>
-                            <div class="panel-body list-group list-group-contacts scroll" style="height: 200px;">
-                                <a href="#" class="list-group-item">
-                                    
-                                    <img src="<?php echo base_url('assets/html/assets/images/users/user2.jpg') ?>" class="pull-left" alt="John Doe"/>
-                                    <span class="contacts-title">John Doe</span>
-                                    <p>Meminta untuk menjadi anggota alumni</p>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    
-                                    <img src="<?php echo base_url('assets/html/assets/images/users/user2.jpg') ?>" class="pull-left" class="pull-left" alt="Dmitry Ivaniuk"/>
-                                    <span class="contacts-title">Dmitry Ivaniuk</span>
-                                    <p>Meminta untuk menjadi anggota alumni</p>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    
-                                    <img src="<?php echo base_url('assets/html/assets/images/users/user2.jpg') ?>" class="pull-left" class="pull-left" alt="Nadia Ali"/>
-                                    <span class="contacts-title">Nadia Ali</span>
-                                    <p>Meminta untuk menjadi anggota alumni</p>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    
-                                    <img src="<?php echo base_url('assets/html/assets/images/users/user2.jpg') ?>" class="pull-left" class="pull-left" alt="Darth Vader"/>
-                                    <span class="contacts-title">Darth Vader</span>
-                                    <p>Meminta untuk menjadi anggota alumni</p>
-                                </a>
-                            </div>     
-                            <div class="panel-footer text-center">
-                                <a href="<?php echo base_url('index.php/welcome/post'); ?>">Show all messages</a>
-                            </div>                            
-                        </div>                        
-                    </li> -->
-                <!-- END MESSAGES -->
-
-            </ul>
-            <!-- END X-NAVIGATION VERTICAL -->
+        <!-- /.container-fluid -->
+    </nav>
+    
