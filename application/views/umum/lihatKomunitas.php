@@ -1,16 +1,16 @@
-<title> Komunitas </title>
 
-<!-- START BREADCRUMB -->
+<div class="jumbotron p-2 p-md-5 text-white rounded bg-dark" style="padding-top:5px">
+    <div class="col-md-3 ">
 
-<!-- END BREADCRUMB -->
+    </div>
+</div>
+    <div class="container">
+<br>
+<br>
 
-<br>
-<br>
-<br>
-<br>
 <ul class="breadcrumb">
-    <li>Komunitas</li>
-    <li class="active"><a href="<?= base_url('anggota/Komunitas'); ?>">Lihat Komunitas</a></li>
+    <li>Pengaturan</li>
+    <li class="active"><a href="<?= base_url('umum/Komunitas'); ?>">Kelola Akun Anda</a></li>
 </ul>
 
 <?= showFlashMessage(); ?>
@@ -59,42 +59,42 @@
                 <div class="panel-body profile">
                     <div class="profile-image">
                         <?php if ($A->logo_komunitas == NULL) { ?>
-                            <img src="<?php echo base_url('uploads/content/komunitas/no-image.jpg'); ?> " alt="No Image" title="Default Image">
+                            <img width="200" src="<?php echo base_url('uploads/content/komunitas/no-image.jpg'); ?> " alt="No Image" title="Default Image">
                         <?php } else { ?>
-                            <img src="<?php echo base_url('uploads/content/komunitas/'.$A->logo_komunitas); ?> " alt="<?= $A->nama_komunitas; ?>" title="<?= $A->nama_komunitas; ?>">
+                            <img width="200" src="<?php echo base_url('uploads/content/komunitas/'.$A->logo_komunitas); ?> " alt="<?= $A->nama_komunitas; ?>" title="<?= $A->nama_komunitas; ?>">
                         <?php } ?>
                     </div>
                     <div class="profile-data">
-                        <div class="profile-data-name"><h3 style="color:white;"><?= $A->nama_komunitas; ?><h3></div>
+                        <div class="profile-data-name"><h2 style="color:black; text-align: center;" ><?= $A->nama_komunitas; ?><h2></div>
                     </div>
-                   
                 </div>
+
                     <div class="panel-body">
                         <div class="contact-info">
-                            <h3>Tentang Komunitas ini</h3>
-                            <p> <?= $A->deskripsi_komunitas ?></p>
+                            <h4>Tentang Komunitas ini</h4>
+                             <?= $A->deskripsi_komunitas ?></p>
                     <div class="panel-body">
                         <div class="contact-info">
-                            <p><i class="fa fa-link" aria-hidden="true"></i> <strong>Link Komunitas</strong><br><h5><a><?= $A->tautat_komunitas; ?></a></h5></p>
+                            <i class="fa fa-link" aria-hidden="true"></i> <strong>Link Komunitas</strong><br><h5><a><?= $A->tautat_komunitas; ?></a></h5>
                                 
                                 <?php if ($A->sifat_komunitas == "Publik") { ?>
-                            <p><i class="fa fa-eye" aria-hidden="true"></i> <strong> <?= $A->sifat_komunitas ?> </strong><br><h5>Semua orang bisa join ke komunitas ini.</h5></p>
+                            <i class="fa fa-eye" aria-hidden="true"></i> <strong> <?= $A->sifat_komunitas ?> </strong><br><h5>Semua orang bisa join ke komunitas ini.</h5>
                                 <?php } else { ?>
-                            <p><i class="fa fa-eye" aria-hidden="true"></i> <strong>Private </strong><br><h5>Tidak semua orang bisa menemukan komunitas ini.</h5></p>
+                            <i class="fa fa-eye" aria-hidden="true"></i> <strong>Private </strong><br><h5>Tidak semua orang bisa menemukan komunitas ini.</h5>
                                 <?php } ?>
                             
                                 <?php if ($A->jenis_komunitas == "Aktif") { ?>
-                            <p><i class="fa fa-globe" aria-hidden="true"></i> <strong><?= $A->jenis_komunitas ?></strong><br><h5>Banyak orang menggunakan komunitas ini</h5></p>
+                            <i class="fa fa-globe" aria-hidden="true"></i> <strong><?= $A->jenis_komunitas ?></strong><br><h5>Banyak orang menggunakan komunitas ini</h5>
                                 <?php } else { ?>
-                            <p><i class="fa fa-globe" aria-hidden="true"></i> <strong>Pasif</strong><br><h5>Hanya sebagian anggota menggunakan komunitas ini dan sedikit hal yang diposting</h5></p>
+                            <i class="fa fa-globe" aria-hidden="true"></i> <strong>Pasif</strong><br><h5>Hanya sebagian anggota menggunakan komunitas ini dan sedikit hal yang diposting</h5>
                                 <?php } ?>
                             
-                            <p><i class="fa fa-map-marker" aria-hidden="true"></i> <strong>Lokasi</strong><br><h5><?= $A->lokasi_komunitas ?></h5></p>
-                            <p><i class="fa fa-users" aria-hidden="true"></i> <strong>Anggota</strong><br><h5>+- <?= $A->anggota_komunitas ?></h5></p>
+                            <i class="fa fa-map-marker" aria-hidden="true"></i> <strong>Lokasi</strong><br><h5><?= $A->lokasi_komunitas ?></h5>
+                            <i class="fa fa-users" aria-hidden="true"></i> <strong>Anggota</strong><br><h5>+- <?= $A->anggota_komunitas ?></h5>
                             <!-- <hr>
-                            <p><i class="fa fa-calendar" aria-hidden="true"></i> <small>Tanggal Dibuat</small><br><h5><?= $A->date_created; ?></h5></p>
-                            <p><i class="fa fa-clock-o" aria-hidden="true"></i> <small>Waktu Dibuat</small><br><h5><?= $A->time_created; ?></h5></p>
-                            <p><i class="fa fa-user" aria-hidden="true"></i> <small>Pengupload Komunitas</small><br><h5><?= $A->username; ?></h5></p>
+                            <i class="fa fa-calendar" aria-hidden="true"></i> Tanggal Dibuat<br><h5><?= $A->date_created; ?></h5>
+                            <i class="fa fa-clock-o" aria-hidden="true"></i> Waktu Dibuat<br><h5><?= $A->time_created; ?></h5>
+                            <i class="fa fa-user" aria-hidden="true"></i> Pengupload Komunitas<br><h5><?= $A->username; ?></h5></small>
                             -->
                         </div> 
                     </div>
