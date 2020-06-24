@@ -112,16 +112,15 @@
                     </ul>
                 </li>
 
-                <!-- 
                 <li class="xn-openable">
                     <a href="#"><span class="fa fa-camera-retro"></span> <span class="xn-text">Komunitas</span></a>
                     <ul>
-                        <li><a href="<?= base_url('anggota/Komunitas') ?>"><span class="fa fa-cube"></span> Lihat
+                        <li><a href="<?= base_url('alumni/Komunitas') ?>"><span class="fa fa-cube"></span> Lihat
                                 Komunitas</a></li>
-                        <li><a href="<?= base_url('anggota/Komunitas/tambahKomunitas') ?>"><span
+                        <li><a href="<?= base_url('alumni/Komunitas/tambahKomunitas') ?>"><span
                                     class="fa fa-plus"></span> Tambah Calon Komunitas </a></li>
                     </ul>
-                </li> -->
+                </li>
                 <!-- 
                 <?php if ($info[0]->support == 0) { ?>
                 <li class="hidden">

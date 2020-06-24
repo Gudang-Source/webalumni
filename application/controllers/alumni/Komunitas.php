@@ -49,7 +49,7 @@ class Komunitas extends MY_Controller
 
         $data['komunitas'] = $this->M_komunitas->getAllKomunitas();
 
-        $this->anggota_render('anggota/lihatKomunitas', $data);
+        $this->alumni_render('alumni/lihatKomunitas', $data);
     }
     // ==================================================
     // ---------------------- READ ----------------------
@@ -65,7 +65,7 @@ class Komunitas extends MY_Controller
         $data['title'] = 'Kelola Komunitas';
         $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
         $data['komunitas'] = $this->M_komunitas->getAllKomunitas();
-        $this->anggota_render('anggota/tambahKomunitas', $data);
+        $this->alumni_render('alumni/tambahKomunitas', $data);
     }
 
     public function tambahCalonKomunitas()
@@ -100,7 +100,7 @@ class Komunitas extends MY_Controller
 
         if (!$this->upload->do_upload('fileSaya')) {
             flashMessage('error', 'Maaf, Upload gambar calon anggota gagal! Silahkan coba lagi');
-            redirect('anggota/Komunitas');
+            redirect('alumni/Komunitas');
         } else {
             $upload_data = $this->upload->data();
 
@@ -116,7 +116,7 @@ class Komunitas extends MY_Controller
             $data['time_created'] = $waktuPengajuan;
             $data['logo_komunitas'] = $upload_data['file_name'];
             $data['id_pengupload'] = $idPengupload;
-            if($this->session->userdata('role') == 3) {
+            if($this->session->userdata('role') == 4) {
                 $data['stat_komunitas'] = '0';
             } else {
                 $data['stat_komunitas'] = '1';
@@ -127,10 +127,10 @@ class Komunitas extends MY_Controller
 
             if (!$sukses) {
                 flashMessage('success', 'Calon Komunitas Baru berhasil di daftarkan. Tunggu Verivikasi dari Admin 1x24 jam');
-                redirect('anggota/Komunitas');
+                redirect('alumni/Komunitas');
             } else {
                 flashMessage('error', 'Calon Komunitas Baru gagal di daftarkan! Silahkan coba lagi');
-                redirect('anggota/Komunitas');
+                redirect('alumni/Komunitas');
             }
         }
     }
@@ -154,8 +154,8 @@ class Komunitas extends MY_Controller
 
     $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
-    if ($this->session->userdata('role') == 3) {
-        $this->anggota_render('anggota/lihatKomunitas', $data);
+    if ($this->session->userdata('role') == 4) {
+        $this->alumni_render('alumni/lihatKomunitas', $data);
         }
     }
     // ==================================================
