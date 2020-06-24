@@ -8,7 +8,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
  */
 class FrontPageModel extends CI_Model
 {
-	
+	function getInfoBySessionId()
+	{
+		$this->db->select('tb_anggota.nama_lengkap, tb_anggota.nama_foto, tb_user_role.role');
+		$this->db->from('tb_anggota');
+		$this->db->join('tb_user', 'tb_anggota.user_id=tb_user.id_user');
+		$this->db->join('tb_user_role', 'tb_user.role=tb_user_role.id');
+		$this->db->where('user_id', $this->session->userdata('uid'));
+
+		return $this->db->get()->result();
+	}
+
+	// function getRoleInfo()
+
 	function getAllAnggota()
 	{
 		$this->db->select('nama_lengkap, angkatan, email, nama_foto, no_telp, support');

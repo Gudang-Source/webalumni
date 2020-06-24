@@ -49,7 +49,7 @@
             <!-- START X-NAVIGATION -->
             <ul class="x-navigation">
                 <li class="xn-logo">
-                    <a href="<?= base_url('koordinator'); ?>">IKASMA3BDG</a>
+                    <a href="<?= base_url(''); ?>">IKASMA3BDG</a>
                     <a href="#" class="x-navigation-control"></a>
                 </li>
                 <li class="xn-profile">
