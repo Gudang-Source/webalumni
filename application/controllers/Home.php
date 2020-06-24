@@ -7,31 +7,37 @@ if (defined('BASEPATH') or exit('No direct script access allowed'));
  * Created by Lut Dinar Fadila 2018
 */
 
-class Home extends MY_Controller {
-    
-    function __construct() {
+class Home extends MY_Controller
+{
+
+    function __construct()
+    {
         parent::__construct();
         $this->load->model('FrontPageModel');
         $this->load->model('KoordinatorAnggotaModel');
     }
-    
-    function index() {
+
+    function index()
+    {
         $data['title'] = 'Beranda IKASMA3BDG';
+        $data['info'] = $this->FrontPageModel->getInfoBySessionId();
+
         $this->frontend_render('frontend/home', $data);
     }
-    
-    function cariTeman() {
+
+    function cariTeman()
+    {
         $data['title'] = 'Cari Teman';
         $data['dataAnggota'] = $this->FrontPageModel->getAllAnggota();
 
         $this->load->view('frontend/cariTeman', $data);
     }
 
-    function forumBisnisAnggota() {
+    function forumBisnisAnggota()
+    {
         $data['title'] = 'Forum Bisnis IKASMA3BDG';
         $data['forbis'] = $this->FrontPageModel->getForbisAnggota();
 
         $this->load->view('frontend/forumBisnis', $data);
     }
-    
 }

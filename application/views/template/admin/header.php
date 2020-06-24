@@ -12,29 +12,27 @@
     <!-- END META SECTION -->
 
     <!-- CSS INCLUDE -->
-    <link rel="stylesheet" type="text/css" id="theme"
-        href="<?php echo base_url('assets/html/css/theme-default.css') ?>" />
+    <link rel="stylesheet" type="text/css" id="theme" href="<?php echo base_url('assets/html/css/theme-default.css') ?>" />
     <!-- EOF CSS INCLUDE -->
 
     <style>
-    .alert {
-        animation: autoHide 0s ease-in 8s forwards;
-    }
-
-    @keyframes autoHide {
-        to {
-            visibility: hidden;
-            position: absolute;
+        .alert {
+            animation: autoHide 0s ease-in 8s forwards;
         }
-    }
+
+        @keyframes autoHide {
+            to {
+                visibility: hidden;
+                position: absolute;
+            }
+        }
     </style>
 
     <!-- START PLUGINS -->
     <script type="text/javascript" src="<?php echo base_url('assets/html/js/plugins/jquery/jquery.min.js') ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/html/js/plugins/jquery/jquery-ui.min.js') ?>">
     </script>
-    <script type='text/javascript'
-        src="<?php echo base_url('assets/html/js/plugins/jquery-validation/jquery.validate.js') ?>"></script>
+    <script type='text/javascript' src="<?php echo base_url('assets/html/js/plugins/jquery-validation/jquery.validate.js') ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/html/js/plugins/fileinput/fileinput.min.js') ?>">
     </script>
     <!-- END PLUGINS -->
@@ -56,19 +54,17 @@
                 <li class="xn-profile">
                     <a href="#" class="profile-mini">
                         <?php if (empty($info[0]->nama_foto)) { ?>
-                        <img src="<?php echo base_url('uploads/no-image.jpg'); ?>" alt="Belum ada foto" />
+                            <img src="<?php echo base_url('uploads/no-image.jpg'); ?>" alt="Belum ada foto" />
                         <?php } else { ?>
-                        <img src="<?php echo base_url('uploads/avatars/gambar-admin/' . $info[0]->nama_foto); ?>"
-                            alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" />
+                            <img src="<?php echo base_url('uploads/avatars/gambar-admin/' . $info[0]->nama_foto); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" />
                         <?php } ?>
                     </a>
                     <div class="profile">
                         <div class="profile-image">
                             <?php if (empty($info[0]->nama_foto)) { ?>
-                            <img src="<?php echo base_url('uploads/no-image.jpg'); ?>" alt="Belum ada foto" />
+                                <img src="<?php echo base_url('uploads/no-image.jpg'); ?>" alt="Belum ada foto" />
                             <?php } else { ?>
-                            <img src="<?php echo base_url('uploads/avatars/gambar-admin/' . $info[0]->nama_foto); ?>"
-                                alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" />
+                                <img src="<?php echo base_url('uploads/avatars/gambar-admin/' . $info[0]->nama_foto); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" />
                             <?php } ?>
                         </div>
                         <div class="profile-data">
@@ -78,8 +74,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="<?php echo base_url('admin') ?>"><span class="fa fa-desktop"></span> <span
-                            class="xn-text">Beranda</span></a>
+                    <a href="<?php echo base_url('admin') ?>"><span class="fa fa-desktop"></span> <span class="xn-text">Beranda</span></a>
                 </li>
                 <li>
                     <a href="<?php echo base_url('admin/Profile') ?>"><span class="glyphicon glyphicon-user"></span>
@@ -90,10 +85,8 @@
                     <ul>
                         <li><a href="<?php echo base_url('admin/Anggota') ?>"><span class="fa fa-user"></span> Kelola
                                 Calon Anggota</a></li>
-                        <li><a href="<?php echo base_url('admin/Anggota/kelolaAnggota') ?>"><span
-                                    class="fa fa-users"></span> Kelola Anggota </a></li>
-                        <li><a href="<?php echo base_url('admin/Anggota/kelolaPemulihanAnggota') ?>"><span
-                                    class="fa fa-users"></span> Kelola Pemulihan Anggota </a></li>            
+                        <li><a href="<?php echo base_url('admin/Anggota/kelolaAnggota') ?>"><span class="fa fa-users"></span> Kelola Anggota </a></li>
+                        <li><a href="<?php echo base_url('admin/Anggota/kelolaPemulihanAnggota') ?>"><span class="fa fa-users"></span> Kelola Pemulihan Anggota </a></li>
                         <!-- <li><a href="<?php echo base_url('admin/Anggota/dataMaster') ?>"><span class="fa fa-plus"></span> Data Master</a></li> -->
                     </ul>
                 </li>
@@ -101,14 +94,11 @@
                 <li class="xn-openable">
                     <a href="#"><span class="fa fa-envelope-o"></span> <span class="xn-text">Berita</span></a>
                     <ul>
-                        <li><a href="<?= base_url('admin/Berita'); ?>"><span class="fa fa-align-left"></span> <span
-                                    class="xn-text">Kelola Calon Berita</span></a></li>
-                        <li><a href="<?= base_url('admin/Berita/kelolaBerita'); ?>"><span
-                                    class="fa fa-align-left"></span>
+                        <li><a href="<?= base_url('admin/Berita'); ?>"><span class="fa fa-align-left"></span> <span class="xn-text">Kelola Calon Berita</span></a></li>
+                        <li><a href="<?= base_url('admin/Berita/kelolaBerita'); ?>"><span class="fa fa-align-left"></span>
                                 <span class="xn-text">Kelola Berita Aktif</span></a>
                         </li>
-                        <li><a href="<?= base_url('admin/Berita/kelolaKategori'); ?>"><span
-                                    class="fa fa-align-left"></span>
+                        <li><a href="<?= base_url('admin/Berita/kelolaKategori'); ?>"><span class="fa fa-align-left"></span>
                                 <span class="xn-text">Kelola Kategori</span></a>
                         </li>
                     </ul>
@@ -117,13 +107,10 @@
                 <li class="xn-openable">
                     <a href="#"><span class="fa fa-briefcase"></span> <span class="xn-text">Forum Bisnis</span></a>
                     <ul>
-                        <li><a href="<?= base_url('admin/ForumBisnis/kelolaCalonForBis'); ?>"><span
-                                    class="fa fa-clipboard"></span> <span class="xn-text">Kelola Calon ForBis</span></a>
+                        <li><a href="<?= base_url('admin/ForumBisnis/kelolaCalonForBis'); ?>"><span class="fa fa-clipboard"></span> <span class="xn-text">Kelola Calon ForBis</span></a>
                         </li>
-                        <li><a href="<?= base_url('admin/ForumBisnis'); ?>"><span class="fa fa-bullhorn"></span> <span
-                                    class="xn-text">Kelola Forum Bisnis</span></a></li>
-                        <li><a href="<?= base_url('admin/ForumBisnis/kelolaJenisBisnis'); ?>"><span
-                                    class="fa fa-book"></span> <span class="xn-text">Kelola Jenis Bisnis</span></a>
+                        <li><a href="<?= base_url('admin/ForumBisnis'); ?>"><span class="fa fa-bullhorn"></span> <span class="xn-text">Kelola Forum Bisnis</span></a></li>
+                        <li><a href="<?= base_url('admin/ForumBisnis/kelolaJenisBisnis'); ?>"><span class="fa fa-book"></span> <span class="xn-text">Kelola Jenis Bisnis</span></a>
                         </li>
                     </ul>
                 </li>
@@ -131,18 +118,15 @@
                 <li class="xn-openable">
                     <a href="#"><span class="fa fa-camera-retro"></span> <span class="xn-text">Komunitas</span></a>
                     <ul>
-                        <li><a href="<?= base_url('admin/Komunitas'); ?>"><span class="fa fa-cube"></span> <span
-                                    class="xn-text">Kelola Komunitas Baru</span></a></li>
-                        <li><a href="<?= base_url('admin/Komunitas/kelolaStatusKomunitas'); ?>"><span
-                                    class="fa fa-cubes"></span> <span class="xn-text">Kelola Status
+                        <li><a href="<?= base_url('admin/Komunitas'); ?>"><span class="fa fa-cube"></span> <span class="xn-text">Kelola Komunitas Baru</span></a></li>
+                        <li><a href="<?= base_url('admin/Komunitas/kelolaStatusKomunitas'); ?>"><span class="fa fa-cubes"></span> <span class="xn-text">Kelola Status
                                     Komunitas</span></a>
                         </li>
                     </ul>
                 </li>
 
                 <li>
-                    <a href="<?= base_url('admin/Pengaturan'); ?>"><span class="glyphicon glyphicon-cog"></span> <span
-                            class="xn-text">Pengaturan</span></a>
+                    <a href="<?= base_url('admin/Pengaturan'); ?>"><span class="glyphicon glyphicon-cog"></span> <span class="xn-text">Pengaturan</span></a>
                 </li>
             </ul>
             <!-- END X-NAVIGATION -->
@@ -161,8 +145,7 @@
                 <!-- END TOGGLE NAVIGATION -->
                 <!-- SIGN OUT -->
                 <li class="xn-icon-button pull-right">
-                    <a href="javascript:void(0);" class="mb-control" data-box="#mb-signout"><span
-                            class="fa fa-sign-out"></span></a>
+                    <a href="javascript:void(0);" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>
                 </li>
                 <!-- END SIGN OUT -->
 
