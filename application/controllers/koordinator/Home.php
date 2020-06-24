@@ -14,6 +14,7 @@ class Home extends MY_Controller
     {
         parent::__construct();
         $this->load->model('M_anggota');
+        $this->load->model('KoorHomeModel');
 
         if ($this->session->userdata('logged_in') == '' && $this->session->userdata('username') == '' && $this->session->userdata('role') == '') {
             redirect('login');
@@ -32,6 +33,15 @@ class Home extends MY_Controller
     {
         $data['title'] = 'Beranda Koordinator';
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+        $data['jumlah_anggota'] = $this->KoorHomeModel->hitungJumlahAnggota();
+        $data['jumlah_anggota_belum_verifikasi'] = $this->KoorHomeModel->hitungJumlahAnggotaBelumVerifikasi();
+        $data['jumlah_pendaftar_anggota'] = $this->KoorHomeModel->pendaftarAnggota();
+        $data['jumlah_pendaftar_alumni'] = $this->KoorHomeModel->pendaftarAlumni();
+        $data['berita'] = $this->KoorHomeModel->beritaTerkini();
+        $data['jumlahBeritaNon'] = $this->KoorHomeModel->hitungJumlahBeritaNon();
+        $data['komunitas'] = $this->KoorHomeModel->komunitasTerkini();
+        $data['jumlahKomunitasNon'] = $this->KoorHomeModel->hitungJumlahKomunitasNon();
+        $data['jumlahForbisNon'] = $this->KoorHomeModel->hitungJumlahForbisNon();
         $this->koordinator_render('koordinator/home', $data);
     }
 }

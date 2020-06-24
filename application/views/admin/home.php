@@ -114,6 +114,70 @@
     <div class="row">
         <div class="col-md-4">
 
+            <!-- START WIDGET MESSAGES -->
+            <div class="widget widget-default widget-item-icon">
+                <div class="widget-item-left">
+                    <span class="fa fa-envelope"></span>
+                </div>
+                <div class="widget-data">
+                    <div class="widget-int num-count"><?= $jumlahBeritaNon ?></div>
+                    <div class="widget-title" style="font-size: 12px;">Calon Berita Belum terverifikasi</div>
+                    <div class="widget-subtitle">Pada website anda</div>
+                </div>
+                <div class="widget-controls">
+                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top"
+                        title="Remove Widget"><span class="fa fa-times"></span></a>
+                </div>
+            </div>
+            <!-- END WIDGET MESSAGES -->
+
+        </div>
+        <div class="col-md-4">
+
+            <!-- START WIDGET MESSAGES -->
+            <div class="widget widget-default widget-item-icon">
+                <div class="widget-item-left">
+                    <span class="fa fa-camera-retro"></span>
+                </div>
+                <div class="widget-data">
+                    <div class="widget-int num-count"><?= $jumlahKomunitasNon ?></div>
+                    <div class="widget-title" style="font-size: 12px;">Calon Komunitas Belum terverifikasi</div>
+                    <div class="widget-subtitle">Pada website anda</div>
+                </div>
+                <div class="widget-controls">
+                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top"
+                        title="Remove Widget"><span class="fa fa-times"></span></a>
+                </div>
+            </div>
+            <!-- END WIDGET MESSAGES -->
+
+        </div>
+
+        <div class="col-md-4">
+            <!-- START WIDGET MESSAGES -->
+            <div class="widget widget-default widget-item-icon">
+                <div class="widget-item-left">
+                    <span class="fa fa-briefcase"></span>
+                </div>
+                <div class="widget-data">
+                    <div class="widget-int num-count"><?= $jumlahForbisNon ?></div>
+                    <div class="widget-title" style="font-size: 12px;">Calon Forbis Belum terverifikasi</div>
+                    <div class="widget-subtitle">Pada website anda</div>
+                </div>
+                <div class="widget-controls">
+                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top"
+                        title="Remove Widget"><span class="fa fa-times"></span></a>
+                </div>
+            </div>
+            <!-- END WIDGET MESSAGES -->
+        </div>
+
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-md-4">
             <!-- START SALES & EVENTS BLOCK -->
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -149,34 +213,9 @@
                 </div>
             </div>
             <!-- END SALES & EVENTS BLOCK -->
-
-        </div>
-        <div class="col-md-4">
-
-            <!-- START WIDGET MESSAGES -->
-            <div class="widget widget-default widget-item-icon">
-                <div class="widget-item-left">
-                    <span class="fa fa-envelope"></span>
-                </div>
-                <div class="widget-data">
-                    <div class="widget-int num-count"><?= $jumlahBeritaNon ?></div>
-                    <div class="widget-title" style="font-size: 12px;">Calon Berita Belum terverifikasi</div>
-                    <div class="widget-subtitle">Pada website anda</div>
-                </div>
-                <div class="widget-controls">
-                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top"
-                        title="Remove Widget"><span class="fa fa-times"></span></a>
-                </div>
-            </div>
-            <!-- END WIDGET MESSAGES -->
-
         </div>
 
-    </div>
-
-    <div class="row">
         <div class="col-md-4">
-
             <!-- START SALES & EVENTS BLOCK -->
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -212,53 +251,6 @@
                 </div>
             </div>
             <!-- END SALES & EVENTS BLOCK -->
-
-        </div>
-
-        <div class="col-md-4">
-
-            <!-- START WIDGET MESSAGES -->
-            <div class="widget widget-default widget-item-icon">
-                <div class="widget-item-left">
-                    <span class="fa fa-camera-retro"></span>
-                </div>
-                <div class="widget-data">
-                    <div class="widget-int num-count"><?= $jumlahKomunitasNon ?></div>
-                    <div class="widget-title" style="font-size: 12px;">Calon Komunitas Belum terverifikasi</div>
-                    <div class="widget-subtitle">Pada website anda</div>
-                </div>
-                <div class="widget-controls">
-                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top"
-                        title="Remove Widget"><span class="fa fa-times"></span></a>
-                </div>
-            </div>
-            <!-- END WIDGET MESSAGES -->
-
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-4">
-
-        </div>
-        <div class="col-md-4">
-
-            <!-- START WIDGET MESSAGES -->
-            <div class="widget widget-default widget-item-icon">
-                <div class="widget-item-left">
-                    <span class="fa fa-briefcase"></span>
-                </div>
-                <div class="widget-data">
-                    <div class="widget-int num-count"><?= $jumlahForbisNon ?></div>
-                    <div class="widget-title" style="font-size: 12px;">Calon Forbis Belum terverifikasi</div>
-                    <div class="widget-subtitle">Pada website anda</div>
-                </div>
-                <div class="widget-controls">
-                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top"
-                        title="Remove Widget"><span class="fa fa-times"></span></a>
-                </div>
-            </div>
-            <!-- END WIDGET MESSAGES -->
 
         </div>
     </div>
