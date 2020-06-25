@@ -58,7 +58,11 @@
                         <li class="dropdown" style="margin-right:20px">
                             <a href="" class="dropdown-toggle" data-toggle="dropdown">
                                 <span class="navbar-avatar">
-                                    <img width="20" src="<?php echo base_url('uploads/avatars//' . $info[0]->nama_foto); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" />
+                                    <?php if ($this->session->userdata('role') == 1 || $this->session->userdata('role') == 2) : ?>
+                                        <img width="20" src="<?php echo base_url('uploads/avatars/gambar-admin/' . $info[0]->nama_foto); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" />
+                                    <?php else : ?>
+                                        <img width="20" src="<?php echo base_url('uploads/avatars//' . $info[0]->nama_foto); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" />
+                                    <?php endif; ?>
                                 </span> <?= $info[0]->nama_lengkap; ?></a>
 
                             <ul class="dropdown-menu">
