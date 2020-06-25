@@ -40,6 +40,15 @@ class M_forumBisnis extends CI_Model
         return $forbis;
     }
 
+    function findForbisFoto($select, $where)
+    {
+        $this->db->select($select);
+        $this->db->order_by('id_forbis', 'DESC');
+        $this->db->where($where);
+
+        return $this->db->get('tb_forum_bisnis')->result();
+    }
+
     function findForumBisnis($where)
     {
         $this->db->where($where);
