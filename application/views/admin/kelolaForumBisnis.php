@@ -144,8 +144,8 @@
 
                 <div class="form-group">
                     <label class="col-md-2 control-label">Foto</label>
-                    <div class="col-md-8">
-                        <img id="namaFoto" src="<?= base_url('uploads/logo-bisnis/'); ?>" width="150" /><br>
+                    <div class="col-md-8" style="margin-left: 10px; margin-top: 12px;">
+                        <img id="namaFoto" src="<?= base_url('uploads/logo-bisnis/'); ?>" width="350" style="margin-bottom: 10px;" /><br>
                         <input type="hidden" class="form-control" id="ubahFoto" name="ubahFoto" readonly />
                         <input type="file" class="file" id="file-simple" name="fileSaya" />
                     </div>

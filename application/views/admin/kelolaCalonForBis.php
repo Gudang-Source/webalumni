@@ -57,37 +57,28 @@
                                             $no = 1;
                                             foreach ($kelolaCalonForBis as $forbis) {
                                             ?>
-                                            <tr>
-                                                <td class="text-center"><?= $no++; ?></td>
-                                                <!-- <td><strong><?= $forbis->nama_foto_bisnis; ?></strong></td> -->
+                                                <tr>
+                                                    <td class="text-center"><?= $no++; ?></td>
+                                                    <!-- <td><strong><?= $forbis->nama_foto_bisnis; ?></strong></td> -->
 
-                                                <?php if ($forbis->nama_foto_bisnis == null) { ?>
-                                                <td><img src="<?= base_url('uploads/no-image.jpg'); ?>"
-                                                        alt="<?= $forbis->nama_foto_bisnis; ?>"
-                                                        title="<?= $forbis->nama_foto_bisnis; ?>" width="80" /></td>
-                                                <?php } else { ?>
-                                                <td><img src="<?= base_url('uploads/logo-bisnis/' . $forbis->nama_foto_bisnis); ?>"
-                                                        alt="<?= $forbis->nama_foto_bisnis; ?>"
-                                                        title="<?= $forbis->nama_foto_bisnis; ?>" width="80"
-                                                        height="80" />
-                                                </td>
-                                                <?php } ?>
+                                                    <?php if ($forbis->nama_foto_bisnis == null) { ?>
+                                                        <td><img src="<?= base_url('uploads/no-image.jpg'); ?>" alt="<?= $forbis->nama_foto_bisnis; ?>" title="<?= $forbis->nama_foto_bisnis; ?>" width="80" /></td>
+                                                    <?php } else { ?>
+                                                        <td><img src="<?= base_url('uploads/logo-bisnis/' . $forbis->nama_foto_bisnis); ?>" alt="<?= $forbis->nama_foto_bisnis; ?>" title="<?= $forbis->nama_foto_bisnis; ?>" width="80" height="80" />
+                                                        </td>
+                                                    <?php } ?>
 
-                                                <td><strong><?= $forbis->nama_bisnis_usaha; ?></strong></td>
-                                                <td><?= $forbis->nama_lengkap; ?></td>
-                                                <td><?= $forbis->angkatan; ?></td>
-                                                <td><?= $forbis->alamat_bisnis; ?></td>
-                                                <td><?= $forbis->nama_jenis_bisnis; ?></td>
-                                                <td><?= $forbis->no_telp_bisnis; ?></td>
-                                                <td>
-                                                    <button type="button" class="btn btn-primary mb-control btn-terima"
-                                                        data-box="#message-box-terima"
-                                                        id="<?= $forbis->id_forbis; ?>">Terima</button>
-                                                    <button type="button" class="btn btn-danger mb-control btn-tolak"
-                                                        data-box="#message-box-tolak"
-                                                        id="<?= $forbis->id_forbis; ?>">Tolak</button>
-                                                </td>
-                                            </tr>
+                                                    <td><strong><?= $forbis->nama_bisnis_usaha; ?></strong></td>
+                                                    <td><?= $forbis->nama_lengkap; ?></td>
+                                                    <td><?= $forbis->angkatan; ?></td>
+                                                    <td><?= $forbis->alamat_bisnis; ?></td>
+                                                    <td><?= $forbis->nama_jenis_bisnis; ?></td>
+                                                    <td><?= $forbis->no_telp_bisnis; ?></td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-primary mb-control btn-terima" data-box="#message-box-terima" id="<?= $forbis->id_forbis; ?>">Terima</button>
+                                                        <button type="button" class="btn btn-danger mb-control btn-tolak" data-box="#message-box-tolak" id="<?= $forbis->id_forbis; ?>">Tolak</button>
+                                                    </td>
+                                                </tr>
                                             <?php } ?>
                                         </tbody>
                                     </table>
@@ -104,8 +95,7 @@
                         <h5>Tambah Calon Forum Bisnis Baru IKASMA3BDG</h5>
 
                         <div class="form-group">
-                            <form action="<?= base_url('admin/ForumBisnis/setAddForbis'); ?>" class="form-horizontal"
-                                id="tambah-forbis-validate" method="post" enctype="multipart/form-data">
+                            <form action="<?= base_url('admin/ForumBisnis/setAddForbis'); ?>" class="form-horizontal" id="tambah-forbis-validate" method="post" enctype="multipart/form-data">
                                 <div class="modal-body">
 
 
@@ -119,21 +109,19 @@
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">* Nama Bisnis / Usaha :</label>
                                         <div class="col-md-7">
-                                            <input type="text" class="form-control" name="namaBisnisUsahaModal"
-                                                placeholder="Nama Bisnis / Usaha" required />
+                                            <input type="text" class="form-control" name="namaBisnisUsahaModal" placeholder="Nama Bisnis / Usaha" required />
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">* Jenis Bisnis / Usaha :</label>
                                         <div class="col-md-7">
-                                            <select name="jenisBisnisUsahaModal"
-                                                class="validate[required] form-control select" required>
+                                            <select name="jenisBisnisUsahaModal" class="validate[required] form-control select" required>
                                                 <option value="">Pilih Jenis</option>
                                                 <?php foreach ($jenisBisnis as $jb) { ?>
-                                                <option value="<?= $jb->id_jenis_bisnis ?>">
-                                                    <?= $jb->nama_jenis_bisnis ?>
-                                                </option>
+                                                    <option value="<?= $jb->id_jenis_bisnis ?>">
+                                                        <?= $jb->nama_jenis_bisnis ?>
+                                                    </option>
                                                 <?php } ?>
                                             </select>
                                         </div>
@@ -142,36 +130,32 @@
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">* Deskripsi Bisnis / Usaha :</label>
                                         <div class="col-md-7">
-                                            <textarea rows="5" class="form-control" name="deskripsiBisnisUsahaModal"
-                                                placeholder="Deskripsi Singkat Bisnis / Usaha" required></textarea>
+                                            <textarea rows="5" class="form-control" name="deskripsiBisnisUsahaModal" placeholder="Deskripsi Singkat Bisnis / Usaha" required></textarea>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">* Alamat Bisnis / Usaha :</label>
                                         <div class="col-md-7">
-                                            <textarea rows="5" class="form-control" name="alamatBisnisUsahaModal"
-                                                placeholder="Alamat Bisnis / Usaha" required></textarea>
+                                            <textarea rows="5" class="form-control" name="alamatBisnisUsahaModal" placeholder="Alamat Bisnis / Usaha" required></textarea>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">* No. Telepon :</label>
                                         <div class="col-md-7">
-                                            <input type="text" class="form-control" name="noTelpBisnisUsahaModal"
-                                                placeholder="No Telepon Bisnis / Usaha" required />
+                                            <input type="text" class="form-control" name="noTelpBisnisUsahaModal" placeholder="No Telepon Bisnis / Usaha" required />
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">* Pemilik :</label>
                                         <div class="col-md-7">
-                                            <select name="pemilikBisnisUsahaModal"
-                                                class="validate[required] form-control select">
+                                            <select name="pemilikBisnisUsahaModal" class="validate[required] form-control select">
                                                 <option value="">Pilih Pemilik</option>
                                                 <?php foreach ($pemilikForbis as $pf) { ?>
-                                                <option value="<?= $pf->id_anggota ?>"><?= $pf->nama_lengkap; ?>
-                                                </option>
+                                                    <option value="<?= $pf->id_anggota ?>"><?= $pf->nama_lengkap; ?>
+                                                    </option>
                                                 <?php } ?>
                                             </select>
                                         </div>
@@ -218,8 +202,7 @@
                         <span class="fa fa-check"></span> Terima <strong> Sebagai Forum Bisnis baru di IKASMA3BDG
                         </strong>
                     </div>
-                    <form action="<?= base_url('admin/ForumBisnis/aktivasiCalonForBis'); ?>" class="form-horizontal"
-                        method="post">
+                    <form action="<?= base_url('admin/ForumBisnis/aktivasiCalonForBis'); ?>" class="form-horizontal" method="post">
                         <div class="mb-content">
                             <div class="panel-body">
                                 <p>Apakah benar bahwa Calon Forum Bisnis di bawah ini akan diaktifkan sebagai Forum
@@ -229,11 +212,9 @@
 
                                 <div class="form-group hidden">
                                     <div class="col-md-12">
-                                        <input type="text" class="form-control" name="idCalonForbis"
-                                            id="idCalonForbis" />
+                                        <input type="text" class="form-control" name="idCalonForbis" id="idCalonForbis" />
                                         <!-- <input type="text" class="form-control" name="idPengupload" id="idPengupload"> -->
-                                        <input type="text" class="form-control" name="statForbis" id="statForbis"
-                                            value="1">
+                                        <input type="text" class="form-control" name="statForbis" id="statForbis" value="1">
                                     </div>
                                 </div>
 
@@ -273,16 +254,14 @@
                     <div class="mb-title">
                         <span class="fa fa-times"></span> Tolak <strong>Calon Forum Bisnis</strong>
                     </div>
-                    <form action="<?= base_url('admin/ForumBisnis/tolakCalonForBis'); ?>" class="form-horizontal"
-                        method="post">
+                    <form action="<?= base_url('admin/ForumBisnis/tolakCalonForBis'); ?>" class="form-horizontal" method="post">
                         <div class="mb-content">
                             <div class="panel-body">
                                 <p>Anda yakin akan menolak sebagai Calon Forum Bisnis dengan identitas sebagai
                                     berikut :</p>
 
                                 <div class="form-group hidden">
-                                    <input type="text" class="form-control" name="idCalonForbisTolak"
-                                        id="idCalonForbisTolak" />
+                                    <input type="text" class="form-control" name="idCalonForbisTolak" id="idCalonForbisTolak" />
                                 </div>
 
                                 <div class="form-group">
@@ -320,54 +299,61 @@
 
 
 <script>
-$("#tambah-forbis-validate").validate();
-$("#ubah-forbis-validate").validate();
+    $("#tambah-forbis-validate").validate();
+    $("#ubah-forbis-validate").validate();
 
-$(".btn-terima").click(function() {
-    console.log(this.id);
-    var idForbis = this.id;
+    $("#file-simple").fileinput({
+        showUpload: false,
+        showCaption: false,
+        browseClass: "btn btn-danger",
+        fileType: "any"
+    });
 
-    $.post("<?= base_url('admin/ForumBisnis/getForbisById/') ?>", {
-            id: idForbis
-        },
-        function(data, success) {
-            console.log(data);
-            var data_obj = JSON.parse(data);
+    $(".btn-terima").click(function() {
+        console.log(this.id);
+        var idForbis = this.id;
 
-            document.getElementById('idCalonForbis').value = data_obj.forbis[0].id_forbis;
-            document.getElementById('namaCalForBis').value = data_obj.forbis[0].nama_bisnis_usaha;
-            document.getElementById('namaCalForBis').innerHTML = data_obj.forbis[0]
-                .nama_bisnis_usaha;
-            document.getElementById('deskripsiBis').value = data_obj.forbis[0].deskripsi_bisnis;
-            document.getElementById('deskripsiBis').innerHTML = data_obj.forbis[0].deskripsi_bisnis;
+        $.post("<?= base_url('admin/ForumBisnis/getForbisById/') ?>", {
+                id: idForbis
+            },
+            function(data, success) {
+                console.log(data);
+                var data_obj = JSON.parse(data);
 
-
-        });
-});
-
-
-$(".btn-tolak").click(function() {
-    console.log(this.id);
-    var idForbis = this.id;
-
-    $.post("<?= base_url('admin/ForumBisnis/getForbisById/') ?>", {
-            id: idForbis
-        },
-        function(data, success) {
-            console.log(data);
-            var data_obj = JSON.parse(data);
-
-            document.getElementById('idCalonForbisTolak').value = data_obj.forbis[0].id_forbis;
-            document.getElementById('namaCalForBisTolak').value = data_obj.forbis[0]
-                .nama_bisnis_usaha;
-            document.getElementById('namaCalForBisTolak').innerHTML = data_obj.forbis[0]
-                .nama_bisnis_usaha;
-            document.getElementById('deskripsiBisTolak').value = data_obj.forbis[0]
-                .deskripsi_bisnis;
-            document.getElementById('deskripsiBisTolak').innerHTML = data_obj.forbis[0]
-                .deskripsi_bisnis;
+                document.getElementById('idCalonForbis').value = data_obj.forbis[0].id_forbis;
+                document.getElementById('namaCalForBis').value = data_obj.forbis[0].nama_bisnis_usaha;
+                document.getElementById('namaCalForBis').innerHTML = data_obj.forbis[0]
+                    .nama_bisnis_usaha;
+                document.getElementById('deskripsiBis').value = data_obj.forbis[0].deskripsi_bisnis;
+                document.getElementById('deskripsiBis').innerHTML = data_obj.forbis[0].deskripsi_bisnis;
 
 
-        });
-});
+            });
+    });
+
+
+    $(".btn-tolak").click(function() {
+        console.log(this.id);
+        var idForbis = this.id;
+
+        $.post("<?= base_url('admin/ForumBisnis/getForbisById/') ?>", {
+                id: idForbis
+            },
+            function(data, success) {
+                console.log(data);
+                var data_obj = JSON.parse(data);
+
+                document.getElementById('idCalonForbisTolak').value = data_obj.forbis[0].id_forbis;
+                document.getElementById('namaCalForBisTolak').value = data_obj.forbis[0]
+                    .nama_bisnis_usaha;
+                document.getElementById('namaCalForBisTolak').innerHTML = data_obj.forbis[0]
+                    .nama_bisnis_usaha;
+                document.getElementById('deskripsiBisTolak').value = data_obj.forbis[0]
+                    .deskripsi_bisnis;
+                document.getElementById('deskripsiBisTolak').innerHTML = data_obj.forbis[0]
+                    .deskripsi_bisnis;
+
+
+            });
+    });
 </script>
