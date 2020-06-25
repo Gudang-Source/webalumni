@@ -202,9 +202,9 @@
 
                 <div class="form-group">
                     <label class="col-md-2 control-label">Foto</label>
-                    <div class="col-md-8">
-                        <img id="namaFotoBerita" src="<?= base_url('uploads/content/berita/'); ?>" width="150" />
-                        <input type="text" class="form-control" id="ubahFotoBerita" name="ubahFotoBerita" readonly />
+                    <div class="col-md-8" style="margin-left: 10px; margin-top: 12px;">
+                        <img id="namaFotoBerita" src="<?= base_url('uploads/content/berita/'); ?>" width="350" style="margin-bottom: 10px;" />
+                        <input type="hidden" class="form-control" id="ubahFotoBerita" name="ubahFotoBerita" />
                         <input type="file" class="file" id="file-simple" name="fileSaya" />
                     </div>
                 </div>
