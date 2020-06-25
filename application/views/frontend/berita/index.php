@@ -77,13 +77,13 @@
                                             <?php if ($B->judul_berita == "") { ?>
                                                 <h2><b>Belum di isi</b></h2>
                                             <?php } else { ?>
-                                                <h4><b><a class="text-primary" href="<?= base_url('berita/baca/') . $B->id_berita; ?>"><?= $B->judul_berita; ?></a></b></h4>
+                                                <h4><b><a class="text-primary" id="bacaBerita" name="bacaBerita" href="<?= base_url('berita/baca/') . $B->id_berita; ?>"><?= $B->judul_berita; ?></a></b></h4>
                                             <?php } ?>
 
                                             <?php if ($B->date_created == "") { ?>
                                                 <p><small>Tanggal Dibuat</small><br>Belum di isi</p>
                                             <?php } else { ?>
-                                                <p><?= date_format(date_create($B->date_created), "j F Y"); ?></p>
+                                                <p><?= date_format(date_create($B->date_created), "l, j F Y"); ?></p>
                                             <?php } ?>
 
                                         </div>

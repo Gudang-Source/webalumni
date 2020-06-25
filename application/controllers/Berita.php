@@ -36,6 +36,15 @@ class Berita extends MY_Controller
 
         $this->frontend_render('frontend/berita/index', $data);
     }
+
+    function baca($id)
+    {
+        $data['berita'] = $this->M_berita->findBeritaLikeId($id);
+        $data['title'] = $data['berita'][0]->judul_berita;
+        $data['info'] = $this->FrontPageModel->getInfoBySessionId();
+
+        $this->frontend_render('frontend/berita/bacaBerita', $data);
+    }
     // ==================================================
     // ---------------------- READ ----------------------
     // ==================================================
