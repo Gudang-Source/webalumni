@@ -12,220 +12,125 @@
 <?= showFlashMessage(); ?>
 
 <div class="page-content-wrap">
-    <!-- <div class="row" style="margin-bottom:10px;">
-        <div class="col-md-2">
-            <button class="btn btn-primary" data-toggle="modal" data-target="#tambahForbis">
-                <i class="fa fa-plus-circle"></i>
-                <span>Tambah Forum Bisnis</span>
-            </button>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <p>Cari Forum Bisnis</p>
+                    <form action="<?= base_url('koordinator/ForumBisnis/cariForumBisnis'); ?>" method="post">
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <span class="fa fa-search"></span>
+                                    </div>
+                                    <input type="text" class="form-control" name="namaForbis" placeholder="Temukan forum bisnis yang anda inginkan.">
+                                    <div class="input-group-btn">
+                                        <button type="submit" class="btn btn-primary">Cari</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-2">
+                                <a href="<?= base_url('koordinator/ForumBisnis'); ?>" class="btn btn-primary">Reset Pencarian</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-    </div> -->
+    </div>
 
     <div class="row">
 
-        <div class="col-md-12">
-
-            <!-- START PANEL WITH STATIC CONTROLS -->
-            <div class="panel panel-default">
-                <!-- <div class="panel-heading ui-draggable-handle">
-                    <h3 class="panel-title">Forum Bisnis</h3>
-                    <ul class="panel-controls">
-                        <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span
-                                    class="fa fa-cog"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span>
-                                        Collapse</a></li>
-                                <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span> Refresh</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
-                    </ul>
-                </div> -->
-
-                <div class="panel-body panel-body-table">
-                    <div class="table-responsive">
-                        <div class="panel-body">
-                            <table class="table table-bordered table-striped table-actions datatable"
-                                style="margin-bottom:5px;">
-                                <thead>
-                                    <tr>
-                                        <th width=" 50">No</th>
-                                        <th width="100">Logo Bisnis / Usaha</th>
-                                        <th width="100">Nama Bisnis / Usaha</th>
-                                        <th width="100">Pemilik</th>
-                                        <th width="100">Angkatan</th>
-                                        <th width="100">Alamat Bisnis / Usaha</th>
-                                        <th width="100">Jenis Bisnis</th>
-                                        <th width="100">No. Telepon</th>
-                                        <th width="100">actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $no = 1;
-                                    foreach ($forumBisnis as $forbis) {
-                                    ?>
-                                    <tr>
-                                        <td class="text-center"><?= $no++; ?></td>
-                                        <!-- <td><strong><?= $forbis->nama_foto_bisnis; ?></strong></td> -->
-
-                                        <?php if ($forbis->nama_foto_bisnis == null) { ?>
-                                        <td><img src="<?= base_url('uploads/no-image.jpg'); ?>"
-                                                alt="<?= $forbis->nama_foto_bisnis; ?>"
-                                                title="<?= $forbis->nama_foto_bisnis; ?>" width="80" /></td>
-                                        <?php } else { ?>
-                                        <td><img src="<?= base_url('uploads/logo-bisnis/' . $forbis->nama_foto_bisnis); ?>"
-                                                alt="<?= $forbis->nama_foto_bisnis; ?>"
-                                                title="<?= $forbis->nama_foto_bisnis; ?>" width="80" height="80" /></td>
-                                        <?php } ?>
-
-                                        <td><strong><?= $forbis->nama_bisnis_usaha; ?></strong></td>
-                                        <td><?= $forbis->nama_lengkap; ?></td>
-                                        <td><?= $forbis->angkatan; ?></td>
-                                        <td><?= $forbis->alamat_bisnis; ?></td>
-                                        <td><?= $forbis->nama_jenis_bisnis; ?></td>
-                                        <td><?= $forbis->no_telp_bisnis; ?></td>
-                                        <td>
-                                            <button class="btn btn-info btn-rounded btn-ubah-forbis"
-                                                id="<?= $forbis->id_forbis; ?>" title="Ubah" data-toggle="modal"
-                                                data-target="#ubahForbis"><i class="fa fa-pencil"></i></button>
-
-                                            <button class="btn btn-danger btn-rounded btn-hapus-forbis"
-                                                id="<?= $forbis->id_forbis; ?>" title="Hapus" data-toggle="modal"
-                                                data-target="#hapusForbis"><i class="fa fa-times"></i></button>
-                                        </td>
-                                    </tr>
+        <!-- TAMPILAN FORUM BISNIS -->
+        <div class="row">
+            <?php foreach ($forumBisnis as $forbis) { ?>
+                <?php if ($forbis->stat_forbis == 1) : ?>
+                    <div class="col-md-4">
+                        <!-- CONTACT ITEM -->
+                        <div class="panel panel-default">
+                            <div class="panel-body profile">
+                                <div class="profile-image">
+                                    <?php if ($forbis->nama_foto_bisnis == NULL) { ?>
+                                        <img src="<?php echo base_url('uploads/no-image.jpg'); ?> " alt="No Image" title="Default Image">
+                                    <?php } else { ?>
+                                        <img src="<?php echo base_url('uploads/logo-bisnis/' . $forbis->nama_foto_bisnis); ?> ">
                                     <?php } ?>
-                                </tbody>
-                            </table>
+                                </div>
+                                <div class="profile-data">
+                                    <div class="profile-data-name"><?= $forbis->nama_bisnis_usaha; ?></div>
+                                </div>
+
+                                <div class="profile-controls">
+                                    <a class="profile-control-left btn-ubah-foto" title="Ubah Foto" id="<?= $forbis->id_forbis; ?>" data-toggle="modal" data-target="#message-box-ubah-foto"><span class="fa fa-edit"></span></a>
+
+                                    <a class="profile-control-right btn-hapus-forbis" title="Hapus" id="<?= $forbis->id_forbis; ?>" data-toggle="modal" data-target="#hapusForbis"><span class="fa fa-trash-o"></span></a>
+                                </div>
+
+                            </div>
+
+                            <div class="panel-body" style="height: 100%;">
+                                <div class="contact-info">
+
+                                    <?php if ($forbis->nama_lengkap == "") { ?>
+                                        <p><small>Pemilik Bisnis</small><br>Belum di isi</p>
+                                    <?php } else { ?>
+                                        <p><small>Pemilik Bisnis</small><br><?= $forbis->nama_lengkap; ?></p>
+                                    <?php } ?>
+
+                                    <?php if ($forbis->angkatan == "") { ?>
+                                        <p><small>Angkatan</small><br>Belum di isi</p>
+                                    <?php } else { ?>
+                                        <p><small>Angkatan</small><br><?= $forbis->angkatan; ?></p>
+                                    <?php } ?>
+
+                                    <?php if ($forbis->alamat_bisnis == "") { ?>
+                                        <p><small>Alamat Bisnis Usaha</small><br>Belum di isi</p>
+                                    <?php } else { ?>
+                                        <p><small>Alamat Bisnis Usaha</small><br><?= $forbis->alamat_bisnis; ?></p>
+                                    <?php } ?>
+
+                                    <?php if ($forbis->nama_jenis_bisnis == "") { ?>
+                                        <p><small>Jenis Bisnis</small><br>Belum di isi</p>
+                                    <?php } else { ?>
+                                        <p><small>Jenis Bisnis</small><br><?= $forbis->nama_jenis_bisnis; ?></p>
+                                    <?php } ?>
+
+                                    <?php if ($forbis->no_telp_bisnis == "") { ?>
+                                        <p><small>Nomor Telepon Pemilik</small><br>Belum di isi</p>
+                                    <?php } else { ?>
+                                        <p><small>Nomor Telepon Pemilik</small><br><?= $forbis->no_telp_bisnis; ?></p>
+                                    <?php } ?>
+
+                                </div>
+                            </div>
+                            <div class="panel-footer text-center">
+                                <a class="btn btn-primary btn-rounded btn-block btn-ubah-forbis" title="Ubah Forbis" id="<?= $forbis->id_forbis; ?>" data-toggle="modal" data-target="#ubahForbis"><span class="fa fa-edit"></span></a>
+                            </div>
+                            <!-- END CONTACT ITEM -->
                         </div>
                     </div>
-                </div>
-
-                <div class="panel-footer">
-
-                </div>
-            </div>
-            <!-- END PANEL WITH STATIC CONTROLS -->
-
+                <?php endif ?>
+            <?php } ?>
         </div>
-
+        <!-- END TAMPILAN FORUM BISNIS -->
     </div>
-    <!-- END ROW -->
 
 </div>
 <!-- END PAGE CONTENT WRAP -->
 
-<!-- MODALS TAMBAH FORUM BISNIS -->
-<div class="modal animated zoomIn" id="tambahForbis" tabindex="-1" role="dialog" aria-labelledby="defModalHead"
-    aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="defModalHead">Tambah Forum Bisnis Anggota</h4>
-            </div>
-            <form action="<?= base_url('koordinator/ForumBisnis/setAddForbis'); ?>" class="form-horizontal"
-                id="tambah-forbis-validate" method="post" enctype="multipart/form-data">
-                <div class="modal-body">
-
-
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">* Foto Bisnis / Usaha :</label>
-                        <div class="col-md-8">
-                            <input type="file" id="file-simple" name="fileLogo" required />
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">* Nama Bisnis / Usaha :</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" name="namaBisnisUsahaModal"
-                                placeholder="Nama Bisnis / Usaha" required />
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">* Jenis Bisnis / Usaha :</label>
-                        <div class="col-md-9">
-                            <select name="jenisBisnisUsahaModal" class="validate[required] form-control select"
-                                required>
-                                <option value="">Pilih Jenis</option>
-                                <?php foreach ($jenisBisnis as $jb) { ?>
-                                <option value="<?= $jb->id_jenis_bisnis ?>"><?= $jb->nama_jenis_bisnis ?></option>
-                                <?php } ?>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">* Deskripsi Bisnis / Usaha :</label>
-                        <div class="col-md-9">
-                            <textarea rows="5" class="form-control" name="deskripsiBisnisUsahaModal"
-                                placeholder="Deskripsi Singkat Bisnis / Usaha" required></textarea>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">* Alamat Bisnis / Usaha :</label>
-                        <div class="col-md-9">
-                            <textarea rows="5" class="form-control" name="alamatBisnisUsahaModal"
-                                placeholder="Alamat Bisnis / Usaha" required></textarea>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">* No. Telepon :</label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" name="noTelpBisnisUsahaModal"
-                                placeholder="No Telepon Bisnis / Usaha" required />
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">* Pemilik :</label>
-                        <div class="col-md-9">
-                            <select name="pemilikBisnisUsahaModal" class="validate[required] form-control select">
-                                <option value="">Pilih Pemilik</option>
-                                <?php foreach ($pemilikForbis as $pf) { ?>
-                                <option value="<?= $pf->id_anggota ?>"><?= $pf->nama_lengkap; ?></option>
-                                <?php } ?>
-                            </select>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="modal-footer">
-                    <div class="col-md-12" style="text-align: left;">
-                        <label class="control-label">* harus diisi</label>
-                    </div>
-
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-success">Simpan</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- END MODAL TAMBAH FORUM BISNIS -->
-
 <!-- MODALS UBAH FORUM BISNIS -->
-<div class="modal animated zoomIn" id="ubahForbis" tabindex="-1" role="dialog" aria-labelledby="defModalHead"
-    aria-hidden="true">
+<div class="modal animated zoomIn" id="ubahForbis" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" id="defModalHead">Ubah Forum Bisnis Anggota</h4>
             </div>
-            <form action="<?= base_url('koordinator/ForumBisnis/setUpdateForbis'); ?>" class="form-horizontal"
-                id="ubah-forbis-validate" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url('koordinator/ForumBisnis/setUpdateForbis'); ?>" class="form-horizontal" id="ubah-forbis-validate" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="form-group hidden">
                         <div class="col-md-9">
@@ -233,34 +138,30 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label class="col-md-3 control-label">* Foto Bisnis / Usaha :</label>
                         <div class="col-sm-3">
-
                             <input type="text" class="form-control" id="fileLogoEdit" disabled>
-
                         </div>
                         <div class="col-md-3">
                             <input type="file" name="fileLogoEdit" required />
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="form-group">
                         <label class="col-md-3 control-label">* Nama Bisnis / Usaha :</label>
                         <div class="col-md-9">
-                            <input type="disable" class="form-control" name="namaBisnisEdit" id="namaBisnisEdit"
-                                placeholder="Nama Bisnis / Usaha" required />
+                            <input type="disable" class="form-control" name="namaBisnisEdit" id="namaBisnisEdit" placeholder="Nama Bisnis / Usaha" required />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-3 control-label">* Jenis Bisnis / Usaha :</label>
                         <div class="col-md-9">
-                            <select name="jenisBisnisEdit" id="jenisBisnisEdit"
-                                class="validate[required] form-control select" required>
+                            <select name="jenisBisnisEdit" id="jenisBisnisEdit" class="validate[required] form-control select" required>
                                 <option value="">Pilih Jenis</option>
                                 <?php foreach ($jenisBisnis as $jb) { ?>
-                                <option value="<?= $jb->id_jenis_bisnis ?>"><?= $jb->nama_jenis_bisnis ?></option>
+                                    <option value="<?= $jb->id_jenis_bisnis ?>"><?= $jb->nama_jenis_bisnis ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -269,35 +170,31 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label">* Deskripsi Bisnis / Usaha :</label>
                         <div class="col-md-9">
-                            <textarea rows="5" class="form-control" name="deskripsiBisnisEdit" id="deskripsiBisnisEdit"
-                                placeholder="Alamat Bisnis / Usaha" required></textarea>
+                            <textarea rows="5" class="form-control" name="deskripsiBisnisEdit" id="deskripsiBisnisEdit" placeholder="Alamat Bisnis / Usaha" required></textarea>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-3 control-label">* Alamat Bisnis / Usaha :</label>
                         <div class="col-md-9">
-                            <textarea rows="5" class="form-control" name="alamatBisnisEdit" id="alamatBisnisEdit"
-                                placeholder="Alamat Bisnis / Usaha" required></textarea>
+                            <textarea rows="5" class="form-control" name="alamatBisnisEdit" id="alamatBisnisEdit" placeholder="Alamat Bisnis / Usaha" required></textarea>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-3 control-label">* No. Telepon :</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="noTelpBisnisEdit" id="noTelpBisnisEdit"
-                                placeholder="No Telepon Bisnis / Usaha" required />
+                            <input type="text" class="form-control" name="noTelpBisnisEdit" id="noTelpBisnisEdit" placeholder="No Telepon Bisnis / Usaha" required />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-3 control-label">* Pemilik :</label>
                         <div class="col-md-9">
-                            <select name="pemilikBisnisEdit" id="pemilikBisnisEdit"
-                                class="validate[required] form-control select">
+                            <select name="pemilikBisnisEdit" id="pemilikBisnisEdit" class="validate[required] form-control select">
                                 <option value="">Pilih Pemilik</option>
                                 <?php foreach ($pemilikForbis as $pf) { ?>
-                                <option value="<?= $pf->id_anggota; ?>"><?= $pf->nama_lengkap; ?></option>
+                                    <option value="<?= $pf->id_anggota; ?>"><?= $pf->nama_lengkap; ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -319,6 +216,47 @@
 </div>
 <!-- END MODAL UBAH FORUM BISNIS -->
 
+<div class="modal animated zoomIn" id="message-box-ubah-foto" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="<?= base_url('koordinator/ForumBisnis/setUpdateFoto'); ?>" class="form-horizontal" id="form-ubah-berita-validate" method="post" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="defModalHead">Ubah Foto</h4>
+                </div>
+                <div>
+                    <div class="panel-body tab-content">
+                        <div class="form-group hidden">
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="idUbahFoto" name="idUbahFoto">
+                                <input type="text" class="form-control" id="judulUbahFoto" name="judulUbahFoto">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Foto</label>
+                    <div class="col-md-8" style="margin-left: 10px; margin-top: 12px;">
+                        <img id="namaFoto" src="<?= base_url('uploads/logo-bisnis/'); ?>" width="350" style="margin-bottom: 10px;" /><br>
+                        <input type="hidden" class="form-control" id="ubahFoto" name="ubahFoto" readonly />
+                        <input type="file" class="file" id="file-simple" name="fileSaya" />
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="col-md-12" style="text-align: left;">
+                        <label class="control-label">* harus diisi</label>
+                    </div>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-success">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- END MODAL UBAH FOTO -->
+
 
 <!-- MODAL DELETE FORUM BISNIS -->
 <div class="message-box message-box-danger animated zoomIn" data-sound="alert" id="hapusForbis">
@@ -328,12 +266,10 @@
             <div class="mb-title">
                 <span class="fa fa-times"></span> Hapus <strong>Forum Bisnis</strong>
             </div>
-            <form action="<?= base_url('koordinator/ForumBisnis/setDeleteForumBisnis'); ?>" class="form-horizontal"
-                method="post">
+            <form action="<?= base_url('koordinator/ForumBisnis/setDeleteForumBisnis'); ?>" class="form-horizontal" method="post">
                 <div class="mb-content">
                     <div class="panel-body">
-                        <p style="font-size: 16px;">Anda yakin akan menghapus Forum Bisnis <label class="control-label"
-                                id="namaForumBisnisDelete"></label> ?</p>
+                        <p style="font-size: 16px;">Anda yakin akan menghapus Forum Bisnis <label class="control-label" id="namaForumBisnisDelete"></label> ?</p>
 
                         <div class="form-group hidden">
                             <input type="text" id="idForbisDelete" name="idForbisDelete" class="form-control">
@@ -354,49 +290,77 @@
 <!-- END MODAL DELETE FORUM BISNIS -->
 
 <script>
-$("#tambah-forbis-validate").validate();
-$("#ubah-forbis-validate").validate();
+    $("#tambah-forbis-validate").validate();
+    $("#ubah-forbis-validate").validate();
 
-$(".btn-ubah-forbis").click(function() {
-    console.log(this.id);
-    var idForbis = this.id;
+    $("#file-simple").fileinput({
+        showUpload: false,
+        showCaption: false,
+        browseClass: "btn btn-danger",
+        fileType: "any"
+    });
 
-    $.post("<?= base_url('koordinator/ForumBisnis/getForbisById/') ?>", {
-            id: idForbis
-        },
-        function(data, success) {
-            console.log(data);
-            var data_obj = JSON.parse(data);
+    $(".btn-ubah-forbis").click(function() {
+        console.log(this.id);
+        var idForbis = this.id;
 
-            document.getElementById('idForbisEdit').value = data_obj.forbis[0].id_forbis;
-            document.getElementById('namaBisnisEdit').value = data_obj.forbis[0].nama_bisnis_usaha;
-            document.getElementById('deskripsiBisnisEdit').value = data_obj.forbis[0].deskripsi_bisnis;
-            document.getElementById('alamatBisnisEdit').value = data_obj.forbis[0].alamat_bisnis;
-            document.getElementById('noTelpBisnisEdit').value = data_obj.forbis[0].no_telp_bisnis;
-            document.getElementById('fileLogoEdit').value = data_obj.forbis[0].nama_foto_bisnis;
+        $.post("<?= base_url('koordinator/ForumBisnis/getForbisById/') ?>", {
+                id: idForbis
+            },
+            function(data, success) {
+                console.log(data);
+                var data_obj = JSON.parse(data);
 
-            $("#jenisBisnisEdit").val(data_obj.forbis[0].id_jenis_bisnis).change();
-            $("#pemilikBisnisEdit").val(data_obj.forbis[0].pemilik_id).change();
+                document.getElementById('idForbisEdit').value = data_obj.forbis[0].id_forbis;
+                document.getElementById('namaBisnisEdit').value = data_obj.forbis[0].nama_bisnis_usaha;
+                document.getElementById('deskripsiBisnisEdit').value = data_obj.forbis[0].deskripsi_bisnis;
+                document.getElementById('alamatBisnisEdit').value = data_obj.forbis[0].alamat_bisnis;
+                document.getElementById('noTelpBisnisEdit').value = data_obj.forbis[0].no_telp_bisnis;
+                // document.getElementById('fileLogoEdit').value = data_obj.forbis[0].nama_foto_bisnis;
+
+                $("#jenisBisnisEdit").val(data_obj.forbis[0].id_jenis_bisnis).change();
+                $("#pemilikBisnisEdit").val(data_obj.forbis[0].pemilik_id).change();
 
 
-        });
-});
+            });
+    });
 
 
-$(".btn-hapus-forbis").click(function() {
-    console.log(this.id);
-    var idForbis = this.id;
+    $(".btn-hapus-forbis").click(function() {
+        console.log(this.id);
+        var idForbis = this.id;
 
-    $.post("<?= base_url('koordinator/ForumBisnis/getForbisById/') ?>", {
-            id: idForbis
-        },
-        function(data, success) {
-            console.log(data);
-            var data_obj = JSON.parse(data);
+        $.post("<?= base_url('koordinator/ForumBisnis/getForbisById/') ?>", {
+                id: idForbis
+            },
+            function(data, success) {
+                console.log(data);
+                var data_obj = JSON.parse(data);
 
-            document.getElementById('idForbisDelete').value = data_obj.forbis[0].id_forbis;
-            document.getElementById('namaForumBisnisDelete').innerHTML = data_obj.forbis[0]
-                .nama_bisnis_usaha;
-        })
-});
+                document.getElementById('idForbisDelete').value = data_obj.forbis[0].id_forbis;
+                document.getElementById('namaForumBisnisDelete').innerHTML = data_obj.forbis[0]
+                    .nama_bisnis_usaha;
+            })
+    });
+
+    $(".btn-ubah-foto").click(function() {
+        // console.log(this.id);
+        var idForbis = this.id;
+
+        $.post("<?= base_url('koordinator/ForumBisnis/getForbisById/') ?>", {
+                id: idForbis
+            },
+            function(data) {
+                var data_obj = JSON.parse(data);
+
+                var idUbahFoto = data_obj.forbis[0].id_forbis;
+                var judulUbahFoto = data_obj.forbis[0].nama_bisnis_usaha;
+                var foto = data_obj.forbis[0].nama_foto_bisnis;
+
+                document.getElementById('idUbahFoto').value = idUbahFoto;
+                document.getElementById('namaFoto').src = '<?= base_url('uploads/logo-bisnis/'); ?>' + foto;
+                document.getElementById('ubahFoto').value = foto;
+                document.getElementById('judulUbahFoto').value = judulUbahFoto;
+            });
+    });
 </script>
