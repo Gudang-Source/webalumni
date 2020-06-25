@@ -15,6 +15,7 @@ class Home extends MY_Controller
         parent::__construct();
         $this->load->model('FrontPageModel');
         $this->load->model('KoordinatorAnggotaModel');
+        // $this->load->model('M_forumBisnis');
     }
 
     function index()
@@ -36,8 +37,27 @@ class Home extends MY_Controller
     function forumBisnisAnggota()
     {
         $data['title'] = 'Forum Bisnis IKASMA3BDG';
-        $data['forbis'] = $this->FrontPageModel->getForbisAnggota();
+        $data['forumBisnis'] = $this->FrontPageModel->getAllForumBisnis();
 
         $this->load->view('frontend/forumBisnis', $data);
+    }
+
+    function cariForumBisnis()
+    {
+        $data['title'] = 'Forum Bisnis IKASMA3BDG';
+
+        $nama = $this->input->post('namaForbis');
+
+        $data['forumBisnis'] = $this->FrontPageModel->findForumBisnisLikeNama($nama);
+
+        $this->load->view('frontend/forumBisnis', $data);
+    }
+
+    public function getForbisById()
+    {
+        $id = $this->input->post('id');
+        $data['forbis'] = $this->FrontPageModel->findForumBisnis(array('tb_forum_bisnis.id_forbis = ' => $id));
+
+        echo json_encode($data);
     }
 }

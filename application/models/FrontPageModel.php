@@ -30,12 +30,26 @@ class FrontPageModel extends CI_Model
 		return $this->db->get('tb_anggota')->result();
 	}
 
-	function getForbisAnggota()
+	function getAllForumBisnis()
 	{
-		$this->db->select('nama_bisnis_usaha, nama_jenis_bisnis, nama_lengkap, angkatan');
-		$this->db->join('tb_jenis_bisnis', 'tb_jenis_bisnis.id_jenis_bisnis = tb_forum_bisnis.id_jenis_bisnis');
-		$this->db->join('tb_anggota', 'tb_anggota.id_anggota = tb_forum_bisnis.pemilik_id');
+		$query = "SELECT * FROM `tb_forum_bisnis` JOIN `tb_jenis_bisnis` ON
+        `tb_forum_bisnis`.`id_jenis_bisnis` = `tb_jenis_bisnis`.`id_jenis_bisnis` JOIN `tb_anggota` ON
+        `tb_forum_bisnis`.`pemilik_id` = `tb_anggota`.`id_anggota` WHERE `tb_forum_bisnis`.`stat_forbis` = 1 ORDER BY `tb_forum_bisnis`.`id_forbis` DESC";
+		return $this->db->query($query)->result();
+	}
 
+	function findForumBisnisLikeNama($nama)
+	{
+		$query = "SELECT * FROM `tb_forum_bisnis` JOIN `tb_jenis_bisnis` ON
+        `tb_forum_bisnis`.`id_jenis_bisnis` = `tb_jenis_bisnis`.`id_jenis_bisnis` JOIN `tb_anggota` ON
+		`tb_forum_bisnis`.`pemilik_id` = `tb_anggota`.`id_anggota` WHERE `tb_forum_bisnis`.`nama_bisnis_usaha` LIKE '%$nama%'  AND  `tb_forum_bisnis`.`stat_forbis` = 1 ORDER BY `tb_forum_bisnis`.`id_forbis` DESC";
+
+		return $this->db->query($query)->result();
+	}
+
+	function findForumBisnis($where)
+	{
+		$this->db->where($where);
 		return $this->db->get('tb_forum_bisnis')->result();
 	}
 }
