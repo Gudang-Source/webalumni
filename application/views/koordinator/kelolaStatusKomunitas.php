@@ -1,7 +1,7 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
     <li>Komunitas</li>
-    <li class="active"><a href="<?= base_url('admin/Komunitas/kelolaStatusKomunitas'); ?>">Kelola Status Komunitas</a></li>
+    <li class="active"><a href="<?= base_url('koordinator/Komunitas/kelolaStatusKomunitas'); ?>">Kelola Status Komunitas</a></li>
 </ul>
 <!-- END BREADCRUMB -->
 
@@ -13,7 +13,7 @@
 
 <!-- PAGE CONTENT WRAP -->
 <div class="page-content-wrap">
-    
+
     <!-- SEARCH -->
     <div class="row">
         <div class="col-md-12">
@@ -45,17 +45,16 @@
         </div>
     </div>
     <!-- SEARCH -->
-
+            
     <!-- KOMUNITAS CONTENT -->
     <div class="row">
         <?php foreach ($komunitas as $A) { ?>
             <?php if ($A->stat_komunitas == 1): ?>
         <div class="col-md-4    ">
-            <!-- CONTACT ITEM -->
             <div class="panel panel-default">
                 <div class="panel-body profile">
                     <div class="profile-image">
-                    <?php if ($A->logo_komunitas == NULL) { ?>
+                        <?php if ($A->logo_komunitas == NULL) { ?>
                             <img src="<?php echo base_url('uploads/content/komunitas/no-image.jpg'); ?> " alt="No Image" title="Default Image">
                         <?php } else { ?>
                             <img src="<?php echo base_url('uploads/content/komunitas/'.$A->logo_komunitas); ?> " alt="<?= $A->nama_komunitas; ?>" title="<?= $A->nama_komunitas; ?>">
@@ -66,8 +65,8 @@
                        
                     </div>
                     <div class="profile-controls">
-                        <a class="profile-control-left btn-ubah-anggota" title="UbahGambar" id="<?= $A->id_komunitas; ?>" data-toggle="modal" data-target="#message-box-ubah-gambar-komunitas"><span class="fa fa-edit"></span></a>
-                        <a class="profile-control-right btn-hapus-anggota" title="Hapus" id="<?= $A->id_komunitas; ?>" data-toggle="modal" data-target="#message-box-delete-anggota"><span class="fa fa-trash-o"></span></a>
+                        <a class="profile-control-left" title="UbahGambar" id="<?= $A->id_komunitas; ?>" data-toggle="modal" data-target="#message-box-ubah-gambar-komunitas"><span class="fa fa-edit"></span></a>
+                        <a class="profile-control-right btn-hapus-komunitas" title="Hapus" id="<?= $A->id_komunitas; ?>" data-toggle="modal" data-target="#message-box-delete-anggota"><span class="fa fa-trash-o"></span></a>
                     </div>
                 </div>
                     <div class="panel-body">
@@ -100,19 +99,20 @@
                     </div>
                 </div>
             </div>
-             <!-- BUTTON UBAH  -->
-             <div class="panel-footer text-center">
-                    <a class="btn btn-primary btn-rounded btn-block btn-ubah-berita" title="Ubah Berita" id="<?= $A->id_komunitas; ?>" data-toggle="modal" data-target="#message-box-ubah-komunitas"><i class="fa fa-edit"></i>Ubah Komunitas</a>
+            <!-- BUTTON UBAH  -->
+                <div class="panel-footer text-center">
+                    <a class="btn btn-primary btn-rounded btn-block  btn-ubah-komunitas" title="Ubah Berita" id="<?= $A->id_komunitas; ?>" data-toggle="modal" data-target="#message-box-ubah-komunitas"><i class="fa fa-edit"></i>Ubah Komunitas</a>
                 </div>
             <!-- BUTTON UBAH -->
+                </div>
             </div>
-        </div>
             <?php endif ?>
         <?php } ?>
-        <!-- KOMUNITAS CONTENT -->
     </div>
+    <!-- KOMUNITAS CONTENT -->
 </div>
-<!-- END CONTACT ITEM -->
+<!-- PAGE CONTENT WRAP -->
+
 
     <!-- MODAL UBAH KOMUNITAS -->
     <div class="modal animated zoomIn" id="message-box-ubah-komunitas" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
@@ -127,7 +127,7 @@
                             <div class="panel-body tab-content">
                             <div class="form-group hidden">
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="idKomunitas" name="idKomunitas" value="<?= $komunitas[0]->id_komunitas ?>" /> 
+                                <input type="text" class="form-control" id="idUbahKomunitas" name="idUbahKomunitas">
                                 </div>
                             </div>
                         </div>
@@ -137,39 +137,39 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Nama Komunitas</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="namaKomunitas"
-                                        placeholder="<?= $komunitas[0]->nama_komunitas ?>" required clear />
+                                    <input type="text" class="form-control" name="namaUbahKomunitas" id="namaUbahKomunitas"
+                                        placeholder="" required clear />
                                     </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Lokasi Komunitas</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="lokasiKomunitas"
-                                        placeholder="<?= $komunitas[0]->lokasi_komunitas ?>" required clear />
+                                    <input type="text" class="form-control" name="lokasiUbahKomunitas" id="lokasiUbahKomunitas"
+                                        placeholder="" required clear />
                                     </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Tautat Komunitas</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="tautatKomunitas"
-                                        placeholder="<?= $komunitas[0]->tautat_komunitas ?>" required clear />
+                                    <input type="text" class="form-control" name="tautatUbahKomunitas" id="tautatUbahKomunitas"
+                                        placeholder="" required clear />
                                     </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Deskripsi Komunitas</label>
                                 <div class="col-md-8"  >
-                                    <textarea   class="form-control" name="deskKomunitas" placeholder="<?= $komunitas[0]->deskripsi_komunitas ?>" rows="4" cols="50"></textarea>
+                                    <textarea   class="form-control" name="deskripsiUbahKomunitas" id="deskripsiUbahKomunitas" placeholder="" rows="4" cols="50"></textarea>
                                 </div>
                             </div>
                             
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Sifat Komunitas</label>
                                 <div class="col-md-8">
-                                    <select name="sifatKomunitas"  class="select form-control validate[required]">
-                                            <option value="Publik"><?= $komunitas[0]->sifat_komunitas ?> </option>
+                                    <select name="sifatUbahKomunitas" id="sifatUbahKomunitas" class="select form-control validate[required]">
+                                            <option value="Publik">Publik </option>
                                             <option value="Private">Private </option>
                                             <option value="Hidden">Hidden </option>
                                     </select>
@@ -179,8 +179,8 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Jenis Komunitas</label>
                                 <div class="col-md-8">
-                                    <select name="jenisKomunitas"  class="select form-control validate[required]">
-                                            <option value="Aktif"><?= $komunitas[0]->jenis_komunitas ?> </option>
+                                    <select name="jenisUbahKomunitas" id="jenisUbahKomunitas"  class="select form-control validate[required]">
+                                            <option value="Aktif">Aktif</option>
                                             <option value="Pasif">Pasif </option>
                                     </select>
                                 </div>
@@ -189,8 +189,8 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label">Jumlah Anggota</label>
                                 <div class="col-md-8">
-                                    <input type="number" class="form-control" name="anggotaKomunitas"
-                                        placeholder="+- <?= $komunitas[0]->anggota_komunitas ?>" required clear />
+                                    <input type="number" class="form-control" name="anggotaUbahKomunitas" id="anggotaUbahKomunitas"
+                                        placeholder="+-" required clear />
                                     </div>
                             </div>
                         </div>
@@ -207,13 +207,14 @@
             </div>
         </div>
     </div>
-    <!-- END MODAL UBAH ANGGOTA -->
+    <!-- END MODAL UBAH KOMUNITAS -->
 
-        <!-- MODAL UBAH GAMBAR KOMUNITAS -->
-        <div class="modal animated zoomIn" id="message-box-ubah-gambar-komunitas" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
+    
+    <!-- MODAL UBAH GAMBAR KOMUNITAS -->
+    <div class="modal animated zoomIn" id="message-box-ubah-gambar-komunitas" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="<?= base_url('admin/Komunitas/setUpdateFotoKomunitas'); ?>" class="form-horizontal" id="ubah-anggota-validate" method="post" enctype="multipart/form-data">
+                <form action="<?= base_url('koordinator/Komunitas/setUpdateFotoKomunitas'); ?>" class="form-horizontal" id="ubah-anggota-validate" method="post" enctype="multipart/form-data">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                         <h4 class="modal-title" id="defModalHead">Ubah Komunitas</h4>
@@ -258,7 +259,7 @@
             </div>
         </div>
     </div>
-    <!-- MODAL UBAH GAMBAR KOMUNITAS -->  
+    <!-- MODAL UBAH GAMBAR KOMUNITAS -->
 
 
     <!-- MODAL DELETE ANGGOTA -->
@@ -301,8 +302,7 @@
                     </div>
                 </div>
 
-
-                    </div>
+                </div>
                     <div class="mb-footer">
                         <div class="pull-right">
                             <button type="submit" class="btn btn-primary btn-lg mb-control-yes">Hapus</button>
@@ -333,7 +333,38 @@ $("#file_name").fileinput({
     fileType: "any"
 });
 
-$(".btn-hapus-anggota").click(function() {
+$(".btn-ubah-komunitas").click(function() {
+    console.log(this.id);
+    var idUbahKomunitas = this.id;
+
+    $.post("<?= base_url('koordinator/Komunitas/KomunitasJSON/') ?>", {
+            id: idUbahKomunitas
+        },
+        function(data) {
+            var data_obj = JSON.parse(data);
+
+            var idUbahKomunitas = data_obj.komunitas[0].id_komunitas;
+            var namaUbahKomunitas = data_obj.komunitas[0].nama_komunitas;
+            var tautatUbahKomunitas = data_obj.komunitas[0].tautat_komunitas;
+            var lokasiUbahKomunitas = data_obj.komunitas[0].lokasi_komunitas;
+            var deskripsiUbahKomunitas = data_obj.komunitas[0].deskripsi_komunitas;
+            var sifatUbahKomunitas = data_obj.komunitas[0].sifat_komunitas;
+            var jenisUbahKomunitas = data_obj.komunitas[0].jenis_komunitas;
+            var anggotaUbahKomunitas = data_obj.komunitas[0].anggota_komunitas;
+
+            document.getElementById('idUbahKomunitas').value = idUbahKomunitas;
+            document.getElementById('namaUbahKomunitas').value = namaUbahKomunitas;
+            document.getElementById('tautatUbahKomunitas').value = tautatUbahKomunitas;
+            document.getElementById('lokasiUbahKomunitas').value = lokasiUbahKomunitas;
+            document.getElementById('deskripsiUbahKomunitas').value = deskripsiUbahKomunitas;
+            document.getElementById('sifatUbahKomunitas').value = sifatUbahKomunitas;
+            document.getElementById('jenisUbahKomunitas').value = jenisUbahKomunitas;
+            document.getElementById('anggotaUbahKomunitas').value = anggotaUbahKomunitas;
+
+        });
+});
+
+$(".btn-hapus-komunitas").click(function() {
     console.log(this.id);
     var idKomunitasHapus = this.id;
 
