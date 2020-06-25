@@ -33,7 +33,6 @@ class Berita extends MY_Controller
         $data['title'] = 'Berita';
         $data['info'] = $this->FrontPageModel->getInfoBySessionId();
         $data['daftarBerita'] = $this->M_berita->getAllBerita();
-        $data['daftarKategori'] = $this->M_kategori->getAllKategori();
 
         $this->frontend_render('frontend/berita/index', $data);
     }
@@ -46,7 +45,21 @@ class Berita extends MY_Controller
     // ==================================================
     // --------------------- SEARCH ---------------------
     // ==================================================
+    function cariBerita()
+    {
+        $data['title'] = 'Berita';
 
+        $judul = $this->input->post('judulBerita');
+
+        $where = "tb_berita.stat_berita != 0";
+        $data['info'] = $this->FrontPageModel->getInfoBySessionId();
+        $data['daftarBerita'] = $this->M_berita->findBeritaLikeJudul($where, $judul);
+
+        // var_dump($data['daftarBerita']);
+        // die;
+
+        $this->frontend_render('frontend/berita/index', $data);
+    }
     // ==================================================
     // --------------------- SEARCH ---------------------
     // ==================================================
