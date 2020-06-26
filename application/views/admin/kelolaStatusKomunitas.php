@@ -329,7 +329,7 @@
                 <div class="mb-footer">
                     <div class="pull-right">
                         <button type="submit" class="btn btn-primary btn-lg mb-control-yes">Hapus</button>
-                        <button type="button" class="btn btn-default btn-lg mb-control-close">Batal</button>
+                        <a href="<?= base_url('admin/Komunitas/kelolaStatusKomunitas'); ?>" class="btn btn-default btn-lg">Batal</a>
                     </div>
                 </div>
             </form>
