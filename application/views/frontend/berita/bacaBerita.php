@@ -53,12 +53,10 @@
                                 <?php if ($berita[0]->date_created == "") { ?>
                                     <p><small>Tanggal Dibuat</small><br>Belum di isi</p>
                                 <?php } else { ?>
-                                    <p><small><?= date_format(date_create($berita[0]->date_created), "l, j F Y"); ?></small></p>
+                                    <p><small><?= date_format(date_create($berita[0]->date_created), "l, j F Y"); ?> <?= date_format(date_create($berita[0]->time_created), "H:m"); ?> WIB</small></p>
                                 <?php } ?>
 
                             </div>
-                        </div>
-                        <div class="col-md-12">
                             <div class="panel-body" style=" padding: 0 25px 0 25px;">
                                 <div class="profile-image">
                                     <?php if ($berita[0]->foto == NULL) { ?>
@@ -68,9 +66,7 @@
                                     <?php } ?>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-md-12">
                             <div class="panel-body" style=" padding: 25px;">
                                 <?php if ($berita[0]->isi_berita == "") { ?>
                                     <h2><b>Belum di isi</b></h2>
@@ -78,6 +74,19 @@
                                     <p class="text-primary" id="isiBerita" name="isiBerita"><?= nl2br($berita[0]->isi_berita); ?></p>
                                 <?php } ?>
                             </div>
+
+                            <?php if ($berita[0]->credit != "" || $berita[0]->sumber != "") { ?>
+                                <div class="panel-body" style=" padding: 25px;">
+                                    <p class="text-primary" id="credit" name="credit"><b>Credit : </b><?= $berita[0]->credit; ?></p>
+                                    <p class="text-primary" id="sumber" name="sumber"><b>Sumber : </b><?= $berita[0]->sumber; ?></p>
+                                </div>
+                            <?php } ?>
+
+                            <?php if ($berita[0]->kategori != "") { ?>
+                                <div class="panel-body" style=" padding: 0 25px 25px 25px;">
+                                    <a class="btn btn-default" href="<?= base_url('berita/kategori/') . $berita[0]->id_kategori; ?>"><?= $berita[0]->kategori; ?></a>
+                                </div>
+                            <?php } ?>
                         </div>
                         <!-- END CONTACT ITEM -->
                     </div>

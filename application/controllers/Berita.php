@@ -69,6 +69,15 @@ class Berita extends MY_Controller
 
         $this->frontend_render('frontend/berita/index', $data);
     }
+
+    function kategori($id)
+    {
+        $data['info'] = $this->FrontPageModel->getInfoBySessionId();
+        $data['daftarBerita'] = $this->M_berita->findBeritaLikeKategori($id);
+        $data['title'] = $data['daftarBerita'][0]->kategori;
+
+        $this->frontend_render('frontend/berita/index', $data);
+    }
     // ==================================================
     // --------------------- SEARCH ---------------------
     // ==================================================

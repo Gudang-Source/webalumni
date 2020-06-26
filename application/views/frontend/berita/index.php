@@ -20,9 +20,9 @@
 
     <div class="container" style="margin-top: 80px;">
         <!-- START BREADCRUMB -->
-        <!-- <ul class="breadcrumb">
+        <ul class="breadcrumb">
             <li class="active"><a href="<?= base_url('berita'); ?>">Berita</a></li>
-        </ul> -->
+        </ul>
         <!-- END BREADCRUMB -->
 
         <div class="page-title">
@@ -43,9 +43,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <a href="<?= base_url('berita'); ?>" class="btn btn-primary">Reset Pencarian</a>
-                            </div>
+                            </div> -->
                         </form>
                     </div>
                 </div>
@@ -72,18 +72,18 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <div class="panel-body" style=" padding: 25px;">
+                                        <div class="panel-body" style="padding: 25px; transform: translate(0, 40%);">
 
                                             <?php if ($B->judul_berita == "") { ?>
                                                 <h2><b>Belum di isi</b></h2>
                                             <?php } else { ?>
-                                                <h4><b><a class="text-primary" id="bacaBerita" name="bacaBerita" href="<?= base_url('berita/baca/') . $B->id_berita; ?>"><?= $B->judul_berita; ?></a></b></h4>
+                                                <h3><b><a class="text-primary" id="bacaBerita" name="bacaBerita" href="<?= base_url('berita/baca/') . $B->id_berita; ?>"><?= $B->judul_berita; ?></a></b></h3>
                                             <?php } ?>
 
                                             <?php if ($B->date_created == "") { ?>
                                                 <p><small>Tanggal Dibuat</small><br>Belum di isi</p>
                                             <?php } else { ?>
-                                                <p><?= date_format(date_create($B->date_created), "l, j F Y"); ?></p>
+                                                <p><small><?= date_format(date_create($B->date_created), "l, j F Y"); ?> <?= date_format(date_create($B->time_created), "H:m"); ?> WIB</small></p>
                                             <?php } ?>
 
                                         </div>
