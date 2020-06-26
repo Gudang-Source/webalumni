@@ -7,12 +7,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
  * Created by Lut Dinar Fadila 2018
 */
 
-class Profile extends MY_Controller {
-    
-    function __construct() {
+class Profile extends MY_Controller
+{
+
+    function __construct()
+    {
         parent::__construct();
         $this->load->model('M_anggota');
-        
+
         if ($this->session->userdata('logged_in') == '' && $this->session->userdata('username') == '' && $this->session->userdata('role') == '') {
             redirect('login');
         } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == '2') {
@@ -20,7 +22,6 @@ class Profile extends MY_Controller {
         } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == '1') {
             redirect('admin');
         }
-        
     }
 
     function getDataDiriAnggota()
@@ -28,7 +29,7 @@ class Profile extends MY_Controller {
         $id = $this->input->post('id');
 
         $select = "id_anggota, nama_lengkap, jenis_kelamin, nama_panggilan_alias, tempat_lahir, tanggal_lahir, angkatan, golongan_darah, no_telp, no_telp_alternatif, NIK, email";
-        $where = "tb_anggota.id_anggota = ".$id;
+        $where = "tb_anggota.id_anggota = " . $id;
         $data['dataDiri'] = $this->M_anggota->findAnggota($select, $where);
 
         echo json_encode($data);
@@ -39,7 +40,7 @@ class Profile extends MY_Controller {
         $id = $this->input->post('id');
 
         $select = "id_anggota, negara, provinsi, kabupaten_kota, alamat";
-        $where = "tb_anggota.id_anggota = ".$id;
+        $where = "tb_anggota.id_anggota = " . $id;
         $data['domisili'] = $this->M_anggota->findAnggota($select, $where);
 
         echo json_encode($data);
@@ -50,16 +51,17 @@ class Profile extends MY_Controller {
         $id = $this->input->post('id');
 
         $select = "id_anggota, pendidikan_terakhir, status_bekerja, bidang_industri, jabatan, nama_perusahaan, bisnis_usaha";
-        $where = "tb_anggota.id_anggota = ".$id;
+        $where = "tb_anggota.id_anggota = " . $id;
         $data['profesi'] = $this->M_anggota->findAnggota($select, $where);
 
         echo json_encode($data);
     }
 
-    function getInfoProgramAnggota($id) {
+    function getInfoProgramAnggota($id)
+    {
 
         $select = "id_anggota, sosial_pendidikan, sosial_kemanusiaan, pengembangan_sarana_prasarana, silaturahim_kebersamaan, penawaran_sponsorship_donasi";
-        $where = "tb_anggota.id_anggota = ".$id;
+        $where = "tb_anggota.id_anggota = " . $id;
         $data['infoProgram'] = $this->M_anggota->findAnggota($select, $where);
 
         echo json_encode($data);
@@ -68,13 +70,14 @@ class Profile extends MY_Controller {
     function getKeanggotaanAnggota($id)
     {
         $select = "id_anggota, support, loyalist, iuran_sukarela";
-        $where = "tb_anggota.id_anggota = ".$id;
+        $where = "tb_anggota.id_anggota = " . $id;
         $data['keanggotaan'] = $this->M_anggota->findAnggota($select, $where);
 
         echo json_encode($data);
     }
-    
-    function setUpdateDataDiri() {
+
+    function setUpdateDataDiri()
+    {
         $namaLengkap = $this->input->post('namaLengkap');
         $jenisKelamin = $this->input->post('jenisKelamin');
         $namaPanggilanAlias = $this->input->post('panggilanAlias');
@@ -86,7 +89,7 @@ class Profile extends MY_Controller {
         $teleponAlternatif = $this->input->post('teleponAlternatif');
         $nik = $this->input->post('nik');
         $email = $this->input->post('email');
-        
+
         $idAnggota = $this->input->post('idAnggotaDataDiri');
         $anggota['nama_lengkap'] = $namaLengkap;
         $anggota['jenis_kelamin'] = $jenisKelamin;
@@ -99,21 +102,21 @@ class Profile extends MY_Controller {
         $anggota['no_telp_alternatif'] = $teleponAlternatif;
         $anggota['NIK'] = $nik;
         $anggota['email'] = $email;
-        
+
         $sukses = $this->M_anggota->updateAnggota($anggota, $idAnggota);
-        
+
         if (!$sukses) {
             flashMessage('success', 'Data diri Anda berhasil diperbarui');
-            redirect('admin/Profile');
+            redirect('anggota/Home');
         } else {
             flashMessage('error', 'Data diri Anda gagal diperbarui! Silahkan coba lagi');
-            redirect('admin/Profile');
+            redirect('anggota/Home');
         }
-        
     }
 
-    function setUpdateDomisili() {
-        
+    function setUpdateDomisili()
+    {
+
         $idAnggota = $this->input->post('idAnggotaDomisili');
         $data['negara'] = $this->input->post('negara');
         $data['provinsi'] = $this->input->post('provinsi');
@@ -124,12 +127,11 @@ class Profile extends MY_Controller {
 
         if (!$sukses) {
             flashMessage('success', 'Domisili Anda berhasil diperbarui');
-            redirect('admin/Profile');
+            redirect('anggota/Home');
         } else {
             flashMessage('error', 'Domisili Anda gagal diperbarui! Silahkan coba lagi.');
-            redirect('admin/Profile');
+            redirect('anggota/Home');
         }
-
     }
 
     function setUpdateProfesi()
@@ -146,10 +148,10 @@ class Profile extends MY_Controller {
 
         if (!$sukses) {
             flashMessage('success', 'Profesi Anda berhasil diperbarui');
-            redirect('admin/Profile');
+            redirect('anggota/Home');
         } else {
             flashMessage('error', 'Profesi Anda gagal diperbarui! Silahkan coba lagi.');
-            redirect('admin/Profile');
+            redirect('anggota/Home');
         }
     }
 
@@ -167,12 +169,11 @@ class Profile extends MY_Controller {
 
         if (!$sukses) {
             flashMessage('success', 'Info program berhasil diperbarui');
-            redirect('admin/Profile');
+            redirect('anggota/Home');
         } else {
             flashMessage('error', 'Info program gagal diperbarui! Silahkan coba lagi');
-            redirect('admin/Profile');
+            redirect('anggota/Home');
         }
-
     }
 
     function setUpdateKeanggotaan()
@@ -187,12 +188,10 @@ class Profile extends MY_Controller {
 
         if (!$sukses) {
             flashMessage('success', 'Keanggotaan Anda berhasil diperbarui');
-            redirect('admin/Profile');
+            redirect('anggota/Home');
         } else {
             flashMessage('error', 'Keanggotaan Anda gagal diperbarui! Silahkan coba lagi');
-            redirect('admin/Profile');
+            redirect('anggota/Home');
         }
-
     }
-    
 }
