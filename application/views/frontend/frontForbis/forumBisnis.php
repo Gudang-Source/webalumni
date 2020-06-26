@@ -26,12 +26,12 @@
 
 <body>
 
-    <div class="page-title" style="margin-top: 10px;">
+    <!-- <div class="page-title" style="margin-top: 10px;">
         <h2>Forum Bisnis IKASMA3Bandung</h2>
-    </div>
+    </div> -->
 
     <!-- START BREADCRUMB -->
-    <ul class="breadcrumb">
+    <ul class="breadcrumb" style="margin-top: 55px;">
         <li><a href="<?= base_url('Home'); ?>">Beranda</a></li>
         <li class="active"><a href="<?= base_url('Home/forumBisnisAnggota'); ?>">Forum Bisnis</a></li>
     </ul>
@@ -69,12 +69,14 @@
                 <?php if (empty($forumBisnis)) : ?>
                     <tr>
                         <td colspan="7">
-                            <h2 class="text-center" style="margin-top: 10px;">Upss . . . ! Forum bisnis tidak ditemukan.</h2>
+                            <h2 class="text-center" style="margin-top: 10px;">Upss . . . ! Forum bisnis untuk saat ini
+                                sedang kosong.</h2>
                         </td>
                     </tr>
                 <?php else : ?>
                     <div class="row">
                         <?php foreach ($forumBisnis as $A) { ?>
+
                             <div class="col-md-3">
                                 <!-- CONTACT ITEM -->
                                 <div class="panel panel-default">
@@ -93,27 +95,27 @@
                                     <div class="panel-body">
                                         <div class="contact-info">
                                             <?php if ($A->pemilik_id == "") { ?>
-                                                <p><small>Pemilik Bisnis</small><br>Belum di isi</p>
+                                                <p style="font-size: 12px;"><small>Pemilik Bisnis</small><br>Belum di isi</p>
                                             <?php } else { ?>
-                                                <p><small>Pemilik Bisnis</small><br><?= $A->nama_lengkap; ?></p>
+                                                <p style="font-size: 12px;"><small>Pemilik Bisnis</small><br><?= $A->nama_lengkap; ?></p>
                                             <?php } ?>
 
                                             <?php if ($A->nama_jenis_bisnis == "") { ?>
-                                                <p><small>Jenis bisnis</small><br>Belum di isi</p>
+                                                <p style="font-size: 12px;"><small>Jenis bisnis</small><br>Belum di isi</p>
                                             <?php } else { ?>
-                                                <p><small>Jenis bisnis</small><br><?= $A->nama_jenis_bisnis; ?></p>
+                                                <p style="font-size: 12px;"><small>Jenis bisnis</small><br><?= $A->nama_jenis_bisnis; ?></p>
                                             <?php } ?>
 
                                             <?php if ($A->email == "") { ?>
-                                                <p><small>Email</small><br>Belum di isi</p>
+                                                <p style="font-size: 12px;"><small>Email</small><br>Belum di isi</p>
                                             <?php } else { ?>
-                                                <p><small>Email</small><br><?= $A->email; ?></p>
+                                                <p style="font-size: 12px;"><small>Email</small><br><?= $A->email; ?></p>
                                             <?php } ?>
                                         </div>
                                     </div>
-                                    <div class="panel-footer text-center">
+                                    <!-- <div class="panel-footer text-center">
                                         <a class="btn btn-info btn-rounded btn-block btn-detail-forbis" id="<?= $A->id_forbis; ?>" data-toggle="modal" data-target="#message-box-detail-forbis" title="Lihat">Lihat</a>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <!-- END CONTACT ITEM -->
                             </div>
