@@ -76,7 +76,6 @@
                 <?php else : ?>
                     <div class="row">
                         <?php foreach ($forumBisnis as $A) { ?>
-
                             <div class="col-md-3">
                                 <!-- CONTACT ITEM -->
                                 <div class="panel panel-default">

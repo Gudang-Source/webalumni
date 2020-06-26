@@ -46,6 +46,19 @@
     </div>
     <!-- SEARCH -->
 
+
+    <div class="row">
+    <div class="col-md-12">
+        <?php if (empty($komunitas)) : ?>
+            <tr>
+                <td colspan="7">
+                    <h2 class="text-center" style="margin-top: 10px;">Ups . . . ! Komunitas untuk saat ini Tidak ditemukan</h2>
+                </td>
+            </tr>
+        <?php else : ?>
+    <?php endif; ?>
+
+
     <!-- KOMUNITAS CONTENT -->
     <div class="row">
         <?php foreach ($komunitas as $A) { ?>

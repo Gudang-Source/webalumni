@@ -46,11 +46,24 @@
     </div>
     <!-- SEARCH -->
 
+
+    <div class="row">
+    <div class="col-md-12">
+        <?php if (empty($komunitas)) : ?>
+            <tr>
+                <td colspan="7">
+                    <h2 class="text-center" style="margin-top: 10px;">Ups . . . ! Komunitas untuk saat ini Tidak ditemukan</h2>
+                </td>
+            </tr>
+        <?php else : ?>
+    <?php endif; ?>
+
+
     <!-- KOMUNITAS CONTENT -->
     <div class="row">
         <?php foreach ($komunitas as $A) { ?>
             <?php if ($A->stat_komunitas == 1) : ?>
-                <div class="col-md-4    ">
+                <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-body profile">
                             <div class="profile-image">
@@ -67,7 +80,7 @@
 
                             </div>
                             <div class="profile-controls">
-                                <a class="profile-control-left" title="UbahGambar" id="<?= $A->id_komunitas; ?>" data-toggle="modal" data-target="#message-box-ubah-gambar-komunitas"><span class="fa fa-edit"></span></a>
+                                <a class="profile-control-left btn-ubah-foto" title="UbahGambar" id="<?= $A->id_komunitas; ?>" data-toggle="modal" data-target="#message-box-ubah-gambar-komunitas"><span class="fa fa-edit"></span></a>
                                 <a class="profile-control-right btn-hapus-komunitas" title="Hapus" id="<?= $A->id_komunitas; ?>" data-toggle="modal" data-target="#message-box-delete-anggota"><span class="fa fa-trash-o"></span></a>
                             </div>
                         </div>
@@ -241,27 +254,19 @@
                     <div class="panel-body tab-content">
                         <div class="form-group hidden">
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="idKomunitas" name="idKomunitas" value="<?= $komunitas[0]->id_komunitas ?>" />
+                            <input type="text" class="form-control" id="idUbahFoto" name="idUbahFoto">
+                            <input type="text" class="form-control" id="namaUbahFotoKomunitas name="namaUbahFotoKomunitas>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="form-group">
-                    <label class="col-md-2 control-label">Logo Komunitas</label>
+                    <label class="col-md-2 control-label">Foto</label>
                     <div class="col-md-8" style="margin-left: 10px; margin-top: 12px;">
-                        <div class="profile-image">
-                            <?php if ($A->logo_komunitas == NULL) { ?>
-                                <img src="<?php echo base_url('uploads/content/komunitas/no-image.jpg'); ?> " alt="No Image" title="Default Image">
-                            <?php } else { ?>
-                                <p>Gambar Sebelumnya</p>
-                                <img src="<?php echo base_url('uploads/content/komunitas/' . $A->logo_komunitas); ?> " alt="<?= $A->nama_komunitas; ?>" width="350" title="<?= $A->nama_komunitas; ?>">
-                            <?php } ?>
-                        </div>
+                        <img id="namaFotoKomunitas" src="<?= base_url('uploads/content/komunitas/'); ?>" width="150" style="margin-bottom: 10px;" />
+                        <input type="hidden" class="form-control" id="ubahFotoKomunitas" name="ubahFotoKomunitas" readonly />
                         <br>
-                        <p>Gambar Setelahnya</p>
-                        <br>
-                        <input type="file" class="file" id="file_name" name="fileSaya" required />
+                        <input type="file" class="file" id="file-simple" name="fileSaya" />
                     </div>
                 </div>
 
@@ -382,6 +387,24 @@
             });
     });
 
+    $(".btn-ubah-foto").click(function() {
+        console.log(this.id);
+        var idUbahFoto = this.id;
+
+        $.post("<?= base_url('admin/Komunitas/KomunitasJSON/') ?>", {
+                id: idUbahFoto
+            },
+            function(data) {
+                var data_obj = JSON.parse(data);
+
+                var idUbahFoto = data_obj.komunitas[0].id_komunitas;
+                var logoKomunitas = data_obj.komunitas[0].logo_komunitas;
+
+                document.getElementById('idUbahFoto').value = idUbahFoto;
+                document.getElementById('namaFotoKomunitas').src = '<?= base_url('uploads/content/komunitas/'); ?>' + logoKomunitas;
+            });
+    });
+    
     $(".btn-hapus-komunitas").click(function() {
         console.log(this.id);
         var idKomunitasHapus = this.id;
