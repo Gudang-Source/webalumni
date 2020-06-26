@@ -67,11 +67,13 @@ class Komunitas extends MY_Controller
     // ==================================================
     // --------------------- CREATE ---------------------
     // ==================================================
-    public function tambahCalonKomunitas()
+     public function tambahCalonKomunitas()
     {
         date_default_timezone_set("Asia/Jakarta");
         $jam = date ("H:i:s");
         $tanggal = date("Y-m-d", mktime(date('m'), date("d"), date('Y')));
+
+        $this->load->model('M_anggota');
 
         $sifatKomunitas = $this->input->post('sifatKomunitas');
         $jenisKomunitas = $this->input->post('jenisKomunitas');
@@ -88,7 +90,7 @@ class Komunitas extends MY_Controller
         $filename = "komunitas-" . $namaKomunitas . "-" . time();
 
         // Set preferences
-        $config['upload_path'] = '.uploads/content/komunitas/';
+        $config['upload_path'] = './uploads/content/komunitas/';
         $config['allowed_types'] = 'png|jpg|jpeg';
         $config['file_name'] = $filename;
 
@@ -97,7 +99,7 @@ class Komunitas extends MY_Controller
 
         if (!$this->upload->do_upload('fileSaya')) {
             flashMessage('error', 'Maaf, Upload gambar calon anggota gagal! Silahkan coba lagi');
-            redirect('admin/Komunitas');
+            redirect('admin/komunitas/KelolaStatusKomunitas');
         } else {
             $upload_data = $this->upload->data();
 
@@ -115,19 +117,20 @@ class Komunitas extends MY_Controller
             $data['id_pengupload'] = $idPengupload;
             if($this->session->userdata('role') == 1) {
                 $data['stat_komunitas'] = '1';
-            } else {
-                $data['stat_komunitas'] = '0';
             }
+            // } else {
+            //     $data['stat_komunitas'] = '1';
+            // }
 
             // echo json_encode($data);
             $sukses = $this->M_komunitas->insertNewKomunitas($data);
 
             if (!$sukses) {
-                flashMessage('success', 'Calon Komunitas Baru berhasil di daftarkan dan telah diaktifkan. Silahkan cek kembali!');
-                redirect('admin/Komunitas/kelolaStatusKomunitas');
+                flashMessage('success', 'Calon Komunitas Baru berhasil di daftarkan. Komunitas berhasil diaktifkan');
+                redirect('admin/komunitas/KelolaStatusKomunitas');
             } else {
-                flashMessage('error', 'Calon Komunitas Baru gagal di daftarkan! Silahkan coba lagi!');
-                redirect('admin/Komunitas/kelolaStatusKomunitas');
+                flashMessage('error', 'Calon Komunitas Baru gagal di daftarkan! Silahkan coba lagi');
+                redirect('admin/komunitas/KelolaStatusKomunitas');
             }
         }
     }

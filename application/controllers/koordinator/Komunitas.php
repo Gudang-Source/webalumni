@@ -76,11 +76,13 @@ class Komunitas extends MY_Controller
     // ==================================================
     // --------------------- CREATE ---------------------
     // ==================================================
-        public function tambahCalonKomunitas()
+    public function tambahCalonKomunitas()
     {
         date_default_timezone_set("Asia/Jakarta");
         $jam = date ("H:i:s");
         $tanggal = date("Y-m-d", mktime(date('m'), date("d"), date('Y')));
+
+        $this->load->model('M_anggota');
 
         $sifatKomunitas = $this->input->post('sifatKomunitas');
         $jenisKomunitas = $this->input->post('jenisKomunitas');
@@ -97,7 +99,7 @@ class Komunitas extends MY_Controller
         $filename = "komunitas-" . $namaKomunitas . "-" . time();
 
         // Set preferences
-        $config['upload_path'] = './uploads/avatars';
+        $config['upload_path'] = './uploads/content/komunitas/';
         $config['allowed_types'] = 'png|jpg|jpeg';
         $config['file_name'] = $filename;
 
@@ -106,10 +108,10 @@ class Komunitas extends MY_Controller
 
         if (!$this->upload->do_upload('fileSaya')) {
             flashMessage('error', 'Maaf, Upload gambar calon anggota gagal! Silahkan coba lagi');
-            redirect('koordinator/Komunitas');
+            redirect('koordinator/komunitas/KelolaStatusKomunitas');
         } else {
             $upload_data = $this->upload->data();
-            
+
             $data['sifat_komunitas'] = $sifatKomunitas;
             $data['jenis_komunitas'] = $jenisKomunitas;
             $data['lokasi_komunitas'] = $lokasiKomunitas;
@@ -124,19 +126,20 @@ class Komunitas extends MY_Controller
             $data['id_pengupload'] = $idPengupload;
             if($this->session->userdata('role') == 2) {
                 $data['stat_komunitas'] = '1';
-            } else {
-                $data['stat_komunitas'] = '0';
             }
+            // } else {
+            //     $data['stat_komunitas'] = '1';
+            // }
 
             // echo json_encode($data);
             $sukses = $this->M_komunitas->insertNewKomunitas($data);
 
             if (!$sukses) {
-                flashMessage('success', 'Calon Komunitas Baru berhasil di daftarkan. Silahkan verifikasi di Permohonan Calon Anggota');
-                redirect('koordinator/Komunitas');
+                flashMessage('success', 'Calon Komunitas Baru berhasil di daftarkan. Komunitas berhasil diaktifkan');
+                redirect('koordinator/komunitas/KelolaStatusKomunitas');
             } else {
                 flashMessage('error', 'Calon Komunitas Baru gagal di daftarkan! Silahkan coba lagi');
-                redirect('koordinator/Komunitas');
+                redirect('koordinator/komunitas/KelolaStatusKomunitas');
             }
         }
     }

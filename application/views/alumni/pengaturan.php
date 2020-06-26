@@ -88,10 +88,8 @@
         <div class="panel panel-default tabs" style="margin-top: 0px;">
             <div class="panel-body list-group border-bottom">
                 <ul class="nav nav-tabs-vertical" role="tablist">
-                    <li><a href="#tab-gambar-profile" role="tab" data-toggle="tab" class="list-group-item"><span
-                                class="fa fa-user"></span> Gambar Profil</a></li>
-                    <li><a href="#tab-akun" role="tab" data-toggle="tab" class="list-group-item"><span
-                                class="fa fa-cog"></span> Akun</a></li>
+                    <li><a href="#tab-gambar-profile" role="tab" data-toggle="tab" class="list-group-item"><span class="fa fa-user"></span> Gambar Profil</a></li>
+                    <li><a href="#tab-akun" role="tab" data-toggle="tab" class="list-group-item"><span class="fa fa-cog"></span> Akun</a></li>
                 </ul>
             </div>
         </div>
@@ -106,18 +104,14 @@
                 <div class="col-md-12">
                     <div class="row">
                         <?php if ($info[0]->nama_foto == null) { ?>
-                        <img src="<?= base_url('uploads/no-image.jpg'); ?>" alt="<?= $info[0]->nama_lengkap; ?>"
-                            title="<?= $info[0]->nama_lengkap; ?>" width="150" height="150" />
+                            <img src="<?= base_url('uploads/no-image.jpg'); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" width="150" height="150" />
                         <?php } else { ?>
-                        <img src="<?= base_url('uploads/avatars/' . $info[0]->nama_foto); ?>"
-                            alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" width="200"
-                            height="150" />
+                            <img src="<?= base_url('uploads/avatars/' . $info[0]->nama_foto); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" width="200" height="150" />
                         <?php } ?>
                     </div>
                     <br>
                     <div class="row">
-                        <form action="<?= base_url('admin/Pengaturan/setUpdateImageProfile'); ?>" method="post"
-                            enctype="multipart/form-data" id="form-update-profile-image">
+                        <form action="<?= base_url('alumni/Pengaturan/setUpdateImageProfile'); ?>" method="post" enctype="multipart/form-data" id="form-update-profile-image">
                             <div class="hidden">
                                 <input type="text" name="namaPengguna" value="<?= $info[0]->nama_lengkap; ?>">
                                 <input type="text" name="idPengguna" value="<?= $info[0]->id_anggota; ?>">
@@ -139,15 +133,13 @@
                     </div>
                     <div class="row">
                         <div class="col-md-4">
-                            <button class="btn btn-info btn-username" title="Ganti" data-toggle="modal"
-                                data-target="#UbahUsernameModal">
+                            <button class="btn btn-info btn-username" title="Ganti" data-toggle="modal" data-target="#UbahUsernameModal">
                                 <i class="fa fa-pencil-square"></i>
                                 <span>Ganti Username</span>
                             </button>
                         </div>
                         <div class="col-md-4">
-                            <button class="btn btn-danger" title="Ganti Password" data-toggle="modal"
-                                data-target="#UbahPasswordModal">
+                            <button class="btn btn-danger" title="Ganti Password" data-toggle="modal" data-target="#UbahPasswordModal">
                                 <i class="glyphicon glyphicon-remove"></i>
                                 <span>Ganti Password</span>
                             </button>
@@ -163,17 +155,14 @@
 <!-- END CONTENT FRAME -->
 
 <!-- MODALS USERNAME -->
-<div class="modal animated zoomIn" id="UbahUsernameModal" tabindex="-1" role="dialog" aria-labelledby="defModalHead"
-    aria-hidden="true">
+<div class="modal animated zoomIn" id="UbahUsernameModal" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" id="defModalHead">Username</h4>
             </div>
-            <form action="<?= base_url('anggota/Pengaturan/setUpdateUsername') ?>" class="form-horizontal"
-                id="username-validate" method="post">
+            <form action="<?= base_url('anggota/Pengaturan/setUpdateUsername') ?>" class="form-horizontal" id="username-validate" method="post">
                 <div class="modal-body">
                     <div class="form-group hidden">
                         <div class="col-md-9">
@@ -191,8 +180,7 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label">* Username Baru :</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="usernameBaru" placeholder="Username Baru"
-                                required />
+                            <input type="text" class="form-control" name="usernameBaru" placeholder="Username Baru" required />
                         </div>
                     </div>
                 </div>
@@ -212,17 +200,14 @@
 <!-- END MODAL USERNAME -->
 
 <!-- MODALS PASSWORD -->
-<div class="modal animated zoomIn" id="UbahPasswordModal" tabindex="-1" role="dialog" aria-labelledby="defModalHead"
-    aria-hidden="true">
+<div class="modal animated zoomIn" id="UbahPasswordModal" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title" id="defModalHead">Password Baru</h4>
             </div>
-            <form action="<?= base_url('anggota/Pengaturan/setUpdatePassword') ?>" class="form-horizontal"
-                id="password-validate" method="post">
+            <form action="<?= base_url('anggota/Pengaturan/setUpdatePassword') ?>" class="form-horizontal" id="password-validate" method="post">
                 <div class="modal-body">
                     <div class="form-group hidden">
                         <div class="col-md-9">
@@ -233,16 +218,14 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label">* Password :</label>
                         <div class="col-md-9">
-                            <input type="password" class="form-control" name="passwordBaru" placeholder="Password Baru"
-                                required />
+                            <input type="password" class="form-control" name="passwordBaru" placeholder="Password Baru" required />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-3 control-label">* Ulangi Password :</label>
                         <div class="col-md-9">
-                            <input type="password" class="form-control" name="ulangiPasswordBaru"
-                                placeholder="Ulangi Password Baru" required />
+                            <input type="password" class="form-control" name="ulangiPasswordBaru" placeholder="Ulangi Password Baru" required />
                         </div>
                     </div>
                 </div>
@@ -262,14 +245,14 @@
 <!-- END MODAL PASSWORD -->
 
 <script type="text/javascript">
-$("#username-validate").validate();
-$("#password-validate").validate();
-$("#form-update-profile-image").validate();
+    $("#username-validate").validate();
+    $("#password-validate").validate();
+    $("#form-update-profile-image").validate();
 
-$("#file-simple").fileinput({
-    showUpload: false,
-    showCaption: false,
-    browseClass: "btn btn-danger",
-    fileType: "any"
-});
+    $("#file-simple").fileinput({
+        showUpload: false,
+        showCaption: false,
+        browseClass: "btn btn-danger",
+        fileType: "any"
+    });
 </script>

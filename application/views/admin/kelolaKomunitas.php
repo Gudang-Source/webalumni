@@ -134,17 +134,16 @@
                         <div class="form-group">
                             <form action="<?= base_url('admin/Komunitas/tambahCalonKomunitas'); ?>" class="form-horizontal"
                                 id="form-tambah-komunitas-validate" method="post" enctype="multipart/form-data">
-                                
-                                <input type="hidden" class="form-control" name="idPengupload" value="<?= $info[0]->id_user?>">
-
                                 <div class="panel-body">
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Nama Komunitas</label>
                                         <div class="col-md-8">
                                             <input type="text" class="form-control" name="namaKomunitas"
-                                                placeholder="Nama Komunitas" required clear />
+                                                placeholder="Nama Komunitas Aktif" required clear />
                                             </div>
                                     </div>
+
+                                    <input type="hidden" class="form-control" name="idPengupload" value="<?= $info[0]->id_user?>">
 
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Lokasi Komunitas</label>
@@ -285,7 +284,7 @@
                 <div class="mb-footer">
                     <div class="pull-right">
                         <button type="submit" class="btn btn-info btn-lg mb-control-yes">Terima</button>
-                        <button class="btn btn-default btn-lg mb-control-close">Batal</button>
+                        <a href="<?= base_url('admin/Komunitas/kelolaStatusKomunitas'); ?>" class="btn btn-default btn-lg">Batal</a>
                     </div>
                 </div>
             </form>
@@ -341,7 +340,7 @@
                 <div class="mb-footer">
                     <div class="pull-right">
                         <button type="submit" class="btn btn-primary btn-lg mb-control-yes">Tolak</button>
-                        <button class="btn btn-default btn-lg mb-control-close">Batal</button>
+                        <a href="<?= base_url('koordinator/Komunitas'); ?>" class="btn btn-default btn-lg">Batal</a>
                     </div>
                 </div>
             </form>
