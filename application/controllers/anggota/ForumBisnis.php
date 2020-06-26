@@ -18,17 +18,22 @@ class ForumBisnis extends MY_Controller
             redirect('koordinator');
         } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == '1') {
             redirect('admin');
-        } 
+        }
     }
 
 
     function index()
     {
-        $data['title'] = 'Kelola Forum Bisnis';
+        $data['title'] = 'Lihat Forum Bisnis';
         $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+        $id_pemilik = $data['info'];
+
+        $id = $id_pemilik[0]->id_anggota;
+
         $data['jenisBisnis'] = $this->M_jenisBisnis->getAllJenisBisnis();
 
-        $data['forumBisnis'] = $this->M_forumBisnis->getAllForbisById();
+        $data['forumBisnis'] = $this->M_forumBisnis->getAllForbisById($id);
 
         $this->anggota_render('anggota/ForumBisnis', $data);
     }
@@ -38,7 +43,7 @@ class ForumBisnis extends MY_Controller
         $data['title'] = 'Tambah Calon Forum Bisnis';
         $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
         $data['jenisBisnis'] = $this->M_jenisBisnis->getAllJenisBisnis();
-        $data['forumBisnis'] = $this->M_forumBisnis->getAllForbisById();
+        // $data['forumBisnis'] = $this->M_forumBisnis->getAllForbisById();
 
         $this->anggota_render('anggota/tambahCalonForBis', $data);
     }
@@ -163,5 +168,22 @@ class ForumBisnis extends MY_Controller
                 redirect('anggota/ForumBisnis');
             }
         }
+    }
+
+    public function cariForumBisnis()
+    {
+        $data['title'] = 'Lihat Forum Bisnis';
+
+        $namaForbis = $this->input->post('namaBisnis');
+
+        $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+        $id_pemilik = $data['info'];
+        $id = $id_pemilik[0]->id_anggota;
+
+        $data['jenisBisnis'] = $this->M_jenisBisnis->getAllJenisBisnis();
+        $data['forumBisnis'] = $this->M_forumBisnis->cariForumBisnis($id, $namaForbis);
+
+        $this->anggota_render('anggota/ForumBisnis', $data);
     }
 }

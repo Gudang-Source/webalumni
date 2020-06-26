@@ -25,14 +25,8 @@ class M_forumBisnis extends CI_Model
         return $this->db->query($query)->result();
     }
 
-    function getAllForbisById()
+    function getAllForbisById($id)
     {
-        $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
-
-        $id_pemilik = $data['info'];
-
-        $id = $id_pemilik[0]->id_anggota;
-
         $queryForbisById = "SELECT * FROM tb_forum_bisnis JOIN tb_anggota ON tb_forum_bisnis.pemilik_id = tb_anggota.id_anggota WHERE tb_forum_bisnis.pemilik_id = $id AND `tb_forum_bisnis`.`stat_forbis` = 1 ORDER BY `tb_forum_bisnis`.`id_forbis` DESC";
 
         $forbis = $this->db->query($queryForbisById)->result();
@@ -78,5 +72,14 @@ class M_forumBisnis extends CI_Model
 		`tb_forum_bisnis`.`pemilik_id` = `tb_anggota`.`id_anggota` WHERE `tb_forum_bisnis`.`nama_bisnis_usaha` LIKE '%$nama%'  AND  `tb_forum_bisnis`.`stat_forbis` = 1 ORDER BY `tb_forum_bisnis`.`id_forbis` DESC";
 
         return $this->db->query($query)->result();
+    }
+
+    function cariForumBisnis($id, $namaForbis)
+    {
+        $queryForbisById = "SELECT * FROM tb_forum_bisnis JOIN tb_anggota ON tb_forum_bisnis.pemilik_id = tb_anggota.id_anggota WHERE tb_forum_bisnis.pemilik_id = $id AND `tb_forum_bisnis`.`stat_forbis` = 1 AND `tb_forum_bisnis`.`nama_bisnis_usaha` LIKE '%$namaForbis%' ORDER BY `tb_forum_bisnis`.`id_forbis` DESC";
+
+        $forbis = $this->db->query($queryForbisById)->result();
+
+        return $forbis;
     }
 }
