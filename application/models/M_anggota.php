@@ -89,16 +89,16 @@ class M_anggota extends CI_Model
         $this->db->update('tb_pemulihan', $statusPemuliahn);
     }
 
-    function findAnggotaByRole()
+    function findAnggotaByRole($where)
     {
-        $query = "SELECT * FROM `tb_anggota` JOIN `tb_user` ON `tb_anggota`.`user_id` = `tb_user`.`id_user` WHERE `tb_anggota`.`nama_lengkap` != 'root' AND `tb_anggota`.`status_anggota` != '0' AND `tb_user`.`role` = '3' ORDER BY `id_anggota` DESC";
+        $query = "SELECT * FROM `tb_anggota` JOIN `tb_user` ON `tb_anggota`.`user_id` = `tb_user`.`id_user` WHERE `tb_anggota`.`nama_lengkap` != 'root' AND `tb_anggota`.`status_anggota` != '0' AND `tb_user`.`role` = '3' AND `tb_anggota`.`user_id` != '$where'  ORDER BY `id_anggota` DESC";
 
         return $this->db->query($query)->result();
     }
 
-    function findAnggotaLikeNamaByRole($nama)
+    function findAnggotaLikeNamaByRole($nama, $where)
     {
-        $query = "SELECT * FROM `tb_anggota` JOIN `tb_user` ON `tb_anggota`.`user_id` = `tb_user`.`id_user` WHERE `tb_anggota`.`nama_lengkap` LIKE '%$nama%' AND `tb_anggota`.`status_anggota` != '0' AND `tb_user`.`role` = '3' ORDER BY `id_anggota` DESC";
+        $query = "SELECT * FROM `tb_anggota` JOIN `tb_user` ON `tb_anggota`.`user_id` = `tb_user`.`id_user` WHERE `tb_anggota`.`nama_lengkap` LIKE '%$nama%' AND `tb_anggota`.`status_anggota` != '0' AND `tb_user`.`role` = '3' AND `tb_anggota`.`user_id` != '$where' ORDER BY `id_anggota` DESC";
 
         return $this->db->query($query)->result();
     }

@@ -29,12 +29,11 @@ class Anggota extends MY_Controller
         $data['title'] = 'Anggota - Lihat Anggota';
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
-        // $where = array(
-        //     'tb_anggota.nama_lengkap != ' => 'root',
-        //     'tb_anggota.status_anggota != ' => '0',
-        //     'tb_user.role = ' => '3',
-        // );
-        $data['anggota'] = $this->M_anggota->findAnggotaByRole();
+        $where = $this->session->userdata('uid');
+        // var_dump($where);
+        // die;
+
+        $data['anggota'] = $this->M_anggota->findAnggotaByRole($where);
 
         $this->anggota_render('anggota/lihatAnggota', $data);
     }
@@ -117,9 +116,10 @@ class Anggota extends MY_Controller
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
         $nama = $this->input->post('namaAnggota');
+        $where = $this->session->userdata('uid');
 
         // $where = "tb_anggota.status_anggota != 0";
-        $data['anggota'] = $this->M_anggota->findAnggotaLikeNamaByRole($nama);
+        $data['anggota'] = $this->M_anggota->findAnggotaLikeNamaByRole($nama, $where);
 
         if ($this->session->userdata('role') == 3) {
             $this->anggota_render('anggota/lihatAnggota', $data);
