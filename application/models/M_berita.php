@@ -10,6 +10,8 @@ class M_berita extends CI_Model
         $this->db->from('tb_berita');
         $this->db->join('tb_user', 'tb_berita.id_penulis=tb_user.id_user');
         $this->db->join('tb_kategori_berita', 'tb_berita.id_kategori = tb_kategori_berita.id');
+        $this->db->order_by('tb_berita.date_created', 'DESC');
+        $this->db->order_by('tb_berita.time_created', 'DESC');
 
         return $this->db->get()->result();
     }
@@ -53,6 +55,8 @@ class M_berita extends CI_Model
         $this->db->join('tb_user', 'tb_berita.id_penulis=tb_user.id_user');
         $this->db->join('tb_kategori_berita', 'tb_berita.id_kategori = tb_kategori_berita.id');
         $this->db->like('tb_kategori_berita.id', $id);
+        $this->db->order_by('tb_berita.date_created', 'DESC');
+        $this->db->order_by('tb_berita.time_created', 'DESC');
 
         return $this->db->get()->result();
     }

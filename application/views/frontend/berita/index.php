@@ -67,37 +67,41 @@
                         <?php if ($daftarBerita) : ?>
                             <?php if ($B->stat_berita == 1) : ?>
                                 <!-- CONTACT ITEM -->
-                                <div class="panel panel-default" style="padding: 15px;">
-                                    <div class="col-md-4">
-                                        <div class="panel-body">
-                                            <div class="profile-image" style="width: 200px; height: 150px; overflow: hidden;">
-                                                <?php if ($B->foto == NULL) { ?>
-                                                    <img src="<?php echo base_url('uploads/no-image.jpg'); ?> " alt="No Image" title="Default Image" style="width: 100%;">
-                                                <?php } else { ?>
-                                                    <img src="<?php echo base_url('uploads/content/berita/' . $B->foto); ?> " alt="<?= $B->judul_berita; ?>" title="<?= $B->judul_berita; ?>" style="height: 100%;">
-                                                <?php } ?>
+                                <a href="<?= base_url('berita/baca/') . $B->id_berita; ?>">
+                                    <div class="panel panel-default" style="padding: 15px;">
+                                        <div class="col-md-4">
+                                            <div class="panel-body">
+                                                <div class="profile-image" style="width: 200px; height: 150px; overflow: hidden;">
+                                                    <?php if ($B->foto == NULL) { ?>
+                                                        <img src="<?php echo base_url('uploads/no-image.jpg'); ?> " alt="No Image" title="Default Image" style="width: 100%;">
+                                                    <?php } else { ?>
+                                                        <img src="<?php echo base_url('uploads/content/berita/' . $B->foto); ?> " alt="<?= $B->judul_berita; ?>" title="<?= $B->judul_berita; ?>" style="height: 100%;">
+                                                    <?php } ?>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="panel-body" style="transform: translate(0, 50%);">
+                                        <div class="col-md-8">
+                                            <div class="panel-body" style="transform: translate(0, 50%);">
 
-                                            <?php if ($B->judul_berita == "") { ?>
-                                                <h2><b>Belum di isi</b></h2>
-                                            <?php } else { ?>
-                                                <h3><b><a class="text-primary" id="bacaBerita" name="bacaBerita" href="<?= base_url('berita/baca/') . $B->id_berita; ?>"><?= $B->judul_berita; ?></a></b></h3>
-                                            <?php } ?>
+                                                <?php if ($B->judul_berita == "") { ?>
+                                                    <h2><b>Belum di isi</b></h2>
+                                                <?php } else { ?>
+                                                    <h3 class="text-primary" id="bacaBerita" name="bacaBerita"><b><?= $B->judul_berita; ?></b></h3>
+                                                    <!-- <h3><b><a class="text-primary" id="bacaBerita" name="bacaBerita" href="<?= base_url('berita/baca/') . $B->id_berita; ?>"><?= $B->judul_berita; ?></a></b></h3> -->
+                                                <?php } ?>
 
-                                            <?php if ($B->date_created == "") { ?>
-                                                <p><small>Tanggal Dibuat</small><br>Belum di isi</p>
-                                            <?php } else { ?>
-                                                <p><small><b class="text-info" style="margin-right: 10px;">Berita </b><?= date_format(date_create($B->date_created), "l, j F Y"); ?> <?= date_format(date_create($B->time_created), "H:m"); ?> WIB</small></p>
-                                            <?php } ?>
+                                                <?php if ($B->date_created == "") { ?>
+                                                    <p><small>Tanggal Dibuat</small><br>Belum di isi</p>
+                                                <?php } else { ?>
+                                                    <p class="text-primary"><small><b class="text-info" style="margin-right: 10px;">Berita </b><?= date_format(date_create($B->date_created), "l, j F Y"); ?> <?= date_format(date_create($B->time_created), "H:m"); ?> WIB</small></p>
+                                                    <!-- <p><small><b class="text-info" style="margin-right: 10px;">Berita </b><?= date_format(date_create($B->date_created), "l, j F Y"); ?> <?= date_format(date_create($B->time_created), "H:m"); ?> WIB</small></p> -->
+                                                <?php } ?>
 
+                                            </div>
                                         </div>
+                                        <!-- END CONTACT ITEM -->
                                     </div>
-                                    <!-- END CONTACT ITEM -->
-                                </div>
+                                </a>
                             <?php endif; ?>
                         <?php else : ?>
                             <p>Data tidak ditemukan!</p>
