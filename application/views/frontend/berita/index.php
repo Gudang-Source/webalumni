@@ -52,6 +52,14 @@
             </div>
         </div>
 
+        <?php if ($title != 'Berita') : ?>
+            <div class="row">
+                <div class="col-md-12">
+                    <?= $kategori; ?>
+                </div>
+            </div>
+        <?php endif; ?>
+
         <div class="row">
             <div class="col-md-8">
                 <div class="row">
@@ -59,20 +67,20 @@
                         <?php if ($daftarBerita) : ?>
                             <?php if ($B->stat_berita == 1) : ?>
                                 <!-- CONTACT ITEM -->
-                                <div class="panel panel-default">
+                                <div class="panel panel-default" style="padding: 15px;">
                                     <div class="col-md-4">
-                                        <div class="panel-body" style=" padding: 25px;">
-                                            <div class="profile-image">
+                                        <div class="panel-body">
+                                            <div class="profile-image" style="width: 200px; height: 150px; overflow: hidden;">
                                                 <?php if ($B->foto == NULL) { ?>
                                                     <img src="<?php echo base_url('uploads/no-image.jpg'); ?> " alt="No Image" title="Default Image" style="width: 100%;">
                                                 <?php } else { ?>
-                                                    <img src="<?php echo base_url('uploads/content/berita/' . $B->foto); ?> " alt="<?= $B->judul_berita; ?>" title="<?= $B->judul_berita; ?>" style="width: 100%;">
+                                                    <img src="<?php echo base_url('uploads/content/berita/' . $B->foto); ?> " alt="<?= $B->judul_berita; ?>" title="<?= $B->judul_berita; ?>" style="height: 100%;">
                                                 <?php } ?>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <div class="panel-body" style="padding: 25px; transform: translate(0, 40%);">
+                                        <div class="panel-body" style="transform: translate(0, 50%);">
 
                                             <?php if ($B->judul_berita == "") { ?>
                                                 <h2><b>Belum di isi</b></h2>
@@ -83,7 +91,7 @@
                                             <?php if ($B->date_created == "") { ?>
                                                 <p><small>Tanggal Dibuat</small><br>Belum di isi</p>
                                             <?php } else { ?>
-                                                <p><small><?= date_format(date_create($B->date_created), "l, j F Y"); ?> <?= date_format(date_create($B->time_created), "H:m"); ?> WIB</small></p>
+                                                <p><small><b class="text-info" style="margin-right: 10px;">Berita </b><?= date_format(date_create($B->date_created), "l, j F Y"); ?> <?= date_format(date_create($B->time_created), "H:m"); ?> WIB</small></p>
                                             <?php } ?>
 
                                         </div>

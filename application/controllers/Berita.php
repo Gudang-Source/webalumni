@@ -75,6 +75,7 @@ class Berita extends MY_Controller
         $data['info'] = $this->FrontPageModel->getInfoBySessionId();
         $data['daftarBerita'] = $this->M_berita->findBeritaLikeKategori($id);
         $data['title'] = $data['daftarBerita'][0]->kategori;
+        $data['kategori'] = '<h2 class="text-info"><b>#' . $data['daftarBerita'][0]->kategori . '</b></h2>';
 
         $this->frontend_render('frontend/berita/index', $data);
     }
