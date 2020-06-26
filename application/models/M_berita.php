@@ -33,6 +33,8 @@ class M_berita extends CI_Model
         $this->db->join('tb_kategori_berita', 'tb_berita.id_kategori = tb_kategori_berita.id');
         $this->db->where($where);
         $this->db->like('judul_berita', $judul, 'both');
+        $this->db->order_by('tb_berita.date_created', 'DESC');
+        $this->db->order_by('tb_berita.time_created', 'DESC');
 
         return $this->db->get()->result();
     }
