@@ -18,6 +18,8 @@ class Berita extends MY_Controller
         $this->load->model('FrontPageModel');
         $this->load->model('M_berita');
         $this->load->model('M_kategori');
+
+        $this->load->library('pagination');
     }
     // ==================================================
     // ------------------ CONTSTRUCTOR ------------------
@@ -32,7 +34,42 @@ class Berita extends MY_Controller
     {
         $data['title'] = 'Berita';
         $data['info'] = $this->FrontPageModel->getInfoBySessionId();
-        $data['daftarBerita'] = $this->M_berita->getAllBerita();
+        $data['start'] = $this->uri->segment(3);
+
+        $config['base_url'] = 'http://localhost/webalumni/berita/index';
+        $config['total_rows'] = $this->M_berita->getBeritaSize();
+        $config['per_page'] = 5;
+
+        // $config['full_tag_open'] = '<nav><ul class="pagination">';
+        // $config['full_tag_close'] = '</ul></nav>';
+
+        // $config['first_link'] = 'Pertama';
+        // $config['first_tag_open'] = '<li><a href="#" aria-label="Previous"><span aria-hidden="true">';
+        // $config['first_tag_close'] = '</span></a></li>';
+
+        // $config['last_link'] = 'Terakhir';
+        // $config['last_tag_open'] = '<li><a href="#" aria-label="Next"><span aria-hidden="true">';
+        // $config['last_tag_close'] = '</span></a></li>';
+
+        // $config['next_link'] = '&raquo';
+        // $config['next_tag_open'] = '<li><a href="#" aria-label="Next"><span aria-hidden="true">';
+        // $config['next_tag_close'] = '</span></a></li>';
+
+        // $config['prev_link'] = '&laquo';
+        // $config['prev_tag_open'] = '<li><a href="#" aria-label="Previous"><span aria-hidden="true">';
+        // $config['prev_tag_close'] = '</span></a></li>';
+
+        // $config['cur_tag_open'] = '<li class="active"><a href="#">';
+        // $config['cur_tag_close'] = '</a></li>';
+
+        // $config['cur_tag_open'] = '<li><a href="#">';
+        // $config['cur_tag_close'] = '</a></li>';
+
+        // $config['attributes'] = array('class' => 'page-link');
+
+        $this->pagination->initialize($config);
+
+        $data['daftarBerita'] = $this->M_berita->getBerita($config['per_page'], $data['start']);
 
         $this->frontend_render('frontend/berita/index', $data);
     }
@@ -73,6 +110,40 @@ class Berita extends MY_Controller
     function kategori($id)
     {
         $data['info'] = $this->FrontPageModel->getInfoBySessionId();
+
+        $config['base_url'] = 'http://localhost/webalumni/berita/kategori/' . $id;
+        $config['total_rows'] = $this->M_berita->getBeritaSizeLikeKategori($id);
+        $config['per_page'] = 5;
+
+        // $config['full_tag_open'] = '<nav><ul class="pagination">';
+        // $config['full_tag_close'] = '</ul></nav>';
+
+        // $config['first_link'] = 'Pertama';
+        // $config['first_tag_open'] = '<li><a href="#" aria-label="Previous"><span aria-hidden="true">';
+        // $config['first_tag_close'] = '</span></a></li>';
+
+        // $config['last_link'] = 'Terakhir';
+        // $config['last_tag_open'] = '<li><a href="#" aria-label="Next"><span aria-hidden="true">';
+        // $config['last_tag_close'] = '</span></a></li>';
+
+        // $config['next_link'] = '&raquo';
+        // $config['next_tag_open'] = '<li><a href="#" aria-label="Next"><span aria-hidden="true">';
+        // $config['next_tag_close'] = '</span></a></li>';
+
+        // $config['prev_link'] = '&laquo';
+        // $config['prev_tag_open'] = '<li><a href="#" aria-label="Previous"><span aria-hidden="true">';
+        // $config['prev_tag_close'] = '</span></a></li>';
+
+        // $config['cur_tag_open'] = '<li class="active"><a href="#">';
+        // $config['cur_tag_close'] = '</a></li>';
+
+        // $config['cur_tag_open'] = '<li><a href="#">';
+        // $config['cur_tag_close'] = '</a></li>';
+
+        // $config['attributes'] = array('class' => 'page-link');
+
+        $this->pagination->initialize($config);
+
         $data['daftarBerita'] = $this->M_berita->findBeritaLikeKategori($id);
         $data['title'] = $data['daftarBerita'][0]->kategori;
         $data['kategori'] = '<h2 class="text-info"><b>#' . $data['daftarBerita'][0]->kategori . '</b></h2>';
