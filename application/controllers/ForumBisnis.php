@@ -22,6 +22,6 @@ class ForumBisnis extends MY_Controller
         $data['title'] = 'Forum Bisnis';
         $data['info'] = $this->FrontPageModel->getInfoBySessionId();
         $data['forumBisnis'] = $this->M_forumBisnis->getAllForumBisnis();
-        $this->frontend_render('frontend/forumbisnis', $data);
+        $this->frontend_render('frontend/frontForbis/forumbisnis', $data);
     }
 }
