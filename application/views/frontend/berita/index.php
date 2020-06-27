@@ -109,15 +109,18 @@
                         <?php endif; ?>
                     <?php endforeach; ?>
                 </div>
-                <div class="row">
-                    <div class="panel panel-default" style="padding: 15px;">
-                        <div class="col-md-12">
-                            <div class="panel-body">
-                                <h3><b><?= $this->pagination->create_links(); ?></b></h3>
+
+                <?php if ($size > 5) : ?>
+                    <div class="row">
+                        <div class="panel panel-default">
+                            <div class="col-md-12">
+                                <div class="panel-body">
+                                    <h3><b><?= $this->pagination->create_links(); ?></b></h3>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                <?php endif; ?>
             </div>
         </div>
 
