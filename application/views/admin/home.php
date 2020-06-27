@@ -18,13 +18,11 @@
                     <span class="fa fa-user"></span>
                 </div>
                 <div class="widget-data">
-                    <div class="widget-int num-count"><?= $jumlah_anggota ?></div>
-                    <div class="widget-title" style="font-size: 12px;">user terdaftar</div>
-                    <div class="widget-subtitle">Pada website anda</div>
-                </div>
-                <div class="widget-controls">
-                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top"
-                        title="Remove Widget"><span class="fa fa-times"></span></a>
+                    <a href="<?= base_url('admin/anggota/kelolaAnggota'); ?>" style="color:#33414E;">
+                        <div class="widget-int num-count"><?= $jumlah_anggota ?></div>
+                        <div class="widget-title" style="font-size: 12px;">user terdaftar</div>
+                        <div class="widget-subtitle">Pada website anda</div>
+                    </a>
                 </div>
             </div>
             <!-- END WIDGET REGISTRED -->
@@ -40,13 +38,11 @@
                     <span class="fa fa-user"></span>
                 </div>
                 <div class="widget-data">
-                    <div class="widget-int num-count"><?= $jumlah_anggota_belum_verifikasi ?></div>
-                    <div class="widget-title" style="font-size: 12px;">user belum terverifikasi</div>
-                    <div class="widget-subtitle">Pada website anda</div>
-                </div>
-                <div class="widget-controls">
-                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top"
-                        title="Remove Widget"><span class="fa fa-times"></span></a>
+                    <a href="<?= base_url('admin/anggota'); ?>" style="color:#33414E;">
+                        <div class="widget-int num-count"><?= $jumlah_anggota_belum_verifikasi ?></div>
+                        <div class="widget-title" style="font-size: 12px;">user belum terverifikasi</div>
+                        <div class="widget-subtitle">Pada website anda</div>
+                    </a>
                 </div>
             </div>
             <!-- END WIDGET REGISTRED -->
@@ -73,10 +69,6 @@
                         <div class="widget-int">1,977</div> -->
                     <!-- </div> -->
                 </div>
-                <div class="widget-controls">
-                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top"
-                        title="Remove Widget"><span class="fa fa-times"></span></a>
-                </div>
             </div>
             <!-- END WIDGET SLIDER -->
 
@@ -87,10 +79,6 @@
             <div class="widget widget-danger widget-padding-sm">
                 <div class="widget-big-int plugin-clock">00:00</div>
                 <div class="widget-subtitle plugin-date">Loading...</div>
-                <div class="widget-controls">
-                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="left"
-                        title="Remove Widget"><span class="fa fa-times"></span></a>
-                </div>
                 <!-- <div class="widget-buttons widget-c3">
                     <div class="col">
                         <a href="#"><span class="fa fa-clock-o"></span></a>
@@ -120,13 +108,11 @@
                     <span class="fa fa-envelope"></span>
                 </div>
                 <div class="widget-data">
-                    <div class="widget-int num-count"><?= $jumlahBeritaNon ?></div>
-                    <div class="widget-title" style="font-size: 12px;">Calon Berita Belum terverifikasi</div>
-                    <div class="widget-subtitle">Pada website anda</div>
-                </div>
-                <div class="widget-controls">
-                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top"
-                        title="Remove Widget"><span class="fa fa-times"></span></a>
+                    <a href="<?= base_url('admin/berita'); ?>" style="color:#33414E;">
+                        <div class="widget-int num-count"><?= $jumlahBeritaNon ?></div>
+                        <div class="widget-title" style="font-size: 12px;">Calon Berita Belum terverifikasi</div>
+                        <div class="widget-subtitle">Pada website anda</div>
+                    </a>
                 </div>
             </div>
             <!-- END WIDGET MESSAGES -->
@@ -140,13 +126,11 @@
                     <span class="fa fa-camera-retro"></span>
                 </div>
                 <div class="widget-data">
-                    <div class="widget-int num-count"><?= $jumlahKomunitasNon ?></div>
-                    <div class="widget-title" style="font-size: 12px;">Calon Komunitas Belum terverifikasi</div>
-                    <div class="widget-subtitle">Pada website anda</div>
-                </div>
-                <div class="widget-controls">
-                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top"
-                        title="Remove Widget"><span class="fa fa-times"></span></a>
+                    <a href="<?= base_url('admin/komunitas'); ?>" style="color:#33414E;">
+                        <div class="widget-int num-count"><?= $jumlahKomunitasNon ?></div>
+                        <div class="widget-title" style="font-size: 12px;">Calon Komunitas Belum terverifikasi</div>
+                        <div class="widget-subtitle">Pada website anda</div>
+                    </a>
                 </div>
             </div>
             <!-- END WIDGET MESSAGES -->
@@ -160,13 +144,11 @@
                     <span class="fa fa-briefcase"></span>
                 </div>
                 <div class="widget-data">
-                    <div class="widget-int num-count"><?= $jumlahForbisNon ?></div>
-                    <div class="widget-title" style="font-size: 12px;">Calon Forbis Belum terverifikasi</div>
-                    <div class="widget-subtitle">Pada website anda</div>
-                </div>
-                <div class="widget-controls">
-                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top"
-                        title="Remove Widget"><span class="fa fa-times"></span></a>
+                    <a href="<?= base_url('admin/forumBisnis/kelolaCalonForBis'); ?>" style="color:#33414E;">
+                        <div class="widget-int num-count"><?= $jumlahForbisNon ?></div>
+                        <div class="widget-title" style="font-size: 12px;">Calon Forbis Belum terverifikasi</div>
+                        <div class="widget-subtitle">Pada website anda</div>
+                    </a>
                 </div>
             </div>
             <!-- END WIDGET MESSAGES -->
@@ -189,8 +171,7 @@
                         <!-- <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li> -->
                         <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                                    class="fa fa-cog"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-cog"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span>
                                         Collapse</a></li>
@@ -202,12 +183,12 @@
                 <div class="panel-body padding-0">
                     <div class="chart-holder">
                         <?php if (empty($berita)) : ?>
-                        <h5 style="margin:10px">Uppss .. belum ada berita terjadwal pada hari ini</h5>
+                            <h5 style="margin:10px">Uppss .. belum ada berita terjadwal pada hari ini</h5>
                         <?php else : ?>
-                        <?php foreach ($berita as $b) : ?>
-                        <h3 style="margin:10px"><?= $b->judul_berita ?></h3>
-                        <hr>
-                        <?php endforeach; ?>
+                            <?php foreach ($berita as $b) : ?>
+                                <h3 style="margin:10px"><?= $b->judul_berita ?></h3>
+                                <hr>
+                            <?php endforeach; ?>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -227,8 +208,7 @@
                         <!-- <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li> -->
                         <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-                                    class="fa fa-cog"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-cog"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span>
                                         Collapse</a></li>
@@ -240,12 +220,12 @@
                 <div class="panel-body padding-0">
                     <div class="chart-holder">
                         <?php if (empty($komunitas)) : ?>
-                        <h5 style="margin:10px">Uppss .. belum ada komunitas terjadwal pada hari ini</h5>
+                            <h5 style="margin:10px">Uppss .. belum ada komunitas terjadwal pada hari ini</h5>
                         <?php else : ?>
-                        <?php foreach ($komunitas as $k) : ?>
-                        <h3 style="margin:10px"><?= $k->nama_komunitas ?></h3>
-                        <hr>
-                        <?php endforeach; ?>
+                            <?php foreach ($komunitas as $k) : ?>
+                                <h3 style="margin:10px"><?= $k->nama_komunitas ?></h3>
+                                <hr>
+                            <?php endforeach; ?>
                         <?php endif; ?>
                     </div>
                 </div>
