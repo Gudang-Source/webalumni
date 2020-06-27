@@ -6,7 +6,7 @@
 <!-- END BREADCRUMB -->
 
 <div class="page-title">
-    <h2> Lihat Forum Bisnis</h2>
+    <h2>Kelola Forum Bisnis</h2>
 </div>
 
 <?= showFlashMessage(); ?>

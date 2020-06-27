@@ -98,9 +98,11 @@
                     <a href="#"><span class="fa fa-briefcase"></span> <span class="xn-text">Forum Bisnis</span></a>
                     <ul>
                         <li><a href="<?= base_url('anggota/ForumBisnis') ?>"><span class="fa fa-bullhorn"></span>
-                                Forum Bisnis Aktif</a></li>
+                                Kelola Forum Bisnis</a></li>
                         <li><a href="<?= base_url('anggota/ForumBisnis/forumBisnisNonaktif') ?>"><span class="fa fa-minus"></span>
                                 Forum Bisnis Nonaktif </a></li>
+                        <li><a href="<?= base_url('anggota/ForumBisnis/tambahCalonForbis') ?>"><span class="fa fa-plus"></span>
+                                Tambah Forum Bisnis</a></li>
                     </ul>
                 </li>
 
