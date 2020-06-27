@@ -186,4 +186,37 @@ class ForumBisnis extends MY_Controller
 
         $this->anggota_render('anggota/ForumBisnis', $data);
     }
+
+    function forumBisnisNonaktif()
+    {
+        $data['title'] = 'Forum Bisnis Nonaktif';
+        $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+        $id_pemilik = $data['info'];
+
+        $id = $id_pemilik[0]->id_anggota;
+
+        $data['jenisBisnis'] = $this->M_jenisBisnis->getAllJenisBisnis();
+
+        $data['forumBisnis'] = $this->M_forumBisnis->getAllForbisByIdNonaktif($id);
+
+        if ($this->session->userdata('role') == 3) {
+            $this->anggota_render('anggota/forumBisnisNonaktif', $data);
+        }
+    }
+
+    public function setDeleteForumBisnisNonaktif()
+    {
+        $id = $this->input->post('idForbisDelete');
+
+        $sukses = $this->M_forumBisnis->deleteForumBisnis($id);
+
+        if (!$sukses) {
+            flashMessage('success', 'Forum Bisnis berhasil dihapus');
+            redirect('anggota/ForumBisnis/forumBisnisNonaktif');
+        } else {
+            flashMessage('error', 'Forum Bisnis gagal dihapus! Silahkan coba lagi');
+            redirect('anggota/forumBisnisNonaktif');
+        }
+    }
 }

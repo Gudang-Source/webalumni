@@ -17,8 +17,8 @@
     <div class="row">
         <!--  -->
         <div class="col-md-12">
-            <a href="<?= base_url(''); ?>" class="btn btn-success" style="margin-bottom: 15px;"><b>&plus;</b> Tambah Forum Bisnis</a>
-            <a href="<?= base_url(''); ?>" class="btn btn-info" style="margin-bottom: 15px;">Forum Bisnis Nonaktif</a>
+            <a href="<?= base_url('anggota/ForumBisnis/tambahCalonForbis'); ?>" class="btn btn-success" style="margin-bottom: 15px;"><b>&plus;</b> Tambah Forum Bisnis</a>
+            <a href="<?= base_url('anggota/ForumBisnis/forumBisnisNonaktif'); ?>" class="btn btn-info" style="margin-bottom: 15px;">Forum Bisnis Nonaktif</a>
             <br>
             <div class="panel panel-default">
                 <div class="panel-body">
