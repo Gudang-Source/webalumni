@@ -26,8 +26,11 @@ class ForumBisnis extends MY_Controller
         $data['title'] = 'Kelola Forum Bisnis';
         $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
         $data['jenisBisnis'] = $this->M_jenisBisnis->getAllJenisBisnis();
+        $id_pemilik = $data['info'];
 
-        $data['forumBisnis'] = $this->M_forumBisnis->getAllForbisById();
+        $id = $id_pemilik[0]->id_anggota;
+
+        $data['forumBisnis'] = $this->M_forumBisnis->getAllForbisById($id);
 
         $this->alumni_render('alumni/forumBisnis', $data);
     }

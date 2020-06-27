@@ -59,7 +59,7 @@
                         </a>
                     </div>
                 </div> -->
-                <h2 class="text-center" style="margin-top: 10px;">Ups . . . ! Berita tidak ditemukan</h2>
+                <h2 class="text-center" style="margin-top: 10px;">Ups . . . ! Forum Bisnis anda tidak ditemukan</h2>
             </div>
         </div>
 
