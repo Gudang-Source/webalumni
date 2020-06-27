@@ -65,7 +65,7 @@ class Berita extends MY_Controller
 
     function formTambahCalonBerita()
     {
-        $data['title'] = 'Form Tambah Calon Berita';
+        $data['title'] = 'Tambah Berita';
         $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
         $data['calonBerita'] = $this->M_berita->getAllBerita();
