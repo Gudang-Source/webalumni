@@ -40,7 +40,7 @@ class ForumBisnis extends MY_Controller
 
     function tambahCalonForbis()
     {
-        $data['title'] = 'Tambah Calon Forum Bisnis';
+        $data['title'] = 'Tambah Forum Bisnis';
         $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
         $data['jenisBisnis'] = $this->M_jenisBisnis->getAllJenisBisnis();
         // $data['forumBisnis'] = $this->M_forumBisnis->getAllForbisById();

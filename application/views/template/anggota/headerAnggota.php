@@ -80,8 +80,8 @@
                     <ul>
                         <li><a href="<?= base_url('anggota/Anggota') ?>"><span class="fa fa-user"></span> Lihat
                                 Anggota</a></li>
-                        <li><a href="<?= base_url('anggota/Anggota/KelolaAnggota') ?>"><span class="fa fa-users"></span>
-                                Tambahkan Anggota </a></li>
+                        <li><a href="<?= base_url('anggota/Anggota/KelolaAnggota') ?>"><span class="fa fa-plus"></span>
+                                Tambah Anggota </a></li>
                     </ul>
                 </li>
 
@@ -99,7 +99,7 @@
                         <li><a href="<?= base_url('anggota/ForumBisnis') ?>"><span class="fa fa-bullhorn"></span> Lihat
                                 Forum Bisnis</a></li>
                         <li><a href="<?= base_url('anggota/ForumBisnis/tambahCalonForbis') ?>"><span class="fa fa-plus"></span>
-                                Tambah Calon ForBis </a></li>
+                                Tambah Forum Bisnis </a></li>
                     </ul>
                 </li>
 
@@ -108,7 +108,7 @@
                     <ul>
                         <li><a href="<?= base_url('anggota/Komunitas') ?>"><span class="fa fa-cube"></span> Lihat
                                 Komunitas</a></li>
-                        <li><a href="<?= base_url('anggota/Komunitas/tambahKomunitas') ?>"><span class="fa fa-plus"></span> Tambah Calon Komunitas </a></li>
+                        <li><a href="<?= base_url('anggota/Komunitas/tambahKomunitas') ?>"><span class="fa fa-plus"></span> Tambah Komunitas </a></li>
                     </ul>
                 </li>
 
