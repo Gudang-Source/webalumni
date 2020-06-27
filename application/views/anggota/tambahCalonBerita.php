@@ -21,7 +21,7 @@
 
                 <div class="panel-body">
 
-                    <!-- <h5>Tambah Berita</h5> -->
+                    <p>Formulir Permohonan Berita Baru IKASMA3BDG.</p>
 
                     <div class="form-group">
                         <form action="<?= base_url('anggota/Berita/tambahCalonBerita'); ?>" class="form-horizontal" id="form-tambah-berita-validate" method="post" enctype="multipart/form-data">

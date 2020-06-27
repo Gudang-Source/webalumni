@@ -26,7 +26,7 @@ class Anggota extends MY_Controller
 
     function index()
     {
-        $data['title'] = 'Anggota - Lihat Anggota';
+        $data['title'] = 'Anggota IKASMA3BDG';
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
         $where = $this->session->userdata('uid');
@@ -40,7 +40,7 @@ class Anggota extends MY_Controller
 
     function kelolaAnggota()
     {
-        $data['title'] = 'Kelola Anggota';
+        $data['title'] = 'Tambah Anggota';
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
         $angkatan = $data['info'][0]->angkatan;
 

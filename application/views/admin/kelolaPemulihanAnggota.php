@@ -18,56 +18,50 @@
     <div class="row">
         <div class="col-md-12">
 
-            <div class="panel panel-default tabs">
-                <ul class="nav nav-tabs" role="tablist">
-                    <li class="active"><a href="#tab-first" role="tab" data-toggle="tab">Kelola Pemulihan Anggota</a>
-                    </li>
-                </ul>
+            <div class="panel panel-default">
 
-                <div class="panel-body tab-content">
+                <div class="panel-body">
 
-                    <div class="tab-pane active" id="tab-first">
-                        <p>Daftar Permohonan Pemulihan Akun Anggota IKASMA3BDG.</p>
+                    <p>Daftar Permohonan Pemulihan Akun Anggota IKASMA3BDG.</p>
 
-                        <div class="form-group">
-                            <div class="panel-body">
+                    <div class="form-group">
+                        <div class="panel-body">
 
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-striped table-actions datatable">
-                                        <thead>
-                                            <tr>
-                                                <th width="50">No</th>
-                                                <th width="200">Username</th>
-                                                <th width="200">Tanggal Permohonan</th>
-                                                <th width="100">Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $no = 1;
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-actions datatable">
+                                    <thead>
+                                        <tr>
+                                            <th width="50">No</th>
+                                            <th width="200">Username</th>
+                                            <th width="200">Tanggal Permohonan</th>
+                                            <th width="100">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $no = 1;
 
-                                            foreach ($pemulihan as $CA) { ?>
-                                                <?php if ($CA->status_pemulihan == 0) : ?>
-                                                    <tr id="trow_1">
-                                                        <td class="text-center"><?= $no; ?></td>
-                                                        <td><strong><?= $CA->username; ?></strong></td>
-                                                        <td><strong><?= $CA->date_created; ?></strong></td>
+                                        foreach ($pemulihan as $CA) { ?>
+                                            <?php if ($CA->status_pemulihan == 0) : ?>
+                                                <tr id="trow_1">
+                                                    <td class="text-center"><?= $no; ?></td>
+                                                    <td><strong><?= $CA->username; ?></strong></td>
+                                                    <td><strong><?= $CA->date_created; ?></strong></td>
 
-                                                        <td>
-                                                            <button type="button" class="btn btn-primary mb-control btn-terima" data-box="#message-box-terima" id="<?= $CA->id_pemulihan; ?>">Terima</button>
-                                                            <button type="button" class="btn btn-danger mb-control btn-tolak" data-box="#message-box-tolak" id="<?= $CA->id_pemulihan;
-                                                                                                                                                                ?>">Tolak</button>
-                                                        </td>
-                                                    </tr>
-                                                <?php endif ?>
-                                            <?php
-                                                $no++;
-                                            } ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-
+                                                    <td>
+                                                        <button type="button" class="btn btn-primary mb-control btn-terima" data-box="#message-box-terima" id="<?= $CA->id_pemulihan; ?>">Terima</button>
+                                                        <button type="button" class="btn btn-danger mb-control btn-tolak" data-box="#message-box-tolak" id="<?= $CA->id_pemulihan;
+                                                                                                                                                            ?>">Tolak</button>
+                                                    </td>
+                                                </tr>
+                                            <?php endif ?>
+                                        <?php
+                                            $no++;
+                                        } ?>
+                                    </tbody>
+                                </table>
                             </div>
+
                         </div>
                     </div>
 

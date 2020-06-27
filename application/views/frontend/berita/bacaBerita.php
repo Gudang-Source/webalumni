@@ -21,6 +21,7 @@
     <div class="container" style="margin-top: 80px;">
         <!-- START BREADCRUMB -->
         <ul class="breadcrumb">
+            <li><a href="<?= base_url(''); ?>">Beranda</a></li>
             <li><a href="<?= base_url('berita'); ?>">Berita</a></li>
             <li class="active"><a href="<?= base_url('berita/baca/') . $berita[0]->id_berita; ?>">Baca Berita</a></li>
         </ul>
