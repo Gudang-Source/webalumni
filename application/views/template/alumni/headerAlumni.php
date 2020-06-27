@@ -98,10 +98,12 @@
                 <li class="xn-openable">
                     <a href="#"><span class="fa fa-briefcase"></span> <span class="xn-text">Forum Bisnis</span></a>
                     <ul>
-                        <li><a href="<?= base_url('alumni/ForumBisnis') ?>"><span class="fa fa-bullhorn"></span> Lihat
-                                Forum Bisnis</a></li>
+                        <li><a href="<?= base_url('alumni/ForumBisnis') ?>"><span class="fa fa-bullhorn"></span>
+                                Kelola Forum Bisnis</a></li>
+                        <li><a href="<?= base_url('alumni/ForumBisnis/forumBisnisNonaktif') ?>"><span class="fa fa-minus"></span>
+                                Forum Bisnis Nonaktif </a></li>
                         <li><a href="<?= base_url('alumni/ForumBisnis/tambahCalonForbis') ?>"><span class="fa fa-plus"></span>
-                                Tambah Calon ForBis </a></li>
+                                Tambah Forum Bisnis</a></li>
                     </ul>
                 </li>
 

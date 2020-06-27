@@ -16,39 +16,33 @@
     <div class="row">
         <div class="col-md-12">
 
-            <div class="panel panel-default tabs">
-                <ul class="nav nav-tabs" role="tablist">
-                    <li class="active"><a href="#tab-first" role="tab" data-toggle="tab">Permohonan Calon Forum
-                            Binsis</a>
-                </ul>
+            <div class="panel panel-default">
 
-                <div class="panel-body tab-content">
+
+                <div class="panel-body">
 
                     <div class="tab-pane active" id="tab-first">
                         <p>Daftar Permohonan Calon Forum Bisnis IKASMA3BDG.</p>
 
                         <div class="form-group">
-                            <form action="<?= base_url('alumni/ForumBisnis/setAddForbis'); ?>" class="form-horizontal"
-                                id="form-tambah-forbis-validate" method="post" enctype="multipart/form-data">
+                            <form action="<?= base_url('alumni/ForumBisnis/setAddForbis'); ?>" class="form-horizontal" id="form-tambah-forbis-validate" method="post" enctype="multipart/form-data">
                                 <div class="panel-body">
 
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">* Nama Bisnis / Usaha</label>
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control" name="namaBisnisUsahaModal"
-                                                placeholder="Nama Forum Binis" required clear />
+                                            <input type="text" class="form-control" name="namaBisnisUsahaModal" placeholder="Nama Forum Binis" required clear />
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">* Jenis Bisnis / Usaha :</label>
                                         <div class="col-md-8">
-                                            <select name="jenisBisnisUsahaModal"
-                                                class="validate[required] form-control select" required>
+                                            <select name="jenisBisnisUsahaModal" class="validate[required] form-control select" required>
                                                 <option value="">Pilih Jenis</option>
                                                 <?php foreach ($jenisBisnis as $jb) { ?>
-                                                <option value="<?= $jb->id_jenis_bisnis ?>">
-                                                    <?= $jb->nama_jenis_bisnis ?></option>
+                                                    <option value="<?= $jb->id_jenis_bisnis ?>">
+                                                        <?= $jb->nama_jenis_bisnis ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
@@ -57,29 +51,25 @@
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">* Deskripsi Bisnis / Usaha :</label>
                                         <div class="col-md-8">
-                                            <textarea rows="5" class="form-control" name="deskripsiBisnisUsahaModal"
-                                                placeholder="Deskripsi Singkat Bisnis / Usaha" required></textarea>
+                                            <textarea rows="5" class="form-control" name="deskripsiBisnisUsahaModal" placeholder="Deskripsi Singkat Bisnis / Usaha" required></textarea>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">* Alamat Bisnis / Usaha :</label>
                                         <div class="col-md-8">
-                                            <textarea rows="5" class="form-control" name="alamatBisnisUsahaModal"
-                                                placeholder="Alamat Bisnis / Usaha" required></textarea>
+                                            <textarea rows="5" class="form-control" name="alamatBisnisUsahaModal" placeholder="Alamat Bisnis / Usaha" required></textarea>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">* No. Telepon :</label>
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control" name="noTelpBisnisUsahaModal"
-                                                placeholder="No Telepon Bisnis / Usaha" required />
+                                            <input type="text" class="form-control" name="noTelpBisnisUsahaModal" placeholder="No Telepon Bisnis / Usaha" required />
                                         </div>
                                     </div>
 
-                                    <input type="hidden" class="form-control" name="pemilikBisnisUsahaModal"
-                                        value="<?= $info[0]->id_anggota ?>">
+                                    <input type="hidden" class="form-control" name="pemilikBisnisUsahaModal" value="<?= $info[0]->id_anggota ?>">
 
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">* Logo Bisnis / Usaha</label>
@@ -149,10 +139,10 @@
 
 
 <script>
-$("#file-simple").fileinput({
-    showUpload: false,
-    showCaption: false,
-    browseClass: "btn btn-danger",
-    fileType: "any"
-});
+    $("#file-simple").fileinput({
+        showUpload: false,
+        showCaption: false,
+        browseClass: "btn btn-danger",
+        fileType: "any"
+    });
 </script>

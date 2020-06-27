@@ -37,10 +37,9 @@ class ForumBisnis extends MY_Controller
 
     function tambahCalonForbis()
     {
-        $data['title'] = 'Tambah Calon Forum Bisnis';
+        $data['title'] = 'Tambah Forum Bisnis';
         $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
         $data['jenisBisnis'] = $this->M_jenisBisnis->getAllJenisBisnis();
-        $data['forumBisnis'] = $this->M_forumBisnis->getAllForbisById();
 
         $this->alumni_render('alumni/tambahCalonForBis', $data);
     }
@@ -92,5 +91,163 @@ class ForumBisnis extends MY_Controller
                 redirect('alumni/ForumBisnis/tambahCalonForbis');
             }
         }
+    }
+
+    public function setUpdateForbis()
+    {
+        $id = $this->input->post('idForbisEdit');
+        $namaBisnisEdit = $this->input->post('namaBisnisEdit');
+        $jenisBisnisEdit = $this->input->post('jenisBisnisEdit');
+        $deskripsiBisnisEdit = $this->input->post('deskripsiBisnisEdit');
+        $alamatBisnisEdit = $this->input->post('alamatBisnisEdit');
+        $noTelpBisnisEdit = $this->input->post('noTelpBisnisEdit');
+        $pemilikBisnisEdit = $this->input->post('pemilikBisnisEdit');
+
+        $data['nama_bisnis_usaha'] = $namaBisnisEdit;
+        $data['id_jenis_bisnis'] = $jenisBisnisEdit;
+        $data['deskripsi_bisnis'] = $deskripsiBisnisEdit;
+        $data['alamat_bisnis'] = $alamatBisnisEdit;
+        $data['no_telp_bisnis'] = $noTelpBisnisEdit;
+        $data['pemilik_id'] = $pemilikBisnisEdit;
+        $data['stat_forbis'] = 1;
+
+        $sukses = $this->M_forumBisnis->updateForumBisnis($data, $id);
+
+        if (!$sukses) {
+            flashMessage('success', 'Bisnis / Usaha Anggota berhasil diperbarui.');
+            redirect('alumni/ForumBisnis');
+        } else {
+            flashMessage('error', 'Bisnis / Usaha Anggota gagal diperbarui! Silahkan coba lagi.');
+            redirect('alumni/ForumBisnis');
+        }
+    }
+
+    public function setUpdateFoto()
+    {
+        $this->load->model('M_forumBisnis');
+
+        $idFoto = $this->input->post('idUbahFoto');
+        $judulFoto = $this->input->post('judulUbahFoto');
+
+        $filename = "berita-" . $judulFoto . "-" . time();
+
+        // Set preferences
+        $config['upload_path'] = './uploads/logo-bisnis';
+        $config['allowed_types'] = 'png|jpg|jpeg';
+        $config['file_name'] = $filename;
+
+        // load upload class library
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('fileSaya')) {
+            flashMessage('error', 'Maaf, Upload gambar Forum Bisnis gagal! Silahkan coba lagi');
+            redirect('alumni/ForumBisnis');
+        } else {
+            $upload_data = $this->upload->data();
+
+            $data = $this->M_forumBisnis->findForbisFoto('nama_foto_bisnis', array('tb_forum_bisnis.id_forbis = ' => $idFoto));
+
+            $forbis['nama_foto_bisnis'] = $upload_data['file_name'];
+
+            unlink(FCPATH . 'uploads/logo-bisnis/' . $data[0]->nama_foto_bisnis);
+
+            // echo json_encode($data);
+            $sukses = $this->M_forumBisnis->updateForumBisnis($forbis, $idFoto);
+
+            if (!$sukses) {
+                flashMessage('success', 'Foto berhasil di ubah.');
+                redirect('alumni/ForumBisnis');
+            } else {
+                flashMessage('error', 'Foto gagal di ubah! Silahkan coba lagi');
+                redirect('alumni/ForumBisnis');
+            }
+        }
+    }
+
+    public function getForbisById()
+    {
+        $id = $this->input->post('id');
+
+        $data['forbis'] = $this->M_forumBisnis->findForumBisnis(array('tb_forum_bisnis.id_forbis = ' => $id));
+
+        echo json_encode($data);
+    }
+
+    public function setDeleteForumBisnis()
+    {
+        $id = $this->input->post('idForbisDelete');
+
+        $sukses = $this->M_forumBisnis->deleteForumBisnis($id);
+
+        if (!$sukses) {
+            flashMessage('success', 'Forum Bisnis berhasil dihapus');
+            redirect('alumni/ForumBisnis');
+        } else {
+            flashMessage('error', 'Forum Bisnis gagal dihapus! Silahkan coba lagi');
+            redirect('alumni/ForumBisnis');
+        }
+    }
+
+    function forumBisnisNonaktif()
+    {
+        $data['title'] = 'Forum Bisnis Nonaktif';
+        $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+        $id_pemilik = $data['info'];
+        $id = $id_pemilik[0]->id_anggota;
+
+        $data['jenisBisnis'] = $this->M_jenisBisnis->getAllJenisBisnis();
+        $data['forumBisnis'] = $this->M_forumBisnis->getAllForbisByIdNonaktif($id);
+
+        if ($this->session->userdata('role') == 4) {
+            $this->alumni_render('alumni/forumBisnisNonaktif', $data);
+        }
+    }
+
+    public function setDeleteForumBisnisNonaktif()
+    {
+        $id = $this->input->post('idForbisDelete');
+
+        $sukses = $this->M_forumBisnis->deleteForumBisnis($id);
+
+        if (!$sukses) {
+            flashMessage('success', 'Forum Bisnis berhasil dihapus');
+            redirect('alumni/ForumBisnis/forumBisnisNonaktif');
+        } else {
+            flashMessage('error', 'Forum Bisnis gagal dihapus! Silahkan coba lagi');
+            redirect('alumni/forumBisnisNonaktif');
+        }
+    }
+
+    public function cariForumBisnisNonAktif()
+    {
+        $data['title'] = 'Lihat Forum Bisnis';
+        $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+        $namaForbis = $this->input->post('namaBisnis');
+        $id_pemilik = $data['info'];
+        $id = $id_pemilik[0]->id_anggota;
+
+        $data['jenisBisnis'] = $this->M_jenisBisnis->getAllJenisBisnis();
+        $data['forumBisnis'] = $this->M_forumBisnis->cariForumBisnisNonAktif($id, $namaForbis);
+
+        $this->alumni_render('alumni/forumBisnisNonaktif', $data);
+    }
+
+    public function cariForumBisnis()
+    {
+        $data['title'] = 'Lihat Forum Bisnis';
+
+        $namaForbis = $this->input->post('namaBisnis');
+
+        $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+        $id_pemilik = $data['info'];
+        $id = $id_pemilik[0]->id_anggota;
+
+        $data['jenisBisnis'] = $this->M_jenisBisnis->getAllJenisBisnis();
+        $data['forumBisnis'] = $this->M_forumBisnis->cariForumBisnis($id, $namaForbis);
+
+        $this->alumni_render('alumni/ForumBisnis', $data);
     }
 }
