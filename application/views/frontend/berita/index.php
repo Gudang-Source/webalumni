@@ -110,17 +110,15 @@
                     <?php endforeach; ?>
                 </div>
 
-                <?php if ($size > 5) : ?>
-                    <div class="row">
-                        <div class="panel panel-default">
-                            <div class="col-md-12">
-                                <div class="panel-body">
-                                    <h3><b><?= $this->pagination->create_links(); ?></b></h3>
-                                </div>
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="col-md-12">
+                            <div class="panel-body">
+                                <h3><b><?= $this->pagination->create_links(); ?></b></h3>
                             </div>
                         </div>
                     </div>
-                <?php endif; ?>
+                </div>
             </div>
         </div>
 

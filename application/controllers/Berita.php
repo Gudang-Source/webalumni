@@ -34,7 +34,6 @@ class Berita extends MY_Controller
     {
         $data['title'] = 'Berita';
         $data['info'] = $this->FrontPageModel->getInfoBySessionId();
-        $data['size'] = $this->M_berita->getBeritaSize();
         $data['start'] = $this->uri->segment(3);
 
         $config['base_url'] = 'http://localhost/webalumni/berita/index';
@@ -111,6 +110,7 @@ class Berita extends MY_Controller
     function kategori($id)
     {
         $data['info'] = $this->FrontPageModel->getInfoBySessionId();
+        $data['start'] = $this->uri->segment(4);
 
         $config['base_url'] = 'http://localhost/webalumni/berita/kategori/' . $id;
         $config['total_rows'] = $this->M_berita->getBeritaSizeLikeKategori($id);
@@ -145,7 +145,7 @@ class Berita extends MY_Controller
 
         $this->pagination->initialize($config);
 
-        $data['daftarBerita'] = $this->M_berita->findBeritaLikeKategori($id);
+        $data['daftarBerita'] = $this->M_berita->findBeritaLikeKategori($id, $config['per_page'], $data['start']);
         $data['title'] = $data['daftarBerita'][0]->kategori;
         $data['kategori'] = '<h2 class="text-info"><b>#' . $data['daftarBerita'][0]->kategori . '</b></h2>';
 
