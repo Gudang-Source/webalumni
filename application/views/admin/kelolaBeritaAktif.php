@@ -6,7 +6,7 @@
 <!-- END BREADCRUMB -->
 
 <div class="page-title">
-    <h2> Kelola Berita</h2>
+    <h2> Kelola Berita Aktif</h2>
 </div>
 
 <?= showFlashMessage(); ?>
@@ -15,95 +15,103 @@
 <div class="page-content-wrap">
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <p>Cari Berita</p>
-                    <form action="<?= base_url('admin/Berita/cariBerita'); ?>" method="post">
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <span class="fa fa-search"></span>
-                                    </div>
-                                    <input type="text" class="form-control" name="judulBerita" placeholder="Berita mana yang akan anda cari ?">
-                                    <div class="input-group-btn">
-                                        <button type="submit" class="btn btn-primary">Cari</button>
+                    <div class="row">
+                        <p>Cari Berita</p>
+                        <form action="<?= base_url('admin/Berita/cariBerita'); ?>" method="post">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="judulBerita" placeholder="Berita apa yang anda cari ?">
+                                        <div class="input-group-btn">
+                                            <button type="submit" class="btn btn-primary"><span class="fa fa-search"></span></button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-2">
-                                <a href="<?= base_url('admin/Berita/kelolaBerita'); ?>" class="btn btn-primary">Reset Pencarian</a>
+                        </form>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <a href="<?= base_url('admin/Berita/kelolaBerita'); ?>" class="btn btn-primary">Reset
+                                    Pencarian</a>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="row">
-        <?php foreach ($berita as $B) { ?>
-            <?php if ($B->stat_berita == 1) : ?>
-                <div class="col-md-4">
-                    <!-- CONTACT ITEM -->
-                    <div class="panel panel-default">
-                        <div class="panel-body profile">
-                            <div class="profile-image">
-                                <?php if ($B->foto == NULL) { ?>
-                                    <img src="<?php echo base_url('uploads/no-image.jpg'); ?> " alt="No Image" title="Default Image">
-                                <?php } else { ?>
-                                    <img src="<?php echo base_url('uploads/content/berita/' . $B->foto); ?> " alt="<?= $B->judul_berita; ?>" title="<?= $B->judul_berita; ?>">
-                                <?php } ?>
+        <?php if ($berita) : ?>
+            <?php foreach ($berita as $B) { ?>
+                <?php if ($B->stat_berita == 1) : ?>
+                    <div class="col-md-4">
+                        <!-- CONTACT ITEM -->
+                        <div class="panel panel-default">
+                            <div class="panel-body profile">
+                                <div class="profile-image">
+                                    <?php if ($B->foto == NULL) { ?>
+                                        <img src="<?php echo base_url('uploads/no-image.jpg'); ?> " alt="No Image" title="Default Image">
+                                    <?php } else { ?>
+                                        <img src="<?php echo base_url('uploads/content/berita/' . $B->foto); ?> " alt="<?= $B->judul_berita; ?>" title="<?= $B->judul_berita; ?>">
+                                    <?php } ?>
+                                </div>
+                                <div class="profile-data">
+                                    <div class="profile-data-name"><?= $B->judul_berita; ?></div>
+                                </div>
+                                <div class="profile-controls">
+                                    <a class="profile-control-left btn-ubah-foto" title="Ubah Foto" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-ubah-foto"><span class="fa fa-edit"></span></a>
+                                    <a class="profile-control-right btn-hapus-berita" title="Hapus" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-hapus-berita"><span class="fa fa-trash-o"></span></a>
+                                </div>
                             </div>
-                            <div class="profile-data">
-                                <div class="profile-data-name"><?= $B->judul_berita; ?></div>
+                            <div class="panel-body" style="height: 100%;">
+                                <div class="contact-info">
+
+                                    <?php if ($B->date_created == "") { ?>
+                                        <p><small>Tanggal Dibuat</small><br>Belum di isi</p>
+                                    <?php } else { ?>
+                                        <p><small>Tanggal Dibuat</small><br><?= $B->date_created; ?></p>
+                                    <?php } ?>
+
+                                    <?php if ($B->time_created == "") { ?>
+                                        <p><small>Waktu Dibuat</small><br>Belum di isi</p>
+                                    <?php } else { ?>
+                                        <p><small>Waktu Dibuat</small><br><?= $B->time_created; ?></p>
+                                    <?php } ?>
+
+                                    <?php if ($B->username == "") { ?>
+                                        <p><small>Penulis</small><br>Belum di isi</p>
+                                    <?php } else { ?>
+                                        <p><small>Penulis</small><br><?= $B->username; ?></p>
+                                    <?php } ?>
+
+                                    <?php if ($B->kategori == "") { ?>
+                                        <p><small>Kategori</small><br>Belum di isi</p>
+                                    <?php } else { ?>
+                                        <p><small>Kategori</small><br><?= $B->kategori; ?></p>
+                                    <?php } ?>
+
+                                </div>
                             </div>
-                            <div class="profile-controls">
-                                <a class="profile-control-left btn-ubah-foto" title="Ubah Foto" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-ubah-foto"><span class="fa fa-edit"></span></a>
-                                <a class="profile-control-right btn-hapus-berita" title="Hapus" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-hapus-berita"><span class="fa fa-trash-o"></span></a>
+                            <div class="panel-footer text-center">
+                                <a class="btn btn-primary btn-rounded btn-block btn-ubah-berita" title="Ubah Berita" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-ubah-berita"><span class="fa fa-edit"></span> Ubah</a>
+                                <a class="btn btn-info btn-rounded btn-block btn-isi-berita" title="Isi Berita" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-isi-berita">Isi Berita</a>
                             </div>
+                            <!-- END CONTACT ITEM -->
                         </div>
-                        <div class="panel-body" style="height: 100%;">
-                            <div class="contact-info">
-
-                                <?php if ($B->date_created == "") { ?>
-                                    <p><small>Tanggal Dibuat</small><br>Belum di isi</p>
-                                <?php } else { ?>
-                                    <p><small>Tanggal Dibuat</small><br><?= $B->date_created; ?></p>
-                                <?php } ?>
-
-                                <?php if ($B->time_created == "") { ?>
-                                    <p><small>Waktu Dibuat</small><br>Belum di isi</p>
-                                <?php } else { ?>
-                                    <p><small>Waktu Dibuat</small><br><?= $B->time_created; ?></p>
-                                <?php } ?>
-
-                                <?php if ($B->username == "") { ?>
-                                    <p><small>Penulis</small><br>Belum di isi</p>
-                                <?php } else { ?>
-                                    <p><small>Penulis</small><br><?= $B->username; ?></p>
-                                <?php } ?>
-
-                                <?php if ($B->kategori == "") { ?>
-                                    <p><small>Kategori</small><br>Belum di isi</p>
-                                <?php } else { ?>
-                                    <p><small>Kategori</small><br><?= $B->kategori; ?></p>
-                                <?php } ?>
-
-                            </div>
-                        </div>
-                        <div class="panel-footer text-center">
-                            <a class="btn btn-primary btn-rounded btn-block btn-ubah-berita" title="Ubah Berita" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-ubah-berita"><span class="fa fa-edit"></span> Ubah</a>
-                            <a class="btn btn-info btn-rounded btn-block btn-isi-berita" title="Isi Berita" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-isi-berita">Isi Berita</a>
-                        </div>
-                        <!-- END CONTACT ITEM -->
                     </div>
+                <?php endif; ?>
+            <?php } ?>
+        <?php else : ?>
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="text-center" style="margin-top: 10px;">Berita tidak ditemukan</h2>
                 </div>
-            <?php endif ?>
-        <?php } ?>
+            </div>
+        <?php endif; ?>
     </div>
 </div>
 
@@ -286,8 +294,10 @@
                 <hr>
                 <p class="h4" id="isiBeritaOpened" name="isiBeritaOpened"></p>
                 <hr>
-                <p id="sumberBeritaOpened" name="sumberBeritaOpened"><small>Sumber</small> : </p>
-                <p id="creditBeritaOpened" name="creditBeritaOpened"><small>Credit</small> : </p>
+                <small>Sumber</small> :
+                <p id="sumberBeritaOpened" name="sumberBeritaOpened"></p>
+                <small>Credit</small> :
+                <p id="creditBeritaOpened" name="creditBeritaOpened"></p>
             </div>
             </>
         </div>
@@ -387,8 +397,8 @@
 
                     document.getElementById('judulIsiBerita').innerHTML = judulIsiBerita;
                     document.getElementById('isiBeritaOpened').innerHTML = isiBeritaOpened.replace(/\r\n|\r|\n/g, "<br />");
-                    document.getElementById('sumberBeritaOpened').innerHTML += sumberBeritaOpened;
-                    document.getElementById('creditBeritaOpened').innerHTML += creditBeritaOpened;
+                    document.getElementById('sumberBeritaOpened').innerHTML = sumberBeritaOpened;
+                    document.getElementById('creditBeritaOpened').innerHTML = creditBeritaOpened;
                 });
         });
     </script>

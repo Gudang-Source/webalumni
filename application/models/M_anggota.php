@@ -37,6 +37,7 @@ class M_anggota extends CI_Model
     {
         $this->db->where($where);
         $this->db->like('nama_lengkap', $nama, 'both');
+        $this->db->order_by('id_anggota', 'DESC');
 
         return $this->db->get('tb_anggota')->result();
     }

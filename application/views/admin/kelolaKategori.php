@@ -6,7 +6,7 @@
 <!-- END BREADCRUMB -->
 
 <div class="page-title">
-    <h2> Kelola Kategori Berita</h2>
+    <h2>Kelola Kategori</h2>
 </div>
 
 <?= showFlashMessage(); ?>
@@ -16,7 +16,7 @@
         <div class="col-md-2">
             <button class="btn btn-success" data-toggle="modal" data-target="#tambahKategori">
                 <i class="fa fa-plus-circle"></i>
-                <span>Tambah Kategori Berita</span>
+                <span>Tambah Kategori</span>
             </button>
         </div>
     </div>
