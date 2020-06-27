@@ -347,4 +347,19 @@ class ForumBisnis extends MY_Controller
         }
         // echo json_encode($idKomunitas);
     }
+
+
+    public function cariForumBisnis()
+    {
+        $data['title'] = 'Lihat Forum Bisnis';
+        $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+        $namaForbis = $this->input->post('namaForumBisnis');
+
+
+        $data['jenisBisnis'] = $this->M_jenisBisnis->getAllJenisBisnis();
+        $data['forumBisnis'] = $this->M_forumBisnis->findForumBisnisLikeNama($namaForbis);
+
+        $this->admin_render('admin/kelolaForumBisnis', $data);
+    }
 }
