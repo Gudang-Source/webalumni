@@ -17,6 +17,9 @@
     <div class="row">
         <!--  -->
         <div class="col-md-12">
+            <a href="<?= base_url(''); ?>" class="btn btn-success" style="margin-bottom: 15px;"><b>&plus;</b> Tambah Forum Bisnis</a>
+            <a href="<?= base_url(''); ?>" class="btn btn-info" style="margin-bottom: 15px;">Forum Bisnis Nonaktif</a>
+            <br>
             <div class="panel panel-default">
                 <div class="panel-body">
                     <p>Cari Forum Bisnis</p>
@@ -59,7 +62,7 @@
                         </a>
                     </div>
                 </div> -->
-                <h2 class="text-center" style="margin-top: 10px;">Ups . . . ! Berita tidak ditemukan</h2>
+                <h2 class="text-center" style="margin-top: 10px;">Ups . . . ! Forum Bisnis anda tidak ditemukan</h2>
             </div>
         </div>
 

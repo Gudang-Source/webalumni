@@ -12,28 +12,26 @@
     <!-- END META SECTION -->
 
     <!-- CSS INCLUDE -->
-    <link rel="stylesheet" type="text/css" id="theme"
-        href="<?php echo base_url('assets/html/css/theme-default.css') ?>" />
+    <link rel="stylesheet" type="text/css" id="theme" href="<?php echo base_url('assets/html/css/theme-default.css') ?>" />
 
     <style>
-    .alert {
-        animation: autoHide 0s ease-in 8s forwards;
-    }
-
-    @keyframes autoHide {
-        to {
-            visibility: hidden;
-            position: absolute;
+        .alert {
+            animation: autoHide 0s ease-in 8s forwards;
         }
-    }
+
+        @keyframes autoHide {
+            to {
+                visibility: hidden;
+                position: absolute;
+            }
+        }
     </style>
 
     <!-- jQuery JS -->
     <script type="text/javascript" src="<?php echo base_url('assets/html/js/plugins/jquery/jquery.min.js') ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/html/js/plugins/jquery/jquery-ui.min.js') ?>">
     </script>
-    <script type='text/javascript'
-        src="<?php echo base_url('assets/html/js/plugins/jquery-validation/jquery.validate.js') ?>"></script>
+    <script type='text/javascript' src="<?php echo base_url('assets/html/js/plugins/jquery-validation/jquery.validate.js') ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/html/js/plugins/fileinput/fileinput.min.js') ?>">
     </script>
 </head>
@@ -53,19 +51,17 @@
                 <li class="xn-profile">
                     <a href="#" class="profile-mini">
                         <?php if (empty($info[0]->nama_foto)) { ?>
-                        <img src="<?php echo base_url('uploads/no-image.jpg'); ?>" alt="Belum ada foto" />
+                            <img src="<?php echo base_url('uploads/no-image.jpg'); ?>" alt="Belum ada foto" />
                         <?php } else { ?>
-                        <img src="<?php echo base_url('uploads/avatars/' . $info[0]->nama_foto); ?>"
-                            alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" />
+                            <img src="<?php echo base_url('uploads/avatars/' . $info[0]->nama_foto); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" />
                         <?php } ?>
                     </a>
                     <div class="profile">
                         <div class="profile-image">
                             <?php if (empty($info[0]->nama_foto)) { ?>
-                            <img src="<?php echo base_url('uploads/no-image.jpg'); ?>" alt="Belum ada foto" />
+                                <img src="<?php echo base_url('uploads/no-image.jpg'); ?>" alt="Belum ada foto" />
                             <?php } else { ?>
-                            <img src="<?php echo base_url('uploads/avatars/' . $info[0]->nama_foto); ?>"
-                                alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" />
+                                <img src="<?php echo base_url('uploads/avatars/' . $info[0]->nama_foto); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" />
                             <?php } ?>
                         </div>
                         <div class="profile-data">
@@ -76,8 +72,7 @@
                 </li>
                 <!-- <li class="xn-title">Navigation</li> -->
                 <li>
-                    <a href="<?php echo base_url('alumni') ?>"><span class="fa fa-home"></span> <span
-                            class="xn-text">Beranda</span></a>
+                    <a href="<?php echo base_url('alumni') ?>"><span class="fa fa-home"></span> <span class="xn-text">Beranda</span></a>
                 </li>
 
                 <li class="xn-openable">
@@ -93,10 +88,8 @@
                 <li class="xn-openable">
                     <a href="#"><span class="fa fa-envelope-o"></span> <span class="xn-text">Berita</span></a>
                     <ul>
-                        <li><a href="<?= base_url('alumni/Berita'); ?>"><span class="fa fa-align-left"></span> <span
-                                    class="xn-text">Kelola Berita</span></a></li>
-                        <li><a href="<?= base_url('alumni/Berita/beritaNonaktif'); ?>"><span
-                                    class="fa fa-align-left"></span> <span class="xn-text">Berita Nonaktif</span></a>
+                        <li><a href="<?= base_url('alumni/Berita'); ?>"><span class="fa fa-align-left"></span> <span class="xn-text">Kelola Berita</span></a></li>
+                        <li><a href="<?= base_url('alumni/Berita/beritaNonaktif'); ?>"><span class="fa fa-align-left"></span> <span class="xn-text">Berita Nonaktif</span></a>
                         </li>
                     </ul>
                 </li>
@@ -106,8 +99,7 @@
                     <ul>
                         <li><a href="<?= base_url('alumni/ForumBisnis') ?>"><span class="fa fa-bullhorn"></span> Lihat
                                 Forum Bisnis</a></li>
-                        <li><a href="<?= base_url('alumni/ForumBisnis/tambahCalonForbis') ?>"><span
-                                    class="fa fa-plus"></span>
+                        <li><a href="<?= base_url('alumni/ForumBisnis/tambahCalonForbis') ?>"><span class="fa fa-plus"></span>
                                 Tambah Calon ForBis </a></li>
                     </ul>
                 </li>
@@ -117,8 +109,7 @@
                     <ul>
                         <li><a href="<?= base_url('alumni/Komunitas') ?>"><span class="fa fa-cube"></span> Lihat
                                 Komunitas</a></li>
-                        <li><a href="<?= base_url('alumni/Komunitas/tambahKomunitas') ?>"><span
-                                    class="fa fa-plus"></span> Tambah Calon Komunitas </a></li>
+                        <li><a href="<?= base_url('alumni/Komunitas/tambahKomunitas') ?>"><span class="fa fa-plus"></span> Tambah Calon Komunitas </a></li>
                     </ul>
                 </li>
                 <!-- 
@@ -135,8 +126,7 @@
                 <?php } ?> -->
 
                 <li>
-                    <a href="<?= base_url('alumni/Pengaturan'); ?>"><span class="glyphicon glyphicon-cog"></span> <span
-                            class="xn-text">Pengaturan</span></a>
+                    <a href="<?= base_url('alumni/Pengaturan'); ?>"><span class="glyphicon glyphicon-cog"></span> <span class="xn-text">Pengaturan</span></a>
                 </li>
 
                 <!-- <li class="xn-openable">
