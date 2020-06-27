@@ -108,7 +108,7 @@
                                 </div>
                             </div>
                             <div class="panel-footer text-center">
-                                <a class="btn btn-primary btn-rounded btn-block btn-ubah-forbis" title="Ubah Berita" id="<?= $forbis->id_forbis; ?>" data-toggle="modal" data-target="#ubahForbis"><span class="fa fa-edit"></span></a>
+                                <a class="btn btn-primary btn-rounded btn-block btn-ubah-forbis" title="Ubah Forum Bisnis" id="<?= $forbis->id_forbis; ?>" data-toggle="modal" data-target="#ubahForbis"><span class="fa fa-edit"></span></a>
                             </div>
                             <!-- END CONTACT ITEM -->
                         </div>

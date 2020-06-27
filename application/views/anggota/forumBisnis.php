@@ -53,15 +53,6 @@
 
         <div class="row">
             <div class="col-md-12">
-                <!-- <div class="panel panel-default">
-                    <div class="panel-body">
-                        <h4 style="float: left; margin-top: 7px; margin-right:8px">Anda belum memiliki forum bisnis</h4>
-                        <a class="btn btn-success" href="<?= base_url('anggota/ForumBisnis/tambahCalonForbis'); ?>">
-                            <i class="fa fa-plus-circle"></i>
-                            <span>Tambah Forum Bisnis Sekarang</span>
-                        </a>
-                    </div>
-                </div> -->
                 <h2 class="text-center" style="margin-top: 10px;">Ups . . . ! Forum Bisnis anda tidak ditemukan</h2>
             </div>
         </div>
@@ -87,7 +78,8 @@
                                 </div>
 
                                 <div class="profile-controls">
-                                    <a class="profile-control-left btn-ubah-forbis" title="Ubah" id="<?= $A->id_forbis; ?>" data-toggle="modal" data-target="#ubahForbis"><span class="fa fa-edit"></span></a>
+                                    <a class="profile-control-left btn-ubah-foto" title="Ubah Foto" id="<?= $A->id_forbis; ?>" data-toggle="modal" data-target="#message-box-ubah-foto"><span class="fa fa-edit"></span></a>
+
                                     <a class="profile-control-right btn-hapus-forbis" title="Hapus" id="<?= $A->id_forbis; ?>" data-toggle="modal" data-target="#hapusForbis"><span class="fa fa-trash-o"></span></a>
                                 </div>
 
@@ -109,6 +101,9 @@
 
                                 </div>
                             </div>
+                            <div class="panel-footer text-center">
+                                <a class="btn btn-primary btn-rounded btn-block btn-ubah-forbis" title="Ubah Forum Bisnis" id="<?= $A->id_forbis; ?>" data-toggle="modal" data-target="#ubahForbis"><span class="fa fa-edit"></span></a>
+                            </div>
                             <!-- END CONTACT ITEM -->
                         </div>
                     </div>
@@ -119,6 +114,48 @@
     <?php endif; ?>
 
 </div>
+
+<!-- MODAL UBAH FOTO -->
+<div class="modal animated zoomIn" id="message-box-ubah-foto" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="<?= base_url('anggota/ForumBisnis/setUpdateFoto'); ?>" class="form-horizontal" id="form-ubah-berita-validate" method="post" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="defModalHead">Ubah Foto</h4>
+                </div>
+                <div>
+                    <div class="panel-body tab-content">
+                        <div class="form-group hidden">
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" id="idUbahFoto" name="idUbahFoto">
+                                <input type="text" class="form-control" id="judulUbahFoto" name="judulUbahFoto">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Foto</label>
+                    <div class="col-md-8" style="margin-left: 10px; margin-top: 12px;">
+                        <img id="namaFoto" src="<?= base_url('uploads/logo-bisnis/'); ?>" width="350" style="margin-bottom: 10px;" /><br>
+                        <input type="hidden" class="form-control" id="ubahFoto" name="ubahFoto" readonly />
+                        <input type="file" class="file" id="file-simple" name="fileSaya" />
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="col-md-12" style="text-align: left;">
+                        <label class="control-label">* harus diisi</label>
+                    </div>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-success">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- END MODAL UBAH FOTO -->
 
 
 <!-- MODALS UBAH FORUM BISNIS -->
@@ -137,7 +174,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label class="col-md-3 control-label">* Foto Bisnis / Usaha :</label>
                         <div class="col-sm-3">
 
@@ -147,7 +184,7 @@
                         <div class="col-md-3">
                             <input type="file" name="fileLogoEdit" required />
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="form-group">
                         <label class="col-md-3 control-label">* Nama Bisnis / Usaha :</label>
@@ -284,12 +321,33 @@
                 document.getElementById('deskripsiBisnisEdit').value = data_obj.forbis[0].deskripsi_bisnis;
                 document.getElementById('alamatBisnisEdit').value = data_obj.forbis[0].alamat_bisnis;
                 document.getElementById('noTelpBisnisEdit').value = data_obj.forbis[0].no_telp_bisnis;
-                document.getElementById('fileLogoEdit').value = data_obj.forbis[0].nama_foto_bisnis;
+                // document.getElementById('fileLogoEdit').value = data_obj.forbis[0].nama_foto_bisnis;
 
                 $("#jenisBisnisEdit").val(data_obj.forbis[0].id_jenis_bisnis).change();
                 $("#pemilikBisnisEdit").val(data_obj.forbis[0].pemilik_id).change();
 
 
+            });
+    });
+
+    $(".btn-ubah-foto").click(function() {
+        // console.log(this.id);
+        var idForbis = this.id;
+
+        $.post("<?= base_url('anggota/ForumBisnis/getForbisById/') ?>", {
+                id: idForbis
+            },
+            function(data) {
+                var data_obj = JSON.parse(data);
+
+                var idUbahFoto = data_obj.forbis[0].id_forbis;
+                var judulUbahFoto = data_obj.forbis[0].nama_bisnis_usaha;
+                var foto = data_obj.forbis[0].nama_foto_bisnis;
+
+                document.getElementById('idUbahFoto').value = idUbahFoto;
+                document.getElementById('namaFoto').src = '<?= base_url('uploads/logo-bisnis/'); ?>' + foto;
+                document.getElementById('ubahFoto').value = foto;
+                document.getElementById('judulUbahFoto').value = judulUbahFoto;
             });
     });
 </script>
