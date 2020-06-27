@@ -53,9 +53,10 @@ class Anggota extends MY_Controller
         $data['title'] = 'Cari Anggota';
 
         $nama = $this->input->post('namaAnggota');
+        $where = $this->session->userdata('uid');
 
         // $where = "tb_anggota.status_anggota != 0";
-        $data['anggota'] = $this->M_anggota->findAnggotaLikeNamaByRoleAlumni($nama);
+        $data['anggota'] = $this->M_anggota->findAnggotaLikeNamaByRoleAlumni($nama, $where);
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
         if ($this->session->userdata('role') == 4) {
