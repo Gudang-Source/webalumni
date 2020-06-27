@@ -134,39 +134,22 @@ class ForumBisnis extends MY_Controller
         $noTelpBisnisEdit = $this->input->post('noTelpBisnisEdit');
         $pemilikBisnisEdit = $this->input->post('pemilikBisnisEdit');
 
-        $filename = "logo-" . $namaBisnisEdit . "-" . time();
+        $data['nama_bisnis_usaha'] = $namaBisnisEdit;
+        $data['id_jenis_bisnis'] = $jenisBisnisEdit;
+        $data['deskripsi_bisnis'] = $deskripsiBisnisEdit;
+        $data['alamat_bisnis'] = $alamatBisnisEdit;
+        $data['no_telp_bisnis'] = $noTelpBisnisEdit;
+        $data['pemilik_id'] = $pemilikBisnisEdit;
+        $data['stat_forbis'] = 1;
 
-        // Set preferences
-        $config['upload_path'] = './uploads/logo-bisnis';
-        $config['allowed_types'] = 'png|jpg|jpeg';
-        $config['file_name'] = $filename;
+        $sukses = $this->M_forumBisnis->updateForumBisnis($data, $id);
 
-        $this->load->library('upload', $config);
-
-        if (!$this->upload->do_upload('fileLogoEdit')) {
-            flashMessage('error', 'Maaf, Upload gambar calon anggota gagal! Silahkan coba lagi');
-            redirect('admin/ForumBisnis');
+        if (!$sukses) {
+            flashMessage('success', 'Bisnis / Usaha Anggota berhasil diperbarui.');
+            redirect('anggota/ForumBisnis');
         } else {
-            $upload_data = $this->upload->data();
-
-            $data['nama_bisnis_usaha'] = $namaBisnisEdit;
-            $data['id_jenis_bisnis'] = $jenisBisnisEdit;
-            $data['deskripsi_bisnis'] = $deskripsiBisnisEdit;
-            $data['alamat_bisnis'] = $alamatBisnisEdit;
-            $data['no_telp_bisnis'] = $noTelpBisnisEdit;
-            $data['nama_foto_bisnis'] = $upload_data['file_name'];
-            $data['pemilik_id'] = $pemilikBisnisEdit;
-            $data['stat_forbis'] = 1;
-
-            $sukses = $this->M_forumBisnis->updateForumBisnis($data, $id);
-
-            if (!$sukses) {
-                flashMessage('success', 'Bisnis / Usaha Anggota berhasil diperbarui.');
-                redirect('anggota/ForumBisnis');
-            } else {
-                flashMessage('error', 'Bisnis / Usaha Anggota gagal diperbarui! Silahkan coba lagi.');
-                redirect('anggota/ForumBisnis');
-            }
+            flashMessage('error', 'Bisnis / Usaha Anggota gagal diperbarui! Silahkan coba lagi.');
+            redirect('anggota/ForumBisnis');
         }
     }
 
@@ -185,6 +168,23 @@ class ForumBisnis extends MY_Controller
         $data['forumBisnis'] = $this->M_forumBisnis->cariForumBisnis($id, $namaForbis);
 
         $this->anggota_render('anggota/ForumBisnis', $data);
+    }
+
+    public function cariForumBisnisNonAktif()
+    {
+        $data['title'] = 'Lihat Forum Bisnis';
+
+        $namaForbis = $this->input->post('namaBisnis');
+
+        $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+        $id_pemilik = $data['info'];
+        $id = $id_pemilik[0]->id_anggota;
+
+        $data['jenisBisnis'] = $this->M_jenisBisnis->getAllJenisBisnis();
+        $data['forumBisnis'] = $this->M_forumBisnis->cariForumBisnisNonAktif($id, $namaForbis);
+
+        $this->anggota_render('anggota/forumBisnisNonaktif', $data);
     }
 
     function forumBisnisNonaktif()
@@ -217,6 +217,48 @@ class ForumBisnis extends MY_Controller
         } else {
             flashMessage('error', 'Forum Bisnis gagal dihapus! Silahkan coba lagi');
             redirect('anggota/forumBisnisNonaktif');
+        }
+    }
+
+    public function setUpdateFoto()
+    {
+        $this->load->model('M_forumBisnis');
+
+        $idFoto = $this->input->post('idUbahFoto');
+        $judulFoto = $this->input->post('judulUbahFoto');
+
+        $filename = "berita-" . $judulFoto . "-" . time();
+
+        // Set preferences
+        $config['upload_path'] = './uploads/logo-bisnis';
+        $config['allowed_types'] = 'png|jpg|jpeg';
+        $config['file_name'] = $filename;
+
+        // load upload class library
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('fileSaya')) {
+            flashMessage('error', 'Maaf, Upload gambar Forum Bisnis gagal! Silahkan coba lagi');
+            redirect('anggota/ForumBisnis');
+        } else {
+            $upload_data = $this->upload->data();
+
+            $data = $this->M_forumBisnis->findForbisFoto('nama_foto_bisnis', array('tb_forum_bisnis.id_forbis = ' => $idFoto));
+
+            $forbis['nama_foto_bisnis'] = $upload_data['file_name'];
+
+            unlink(FCPATH . 'uploads/logo-bisnis/' . $data[0]->nama_foto_bisnis);
+
+            // echo json_encode($data);
+            $sukses = $this->M_forumBisnis->updateForumBisnis($forbis, $idFoto);
+
+            if (!$sukses) {
+                flashMessage('success', 'Foto berhasil di ubah.');
+                redirect('anggota/ForumBisnis');
+            } else {
+                flashMessage('error', 'Foto gagal di ubah! Silahkan coba lagi');
+                redirect('anggota/ForumBisnis');
+            }
         }
     }
 }

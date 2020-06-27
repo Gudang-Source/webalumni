@@ -21,14 +21,14 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <p>Cari Forum Bisnis</p>
-                    <form action="<?= base_url(''); ?>" method="post">
+                    <form action="<?= base_url('anggota/ForumBisnis/cariForumBisnisNonAktif'); ?>" method="post">
                         <div class="form-group">
                             <div class="col-md-10">
                                 <div class="input-group">
                                     <div class="input-group-addon">
                                         <span class="fa fa-search"></span>
                                     </div>
-                                    <input type="text" class="form-control" name="judulForumBisnis" placeholder="Temukan forum bisnis anda.">
+                                    <input type="text" class="form-control" name="namaBisnis" placeholder="Temukan forum bisnis anda.">
                                     <div class="input-group-btn">
                                         <button type="submit" class="btn btn-primary">Cari</button>
                                     </div>
@@ -37,7 +37,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-2">
-                                <a href="<?= base_url(''); ?>" class="btn btn-primary">Reset Pencarian</a>
+                                <a href="<?= base_url('anggota/ForumBisnis/forumBisnisNonaktif'); ?>" class="btn btn-primary">Reset Pencarian</a>
                             </div>
                         </div>
                     </form>
@@ -46,50 +46,58 @@
         </div>
     </div>
 
-    <div class="row">
-        <?php foreach ($forumBisnis as $B) { ?>
-
-            <div class="col-md-4">
-                <!-- CONTACT ITEM -->
-                <div class="panel panel-default">
-                    <div class="panel-body profile">
-                        <div class="profile-image">
-                            <?php if ($B->nama_foto_bisnis == NULL) { ?>
-                                <img src="<?php echo base_url('uploads/no-image.jpg'); ?> " alt="No Image" title="Default Image">
-                            <?php } else { ?>
-                                <img src="<?php echo base_url('uploads/logo-bisnis/' . $B->nama_foto_bisnis); ?> " alt="<?= $B->nama_foto_bisnis; ?>" title="<?= $B->nama_bisnis_usaha; ?>">
-                            <?php } ?>
-                        </div>
-                        <div class="profile-data">
-                            <div class="profile-data-name"><?= $B->nama_bisnis_usaha; ?></div>
-                        </div>
-                        <div class="profile-controls">
-                            <a class="profile-control-right btn-hapus-forbis" title="Hapus" id="<?= $B->id_forbis; ?>" data-toggle="modal" data-target="#hapusForbis"><span class="fa fa-trash-o"></span></a>
-                        </div>
-                    </div>
-                    <div class="panel-body" style="height: 100%;">
-                        <div class="contact-info">
-
-                            <?php if ($B->deskripsi_bisnis == "") { ?>
-                                <p><small>Deskripsi Bisnis</small><br>Belum di isi</p>
-                            <?php } else { ?>
-                                <p><small>Deskripsi Bisnis</small><br><?= $B->deskripsi_bisnis; ?></p>
-                            <?php } ?>
-
-                            <?php if ($B->alamat_bisnis == "") { ?>
-                                <p><small>Alamat Bisnis</small><br>Belum di isi</p>
-                            <?php } else { ?>
-                                <p><small>Alamat Bisnis</small><br><?= $B->alamat_bisnis; ?></p>
-                            <?php } ?>
-
-                        </div>
-                    </div>
-                    <!-- END CONTACT ITEM -->
-                </div>
+    <?php if ($forumBisnis == NULL) : ?>
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center" style="margin-top: 10px;">Ups . . . ! Forum Bisnis anda tidak ditemukan</h2>
             </div>
-        <?php } ?>
+        </div>
+    <?php else : ?>
+        <div class="row">
+            <?php foreach ($forumBisnis as $B) { ?>
 
-    </div>
+                <div class="col-md-4">
+                    <!-- CONTACT ITEM -->
+                    <div class="panel panel-default">
+                        <div class="panel-body profile">
+                            <div class="profile-image">
+                                <?php if ($B->nama_foto_bisnis == NULL) { ?>
+                                    <img src="<?php echo base_url('uploads/no-image.jpg'); ?> " alt="No Image" title="Default Image">
+                                <?php } else { ?>
+                                    <img src="<?php echo base_url('uploads/logo-bisnis/' . $B->nama_foto_bisnis); ?> " alt="<?= $B->nama_foto_bisnis; ?>" title="<?= $B->nama_bisnis_usaha; ?>">
+                                <?php } ?>
+                            </div>
+                            <div class="profile-data">
+                                <div class="profile-data-name"><?= $B->nama_bisnis_usaha; ?></div>
+                            </div>
+                            <div class="profile-controls">
+                                <a class="profile-control-right btn-hapus-forbis" title="Hapus" id="<?= $B->id_forbis; ?>" data-toggle="modal" data-target="#hapusForbis"><span class="fa fa-trash-o"></span></a>
+                            </div>
+                        </div>
+                        <div class="panel-body" style="height: 100%;">
+                            <div class="contact-info">
+
+                                <?php if ($B->deskripsi_bisnis == "") { ?>
+                                    <p><small>Deskripsi Bisnis</small><br>Belum di isi</p>
+                                <?php } else { ?>
+                                    <p><small>Deskripsi Bisnis</small><br><?= $B->deskripsi_bisnis; ?></p>
+                                <?php } ?>
+
+                                <?php if ($B->alamat_bisnis == "") { ?>
+                                    <p><small>Alamat Bisnis</small><br>Belum di isi</p>
+                                <?php } else { ?>
+                                    <p><small>Alamat Bisnis</small><br><?= $B->alamat_bisnis; ?></p>
+                                <?php } ?>
+
+                            </div>
+                        </div>
+                        <!-- END CONTACT ITEM -->
+                    </div>
+                </div>
+            <?php } ?>
+
+        </div>
+    <?php endif; ?>
 </div>
 
 <!-- MODAL DELETE FORUM BISNIS -->
