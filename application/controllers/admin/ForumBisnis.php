@@ -28,7 +28,7 @@ class ForumBisnis extends MY_Controller
 
     function index()
     {
-        $data['title'] = 'Admin - Forum Bisnis';
+        $data['title'] = 'Kelola Forum Bisnis';
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
         $data['forumBisnis'] = $this->M_forumBisnis->getAllForumBisnis();
         $data['jenisBisnis'] = $this->M_jenisBisnis->getAllJenisBisnis();
@@ -48,7 +48,7 @@ class ForumBisnis extends MY_Controller
 
     function kelolaJenisBisnis()
     {
-        $data['title'] = 'Admin - Kelola Jenis Bisnis';
+        $data['title'] = 'Kelola Jenis Bisnis';
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
         $data['jenisBisnis'] = $this->M_jenisBisnis->getAllJenisBisnis();
 
@@ -59,7 +59,7 @@ class ForumBisnis extends MY_Controller
 
     function kelolaCalonForBis()
     {
-        $data['title'] = 'Admin - Kelola Calon Forum Bisnis';
+        $data['title'] = 'Kelola Calon Forum Bisnis';
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
         $data['kelolaCalonForBis'] = $this->M_forumBisnis->getAllCalonForumBisnis();
         $data['jenisBisnis'] = $this->M_jenisBisnis->getAllJenisBisnis();

@@ -22,7 +22,7 @@
             <!-- START PANEL WITH STATIC CONTROLS -->
             <div class="panel panel-default tabs">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li class="active"><a href="#tab-first" role="tab" data-toggle="tab">Permohonan Calon Forbis</a>
+                    <li class="active"><a href="#tab-first" role="tab" data-toggle="tab">Permohonan Calon Forum Bisnis</a>
                     </li>
                     <li><a href="#tab-second" role="tab" data-toggle="tab">Tambah Calon Forum Bisnis</a></li>
                 </ul>
@@ -98,14 +98,6 @@
                             <form action="<?= base_url('admin/ForumBisnis/setAddForbis'); ?>" class="form-horizontal" id="tambah-forbis-validate" method="post" enctype="multipart/form-data">
                                 <div class="modal-body">
 
-
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">* Foto Bisnis / Usaha :</label>
-                                        <div class="col-md-7">
-                                            <input type="file" id="file-simple" name="fileLogo" required />
-                                        </div>
-                                    </div>
-
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">* Nama Bisnis / Usaha :</label>
                                         <div class="col-md-7">
@@ -160,6 +152,15 @@
                                             </select>
                                         </div>
                                     </div>
+
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">* Foto Bisnis / Usaha :</label>
+                                        <div class="col-md-7">
+                                            <input type="file" id="file-simple" name="fileLogo" required />
+                                        </div>
+                                    </div>
+
                                     <div class="form-group">
                                         <div class="col-md-10">
                                             <button type="submit" class="btn btn-success pull-right">Simpan</button>

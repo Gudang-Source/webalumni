@@ -48,7 +48,7 @@ class Komunitas extends MY_Controller
     // ==================================================
     function index()
     {
-        $data['title'] = 'Kelola Komunitas';
+        $data['title'] = 'Kelola Calon Komunitas';
         $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
         $data['calonKomunitas'] = $this->M_komunitas->getAllKomunitas();
@@ -67,10 +67,10 @@ class Komunitas extends MY_Controller
     // ==================================================
     // --------------------- CREATE ---------------------
     // ==================================================
-     public function tambahCalonKomunitas()
+    public function tambahCalonKomunitas()
     {
         date_default_timezone_set("Asia/Jakarta");
-        $jam = date ("H:i:s");
+        $jam = date("H:i:s");
         $tanggal = date("Y-m-d", mktime(date('m'), date("d"), date('Y')));
 
         $this->load->model('M_anggota');
@@ -86,7 +86,7 @@ class Komunitas extends MY_Controller
         $tglPengajuan = $tanggal;
         $waktuPengajuan = $jam;
         $idPengupload = $this->input->post('idPengupload');
-        
+
         $filename = "komunitas-" . $namaKomunitas . "-" . time();
 
         // Set preferences
@@ -115,7 +115,7 @@ class Komunitas extends MY_Controller
             $data['time_created'] = $waktuPengajuan;
             $data['logo_komunitas'] = $upload_data['file_name'];
             $data['id_pengupload'] = $idPengupload;
-            if($this->session->userdata('role') == 1) {
+            if ($this->session->userdata('role') == 1) {
                 $data['stat_komunitas'] = '1';
             }
             // } else {
@@ -198,28 +198,28 @@ class Komunitas extends MY_Controller
         //     flashMessage('error', 'Maaf, Upload gambar calon anggota gagal! Silahkan coba lagi');
         //     redirect('admin/komunitas/kelolaStatusKomunitas');
         // } else {
-            $upload_data = $this->upload->data();
+        $upload_data = $this->upload->data();
 
-            $komunitas['sifat_komunitas'] = $sifatKomunitas;
-            $komunitas['jenis_komunitas'] = $jenisKomunitas;
-            $komunitas['lokasi_komunitas'] = $lokasiKomunitas;
-            $komunitas['anggota_komunitas'] = $anggotaKomunitas;
-            $komunitas['deskripsi_komunitas'] = $deskKomunitas;
+        $komunitas['sifat_komunitas'] = $sifatKomunitas;
+        $komunitas['jenis_komunitas'] = $jenisKomunitas;
+        $komunitas['lokasi_komunitas'] = $lokasiKomunitas;
+        $komunitas['anggota_komunitas'] = $anggotaKomunitas;
+        $komunitas['deskripsi_komunitas'] = $deskKomunitas;
 
-            $komunitas['nama_komunitas'] = $namaKomunitas;
-            $komunitas['tautat_komunitas'] = $tautatKomunitas;
-            // $komunitas['logo_komunitas'] = $upload_data['file_name'];
+        $komunitas['nama_komunitas'] = $namaKomunitas;
+        $komunitas['tautat_komunitas'] = $tautatKomunitas;
+        // $komunitas['logo_komunitas'] = $upload_data['file_name'];
 
-            // echo json_encode($data);
-            $sukses = $this->M_komunitas->updateKomunitas($komunitas, $idKomunitas);
+        // echo json_encode($data);
+        $sukses = $this->M_komunitas->updateKomunitas($komunitas, $idKomunitas);
 
-            if (!$sukses) {
-                flashMessage('success', 'Calon Komunitas Baru berhasil di daftarkan. Silahkan verifikasi di Permohonan Calon Anggota');
-                redirect('admin/komunitas/kelolaStatusKomunitas');
-            } else {
-                flashMessage('error', 'Calon Komunitas Baru gagal di daftarkan! Silahkan coba lagi');
-                redirect('admin/komunitas/kelolaStatusKomunitas');
-            }
+        if (!$sukses) {
+            flashMessage('success', 'Calon Komunitas Baru berhasil di daftarkan. Silahkan verifikasi di Permohonan Calon Anggota');
+            redirect('admin/komunitas/kelolaStatusKomunitas');
+        } else {
+            flashMessage('error', 'Calon Komunitas Baru gagal di daftarkan! Silahkan coba lagi');
+            redirect('admin/komunitas/kelolaStatusKomunitas');
+        }
         // }
     }
 
@@ -311,7 +311,7 @@ class Komunitas extends MY_Controller
     //
     //
     //
-	// ==================================================
+    // ==================================================
     // --------------------- SEARCH ---------------------
     // ==================================================
     function cariStatusKomunitas()
@@ -328,7 +328,6 @@ class Komunitas extends MY_Controller
         if ($this->session->userdata('role') == 1) {
             $this->admin_render('admin/kelolaStatusKomunitas', $data);
         }
-
     }
     // ==================================================
     // --------------------- SEARCH ---------------------
@@ -336,7 +335,7 @@ class Komunitas extends MY_Controller
     //
     //
     //
-	// ==================================================
+    // ==================================================
     // --------------------- OTHERS ---------------------
     // ==================================================
     function komunitasJSON()
@@ -354,7 +353,7 @@ class Komunitas extends MY_Controller
 
         echo json_encode($data);
     }
-	// ==================================================
+    // ==================================================
     // --------------------- OTHERS ---------------------
     // ==================================================
 

@@ -118,7 +118,7 @@
                 <li class="xn-openable">
                     <a href="#"><span class="fa fa-camera-retro"></span> <span class="xn-text">Komunitas</span></a>
                     <ul>
-                        <li><a href="<?= base_url('admin/Komunitas'); ?>"><span class="fa fa-cube"></span> <span class="xn-text">Kelola Komunitas Baru</span></a></li>
+                        <li><a href="<?= base_url('admin/Komunitas'); ?>"><span class="fa fa-cube"></span> <span class="xn-text">Kelola Calon Komunitas</span></a></li>
                         <li><a href="<?= base_url('admin/Komunitas/kelolaStatusKomunitas'); ?>"><span class="fa fa-cubes"></span> <span class="xn-text">Kelola Status
                                     Komunitas</span></a>
                         </li>
