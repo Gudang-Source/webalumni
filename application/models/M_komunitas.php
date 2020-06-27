@@ -7,7 +7,7 @@ class M_komunitas extends CI_Model
 
     function getAllKomunitas()
     {
-        $queryKomunitas = "SELECT tb_komunitas.*, tb_user.username FROM tb_komunitas JOIN tb_user ON tb_komunitas.id_pengupload = tb_user.id_user";
+        $queryKomunitas = "SELECT tb_komunitas.*, tb_user.username FROM tb_komunitas JOIN tb_user ON tb_komunitas.id_pengupload = tb_user.id_user ORDER BY tb_komunitas.id_komunitas DESC";
         $komunitas = $this->db->query($queryKomunitas)->result();
 
         return $komunitas;
