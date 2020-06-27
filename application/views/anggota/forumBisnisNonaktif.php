@@ -98,12 +98,12 @@
     <div class="mb-container">
         <div class="mb-middle">
             <div class="mb-title">
-                <span class="fa fa-times"></span> Hapus <strong>Forum Bisnis</strong>
+                <span class="fa fa-times"></span> Hapus <strong>Pengajuan Forum Bisnis</strong>
             </div>
             <form action="<?= base_url('anggota/ForumBisnis/setDeleteForumBisnisNonaktif'); ?>" class="form-horizontal" method="post">
                 <div class="mb-content">
                     <div class="panel-body">
-                        <p style="font-size: 16px;">Anda yakin akan menghapus Forum Bisnis <label class="control-label" id="namaForumBisnisDelete"></label> ?</p>
+                        <p style="font-size: 16px;">Anda yakin akan menghapus pengajuan Forum Bisnis <label class="control-label" id="namaForumBisnisDelete"></label> ?</p>
 
                         <div class="form-group hidden">
                             <input type="text" id="idForbisDelete" name="idForbisDelete" class="form-control">
