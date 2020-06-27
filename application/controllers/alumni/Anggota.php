@@ -50,7 +50,7 @@ class Anggota extends MY_Controller
 
     function cariAnggota()
     {
-        $data['title'] = 'Cari Anggota';
+        $data['title'] = 'Cari Alumni';
 
         $nama = $this->input->post('namaAnggota');
         $where = $this->session->userdata('uid');

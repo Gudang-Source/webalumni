@@ -11,63 +11,55 @@
 
 <!-- PAGE CONTENT WRAP -->
 <div class="page-content-wrap">
-    
+
     <!-- KOMUNITAS CONTENT -->
     <div class="row">
         <div class="col-md-12">
-            <div class="panel panel-default tabs">
-                <ul class="nav nav-tabs" role="tablist">
-                    <li class="active"><a href="#tab-first" role="tab" data-toggle="tab">Permohonan Calon Komunitas</a>
-                </ul>
-
-                <div class="panel-body tab-content">
+            <div class="panel panel-default">
+                <div class="panel-body">
                     <div class="tab-pane active" id="tab-first">
                         <p>Daftar Permohonan Calon Komunitas IKASMA3BDG.</p>
-                
+
                         <div class="form-group">
-                            <form action="<?= base_url('alumni/Komunitas/tambahCalonKomunitas'); ?>" class="form-horizontal"
-                                id="form-tambah-komunitas-validate" method="post" enctype="multipart/form-data">
+                            <form action="<?= base_url('alumni/Komunitas/tambahCalonKomunitas'); ?>" class="form-horizontal" id="form-tambah-komunitas-validate" method="post" enctype="multipart/form-data">
                                 <div class="panel-body">
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Nama Komunitas</label>
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control" name="namaKomunitas"
-                                                placeholder="Nama Komunitas Aktif" required clear />
-                                            </div>
+                                            <input type="text" class="form-control" name="namaKomunitas" placeholder="Nama Komunitas Aktif" required clear />
+                                        </div>
                                     </div>
 
-                                    <input type="hidden" class="form-control" name="idPengupload" value="<?= $info[0]->id_user?>">
+                                    <input type="hidden" class="form-control" name="idPengupload" value="<?= $info[0]->id_user ?>">
 
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Lokasi Komunitas</label>
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control" name="lokasiKomunitas"
-                                                placeholder="Lokasi Komunitas" required clear />
-                                            </div>
+                                            <input type="text" class="form-control" name="lokasiKomunitas" placeholder="Lokasi Komunitas" required clear />
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Tautat Komunitas</label>
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control" name="tautatKomunitas"
-                                                placeholder="Tautan Komunitas/Link Website Komunitas" required clear />
-                                            </div>
+                                            <input type="text" class="form-control" name="tautatKomunitas" placeholder="Tautan Komunitas/Link Website Komunitas" required clear />
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Deskripsi Komunitas</label>
-                                        <div class="col-md-8"  >
-                                            <textarea   class="form-control" name="deskKomunitas" placeholder="Deskripsi Komunitas" rows="4" cols="50"></textarea>
+                                        <div class="col-md-8">
+                                            <textarea class="form-control" name="deskKomunitas" placeholder="Deskripsi Komunitas" rows="4" cols="50"></textarea>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Sitaf Komunitas : </label>
                                         <div class="col-md-8">
-                                            <select name="sifatKomunitas"  class="select form-control validate[required]">
-                                                    <option value="Publik">Publik </option>
-                                                    <option value="Private">Private </option>
-                                                    <option value="Hidden">Hidden </option>
+                                            <select name="sifatKomunitas" class="select form-control validate[required]">
+                                                <option value="Publik">Publik </option>
+                                                <option value="Private">Private </option>
+                                                <option value="Hidden">Hidden </option>
                                             </select>
                                         </div>
                                     </div>
@@ -75,9 +67,9 @@
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Jenis Komunitas : </label>
                                         <div class="col-md-8">
-                                            <select name="jenisKomunitas"  class="select form-control validate[required]">
-                                                    <option value="Aktif">Aktif </option>
-                                                    <option value="Pasif">Pasif </option>
+                                            <select name="jenisKomunitas" class="select form-control validate[required]">
+                                                <option value="Aktif">Aktif </option>
+                                                <option value="Pasif">Pasif </option>
                                             </select>
                                         </div>
                                     </div>
@@ -85,11 +77,10 @@
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Jumlah Anggota</label>
                                         <div class="col-md-8">
-                                            <input type="number" class="form-control" name="anggotaKomunitas"
-                                                placeholder="Perkiraan Jumlah anggota aktif pada komunitas" required clear />
-                                            </div>
+                                            <input type="number" class="form-control" name="anggotaKomunitas" placeholder="Perkiraan Jumlah anggota aktif pada komunitas" required clear />
+                                        </div>
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label class="col-md-2 control-label">Logo Komunitas</label>
                                         <div class="col-md-8">
@@ -110,7 +101,7 @@
                                     <ol>
                                         <li>Calon Komunitas Baru yang anda buat harus diverifikasi terlebih dahulu agar terdaftar sebagai
                                             Komunitas aktif oleh admin (1x24jam)</li>
-                                        <li>Setelah di verifikasi, maka  Komunitas anda dapat diolah dan akan ditampilkan di halaman user</li>
+                                        <li>Setelah di verifikasi, maka Komunitas anda dapat diolah dan akan ditampilkan di halaman user</li>
                                         <li>Logo harap disesuaikan dengan logo komunitas sebenarnya</li>
                                     </ol>
                                 </div>
@@ -130,13 +121,10 @@
 </div>
 
 <script>
-
-$("#file-simple").fileinput({
-    showUpload: false,
-    showCaption: false,
-    browseClass: "btn btn-danger",
-    fileType: "any"
-});
-
+    $("#file-simple").fileinput({
+        showUpload: false,
+        showCaption: false,
+        browseClass: "btn btn-danger",
+        fileType: "any"
+    });
 </script>
-
