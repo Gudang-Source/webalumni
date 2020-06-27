@@ -90,6 +90,7 @@
                     <ul>
                         <li><a href="<?= base_url('anggota/Berita'); ?>"><span class="fa fa-align-left"></span> <span class="xn-text">Kelola Berita Aktif</span></a></li>
                         <li><a href="<?= base_url('anggota/Berita/beritaNonaktif'); ?>"><span class="fa fa-align-left"></span> <span class="xn-text">Berita Nonaktif</span></a></li>
+                        <li><a href="<?= base_url('anggota/Berita/formTambahCalonBerita') ?>"><span class="fa fa-plus"></span>Tambah Berita </a></li>
                     </ul>
                 </li>
 
