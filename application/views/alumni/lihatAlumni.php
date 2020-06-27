@@ -26,8 +26,7 @@
                                     <div class="input-group-addon">
                                         <span class="fa fa-search"></span>
                                     </div>
-                                    <input type="text" class="form-control" name="namaAnggota"
-                                        placeholder="Siapa yang akan anda cari ?">
+                                    <input type="text" class="form-control" name="namaAnggota" placeholder="Siapa yang akan anda cari ?">
                                     <div class="input-group-btn">
                                         <button type="submit" class="btn btn-primary">Search</button>
                                     </div>
@@ -48,83 +47,80 @@
 
     <div class="row">
         <?php if (empty($anggota)) : ?>
-        <tr>
-            <td colspan="7">
-                <h2 class="text-center">Upps... Data alumni tidak ditemukan.</h2>
-            </td>
-        </tr>
+            <tr>
+                <td colspan="7">
+                    <h2 class="text-center">Upps... Data alumni tidak ditemukan.</h2>
+                </td>
+            </tr>
         <?php else : ?>
 
-        <?php foreach ($anggota as $A) { ?>
-        <div class="col-md-3">
-            <!-- CONTACT ITEM -->
-            <div class="panel panel-default">
-                <div class="panel-body profile">
-                    <div class="profile-image">
-                        <?php if ($A->nama_foto == NULL) { ?>
-                        <img src="<?php echo base_url('uploads/no-image.jpg'); ?> " alt="No Image"
-                            title="Default Image">
-                        <?php } else { ?>
-                        <img src="<?php echo base_url('uploads/avatars/' . $A->nama_foto); ?> "
-                            alt="<?= $A->nama_lengkap; ?>" title="<?= $A->nama_lengkap; ?>">
-                        <?php } ?>
+            <?php foreach ($anggota as $A) { ?>
+                <div class="col-md-3">
+                    <!-- CONTACT ITEM -->
+                    <div class="panel panel-default">
+                        <div class="panel-body profile">
+                            <div class="profile-image">
+                                <?php if ($A->nama_foto == NULL) { ?>
+                                    <img src="<?php echo base_url('uploads/no-image.jpg'); ?> " alt="No Image" title="Default Image">
+                                <?php } else { ?>
+                                    <img src="<?php echo base_url('uploads/avatars/' . $A->nama_foto); ?> " alt="<?= $A->nama_lengkap; ?>" title="<?= $A->nama_lengkap; ?>">
+                                <?php } ?>
+                            </div>
+                            <div class="profile-data">
+                                <div class="profile-data-name"><?= $A->nama_lengkap; ?></div>
+
+                                <?php if ($A->status_bekerja != NULL || $A->status_bekerja != "") { ?>
+
+                                    <?php if ($A->status_bekerja == 0 && $A->bisnis_usaha == 0) { ?>
+                                        <div class="profile-data-title">Tidak Bekerja</div>
+                                    <?php } else if ($A->status_bekerja == 0 && $A->bisnis_usaha == 1) { ?>
+                                        <div class="profile-data-title">Tidak Bekerja / Punya Usaha</div>
+                                    <?php } else { ?>
+                                        <div class="profile-data-title"><?= $A->jabatan; ?></div>
+                                    <?php } ?>
+
+                                <?php } else { ?>
+                                    <div class="profile-data-title">Profesi belum diisi</div>
+                                <?php } ?>
+
+                            </div>
+
+
+                        </div>
+                        <div class="panel-body">
+                            <div class="contact-info">
+                                <?php if ($A->no_telp == "") { ?>
+                                    <p><small>Mobile</small><br>Belum di isi</p>
+                                <?php } else { ?>
+                                    <p><small>Mobile</small><br><?= $A->no_telp; ?></p>
+                                <?php } ?>
+
+                                <?php if ($A->email == "") { ?>
+                                    <p><small>Email</small><br>Belum di isi</p>
+                                <?php } else { ?>
+                                    <p><small>Email</small><br><?= $A->email; ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
+                        <div class="panel-footer text-center">
+                            <a class="btn btn-info btn-rounded btn-block btn-detail-anggota" id="<?= $A->id_anggota; ?>" title="Lihat">Lihat</a>
+                        </div>
                     </div>
-                    <div class="profile-data">
-                        <div class="profile-data-name"><?= $A->nama_lengkap; ?></div>
-
-                        <?php if ($A->status_bekerja != NULL || $A->status_bekerja != "") { ?>
-
-                        <?php if ($A->status_bekerja == 0 && $A->bisnis_usaha == 0) { ?>
-                        <div class="profile-data-title">Tidak Bekerja</div>
-                        <?php } else if ($A->status_bekerja == 0 && $A->bisnis_usaha == 1) { ?>
-                        <div class="profile-data-title">Tidak Bekerja / Punya Usaha</div>
-                        <?php } else { ?>
-                        <div class="profile-data-title"><?= $A->jabatan; ?></div>
-                        <?php } ?>
-
-                        <?php } else { ?>
-                        <div class="profile-data-title">Profesi belum diisi</div>
-                        <?php } ?>
-
-                    </div>
-
-
+                    <!-- END CONTACT ITEM -->
                 </div>
-                <div class="panel-body">
-                    <div class="contact-info">
-                        <?php if ($A->no_telp == "") { ?>
-                        <p><small>Mobile</small><br>Belum di isi</p>
-                        <?php } else { ?>
-                        <p><small>Mobile</small><br><?= $A->no_telp; ?></p>
-                        <?php } ?>
-
-                        <?php if ($A->email == "") { ?>
-                        <p><small>Email</small><br>Belum di isi</p>
-                        <?php } else { ?>
-                        <p><small>Email</small><br><?= $A->email; ?></p>
-                        <?php } ?>
-                    </div>
-                </div>
-                <div class="panel-footer text-center">
-                    <a class="btn btn-info btn-rounded btn-block btn-detail-anggota" id="<?= $A->id_anggota; ?>"
-                        title="Lihat">Lihat</a>
-                </div>
-            </div>
-            <!-- END CONTACT ITEM -->
-        </div>
-        <?php } ?>
+            <?php } ?>
     </div>
 
-    <?php endif; ?>
+<?php endif; ?>
 
 </div>
 <!-- END PAGE CONTENT WRAP -->
 
 
 <script>
-$(".btn-detail-anggota").click(function() {
-    console.log(this.id);
-    var idAnggota = this.id;
-    $(".btn-detail-anggota").attr("href", '<?= base_url("anggota/Anggota/detailAnggota/"); ?>' + idAnggota);
-});
+    $(".btn-detail-anggota").click(function() {
+        console.log(this.id);
+        var idAnggota = this.id;
+        $(".btn-detail-anggota").attr("href", '<?= base_url("alumni/Anggota/detailAnggota/"); ?>' + idAnggota);
+    });
 </script>

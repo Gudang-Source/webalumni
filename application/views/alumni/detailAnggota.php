@@ -28,7 +28,7 @@
                 </div>
             </div>
 
-            <a class="btn btn-primary" href="<?= base_url('anggota/Anggota'); ?>"><span>&larr;</span> Kembali</a>
+            <a class="btn btn-primary" href="<?= base_url('alumni/Anggota'); ?>"><span>&larr;</span> Kembali</a>
 
         </div>
 

@@ -37,6 +37,16 @@ class Anggota extends MY_Controller
         $this->alumni_render('alumni/lihatAlumni', $data);
     }
 
+    function detailAnggota($id)
+    {
+        $data['title'] = 'Detail Anggota';
+        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+        $data['anggota'] = $this->M_anggota->findAnggota('*', array('tb_anggota.id_anggota = ' => $id));
+
+        if ($this->session->userdata('role') == 4) {
+            $this->alumni_render('alumni/detailAnggota', $data);
+        }
+    }
 
     function cariAnggota()
     {
