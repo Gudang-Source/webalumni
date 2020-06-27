@@ -166,6 +166,16 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Aktif? </label>
+                    <div class="col-md-8">
+                        <select name="statusBerita" id="statusBerita" class="validate[required] select form-control">
+                            <option value="0">Tidak</option>
+                            <option value="1">Ya</option>
+                        </select>
+                    </div>
+                </div>
+
                 <div class="modal-footer">
                     <div class="col-md-12" style="text-align: left;">
                         <label class="control-label">* harus diisi</label>
@@ -309,6 +319,7 @@
                     var isiBerita = data_obj.berita[0].isi_berita;
                     var sumberBerita = data_obj.berita[0].sumber;
                     var creditBerita = data_obj.berita[0].credit;
+                    var statusBerita = data_obj.berita[0].stat_berita;
                     var idKategori = data_obj.berita[0].id_kategori;
 
                     document.getElementById('idUbahBerita').value = idBerita;
@@ -318,6 +329,7 @@
                     document.getElementById('creditBerita').value = creditBerita;
 
                     $("#kategoriBerita").val(idKategori).change();
+                    $("#statusBerita").val(statusBerita).change();
                 });
         });
 

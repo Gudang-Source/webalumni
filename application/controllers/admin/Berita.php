@@ -206,12 +206,14 @@ class Berita extends MY_Controller
         $sumberBerita = $this->input->post('sumberBerita');
         $creditBerita = $this->input->post('creditBerita');
         $kategoriBerita = $this->input->post('kategoriBerita');
+        $statusBerita = $this->input->post('statusBerita');
 
         $berita['judul_berita'] = $judulBerita;
         $berita['isi_berita'] = $isiBerita;
         $berita['sumber'] = $sumberBerita;
         $berita['credit'] = $creditBerita;
         $berita['id_kategori'] = $kategoriBerita;
+        $berita['stat_berita'] = $statusBerita;
 
         // echo json_encode($data);
         $sukses = $this->M_berita->updateBerita($berita, $idBerita);

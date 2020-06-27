@@ -96,7 +96,7 @@
                             </div>
                         </div>
                         <div class="panel-footer text-center">
-                            <a class="btn btn-primary btn-rounded btn-block btn-ubah-berita" title="Ubah Berita" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-ubah-berita"><span class="fa fa-edit"></span></a>
+                            <a class="btn btn-primary btn-rounded btn-block btn-ubah-berita" title="Ubah Berita" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-ubah-berita"><span class="fa fa-edit"></span> Ubah</a>
                             <a class="btn btn-info btn-rounded btn-block btn-isi-berita" title="Isi Berita" id="<?= $B->id_berita; ?>" data-toggle="modal" data-target="#message-box-isi-berita">Isi Berita</a>
                         </div>
                         <!-- END CONTACT ITEM -->
@@ -162,6 +162,16 @@
                             <?php foreach ($daftarKategori as $kategori) : ?>
                                 <option value="<?= $kategori->id; ?>"><?= $kategori->kategori; ?></option>
                             <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Aktif? </label>
+                    <div class="col-md-8">
+                        <select name="statusBerita" id="statusBerita" class="validate[required] select form-control">
+                            <option value="0">Tidak</option>
+                            <option value="1">Ya</option>
                         </select>
                     </div>
                 </div>
@@ -309,6 +319,7 @@
                     var isiBerita = data_obj.berita[0].isi_berita;
                     var sumberBerita = data_obj.berita[0].sumber;
                     var creditBerita = data_obj.berita[0].credit;
+                    var statusBerita = data_obj.berita[0].stat_berita;
                     var idKategori = data_obj.berita[0].id_kategori;
 
                     document.getElementById('idUbahBerita').value = idBerita;
@@ -318,6 +329,7 @@
                     document.getElementById('creditBerita').value = creditBerita;
 
                     $("#kategoriBerita").val(idKategori).change();
+                    $("#statusBerita").val(statusBerita).change();
                 });
         });
 
