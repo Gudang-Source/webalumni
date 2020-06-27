@@ -260,7 +260,7 @@
                     <div class="form-group">
                         <label class="col-md-2 control-label">Foto</label>
                         <div class="col-md-8" style="margin-left: 10px; margin-top: 12px;">
-                            <img id="namaFotoKomunitas" src="<?= base_url('uploads/content/komunitas/'); ?>" width="150" style="margin-bottom: 10px;" />
+                            <img id="namaFotoKomunitas" src="<?= base_url('uploads/content/komunitas/'); ?>" width="350" style="margin-bottom: 10px;" />
                             <input type="hidden" class="form-control" id="ubahFotoKomunitas" name="ubahFotoKomunitas" readonly />
                             <br>
                             <input type="file" class="file" id="file-simple" name="fileSaya" />
