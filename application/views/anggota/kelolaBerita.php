@@ -49,6 +49,7 @@
     </div>
 
     <div class="row">
+
         <?php if ($berita) : ?>
             <?php foreach ($berita as $B) : ?>
                 <?php if ($B->stat_berita == 1) : ?>

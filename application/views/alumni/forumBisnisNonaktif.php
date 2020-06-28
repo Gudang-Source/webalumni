@@ -17,44 +17,40 @@
 <div class="page-content-wrap">
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
+            <a href="<?= base_url('alumni/ForumBisnis'); ?>" class="btn btn-info" style="margin-bottom: 15px;">Forum Bisnis Aktif</a>
+            <br>
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <p>Cari Forum Bisnis</p>
-                    <form action="<?= base_url('alumni/ForumBisnis/cariForumBisnisNonAktif'); ?>" method="post">
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <span class="fa fa-search"></span>
-                                    </div>
-                                    <input type="text" class="form-control" name="namaBisnis" placeholder="Temukan forum bisnis anda.">
-                                    <div class="input-group-btn">
-                                        <button type="submit" class="btn btn-primary">Cari</button>
+                    <div class="row">
+                        <p>Cari Forum Bisnis</p>
+                        <form action="<?= base_url('alumni/ForumBisnis/cariForumBisnisNonAktif'); ?>" method="post">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="namaBisnis" placeholder="Temukan forum bisnis anda disini.">
+                                        <div class="input-group-btn">
+                                            <button type="submit" class="btn btn-primary"><span class="fa fa-search"></span></button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-2">
-                                <a href="<?= base_url('alumni/ForumBisnis/forumBisnisNonaktif'); ?>" class="btn btn-primary">Reset Pencarian</a>
+                        </form>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <a href="<?= base_url('alumni/ForumBisnis/forumBisnisNonaktif'); ?>" class="btn btn-primary">Reset
+                                    Pencarian</a>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <?php if ($forumBisnis == NULL) : ?>
-        <div class="row">
-            <div class="col-md-12">
-                <h2 class="text-center" style="margin-top: 10px;">Ups . . . ! Forum Bisnis anda tidak ditemukan</h2>
-            </div>
-        </div>
-    <?php else : ?>
-        <div class="row">
-            <?php foreach ($forumBisnis as $B) { ?>
+    <div class="row">
+        <?php if ($forumBisnis) : ?>
+            <?php foreach ($forumBisnis as $B) : ?>
 
                 <div class="col-md-4">
                     <!-- CONTACT ITEM -->
@@ -94,10 +90,16 @@
                         <!-- END CONTACT ITEM -->
                     </div>
                 </div>
-            <?php } ?>
+            <?php endforeach; ?>
 
-        </div>
-    <?php endif; ?>
+        <?php else : ?>
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="text-center" style="margin-top: 10px;">Forum Bisnis tidak ditemukan</h2>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
 </div>
 
 <!-- MODAL DELETE FORUM BISNIS -->

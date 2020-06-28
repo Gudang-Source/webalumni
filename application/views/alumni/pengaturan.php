@@ -106,7 +106,7 @@
                         <?php if ($info[0]->nama_foto == null) { ?>
                             <img src="<?= base_url('uploads/no-image.jpg'); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" width="150" height="150" />
                         <?php } else { ?>
-                            <img src="<?= base_url('uploads/avatars/' . $info[0]->nama_foto); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" width="200" height="150" />
+                            <img src="<?= base_url('uploads/avatars/' . $info[0]->nama_foto); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" width="200" />
                         <?php } ?>
                     </div>
                     <br>
@@ -132,14 +132,20 @@
                         </div>
                     </div>
                     <div class="row">
+                        <label class="col-md-2 control-label">Password :</label>
+                        <div class="col-md-3">
+                            <label class="control-label">*********</label>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-4">
                             <button class="btn btn-info btn-username" title="Ganti" data-toggle="modal" data-target="#UbahUsernameModal">
                                 <i class="fa fa-pencil-square"></i>
                                 <span>Ganti Username</span>
                             </button>
                         </div>
-                        <div class="col-md-4">
-                            <button class="btn btn-danger" title="Ganti Password" data-toggle="modal" data-target="#UbahPasswordModal">
+                        <div class="col-md-12">
+                            <button class="btn btn-danger" title="Ganti Password" data-toggle="modal" data-target="#UbahPasswordModal" style="margin-top: 7px;">
                                 <i class="glyphicon glyphicon-remove"></i>
                                 <span>Ganti Password</span>
                             </button>

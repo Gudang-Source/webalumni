@@ -3,7 +3,7 @@
 if (defined('BASEPATH') or exit('No direct script access allowed'));
 
 /*
- * class Anggota Admin
+ * class Komunitas Alumni
  * Created by 
  *      Adhy Wiranto Sudjana
  *      Dicky Ardianto
@@ -19,12 +19,13 @@ class Komunitas extends MY_Controller
     // ==================================================
     // ------------------ CONTSTRUCTOR ------------------
     // ==================================================
-    function __construct() {
+    function __construct()
+    {
         parent::__construct();
         $this->load->model('M_anggota');
         $this->load->model('M_user');
         $this->load->model('M_komunitas');
-        
+
         if ($this->session->userdata('logged_in') == '' && $this->session->userdata('username') == '' && $this->session->userdata('role') == '') {
             redirect('login');
         } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == '2') {
@@ -44,7 +45,7 @@ class Komunitas extends MY_Controller
     // ==================================================
     function index()
     {
-        $data['title'] = 'Kelola Komunitas';
+        $data['title'] = 'Lihat Komunitas';
         $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
         $data['komunitas'] = $this->M_komunitas->getAllKomunitas();
@@ -74,7 +75,7 @@ class Komunitas extends MY_Controller
     // ==================================================
     function tambahKomunitas()
     {
-        $data['title'] = 'Kelola Komunitas';
+        $data['title'] = 'Tambah Komunitas';
         $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
         $data['komunitas'] = $this->M_komunitas->getAllKomunitas();
         $this->alumni_render('alumni/tambahKomunitas', $data);
@@ -83,7 +84,7 @@ class Komunitas extends MY_Controller
     public function tambahCalonKomunitas()
     {
         date_default_timezone_set("Asia/Jakarta");
-        $jam = date ("H:i:s");
+        $jam = date("H:i:s");
         $tanggal = date("Y-m-d", mktime(date('m'), date("d"), date('Y')));
 
         $this->load->model('M_anggota');
@@ -99,7 +100,7 @@ class Komunitas extends MY_Controller
         $tglPengajuan = $tanggal;
         $waktuPengajuan = $jam;
         $idPengupload = $this->input->post('idPengupload');
-        
+
         $filename = "komunitas-" . $namaKomunitas . "-" . time();
 
         // Set preferences
@@ -128,7 +129,7 @@ class Komunitas extends MY_Controller
             $data['time_created'] = $waktuPengajuan;
             $data['logo_komunitas'] = $upload_data['file_name'];
             $data['id_pengupload'] = $idPengupload;
-            if($this->session->userdata('role') == 4) {
+            if ($this->session->userdata('role') == 4) {
                 $data['stat_komunitas'] = '0';
             } else {
                 $data['stat_komunitas'] = '1';
@@ -157,33 +158,33 @@ class Komunitas extends MY_Controller
     // ==================================================
     function cariStatusKomunitas()
     {
-    $data['title'] = 'Kelola Status Komunitas';
+        $data['title'] = 'Kelola Status Komunitas';
 
-    $nama = $this->input->post('namaKomunitas');
+        $nama = $this->input->post('namaKomunitas');
 
-    $where = "tb_komunitas.stat_komunitas != 0";
-    $data['komunitas'] = $this->M_komunitas->findKomunitasLikeNama($where, $nama);
+        $where = "tb_komunitas.stat_komunitas != 0";
+        $data['komunitas'] = $this->M_komunitas->findKomunitasLikeNama($where, $nama);
 
-    $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
-    if ($this->session->userdata('role') == 4) {
-        $this->alumni_render('alumni/lihatKomunitas', $data);
+        if ($this->session->userdata('role') == 4) {
+            $this->alumni_render('alumni/lihatKomunitas', $data);
         }
     }
 
     function cariStatusKomunitasNonaktif()
     {
-    $data['title'] = 'Kelola Status Komunitas';
+        $data['title'] = 'Kelola Status Komunitas';
 
-    $nama = $this->input->post('namaKomunitas');
+        $nama = $this->input->post('namaKomunitas');
 
-    $where = "tb_komunitas.stat_komunitas != 1";
-    $data['komunitas'] = $this->M_komunitas->findKomunitasLikeNama($where, $nama);
+        $where = "tb_komunitas.stat_komunitas != 1";
+        $data['komunitas'] = $this->M_komunitas->findKomunitasLikeNama($where, $nama);
 
-    $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
-    if ($this->session->userdata('role') == 4) {
-        $this->alumni_render('alumni/komunitasNonaktif', $data);
+        if ($this->session->userdata('role') == 4) {
+            $this->alumni_render('alumni/komunitasNonaktif', $data);
         }
     }
     // ==================================================

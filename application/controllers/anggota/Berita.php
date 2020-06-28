@@ -57,7 +57,9 @@ class Berita extends MY_Controller
             $data['title'] = 'Kelola Berita';
             $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
-            $data['berita'] = $this->M_berita->getAllBeritaForSpecificUser($data['info'][0]->user_id);
+            $where = "tb_berita.stat_berita != 0";
+
+            $data['berita'] = $this->M_berita->getAllBeritaForSpecificUser($where, $data['info'][0]->user_id);
             $data['daftarKategori'] = $this->M_kategori->getAllKategori();
 
             $this->anggota_render('anggota/kelolaBerita', $data);
@@ -85,7 +87,9 @@ class Berita extends MY_Controller
             $data['title'] = 'Berita Nonaktif';
             $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
-            $data['berita'] = $this->M_berita->getAllBeritaForSpecificUser($data['info'][0]->user_id);
+            $where = "tb_berita.stat_berita != 1";
+
+            $data['berita'] = $this->M_berita->getAllBeritaForSpecificUser($where, $data['info'][0]->user_id);
             $data['daftarKategori'] = $this->M_kategori->getAllKategori();
 
             $this->anggota_render('anggota/beritaNonaktif', $data);

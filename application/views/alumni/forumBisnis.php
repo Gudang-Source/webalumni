@@ -16,7 +16,7 @@
 
     <div class="row">
         <!--  -->
-        <div class="col-md-12">
+        <div class="col-md-6">
             <a href="<?= base_url('alumni/ForumBisnis/tambahCalonForbis'); ?>" class="btn btn-success" style="margin-bottom: 15px;"><b>&plus;</b> Tambah Forum Bisnis</a>
             <a href="<?= base_url('alumni/ForumBisnis/forumBisnisNonaktif'); ?>" class="btn btn-info" style="margin-bottom: 15px;">Forum Bisnis Nonaktif</a>
             <br>
@@ -25,14 +25,11 @@
                     <p>Cari Forum Bisnis</p>
                     <form action="<?= base_url('alumni/ForumBisnis/cariForumBisnis'); ?>" method="post">
                         <div class="form-group">
-                            <div class="col-md-10">
+                            <div class="col-md-8">
                                 <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <span class="fa fa-search"></span>
-                                    </div>
-                                    <input type="text" class="form-control" name="namaBisnis" placeholder="Temukan nama bisnis anda disini.">
+                                    <input type="text" class="form-control" name="namaBisnis" placeholder="Temukan forum bisnis anda disini.">
                                     <div class="input-group-btn">
-                                        <button type="submit" class="btn btn-primary">Cari</button>
+                                        <button type="submit" class="btn btn-primary"><span class="fa fa-search"></span></button>
                                     </div>
                                 </div>
                             </div>
@@ -49,18 +46,9 @@
         <!--  -->
     </div>
 
-    <?php if ($forumBisnis == NULL) : ?>
-
-        <div class="row">
-            <div class="col-md-12">
-                <h2 class="text-center" style="margin-top: 10px;">Ups . . . ! Forum Bisnis anda tidak ditemukan</h2>
-            </div>
-        </div>
-
-    <?php else : ?>
-
-        <div class="row">
-            <?php foreach ($forumBisnis as $A) { ?>
+    <div class="row">
+        <?php if ($forumBisnis) : ?>
+            <?php foreach ($forumBisnis as $A) : ?>
                 <?php if ($A->nama_bisnis_usaha !== null) : ?>
                     <div class="col-md-4    ">
                         <!-- CONTACT ITEM -->
@@ -107,11 +95,16 @@
                             <!-- END CONTACT ITEM -->
                         </div>
                     </div>
-                <?php endif ?>
-            <?php } ?>
-        </div>
-
-    <?php endif; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        <?php else : ?>
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="text-center" style="margin-top: 10px;">Forum Bisnis tidak ditemukan</h2>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
 
 </div>
 

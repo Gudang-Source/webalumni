@@ -80,8 +80,7 @@
                     <ul>
                         <li><a href="<?= base_url('alumni/Anggota') ?>"><span class="fa fa-user"></span> Lihat
                                 Alumni</a></li>
-                        <li><a href="<?= base_url('alumni/Anggota/KelolaAnggota') ?>"><span class="fa fa-users"></span>
-                                Tambahkan Anggota </a></li>
+                        <li><a href="<?= base_url('alumni/Anggota/KelolaAnggota') ?>"><span class="fa fa-plus"></span>Tambah Anggota </a></li>
                     </ul>
                 </li>
 
@@ -89,7 +88,7 @@
                     <a href="#"><span class="fa fa-envelope-o"></span> <span class="xn-text">Berita</span></a>
                     <ul>
                         <li><a href="<?= base_url('alumni/Berita'); ?>"><span class="fa fa-align-left"></span> <span class="xn-text">Kelola Berita</span></a></li>
-                        <li><a href="<?= base_url('alumni/Berita/beritaNonaktif'); ?>"><span class="fa fa-align-left"></span> <span class="xn-text">Berita Nonaktif</span></a>
+                        <li><a href="<?= base_url('alumni/Berita/beritaNonaktif'); ?>"><span class="fa fa-minus"></span> <span class="xn-text">Berita Nonaktif</span></a>
                         </li>
                         <li><a href="<?= base_url('alumni/Berita/formTambahCalonBerita') ?>"><span class="fa fa-plus"></span>Tambah Berita </a></li>
                     </ul>

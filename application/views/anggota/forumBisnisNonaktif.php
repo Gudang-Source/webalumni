@@ -47,15 +47,9 @@
         </div>
     </div>
 
-    <?php if ($forumBisnis == NULL) : ?>
-        <div class="row">
-            <div class="col-md-6">
-                <h2 class="text-center" style="margin-top: 10px;">Forum Bisnis tidak ditemukan</h2>
-            </div>
-        </div>
-    <?php else : ?>
-        <div class="row">
-            <?php foreach ($forumBisnis as $B) { ?>
+    <div class="row">
+        <?php if ($forumBisnis) : ?>
+            <?php foreach ($forumBisnis as $B) : ?>
 
                 <div class="col-md-4">
                     <!-- CONTACT ITEM -->
@@ -95,10 +89,15 @@
                         <!-- END CONTACT ITEM -->
                     </div>
                 </div>
-            <?php } ?>
-
-        </div>
-    <?php endif; ?>
+            <?php endforeach; ?>
+        <?php else : ?>
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="text-center" style="margin-top: 10px;">Forum Bisnis tidak ditemukan</h2>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
 </div>
 
 <!-- MODAL DELETE FORUM BISNIS -->

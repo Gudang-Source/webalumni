@@ -6,7 +6,7 @@
 <!-- END BREADCRUMB -->
 
 <div class="page-title">
-    <h2> Alumni IKASMA3BDG</h2>
+    <h2> Lihat Alumni</h2>
 </div>
 
 <?= showFlashMessage(); ?>
@@ -15,45 +15,38 @@
 <div class="page-content-wrap">
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <p>Cari Alumni</p>
-                    <form action="<?= base_url('alumni/Anggota/cariAnggota'); ?>" method="post">
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <span class="fa fa-search"></span>
-                                    </div>
-                                    <input type="text" class="form-control" name="namaAnggota" placeholder="Siapa yang akan anda cari ?">
-                                    <div class="input-group-btn">
-                                        <button type="submit" class="btn btn-primary">Search</button>
+                    <div class="row">
+                        <p>Cari Alumni</p>
+                        <form action="<?= base_url('alumni/Anggota/cariAnggota'); ?>" method="post">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="namaAnggota" placeholder="Siapa yang akan anda cari ?">
+                                        <div class="input-group-btn">
+                                            <button type="submit" class="btn btn-primary"><span class="fa fa-search"></span></button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-2">
+                        </form>
+                        <div class="col-md-2">
+                            <div class="form-group">
                                 <a href="<?= base_url('alumni/Anggota'); ?>" class="btn btn-primary">Reset
-                                    Search</a>
+                                    Pencarian</a>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="row">
-        <?php if (empty($anggota)) : ?>
-            <tr>
-                <td colspan="7">
-                    <h2 class="text-center">Upps... Data alumni tidak ditemukan.</h2>
-                </td>
-            </tr>
-        <?php else : ?>
 
+        <?php if ($anggota) : ?>
             <?php foreach ($anggota as $A) { ?>
                 <div class="col-md-3">
                     <!-- CONTACT ITEM -->
@@ -109,9 +102,14 @@
                     <!-- END CONTACT ITEM -->
                 </div>
             <?php } ?>
+        <?php else : ?>
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="text-center" style="margin-top: 10px;">Alumni tidak ditemukan</h2>
+                </div>
+            </div>
+        <?php endif; ?>
     </div>
-
-<?php endif; ?>
 
 </div>
 <!-- END PAGE CONTENT WRAP -->
