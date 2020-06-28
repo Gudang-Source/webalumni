@@ -102,37 +102,9 @@
                                             <h5><a><?= $A->tautat_komunitas; ?></a></h5>
                                         </p>
 
-                                        <?php if ($A->sifat_komunitas == "Publik") { ?>
-                                            <!-- <p><i class="fa fa-eye" aria-hidden="true"></i> <strong> <?= $A->sifat_komunitas ?> </strong><br>
-                                                <h5>Semua orang bisa join ke komunitas ini.</h5>
-                                            </p> 
-                                        <?php } else { ?>
-                                            <p><i class="fa fa-eye" aria-hidden="true"></i> <strong>Private </strong><br>
-                                                <h5>Tidak semua orang bisa menemukan komunitas ini.</h5>
-                                            </p>
-                                        <?php } ?>-->
-
-                                        <?php if ($A->jenis_komunitas == "Aktif") { ?>
-                                            <p><i class="fa fa-globe" aria-hidden="true"></i> <strong><?= $A->jenis_komunitas ?></strong><br>
-                                                <h5>Banyak orang menggunakan komunitas ini</h5>
-                                            </p>
-                                        <?php } else { ?>
-                                            <p><i class="fa fa-globe" aria-hidden="true"></i> <strong>Pasif</strong><br>
-                                                <h5>Hanya sebagian anggota menggunakan komunitas ini dan sedikit hal yang diposting</h5>
-                                            </p>
-                                        <?php } ?> -->
-
-                                        <p><i class="fa fa-map-marker" aria-hidden="true"></i> <strong>Lokasi</strong><br>
-                                            <h5><?= $A->lokasi_komunitas ?></h5>
-                                        </p>
                                         <p><i class="fa fa-users" aria-hidden="true"></i> <strong>Anggota</strong><br>
                                             <h5>+- <?= $A->anggota_komunitas ?></h5>
                                         </p>
-                                        <!-- <hr>
-                            <p><i class="fa fa-calendar" aria-hidden="true"></i> <small>Tanggal Dibuat</small><br><h5><?= $A->date_created; ?></h5></p>
-                            <p><i class="fa fa-clock-o" aria-hidden="true"></i> <small>Waktu Dibuat</small><br><h5><?= $A->time_created; ?></h5></p>
-                            <p><i class="fa fa-user" aria-hidden="true"></i> <small>Pengupload Komunitas</small><br><h5><?= $A->username; ?></h5></p>
-                            -->
                                     </div>
                                 </div>
                             </div>
