@@ -1,12 +1,12 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
     <li>Keanggotaan</li>
-    <li class="active"><a href="<?= base_url('alumni/Anggota/KelolaAnggota'); ?>">Tambah Calon Anggota</a></li>
+    <li class="active"><a href="<?= base_url('alumni/Anggota/KelolaAnggota'); ?>">Tambah Anggota</a></li>
 </ul>
 <!-- END BREADCRUMB -->
 
 <div class="page-title">
-    <h2> Tambah calon anggota</h2>
+    <h2> Tambah Anggota</h2>
 </div>
 
 <?= showFlashMessage(); ?>
