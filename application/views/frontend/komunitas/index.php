@@ -31,7 +31,7 @@
 
     <!-- SEARCH -->
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="row">
@@ -70,7 +70,6 @@
         </div>
     <?php endif; ?>
 
-
     <!-- KOMUNITAS CONTENT -->
     <div class="row">
         <?php foreach ($komunitas as $A) { ?>
@@ -90,14 +89,16 @@
                                     <h3 style="color:white;"><?= $A->nama_komunitas; ?><h3>
                                 </div>
                             </div>
-
                         </div>
+
                         <div class="panel-body">
                             <div class="contact-info">
-                                <h3>Tentang Komunitas ini</h3>
-                                <p> <?= $A->deskripsi_komunitas ?></p>
+                                <h3>Info Singkat :</h3>
                                 <div class="panel-body">
                                     <div class="contact-info">
+                                        <p><i class="fa fa-eye" aria-hidden="true"></i> <strong> <?= $komunitas[0]->sifat_komunitas ?> </strong><br>
+                                                <h5>Semua orang bisa join ke komunitas ini.</h5>
+                                            </p>
                                         <p><i class="fa fa-link" aria-hidden="true"></i> <strong>Link Komunitas</strong><br>
                                             <h5><a><?= $A->tautat_komunitas; ?></a></h5>
                                         </p>
@@ -109,6 +110,10 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="panel-body text-center">
+                            <a href="<?=  base_url('Komunitas/detailKomunitas/') .  $A->id_komunitas; ?>  " class="btn btn-primary btn-block" title="Detail komunitas" id="<?= $A->id_komunitas; ?>"><i class="fa fa-eye"></i>Selengkapnya >></a>
+                        </div>
                         <!-- END CONTACT ITEM -->
                     </div>
                 </div>
@@ -118,6 +123,8 @@
     </div>
 </div>
 <!-- PAGE CONTENT WRAP -->
+
+
 
 <script>
     $("#form-ubah-komunitas-validate").validate();

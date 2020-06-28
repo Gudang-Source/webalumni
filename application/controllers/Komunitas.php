@@ -20,4 +20,18 @@ class Komunitas extends MY_Controller
         $data['info'] = $this->FrontPageModel->getInfoBySessionId();
         $this->frontend_render('frontend/komunitas/index', $data);
     }
+
+    function detailKomunitas($id)
+    {
+        $data['komunitas'] = $this->M_komunitas->findKomunitasLikeId($id);
+        $data['title'] = 'Detail Komunitas';
+        $data['komunitas'] = $this->M_komunitas->getAllKomunitas();
+        // $data['info'] = $this->FrontPageModel->getInfoBySessionId();
+
+        // $data['daftarBerita'] = $this->M_berita->getBerita(5, 0);
+        // $data['daftarKategori'] = $this->M_kategori->getAllKategori();
+
+        $this->frontend_render('frontend/komunitas/detailKomunitas', $data);
+    }
+    
 }

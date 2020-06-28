@@ -51,4 +51,13 @@ class M_komunitas extends CI_Model
         $this->db->where('id_komunitas', $id);
         $this->db->delete('tb_komunitas');
     }
+
+    function findKomunitasLikeId($id)
+    {
+        $this->db->select('tb_komunitas.*');
+        $this->db->from('tb_komunitas');
+        $this->db->where('tb_komunitas.id_komunitas', $id);
+
+        return $this->db->get()->result();
+    }
 }

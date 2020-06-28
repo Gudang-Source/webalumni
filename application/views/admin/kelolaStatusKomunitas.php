@@ -297,7 +297,7 @@
                             <p>Anda yakin akan menghapus komunitas dari IKASMA3BDG dengan identitas sebagai berikut :</p>
 
                             <div class="form-group hidden">
-                                <input type="text" id="idKomunitasHapus" name="idKomunitasHapus" class="form-control" value="<?= $komunitas[0]->id_komunitas ?>">
+                                <input type="text" id="idKomunitasHapus" name="idKomunitasHapus" class="form-control">
                             </div>
 
                             <div class="form-group">
