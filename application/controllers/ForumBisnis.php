@@ -14,6 +14,7 @@ class ForumBisnis extends MY_Controller
         parent::__construct();
         $this->load->model('FrontPageModel');
         $this->load->model('M_forumBisnis');
+        $this->load->model('M_jenisBisnis');
     }
 
     function index()
@@ -21,6 +22,7 @@ class ForumBisnis extends MY_Controller
         $data['title'] = 'Forum Bisnis';
         $data['info'] = $this->FrontPageModel->getInfoBySessionId();
         $data['forumBisnis'] = $this->M_forumBisnis->getAllForumBisnis();
+        $data['jenisBisnis'] = $this->M_jenisBisnis->getAllJenisBisnis();
         $this->frontend_render('frontend/forumbisnis/forumBisnis', $data);
     }
 
@@ -32,5 +34,15 @@ class ForumBisnis extends MY_Controller
         $data['info'] = $this->FrontPageModel->getInfoBySessionId();
 
         $this->frontend_render('frontend/forumbisnis/lihatForbis', $data);
+    }
+
+    public function jenisBisnis($id)
+    {
+        $data['forumBisnis'] = $this->M_forumBisnis->getAllForumBisnisByJenis($id);
+        $data['info'] = $this->FrontPageModel->getInfoBySessionId();
+        $data['title'] = 'Forum Bisnis';
+        $data['jenisBisnis'] = $this->M_jenisBisnis->getAllJenisBisnis();
+        $data['findJenisBisnis'] = $this->M_jenisBisnis->findJenisBisnisNew($id);
+        $this->frontend_render('frontend/forumbisnis/jenisBisnis', $data);
     }
 }

@@ -70,55 +70,60 @@
         </div>
 
         <div class="row">
-            <div class="col-md-8">
-                <div class="row">
-                    <?php foreach ($forumBisnis as $B) : ?>
-                        <?php if ($forumBisnis) : ?>
-                            <?php if ($B->stat_forbis == 1) : ?>
-                                <!-- CONTACT ITEM -->
-                                <a href="<?= base_url('forumBisnis/lihatForbis/') . $B->id_forbis; ?>">
-                                    <div class="panel panel-default" style="padding: 15px;">
-                                        <div class="col-md-4">
-                                            <div class="panel-body">
-                                                <div class="profile-image" style="width: 200px; height: 150px; overflow: hidden;">
-                                                    <?php if ($B->nama_foto_bisnis == NULL) { ?>
-                                                        <img src="<?php echo base_url('uploads/no-image.jpg'); ?> " alt="No Image" title="Default Image" style="width: 100%;">
-                                                    <?php } else { ?>
-                                                        <img src="<?php echo base_url('uploads/logo-bisnis/' . $B->nama_foto_bisnis); ?> " alt="<?= $B->nama_foto_bisnis; ?>" title="<?= $B->nama_bisnis_usaha; ?>" style="height: 100%;">
-                                                    <?php } ?>
+            <h2 class="text-info"><b>#<?= $findJenisBisnis[0]->nama_jenis_bisnis ?></b></h2>
+            <?php if (empty($forumBisnis)) : ?>
+                <p>Data tidak ditemukan!</p>
+            <?php else : ?>
+                <div class="col-md-8">
+                    <div class="row">
+                        <?php foreach ($forumBisnis as $B) : ?>
+                            <?php if ($forumBisnis) : ?>
+                                <?php if ($B->stat_forbis == 1) : ?>
+                                    <!-- CONTACT ITEM -->
+                                    <a href="<?= base_url('forumBisnis/lihatForbis/') . $B->id_forbis; ?>">
+                                        <div class="panel panel-default" style="padding: 15px;">
+                                            <div class="col-md-4">
+                                                <div class="panel-body">
+                                                    <div class="profile-image" style="width: 200px; height: 150px; overflow: hidden;">
+                                                        <?php if ($B->nama_foto_bisnis == NULL) { ?>
+                                                            <img src="<?php echo base_url('uploads/no-image.jpg'); ?> " alt="No Image" title="Default Image" style="width: 100%;">
+                                                        <?php } else { ?>
+                                                            <img src="<?php echo base_url('uploads/logo-bisnis/' . $B->nama_foto_bisnis); ?> " alt="<?= $B->nama_foto_bisnis; ?>" title="<?= $B->nama_bisnis_usaha; ?>" style="height: 100%;">
+                                                        <?php } ?>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div class="col-md-8">
-                                            <div class="panel-body" style="transform: translate(0, 50%);">
-                                                <?php if ($B->nama_bisnis_usaha == "") { ?>
-                                                    <h2><b>Belum di isi</b></h2>
-                                                <?php } else { ?>
-                                                    <h3 class="text-primary" id="bacaBerita" name="bacaBerita"><b><?= $B->nama_bisnis_usaha; ?></b></h3>
-                                                    <!-- <h3><b><a class="text-primary" id="bacaBerita" name="bacaBerita" href="<?= base_url('berita/baca/') . $B->id_forbis; ?>"><?= $B->nama_bisnis_usaha; ?></a></b></h3> -->
-                                                <?php } ?>
+                                            <div class="col-md-8">
+                                                <div class="panel-body" style="transform: translate(0, 50%);">
+                                                    <?php if ($B->nama_bisnis_usaha == "") { ?>
+                                                        <h2><b>Belum di isi</b></h2>
+                                                    <?php } else { ?>
+                                                        <h3 class="text-primary" id="bacaBerita" name="bacaBerita"><b><?= $B->nama_bisnis_usaha; ?></b></h3>
+                                                        <!-- <h3><b><a class="text-primary" id="bacaBerita" name="bacaBerita" href="<?= base_url('berita/baca/') . $B->id_forbis; ?>"><?= $B->nama_bisnis_usaha; ?></a></b></h3> -->
+                                                    <?php } ?>
 
-                                                <?php if ($B->pemilik_id == "") { ?>
-                                                    <p style="font-size: 12px;"><small>Pemilik Bisnis</small><br>Belum di isi</p>
-                                                <?php } else { ?>
-                                                    <p style="font-size: 12px;"><small>Pemilik Bisnis</small><br><?= $B->nama_lengkap; ?></p>
-                                                <?php } ?>
-
+                                                    <?php if ($B->pemilik_id == "") { ?>
+                                                        <p style="font-size: 12px;"><small>Pemilik Bisnis</small><br>Belum di isi</p>
+                                                    <?php } else { ?>
+                                                        <p style="font-size: 12px;"><small>Pemilik Bisnis</small><br><?= $B->nama_lengkap; ?></p>
+                                                    <?php } ?>
 
 
+
+                                                </div>
                                             </div>
+                                            <!-- END CONTACT ITEM -->
                                         </div>
-                                        <!-- END CONTACT ITEM -->
-                                    </div>
-                                </a>
+                                    </a>
+                                <?php endif; ?>
+                            <?php else : ?>
+                                <p>Data tidak ditemukan!</p>
                             <?php endif; ?>
-                        <?php else : ?>
-                            <p>Data tidak ditemukan!</p>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
-            </div>
+            <?php endif; ?>
             <!-- <div class="col-md-4">
                 <div class="row">
                     <div class="panel panel-default" style="padding: 15px;">

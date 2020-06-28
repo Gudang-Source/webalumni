@@ -32,4 +32,10 @@ class M_jenisBisnis extends CI_Model
     {
         $this->db->delete('tb_jenis_bisnis', ['id_jenis_bisnis' => $id]);
     }
+
+    function findJenisBisnisNew($where)
+    {
+        $this->db->like('id_jenis_bisnis', $where);
+        return $this->db->get('tb_jenis_bisnis')->result();
+    }
 }
