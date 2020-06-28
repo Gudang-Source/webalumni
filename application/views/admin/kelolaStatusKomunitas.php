@@ -252,7 +252,8 @@
                             <div class="form-group hidden">
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" id="idUbahFoto" name="idUbahFoto">
-                                    <input type="text" class="form-control" id="namaUbahFotoKomunitas name=" namaUbahFotoKomunitas>
+                                    <input type="text" class="form-control" id="namaUbahFotoKomunitas" name=" namaUbahFotoKomunitas">
+                                    <input type="text" class="form-control"  id="namaKomunitas" name="namaKomunitas">
                                 </div>
                             </div>
                         </div>
@@ -346,7 +347,7 @@
             fileType: "any"
         });
 
-        $("#file_name").fileinput({
+        $("#file-name").fileinput({
             showUpload: false,
             showCaption: false,
             browseClass: "btn btn-danger",
@@ -396,9 +397,11 @@
 
                     var idUbahFoto = data_obj.komunitas[0].id_komunitas;
                     var logoKomunitas = data_obj.komunitas[0].logo_komunitas;
+                    var namaKomunitas = data_obj.komunitas[0].nama_komunitas;
 
                     document.getElementById('idUbahFoto').value = idUbahFoto;
                     document.getElementById('namaFotoKomunitas').src = '<?= base_url('uploads/content/komunitas/'); ?>' + logoKomunitas;
+                    document.getElementById('namaKomunitas').value = namaKomunitas;
                 });
         });
 
