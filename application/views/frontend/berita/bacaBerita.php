@@ -18,7 +18,7 @@
 
 <body>
 
-    <div class="container" style="margin-top: 80px;">
+    <div class="container" style="margin-top: 80px; margin-bottom: 50px;">
         <!-- START BREADCRUMB -->
         <ul class="breadcrumb">
             <li><a href="<?= base_url(''); ?>">Beranda</a></li>

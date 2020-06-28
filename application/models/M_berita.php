@@ -57,6 +57,20 @@ class M_berita extends CI_Model
         return sizeof($this->db->get()->result());
     }
 
+    public function getBeritaSizeLikeJudul($judul)
+    {
+        $this->db->select('tb_berita.*, tb_user.username, tb_kategori_berita.kategori');
+        $this->db->from('tb_berita');
+        $this->db->join('tb_user', 'tb_berita.id_penulis=tb_user.id_user');
+        $this->db->join('tb_kategori_berita', 'tb_berita.id_kategori = tb_kategori_berita.id');
+        $this->db->where('tb_berita.stat_berita != 0');
+        $this->db->like('tb_berita.judul_berita', $judul, 'both');
+        $this->db->order_by('tb_berita.date_created', 'DESC');
+        $this->db->order_by('tb_berita.time_created', 'DESC');
+
+        return sizeof($this->db->get()->result());
+    }
+
     public function getBeritaSizeLikeKategori($id)
     {
         $this->db->select('tb_berita.*, tb_user.username, tb_kategori_berita.kategori');
@@ -102,6 +116,21 @@ class M_berita extends CI_Model
         $this->db->join('tb_kategori_berita', 'tb_berita.id_kategori = tb_kategori_berita.id');
         $this->db->where($where);
         $this->db->where('tb_berita.id_penulis = ' . $user_id);
+        $this->db->like('judul_berita', $judul, 'both');
+        $this->db->order_by('tb_berita.date_created', 'DESC');
+        $this->db->order_by('tb_berita.time_created', 'DESC');
+
+        return $this->db->get()->result();
+    }
+
+    function findBeritaLikeJudulFrontend($where, $judul, $limit, $start)
+    {
+        $this->db->select('tb_berita.*, tb_user.username, tb_kategori_berita.kategori');
+        $this->db->from('tb_berita');
+        $this->db->join('tb_user', 'tb_berita.id_penulis=tb_user.id_user');
+        $this->db->join('tb_kategori_berita', 'tb_berita.id_kategori = tb_kategori_berita.id');
+        $this->db->where($where);
+        $this->db->limit($limit, $start);
         $this->db->like('judul_berita', $judul, 'both');
         $this->db->order_by('tb_berita.date_created', 'DESC');
         $this->db->order_by('tb_berita.time_created', 'DESC');

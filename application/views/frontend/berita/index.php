@@ -18,7 +18,7 @@
 
 <body>
 
-    <div class="container" style="margin-top: 80px;">
+    <div class="container" style="margin-top: 80px; margin-bottom: 50px;">
         <!-- START BREADCRUMB -->
         <ul class="breadcrumb">
             <li><a href="<?= base_url(''); ?>">Beranda</a></li>
@@ -106,15 +106,8 @@
                             <?php endif; ?>
                         </div>
 
-                        <div class="row">
-                            <div class="panel panel-default">
-                                <div class="col-md-12">
-                                    <div class="panel-body">
-                                        <h3><b><?= $this->pagination->create_links(); ?></b></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <?= $this->pagination->create_links(); ?>
+
                     </div>
                 </div>
 
