@@ -70,6 +70,7 @@ class Berita extends MY_Controller
         $this->pagination->initialize($config);
 
         $data['daftarBerita'] = $this->M_berita->getBerita($config['per_page'], $data['start']);
+        $data['daftarKategori'] = $this->M_kategori->getAllKategori();
 
         $this->frontend_render('frontend/berita/index', $data);
     }
@@ -79,6 +80,9 @@ class Berita extends MY_Controller
         $data['berita'] = $this->M_berita->findBeritaLikeId($id);
         $data['title'] = $data['berita'][0]->judul_berita;
         $data['info'] = $this->FrontPageModel->getInfoBySessionId();
+
+        $data['daftarBerita'] = $this->M_berita->getBerita(5, 0);
+        $data['daftarKategori'] = $this->M_kategori->getAllKategori();
 
         $this->frontend_render('frontend/berita/bacaBerita', $data);
     }
@@ -100,6 +104,7 @@ class Berita extends MY_Controller
         $where = "tb_berita.stat_berita != 0";
         $data['info'] = $this->FrontPageModel->getInfoBySessionId();
         $data['daftarBerita'] = $this->M_berita->findBeritaLikeJudul($where, $judul);
+        $data['kategori'] = $this->M_kategori->getAllKategori();
 
         // var_dump($data['daftarBerita']);
         // die;
@@ -147,6 +152,7 @@ class Berita extends MY_Controller
 
         $data['daftarBerita'] = $this->M_berita->findBeritaLikeKategori($id, $config['per_page'], $data['start']);
         $data['title'] = $data['daftarBerita'][0]->kategori;
+        $data['daftarKategori'] = $this->M_kategori->getAllKategori();
         $data['kategori'] = '<h2 class="text-info"><b>#' . $data['daftarBerita'][0]->kategori . '</b></h2>';
 
         $this->frontend_render('frontend/berita/index', $data);

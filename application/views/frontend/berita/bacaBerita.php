@@ -27,11 +27,7 @@
         </ul>
         <!-- END BREADCRUMB -->
 
-        <div class="page-title">
-            <h5>Baca Berita</h5>
-        </div>
-
-        <div class="row">
+        <div class="row" style="margin-top: 60px;">
             <div class="col-md-8">
                 <div class="row">
                     <!-- CONTACT ITEM -->
@@ -90,6 +86,57 @@
                             <?php } ?>
                         </div>
                         <!-- END CONTACT ITEM -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h6 class="text-info" style="margin-bottom: 25px; padding-bottom: 10px; border-bottom: 2px dotted #000 ;"><b>Berita Lainnya</b></h6>
+                        <?php foreach ($daftarBerita as $B) : ?>
+                            <?php if ($B->id_berita != $this->uri->segment(3)) : ?>
+                                <a href="<?= base_url('berita/baca/') . $B->id_berita; ?>">
+                                    <div class="panel panel-default">
+                                        <div class="col-md-4">
+                                            <div class="panel-body" style="width: 100px; height: 100px; overflow: hidden;">
+                                                <?php if ($B->foto == NULL) { ?>
+                                                    <img src="<?php echo base_url('uploads/no-image.jpg'); ?> " alt="No Image" title="Default Image" style="height: 100%;">
+                                                <?php } else { ?>
+                                                    <img src="<?php echo base_url('uploads/content/berita/' . $B->foto); ?> " alt="<?= $B->judul_berita; ?>" title="<?= $B->judul_berita; ?>" style="height: 100%;">
+                                                <?php } ?>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="panel-body">
+                                                <?php if ($B->judul_berita == "") { ?>
+                                                    <h2><b>Belum di isi</b></h2>
+                                                <?php } else { ?>
+                                                    <h6 class="text-primary" id="bacaBerita" name="bacaBerita"><b><?= $B->judul_berita; ?></b></h6>
+                                                    <!-- <h3><b><a class="text-primary" id="bacaBerita" name="bacaBerita" href="<?= base_url('berita/baca/') . $B->id_berita; ?>"><?= $B->judul_berita; ?></a></b></h3> -->
+                                                <?php } ?>
+
+                                                <?php if ($B->date_created == "") { ?>
+                                                    <p><small>Tanggal Dibuat</small><br>Belum di isi</p>
+                                                <?php } else { ?>
+                                                    <span class="text-primary"><?= date_format(date_create($B->date_created), "l, j F Y"); ?> <?= date_format(date_create($B->time_created), "H:m"); ?> WIB</span>
+                                                <?php } ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                        <a class="text-info" href="<?= base_url('berita'); ?>">Selengkapnya &raquo;</a>
+                    </div>
+                    <div class="col-md-12">
+                        <h6 class="text-warning" style="margin-top: 50px; margin-bottom: 25px; padding-bottom: 10px; border-bottom: 2px dotted #000 ;"><b>Daftar Kategori</b></h6>
+                        <?php foreach ($daftarKategori as $k) : ?>
+                            <?php if ($k->id == "1") : ?>
+                                <a class="btn btn-default" href="<?= base_url('berita/kategori/') . $k->id; ?>" style="margin-bottom: 5px;"><?= $k->kategori; ?></a>
+                            <?php else : ?>
+                                <a class="btn btn-warning" href="<?= base_url('berita/kategori/') . $k->id; ?>" style="margin-bottom: 5px;"><?= $k->kategori; ?></a>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
