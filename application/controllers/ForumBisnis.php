@@ -45,4 +45,15 @@ class ForumBisnis extends MY_Controller
         $data['findJenisBisnis'] = $this->M_jenisBisnis->findJenisBisnisNew($id);
         $this->frontend_render('frontend/forumbisnis/jenisBisnis', $data);
     }
+
+    public function cariForumBisnis()
+    {
+        $data['title'] = 'Forum Bisnis IKASMA3BDG';
+
+        $nama = $this->input->post('namaForbis');
+        $data['forumBisnis'] = $this->FrontPageModel->findForumBisnisLikeNama($nama);
+        $data['jenisBisnis'] = $this->M_jenisBisnis->getAllJenisBisnis();
+
+        $this->frontend_render('frontend/forumbisnis/forumBisnis', $data);
+    }
 }
