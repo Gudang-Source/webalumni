@@ -36,7 +36,7 @@ class Berita extends MY_Controller
         $data['info'] = $this->FrontPageModel->getInfoBySessionId();
         $data['start'] = $this->uri->segment(3);
 
-        $config['base_url'] = 'http://localhost/webalumni/berita/index';
+        $config['base_url'] = base_url('berita/index');
         $config['total_rows'] = $this->M_berita->getBeritaSize();
         $config['per_page'] = 5;
 
@@ -103,11 +103,9 @@ class Berita extends MY_Controller
 
         $where = "tb_berita.stat_berita != 0";
         $data['info'] = $this->FrontPageModel->getInfoBySessionId();
-        $data['daftarBerita'] = $this->M_berita->findBeritaLikeJudul($where, $judul);
-        $data['kategori'] = $this->M_kategori->getAllKategori();
 
-        // var_dump($data['daftarBerita']);
-        // die;
+        $data['daftarBerita'] = $this->M_berita->findBeritaLikeJudul($where, $judul);
+        $data['daftarKategori'] = $this->M_kategori->getAllKategori();
 
         $this->frontend_render('frontend/berita/index', $data);
     }
@@ -117,7 +115,7 @@ class Berita extends MY_Controller
         $data['info'] = $this->FrontPageModel->getInfoBySessionId();
         $data['start'] = $this->uri->segment(4);
 
-        $config['base_url'] = 'http://localhost/webalumni/berita/kategori/' . $id;
+        $config['base_url'] = base_url('berita/index') . $id;
         $config['total_rows'] = $this->M_berita->getBeritaSizeLikeKategori($id);
         $config['per_page'] = 5;
 

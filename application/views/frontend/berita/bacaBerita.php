@@ -134,7 +134,11 @@
                             <?php if ($k->id == "1") : ?>
                                 <a class="btn btn-default" href="<?= base_url('berita/kategori/') . $k->id; ?>" style="margin-bottom: 5px;"><?= $k->kategori; ?></a>
                             <?php else : ?>
-                                <a class="btn btn-warning" href="<?= base_url('berita/kategori/') . $k->id; ?>" style="margin-bottom: 5px;"><?= $k->kategori; ?></a>
+                                <?php if ($k->id % 2 == 1) : ?>
+                                    <a class="btn btn-warning" href="<?= base_url('berita/kategori/') . $k->id; ?>" style="margin-bottom: 5px;"><?= $k->kategori; ?></a>
+                                <?php else : ?>
+                                    <a class="btn btn-danger" href="<?= base_url('berita/kategori/') . $k->id; ?>" style="margin-bottom: 5px;"><?= $k->kategori; ?></a>
+                                <?php endif; ?>
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </div>

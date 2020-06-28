@@ -43,10 +43,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="form-group">
-                                <a href="<?= base_url('berita'); ?>" class="btn btn-primary">Reset Pencarian</a>
-                            </div> -->
                                 </form>
+                                <a class="btn btn-primary" href="<?= base_url('Berita'); ?>" style="margin-top: 20px;">Reset Pencarian</a>
                             </div>
                         </div>
                     </div>
@@ -58,13 +56,14 @@
                             <?= $kategori; ?>
                         </div>
                     </div>
+                <?php else : ?>
                 <?php endif; ?>
 
                 <div class="row">
                     <div class="col-md-12">
                         <div class="row">
-                            <?php foreach ($daftarBerita as $B) : ?>
-                                <?php if ($daftarBerita) : ?>
+                            <?php if ($daftarBerita) : ?>
+                                <?php foreach ($daftarBerita as $B) : ?>
                                     <?php if ($B->stat_berita == 1) : ?>
                                         <!-- CONTACT ITEM -->
                                         <a href="<?= base_url('berita/baca/') . $B->id_berita; ?>">
@@ -101,10 +100,10 @@
                                             </div>
                                         </a>
                                     <?php endif; ?>
-                                <?php else : ?>
-                                    <p>Data tidak ditemukan!</p>
-                                <?php endif; ?>
-                            <?php endforeach; ?>
+                                <?php endforeach; ?>
+                            <?php else : ?>
+                                <h4 class="text-danger text-center" style="margin-bottom: 30px;">Berita tidak ditemukan!</h4>
+                            <?php endif; ?>
                         </div>
 
                         <div class="row">
@@ -127,7 +126,11 @@
                     <?php if ($k->id == "1") : ?>
                         <a class="btn btn-default" href="<?= base_url('berita/kategori/') . $k->id; ?>" style="margin-bottom: 5px;"><?= $k->kategori; ?></a>
                     <?php else : ?>
-                        <a class="btn btn-warning" href="<?= base_url('berita/kategori/') . $k->id; ?>" style="margin-bottom: 5px;"><?= $k->kategori; ?></a>
+                        <?php if ($k->id % 2 == 1) : ?>
+                            <a class="btn btn-warning" href="<?= base_url('berita/kategori/') . $k->id; ?>" style="margin-bottom: 5px;"><?= $k->kategori; ?></a>
+                        <?php else : ?>
+                            <a class="btn btn-danger" href="<?= base_url('berita/kategori/') . $k->id; ?>" style="margin-bottom: 5px;"><?= $k->kategori; ?></a>
+                        <?php endif; ?>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </div>
