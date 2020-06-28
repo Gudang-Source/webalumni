@@ -116,4 +116,15 @@ class M_forumBisnis extends CI_Model
 
         // return $this->db->query($queryForbisById)->result();
     }
+
+    function getAllForumBisnisByJenis($id)
+    {
+        $query = "SELECT * FROM `tb_forum_bisnis` JOIN `tb_jenis_bisnis` ON
+        `tb_forum_bisnis`.`id_jenis_bisnis` = `tb_jenis_bisnis`.`id_jenis_bisnis` JOIN `tb_anggota` ON
+        `tb_forum_bisnis`.`pemilik_id` = `tb_anggota`.`id_anggota` WHERE `tb_forum_bisnis`.`stat_forbis` = 1 AND `tb_jenis_bisnis`.`id_jenis_bisnis` = $id ORDER BY `tb_forum_bisnis`.`id_forbis` DESC";
+
+        // $this->db->join('tb_jenis_bisnis', 'tb_forum_bisnis.id_jenis_bisnis = tb_jenis_bisnis.id_jenis_bisnis');
+        // $this->db->join('tb_anggota', 'tb_forum_bisnis.pemilik_id = tb_anggota.id_anggota');
+        return $this->db->query($query)->result();
+    }
 }

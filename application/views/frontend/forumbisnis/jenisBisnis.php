@@ -70,10 +70,11 @@
         </div>
 
         <div class="row">
-            <div class="col-md-8">
-                <?php if (empty($forumBisnis)) : ?>
-                    <p class="text-danger text-center">Forum Bisnis tidak ditemukan!</p>
-                <?php else : ?>
+            <h2 class="text-info"><b>#<?= $findJenisBisnis[0]->nama_jenis_bisnis ?></b></h2>
+            <?php if (empty($forumBisnis)) : ?>
+                <p>Data tidak ditemukan!</p>
+            <?php else : ?>
+                <div class="col-md-8">
                     <div class="row">
                         <?php foreach ($forumBisnis as $B) : ?>
                             <?php if ($forumBisnis) : ?>
@@ -117,12 +118,12 @@
                                     </a>
                                 <?php endif; ?>
                             <?php else : ?>
-                                <p class="text-danger text-center">Forum Bisnis tidak ditemukan!</p>
+                                <p>Data tidak ditemukan!</p>
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </div>
-                <?php endif; ?>
-            </div>
+                </div>
+            <?php endif; ?>
             <!-- <div class="col-md-4">
                 <div class="row">
                     <div class="panel panel-default" style="padding: 15px;">
