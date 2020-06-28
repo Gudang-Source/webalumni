@@ -154,6 +154,31 @@ class Komunitas extends MY_Controller
     //
     //
     // ==================================================
+    // --------------------- DELETE ---------------------
+    // ==================================================	
+    public function batalkanPermohonanKomunitas()
+    {
+        $this->load->model('M_komunitas');
+
+        $id = $this->input->post('idKomunitasHapus');
+
+        $deleteKomunitas = $this->M_komunitas->deleteKomunitas($id);
+
+        if (!$deleteKomunitas) {
+            flashMessage('success', 'Permohonan Komunitas berhasil dibatalkan');
+            redirect('alumni/Komunitas/komunitasNonaktif');
+        } else {
+            flashMessage('error', 'Terjadi Error! Silahkan coba lagi');
+            redirect('alumni/Komunitas/komunitasNonaktif');
+        }
+    }
+    // ==================================================
+    // --------------------- DELETE ---------------------
+    // ==================================================	
+    //
+    //
+    //
+    // ==================================================
     // --------------------- SEARCH ---------------------
     // ==================================================
     function cariStatusKomunitas()
@@ -181,7 +206,7 @@ class Komunitas extends MY_Controller
         $where = "tb_komunitas.stat_komunitas != 1";
         $data['komunitas'] = $this->M_komunitas->findKomunitasLikeNama($where, $nama);
 
-        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+        $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
         if ($this->session->userdata('role') == 4) {
             $this->alumni_render('alumni/komunitasNonaktif', $data);
@@ -189,5 +214,22 @@ class Komunitas extends MY_Controller
     }
     // ==================================================
     // --------------------- SEARCH ---------------------
+    // ==================================================
+    //
+    //
+    //
+    // ==================================================
+    // --------------------- OTHERS ---------------------
+    // ==================================================
+    function komunitasJSON()
+    {
+        $id = $this->input->post('id');
+
+        $data['komunitas'] = $this->M_komunitas->findKomunitas('*', array('tb_komunitas.id_komunitas = ' => $id));
+
+        echo json_encode($data);
+    }
+    // ==================================================
+    // --------------------- OTHERS ---------------------
     // ==================================================
 }
