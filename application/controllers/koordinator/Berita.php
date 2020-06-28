@@ -78,7 +78,7 @@ class Berita extends MY_Controller
 
     function kelolaKategori()
     {
-        $data['title'] = 'Kelola Kategori Berita';
+        $data['title'] = 'Kelola Kategori';
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
         $data['kategori'] = $this->M_kategori->getAllKategori();
 

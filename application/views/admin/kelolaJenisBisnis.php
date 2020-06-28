@@ -6,7 +6,7 @@
 <!-- END BREADCRUMB -->
 
 <div class="page-title">
-    <h2> Kelola Jenis Bisnis IKASMA3BDG</h2>
+    <h2> Kelola Jenis Bisnis</h2>
 </div>
 
 <?= showFlashMessage(); ?>

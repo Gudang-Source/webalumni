@@ -16,30 +16,30 @@
 
     <!-- SEARCH -->
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <p>Cari Komunitas</p>
-                    <form action="<?= base_url('koordinator/Komunitas/cariStatusKomunitas'); ?>" method="post">
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <span class="fa fa-search"></span>
-                                    </div>
-                                    <input type="text" class="form-control" name="namaKomunitas" placeholder="Komunitas mana yang akan anda cari ?">
-                                    <div class="input-group-btn">
-                                        <button type="submit" class="btn btn-primary">Search</button>
+                    <div class="row">
+                        <p>Cari Komunitas</p>
+                        <form action="<?= base_url('koordinator/Komunitas/cariStatusKomunitas'); ?>" method="post">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="namaKomunitas" placeholder="Komunitas mana yang akan anda cari ?">
+                                        <div class="input-group-btn">
+                                            <button type="submit" class="btn btn-primary"><span class="fa fa-search"></span></button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-2">
-                                <a href="<?= base_url('koordinator/Komunitas/kelolaStatusKomunitas'); ?>" class="btn btn-primary">Reset Search</a>
+                        </form>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <a href="<?= base_url('koordinator/Komunitas/kelolaStatusKomunitas'); ?>" class="btn btn-primary">Reset
+                                    Pencarian</a>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -48,22 +48,14 @@
 
 
     <div class="row">
-        <div class="col-md-12">
-            <?php if (empty($komunitas)) : ?>
-                <tr>
-                    <td colspan="7">
-                        <h2 class="text-center" style="margin-top: 10px;">Ups . . . ! Komunitas untuk saat ini Tidak ditemukan</h2>
-                    </td>
-                </tr>
-            <?php else : ?>
-            <?php endif; ?>
 
 
-            <!-- KOMUNITAS CONTENT -->
-            <div class="row">
+        <!-- KOMUNITAS CONTENT -->
+        <div class="row">
+            <?php if ($komunitas) : ?>
                 <?php foreach ($komunitas as $A) { ?>
                     <?php if ($A->stat_komunitas == 1) : ?>
-                        <div class="col-md-4    ">
+                        <div class="col-md-4">
                             <div class="panel panel-default">
                                 <div class="panel-body profile">
                                     <div class="profile-image">
@@ -143,9 +135,15 @@
                         </div>
                     <?php endif ?>
                 <?php } ?>
-            </div>
-            <!-- KOMUNITAS CONTENT -->
+            <?php else : ?>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2 class="text-center" style="margin-top: 10px;">Komunitas tidak ditemukan</h2>
+                    </div>
+                </div>
+            <?php endif; ?>
         </div>
+        <!-- KOMUNITAS CONTENT -->
         <!-- PAGE CONTENT WRAP -->
 
 

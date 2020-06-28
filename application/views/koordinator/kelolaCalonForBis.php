@@ -99,14 +99,6 @@
                             <form action="<?= base_url('koordinator/ForumBisnis/setAddForbis'); ?>" class="form-horizontal" id="tambah-forbis-validate" method="post" enctype="multipart/form-data">
                                 <div class="modal-body">
 
-
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label">* Foto Bisnis / Usaha :</label>
-                                        <div class="col-md-7">
-                                            <input type="file" id="file-simple" name="fileLogo" required />
-                                        </div>
-                                    </div>
-
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">* Nama Bisnis / Usaha :</label>
                                         <div class="col-md-7">
@@ -161,6 +153,14 @@
                                             </select>
                                         </div>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">* Foto Bisnis / Usaha :</label>
+                                        <div class="col-md-7">
+                                            <input type="file" id="file-simple" name="fileLogo" required />
+                                        </div>
+                                    </div>
+
                                     <div class="form-group">
                                         <div class="col-md-10">
                                             <button type="submit" class="btn btn-success pull-right">Simpan</button>

@@ -74,7 +74,8 @@ class Anggota extends MY_Controller
 
         $where = array(
             'tb_anggota.status_anggota !=' => '0',
-            'tb_anggota.user_id != ' => $this->session->userdata('uid')
+            'tb_anggota.user_id != ' => $this->session->userdata('uid'),
+            'tb_anggota.user_id != ' => 1,
         );
         $data['anggota'] = $this->M_anggota->findAnggota('*', $where);
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id' => $this->session->userdata('uid')));

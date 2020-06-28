@@ -6,7 +6,7 @@
 <!-- END BREADCRUMB -->
 
 <div class="page-title">
-    <h2> Kelola Forum Bisnis IKASMA3BDG</h2>
+    <h2> Kelola Forum Bisnis</h2>
 </div>
 
 <?= showFlashMessage(); ?>
@@ -14,30 +14,30 @@
 <div class="page-content-wrap">
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <p>Cari Forum Bisnis</p>
-                    <form action="<?= base_url('koordinator/ForumBisnis/cariForumBisnis'); ?>" method="post">
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <span class="fa fa-search"></span>
-                                    </div>
-                                    <input type="text" class="form-control" name="namaForbis" placeholder="Temukan forum bisnis yang anda inginkan.">
-                                    <div class="input-group-btn">
-                                        <button type="submit" class="btn btn-primary">Cari</button>
+                    <div class="row">
+                        <p>Cari Forum Bisnis</p>
+                        <form action="<?= base_url('koordinator/ForumBisnis/cariForumBisnis'); ?>" method="post">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="namaForbis" placeholder="Temukan forum bisnis yang anda inginkan.">
+                                        <div class="input-group-btn">
+                                            <button type="submit" class="btn btn-primary"><span class="fa fa-search"></span></button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-2">
-                                <a href="<?= base_url('koordinator/ForumBisnis'); ?>" class="btn btn-primary">Reset Pencarian</a>
+                        </form>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <a href="<?= base_url('koordinator/ForumBisnis'); ?>" class="btn btn-primary">Reset
+                                    Pencarian</a>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -47,74 +47,82 @@
 
         <!-- TAMPILAN FORUM BISNIS -->
         <div class="row">
-            <?php foreach ($forumBisnis as $forbis) { ?>
-                <?php if ($forbis->stat_forbis == 1) : ?>
-                    <div class="col-md-4">
-                        <!-- CONTACT ITEM -->
-                        <div class="panel panel-default">
-                            <div class="panel-body profile">
-                                <div class="profile-image">
-                                    <?php if ($forbis->nama_foto_bisnis == NULL) { ?>
-                                        <img src="<?php echo base_url('uploads/no-image.jpg'); ?> " alt="No Image" title="Default Image">
-                                    <?php } else { ?>
-                                        <img src="<?php echo base_url('uploads/logo-bisnis/' . $forbis->nama_foto_bisnis); ?> ">
-                                    <?php } ?>
-                                </div>
-                                <div class="profile-data">
-                                    <div class="profile-data-name"><?= $forbis->nama_bisnis_usaha; ?></div>
+            <?php if ($forumBisnis) : ?>
+                <?php foreach ($forumBisnis as $forbis) { ?>
+                    <?php if ($forbis->stat_forbis == 1) : ?>
+                        <div class="col-md-4">
+                            <!-- CONTACT ITEM -->
+                            <div class="panel panel-default">
+                                <div class="panel-body profile">
+                                    <div class="profile-image">
+                                        <?php if ($forbis->nama_foto_bisnis == NULL) { ?>
+                                            <img src="<?php echo base_url('uploads/no-image.jpg'); ?> " alt="No Image" title="Default Image">
+                                        <?php } else { ?>
+                                            <img src="<?php echo base_url('uploads/logo-bisnis/' . $forbis->nama_foto_bisnis); ?> ">
+                                        <?php } ?>
+                                    </div>
+                                    <div class="profile-data">
+                                        <div class="profile-data-name"><?= $forbis->nama_bisnis_usaha; ?></div>
+                                    </div>
+
+                                    <div class="profile-controls">
+                                        <a class="profile-control-left btn-ubah-foto" title="Ubah Foto" id="<?= $forbis->id_forbis; ?>" data-toggle="modal" data-target="#message-box-ubah-foto"><span class="fa fa-edit"></span></a>
+
+                                        <a class="profile-control-right btn-hapus-forbis" title="Hapus" id="<?= $forbis->id_forbis; ?>" data-toggle="modal" data-target="#hapusForbis"><span class="fa fa-trash-o"></span></a>
+                                    </div>
+
                                 </div>
 
-                                <div class="profile-controls">
-                                    <a class="profile-control-left btn-ubah-foto" title="Ubah Foto" id="<?= $forbis->id_forbis; ?>" data-toggle="modal" data-target="#message-box-ubah-foto"><span class="fa fa-edit"></span></a>
+                                <div class="panel-body" style="height: 100%;">
+                                    <div class="contact-info">
 
-                                    <a class="profile-control-right btn-hapus-forbis" title="Hapus" id="<?= $forbis->id_forbis; ?>" data-toggle="modal" data-target="#hapusForbis"><span class="fa fa-trash-o"></span></a>
+                                        <?php if ($forbis->nama_lengkap == "") { ?>
+                                            <p><small>Pemilik Bisnis</small><br>Belum di isi</p>
+                                        <?php } else { ?>
+                                            <p><small>Pemilik Bisnis</small><br><?= $forbis->nama_lengkap; ?></p>
+                                        <?php } ?>
+
+                                        <?php if ($forbis->angkatan == "") { ?>
+                                            <p><small>Angkatan</small><br>Belum di isi</p>
+                                        <?php } else { ?>
+                                            <p><small>Angkatan</small><br><?= $forbis->angkatan; ?></p>
+                                        <?php } ?>
+
+                                        <?php if ($forbis->alamat_bisnis == "") { ?>
+                                            <p><small>Alamat Bisnis Usaha</small><br>Belum di isi</p>
+                                        <?php } else { ?>
+                                            <p><small>Alamat Bisnis Usaha</small><br><?= $forbis->alamat_bisnis; ?></p>
+                                        <?php } ?>
+
+                                        <?php if ($forbis->nama_jenis_bisnis == "") { ?>
+                                            <p><small>Jenis Bisnis</small><br>Belum di isi</p>
+                                        <?php } else { ?>
+                                            <p><small>Jenis Bisnis</small><br><?= $forbis->nama_jenis_bisnis; ?></p>
+                                        <?php } ?>
+
+                                        <?php if ($forbis->no_telp_bisnis == "") { ?>
+                                            <p><small>Nomor Telepon Pemilik</small><br>Belum di isi</p>
+                                        <?php } else { ?>
+                                            <p><small>Nomor Telepon Pemilik</small><br><?= $forbis->no_telp_bisnis; ?></p>
+                                        <?php } ?>
+
+                                    </div>
                                 </div>
-
+                                <div class="panel-footer text-center">
+                                    <a class="btn btn-primary btn-rounded btn-block btn-ubah-forbis" title="Ubah Forbis" id="<?= $forbis->id_forbis; ?>" data-toggle="modal" data-target="#ubahForbis"><span class="fa fa-edit"></span>Ubah</a>
+                                </div>
+                                <!-- END CONTACT ITEM -->
                             </div>
-
-                            <div class="panel-body" style="height: 100%;">
-                                <div class="contact-info">
-
-                                    <?php if ($forbis->nama_lengkap == "") { ?>
-                                        <p><small>Pemilik Bisnis</small><br>Belum di isi</p>
-                                    <?php } else { ?>
-                                        <p><small>Pemilik Bisnis</small><br><?= $forbis->nama_lengkap; ?></p>
-                                    <?php } ?>
-
-                                    <?php if ($forbis->angkatan == "") { ?>
-                                        <p><small>Angkatan</small><br>Belum di isi</p>
-                                    <?php } else { ?>
-                                        <p><small>Angkatan</small><br><?= $forbis->angkatan; ?></p>
-                                    <?php } ?>
-
-                                    <?php if ($forbis->alamat_bisnis == "") { ?>
-                                        <p><small>Alamat Bisnis Usaha</small><br>Belum di isi</p>
-                                    <?php } else { ?>
-                                        <p><small>Alamat Bisnis Usaha</small><br><?= $forbis->alamat_bisnis; ?></p>
-                                    <?php } ?>
-
-                                    <?php if ($forbis->nama_jenis_bisnis == "") { ?>
-                                        <p><small>Jenis Bisnis</small><br>Belum di isi</p>
-                                    <?php } else { ?>
-                                        <p><small>Jenis Bisnis</small><br><?= $forbis->nama_jenis_bisnis; ?></p>
-                                    <?php } ?>
-
-                                    <?php if ($forbis->no_telp_bisnis == "") { ?>
-                                        <p><small>Nomor Telepon Pemilik</small><br>Belum di isi</p>
-                                    <?php } else { ?>
-                                        <p><small>Nomor Telepon Pemilik</small><br><?= $forbis->no_telp_bisnis; ?></p>
-                                    <?php } ?>
-
-                                </div>
-                            </div>
-                            <div class="panel-footer text-center">
-                                <a class="btn btn-primary btn-rounded btn-block btn-ubah-forbis" title="Ubah Forbis" id="<?= $forbis->id_forbis; ?>" data-toggle="modal" data-target="#ubahForbis"><span class="fa fa-edit"></span></a>
-                            </div>
-                            <!-- END CONTACT ITEM -->
                         </div>
+                    <?php endif ?>
+                <?php } ?>
+            <?php else : ?>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2 class="text-center" style="margin-top: 10px;">Forum Bisnis tidak ditemukan</h2>
                     </div>
-                <?php endif ?>
-            <?php } ?>
+                </div>
+            <?php endif; ?>
         </div>
         <!-- END TAMPILAN FORUM BISNIS -->
     </div>
