@@ -52,39 +52,42 @@ class Berita extends MY_Controller
     // ==================================================
     function index()
     {
-        $data['title'] = 'Kelola Berita';
-        $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
-
-        $data['berita'] = $this->M_berita->getAllBeritaForSpecificUser($data['info'][0]->user_id);
-        $data['daftarKategori'] = $this->M_kategori->getAllKategori();
-
         if ($this->session->userdata('role') == 3) {
+
+            $data['title'] = 'Kelola Berita';
+            $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+            $data['berita'] = $this->M_berita->getAllBeritaForSpecificUser($data['info'][0]->user_id);
+            $data['daftarKategori'] = $this->M_kategori->getAllKategori();
+
             $this->anggota_render('anggota/kelolaBerita', $data);
         }
     }
 
     function formTambahCalonBerita()
     {
-        $data['title'] = 'Form Tambah Calon Berita';
-        $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
-
-        $data['calonBerita'] = $this->M_berita->getAllBerita();
-        $data['daftarKategori'] = $this->M_kategori->getAllKategori();
-
         if ($this->session->userdata('role') == 3) {
+
+            $data['title'] = 'Form Tambah Calon Berita';
+            $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+            $data['calonBerita'] = $this->M_berita->getAllBerita();
+            $data['daftarKategori'] = $this->M_kategori->getAllKategori();
+
             $this->anggota_render('anggota/tambahCalonBerita', $data);
         }
     }
 
     function beritaNonaktif()
     {
-        $data['title'] = 'Berita Nonaktif';
-        $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
-
-        $data['berita'] = $this->M_berita->getAllBeritaForSpecificUser($data['info'][0]->user_id);
-        $data['daftarKategori'] = $this->M_kategori->getAllKategori();
-
         if ($this->session->userdata('role') == 3) {
+
+            $data['title'] = 'Berita Nonaktif';
+            $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+            $data['berita'] = $this->M_berita->getAllBeritaForSpecificUser($data['info'][0]->user_id);
+            $data['daftarKategori'] = $this->M_kategori->getAllKategori();
+
             $this->anggota_render('anggota/beritaNonaktif', $data);
         }
     }
@@ -279,32 +282,34 @@ class Berita extends MY_Controller
     // ==================================================
     function cariBerita()
     {
-        $data['title'] = 'Kelola Berita';
-
-        $judul = $this->input->post('judulBerita');
-
-        $where = "tb_berita.stat_berita != 0";
-        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
-
-        $data['berita'] = $this->M_berita->findBeritaLikeJudulForSpecificUser($where, $judul, $data['info'][0]->user_id);
-
         if ($this->session->userdata('role') == 3) {
+
+            $data['title'] = 'Kelola Berita';
+
+            $judul = $this->input->post('judulBerita');
+
+            $where = "tb_berita.stat_berita != 0";
+            $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+            $data['berita'] = $this->M_berita->findBeritaLikeJudulForSpecificUser($where, $judul, $data['info'][0]->user_id);
+
             $this->anggota_render('anggota/kelolaBerita', $data);
         }
     }
 
     function cariBeritaNonaktif()
     {
-        $data['title'] = 'Berita Nonaktif';
-
-        $judul = $this->input->post('judulBerita');
-
-        $where = "tb_berita.stat_berita = 0";
-
-        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
-        $data['berita'] = $this->M_berita->findBeritaLikeJudulForSpecificUser($where, $judul, $data['info'][0]->user_id);
-
         if ($this->session->userdata('role') == 3) {
+
+            $data['title'] = 'Berita Nonaktif';
+
+            $judul = $this->input->post('judulBerita');
+
+            $where = "tb_berita.stat_berita = 0";
+
+            $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+            $data['berita'] = $this->M_berita->findBeritaLikeJudulForSpecificUser($where, $judul, $data['info'][0]->user_id);
+
             $this->anggota_render('anggota/beritaNonaktif', $data);
         }
     }
