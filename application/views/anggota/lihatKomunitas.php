@@ -14,6 +14,17 @@
 <!-- PAGE CONTENT WRAP -->
 <div class="page-content-wrap">
 
+    <!-- BUTTON -->
+    <div class="row">
+        <div class="col-md-6">
+            <a href="<?= base_url('anggota/Komunitas/tambahKomunitas'); ?>" class="btn btn-success"><b>&plus;</b> Tambah Komunitas Baru</a>
+            <a href="<?= base_url('anggota/Komunitas/komunitasNonaktif'); ?>" class="btn btn-info">Komunitas Nonaktif</a>
+            <br>
+            <br>
+        </div>
+    </div>
+    <!-- BUTTON -->
+
     <!-- SEARCH -->
     <div class="row">
         <div class="col-md-6">

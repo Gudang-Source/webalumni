@@ -52,6 +52,18 @@ class Komunitas extends MY_Controller
 
         $this->anggota_render('anggota/lihatKomunitas', $data);
     }
+
+    function komunitasNonaktif()
+    {
+        $data['title'] = 'Komunitas Nonaktif';
+        $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+        $data['komunitas'] = $this->M_komunitas->getAllKomunitas();
+
+        if ($this->session->userdata('role') == 3) {
+            $this->anggota_render('anggota/komunitasNonaktif', $data);
+        }
+    }
     // ==================================================
     // ---------------------- READ ----------------------
     // ==================================================
@@ -157,6 +169,22 @@ class Komunitas extends MY_Controller
 
         if ($this->session->userdata('role') == 3) {
             $this->anggota_render('anggota/lihatKomunitas', $data);
+        }
+    }
+
+    function cariStatusKomunitasNonaktif()
+    {
+    $data['title'] = 'Kelola Status Komunitas';
+
+    $nama = $this->input->post('namaKomunitas');
+
+    $where = "tb_komunitas.stat_komunitas != 1";
+    $data['komunitas'] = $this->M_komunitas->findKomunitasLikeNama($where, $nama);
+
+    $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+    if ($this->session->userdata('role') == 3) {
+        $this->anggota_render('anggota/komunitasNonaktif', $data);
         }
     }
     // ==================================================

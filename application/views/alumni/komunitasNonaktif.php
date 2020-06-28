@@ -6,7 +6,7 @@
 <!-- END BREADCRUMB -->
 
 <div class="page-title">                    
-    <h2> Lihat Komunitas</h2>
+    <h2> Daftar Komunitas nonaktif</h2>
 </div>
 
 <?= showFlashMessage(); ?>
@@ -14,11 +14,10 @@
 <!-- PAGE CONTENT WRAP -->
 <div class="page-content-wrap">
 
-    <!-- BUTTON -->
-    <div class="row">
+   <!-- BUTTON -->
+   <div class="row">
         <div class="col-md-6">
-            <a href="<?= base_url('alumni/Komunitas/tambahKomunitas'); ?>" class="btn btn-success"><b>&plus;</b> Tambah Komunitas Baru</a>
-            <a href="<?= base_url('alumni/Komunitas/komunitasNonaktif'); ?>" class="btn btn-info">Komunitas Nonaktif</a>
+            <a href="<?= base_url('alumni/Komunitas'); ?>" class="btn btn-success"></b>Lihat Komunitas Akitf</a>
             <br>
             <br>
         </div>
@@ -31,7 +30,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <p>Cari Komunitas</p>
-                    <form action="<?= base_url('alumni/Komunitas/cariStatusKomunitas'); ?>" method="post">
+                    <form action="<?= base_url('alumni/Komunitas/cariStatusKomunitasNonaktif'); ?>" method="post">
                         <div class="form-group">
                             <div class="col-md-8">
                                 <div class="input-group">
@@ -73,7 +72,7 @@
     <!-- KOMUNITAS CONTENT -->
     <div class="row">
         <?php foreach ($komunitas as $A) { ?>
-            <?php if ($A->stat_komunitas == 1): ?>
+            <?php if ($A->stat_komunitas == 0): ?>
         <div class="col-md-4    ">
             <div class="panel panel-default">
                 <div class="panel-body profile">

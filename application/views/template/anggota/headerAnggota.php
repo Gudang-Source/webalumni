@@ -89,7 +89,7 @@
                     <a href="#"><span class="fa fa-envelope-o"></span> <span class="xn-text">Berita</span></a>
                     <ul>
                         <li><a href="<?= base_url('anggota/Berita'); ?>"><span class="fa fa-align-left"></span> <span class="xn-text">Kelola Berita</span></a></li>
-                        <li><a href="<?= base_url('anggota/Berita/beritaNonaktif'); ?>"><span class="fa fa-align-left"></span> <span class="xn-text">Berita Nonaktif</span></a></li>
+                        <li><a href="<?= base_url('anggota/Berita/beritaNonaktif'); ?>"><span class="fa fa-align-minus"></span> <span class="xn-text">Berita Nonaktif</span></a></li>
                         <li><a href="<?= base_url('anggota/Berita/formTambahCalonBerita') ?>"><span class="fa fa-plus"></span>Tambah Berita </a></li>
                     </ul>
                 </li>
@@ -111,6 +111,7 @@
                     <ul>
                         <li><a href="<?= base_url('anggota/Komunitas') ?>"><span class="fa fa-cube"></span> Lihat
                                 Komunitas</a></li>
+                        <li><a href="<?= base_url('anggota/Komunitas/komunitasNonaktif') ?>"><span class="fa fa-minus"></span> Komunitas Nonaktif</a></li>
                         <li><a href="<?= base_url('anggota/Komunitas/tambahKomunitas') ?>"><span class="fa fa-plus"></span> Tambah Komunitas </a></li>
                     </ul>
                 </li>
