@@ -25,7 +25,7 @@ class Komunitas extends MY_Controller
     {
         $data['komunitas'] = $this->M_komunitas->findKomunitasLikeId($id);
         $data['title'] = 'Detail Komunitas';
-        $data['komunitas'] = $this->M_komunitas->getAllKomunitas();
+        // $data['komunitas'] = $this->M_komunitas->getAllKomunitas();
         // $data['info'] = $this->FrontPageModel->getInfoBySessionId();
 
         // $data['daftarBerita'] = $this->M_berita->getBerita(5, 0);
