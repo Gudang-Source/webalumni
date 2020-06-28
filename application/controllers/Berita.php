@@ -147,43 +147,47 @@ class Berita extends MY_Controller
         $data['info'] = $this->FrontPageModel->getInfoBySessionId();
         $data['start'] = $this->uri->segment(4);
 
-        $config['base_url'] = base_url('berita/index') . $id;
+        $config['base_url'] = base_url('berita/kategori/') . $id;
         $config['total_rows'] = $this->M_berita->getBeritaSizeLikeKategori($id);
         $config['per_page'] = 5;
 
-        // $config['full_tag_open'] = '<nav><ul class="pagination">';
-        // $config['full_tag_close'] = '</ul></nav>';
+        $config['full_tag_open'] = '<nav><ul class="pagination">';
+        $config['full_tag_close'] = '</ul></nav>';
 
-        // $config['first_link'] = 'Pertama';
-        // $config['first_tag_open'] = '<li><a href="#" aria-label="Previous"><span aria-hidden="true">';
-        // $config['first_tag_close'] = '</span></a></li>';
+        $config['first_link'] = 'Pertama';
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_close'] = '</li>';
 
-        // $config['last_link'] = 'Terakhir';
-        // $config['last_tag_open'] = '<li><a href="#" aria-label="Next"><span aria-hidden="true">';
-        // $config['last_tag_close'] = '</span></a></li>';
+        $config['last_link'] = 'Terakhir';
+        $config['last_tag_open'] = '<li>';
+        $config['last_tag_close'] = '</li>';
 
-        // $config['next_link'] = '&raquo';
-        // $config['next_tag_open'] = '<li><a href="#" aria-label="Next"><span aria-hidden="true">';
-        // $config['next_tag_close'] = '</span></a></li>';
+        $config['next_link'] = '&raquo;';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
 
-        // $config['prev_link'] = '&laquo';
-        // $config['prev_tag_open'] = '<li><a href="#" aria-label="Previous"><span aria-hidden="true">';
-        // $config['prev_tag_close'] = '</span></a></li>';
+        $config['prev_link'] = '&laquo;';
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
 
-        // $config['cur_tag_open'] = '<li class="active"><a href="#">';
-        // $config['cur_tag_close'] = '</a></li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
 
-        // $config['cur_tag_open'] = '<li><a href="#">';
-        // $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
 
         // $config['attributes'] = array('class' => 'page-link');
 
         $this->pagination->initialize($config);
-
         $data['daftarBerita'] = $this->M_berita->findBeritaLikeKategori($id, $config['per_page'], $data['start']);
         $data['title'] = $data['daftarBerita'][0]->kategori;
         $data['daftarKategori'] = $this->M_kategori->getAllKategori();
         $data['kategori'] = '<h2 class="text-info"><b>#' . $data['daftarBerita'][0]->kategori . '</b></h2>';
+
+        if (!$data['daftarBerita'][0]->kategori) {
+            flashMessage('error', 'Berita kosong');
+            redirect('berita');
+        }
 
         $this->frontend_render('frontend/berita/index', $data);
     }
