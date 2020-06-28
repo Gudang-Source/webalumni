@@ -32,6 +32,8 @@ class Home extends MY_Controller
             redirect('koordinator');
         } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == 3) {
             redirect('anggota');
+        } elseif ($this->session->userdata('logged_in') == 'Sudah Login' && $this->session->userdata('role') == 4) {
+            redirect('alumni');
         }
     }
     // ==================================================

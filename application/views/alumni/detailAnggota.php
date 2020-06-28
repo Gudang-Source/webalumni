@@ -1,8 +1,8 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
     <li><a href="#">Anggota</a></li>
-    <li><a href="#">Lihat Anggota</a></li>
-    <li class="active"><a href="<?= base_url('anggota/Anggota/detailAnggota'); ?>">Detail Anggota</a></li>
+    <li><a href="<?= base_url('alumni/Anggota'); ?>">Lihat Anggota</a></li>
+    <li class="active"><a href="#">Detail Anggota</a></li>
 </ul>
 
 <div class="page-title">
@@ -47,8 +47,8 @@
                                             <li><a href="#tab-profesi" role="tab" data-toggle="tab">Profesi</a></li>
                                             <li><a href="#tab-info-program" role="tab" data-toggle="tab">Info
                                                     Program</a></li>
-                                            <li><a href="#tab-keanggotaan" role="tab" data-toggle="tab">Keanggotaan</a>
-                                            </li>
+                                            <!-- <li><a href="#tab-keanggotaan" role="tab" data-toggle="tab">Keanggotaan</a>
+                                            </li> -->
                                         </ul>
 
                                         <div class="panel-body tab-content">
@@ -288,40 +288,85 @@
                                                 </div>
 
                                                 <div class="panel-body">
-                                                    <div class="form-group">
-                                                        <div class="col-md-5">
-                                                            <label class="check"><input type="checkbox" value="checked" id="infoProgram1" class="icheckbox" disabled />
-                                                                Sosial Pendidikan</label>
+                                                    <?php if ($anggota[0]->sosial_pendidikan == 1) : ?>
+                                                        <div class="form-group">
+                                                            <div class="col-md-5">
+                                                                <label class="check"><input type="checkbox" checked="checked" id="infoProgram1" class="icheckbox" />
+                                                                    Sosial Pendidikan</label>
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    <?php else : ?>
+                                                        <div class="form-group">
+                                                            <div class="col-md-5">
+                                                                <label class="check"><input type="checkbox" id="infoProgram1" class="icheckbox" />
+                                                                    Sosial Pendidikan</label>
+                                                            </div>
+                                                        </div>
+                                                    <?php endif; ?>
 
-                                                    <div class="form-group">
-                                                        <div class="col-md-5">
-                                                            <label class="check"><input type="checkbox" value="checked" id="infoProgram2" class="icheckbox" disabled />
-                                                                Sosial Kemanusiaan</label>
+                                                    <?php if ($anggota[0]->sosial_kemanusiaan == 1) : ?>
+                                                        <div class="form-group">
+                                                            <div class="col-md-5">
+                                                                <label class="check"><input type="checkbox" checked="checked" id="infoProgram2" class="icheckbox" />
+                                                                    Sosial Kemanusiaan</label>
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    <?php else : ?>
+                                                        <div class="form-group">
+                                                            <div class="col-md-5">
+                                                                <label class="check"><input type="checkbox" id="infoProgram2" class="icheckbox" />
+                                                                    Sosial Kemanusiaan</label>
+                                                            </div>
+                                                        </div>
+                                                    <?php endif; ?>
 
-                                                    <div class="form-group">
-                                                        <div class="col-md-5">
-                                                            <label class="check"><input type="checkbox" value="checked" id="infoProgram3" class="icheckbox" disabled />
-                                                                Pengembangan Sarana Prasarana</label>
+                                                    <?php if ($anggota[0]->pengembangan_sarana_prasarana == 1) : ?>
+                                                        <div class="form-group">
+                                                            <div class="col-md-5">
+                                                                <label class="check"><input type="checkbox" checked="checked" id="infoProgram3" class="icheckbox" />
+                                                                    Pengembangan Sarana Prasarana</label>
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    <?php else : ?>
+                                                        <div class="form-group">
+                                                            <div class="col-md-5">
+                                                                <label class="check"><input type="checkbox" id="infoProgram3" class="icheckbox" />
+                                                                    Pengembangan Sarana Prasarana</label>
+                                                            </div>
+                                                        </div>
+                                                    <?php endif; ?>
 
-                                                    <div class="form-group">
-                                                        <div class="col-md-5">
-                                                            <label class="check"><input type="checkbox" value="checked" id="infoProgram4" class="icheckbox" disabled />
-                                                                Silaturahim Kebersamaan</label>
+                                                    <?php if ($anggota[0]->silaturahim_kebersamaan == 1) : ?>
+                                                        <div class="form-group">
+                                                            <div class="col-md-5">
+                                                                <label class="check"><input type="checkbox" checked="checked" id="infoProgram4" class="icheckbox" />
+                                                                    Silaturahim Kebersamaan</label>
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    <?php else : ?>
+                                                        <div class="form-group">
+                                                            <div class="col-md-5">
+                                                                <label class="check"><input type="checkbox" id="infoProgram4" class="icheckbox" />
+                                                                    Silaturahim Kebersamaan</label>
+                                                            </div>
+                                                        </div>
+                                                    <?php endif; ?>
 
-                                                    <div class="form-group">
-                                                        <div class="col-md-5">
-                                                            <label class="check"><input type="checkbox" value="checked" id="infoProgram5" class="icheckbox" disabled />
-                                                                Penawaran Sponsorship &amp; Donasi</label>
+                                                    <?php if ($anggota[0]->penawaran_sponsorship_donasi == 1) : ?>
+                                                        <div class="form-group">
+                                                            <div class="col-md-5">
+                                                                <label class="check"><input type="checkbox" checked="checked" id="infoProgram5" class="icheckbox" />
+                                                                    Penawaran Sponsorship &amp; Donasi</label>
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    <?php else : ?>
+                                                        <div class="form-group">
+                                                            <div class="col-md-5">
+                                                                <label class="check"><input type="checkbox" id="infoProgram5" class="icheckbox" />
+                                                                    Penawaran Sponsorship &amp; Donasi</label>
+                                                            </div>
+                                                        </div>
+                                                    <?php endif; ?>
                                                 </div>
 
                                             </div>

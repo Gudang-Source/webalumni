@@ -1,7 +1,7 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
     <li>Alumni</li>
-    <li class="active"><a href="<?= base_url('anggota/Anggota'); ?>">Lihat Alumni</a></li>
+    <li class="active"><a href="<?= base_url('alumni/Anggota'); ?>">Lihat Alumni</a></li>
 </ul>
 <!-- END BREADCRUMB -->
 
