@@ -16,42 +16,42 @@
 <div class="page-content-wrap">
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <a href="<?= base_url('anggota/Berita/formTambahCalonBerita'); ?>" class="btn btn-success" style="margin-bottom: 15px;"><b>&plus;</b> Tambah Berita</a>
             <a href="<?= base_url('anggota/Berita/beritaNonaktif'); ?>" class="btn btn-info" style="margin-bottom: 15px;">Berita Nonaktif</a>
             <br>
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <p>Cari Berita</p>
-                    <form action="<?= base_url('anggota/Berita/cariBerita'); ?>" method="post">
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                <div class="input-group">
-                                    <div class="input-group-addon">
-                                        <span class="fa fa-search"></span>
-                                    </div>
-                                    <input type="text" class="form-control" name="judulBerita" placeholder="Berita mana yang akan anda cari ?">
-                                    <div class="input-group-btn">
-                                        <button type="submit" class="btn btn-primary">Cari</button>
+                    <div class="row">
+                        <p>Cari Berita</p>
+                        <form action="<?= base_url('anggota/Berita/cariBerita'); ?>" method="post">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="judulBerita" placeholder="Berita apa yang anda cari ?">
+                                        <div class="input-group-btn">
+                                            <button type="submit" class="btn btn-primary"><span class="fa fa-search"></span></button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-2">
-                                <a href="<?= base_url('anggota/Berita'); ?>" class="btn btn-primary">Reset Pencarian</a>
+                        </form>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <a href="<?= base_url('anggota/Berita'); ?>" class="btn btn-primary">Reset
+                                    Pencarian</a>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="row">
-        <?php foreach ($berita as $B) { ?>
-            <?php if ($B->stat_berita == 1) { ?>
-                <?php if ($B->id_penulis == $info[0]->user_id) { ?>
+        <?php if ($berita) : ?>
+            <?php foreach ($berita as $B) : ?>
+                <?php if ($B->stat_berita == 1) : ?>
                     <div class="col-md-4">
                         <!-- CONTACT ITEM -->
                         <div class="panel panel-default">
@@ -101,9 +101,15 @@
                             <!-- END CONTACT ITEM -->
                         </div>
                     </div>
-                <?php } ?>
-            <?php } ?>
-        <?php } ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        <?php else : ?>
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="text-center" style="margin-top: 10px;">Berita tidak ditemukan</h2>
+                </div>
+            </div>
+        <?php endif; ?>
     </div>
 </div>
 
@@ -276,8 +282,10 @@
                 <hr>
                 <p class="h4" id="isiBeritaOpened" name="isiBeritaOpened"></p>
                 <hr>
-                <p id="sumberBeritaOpened" name="sumberBeritaOpened"><small>Sumber</small> : </p>
-                <p id="creditBeritaOpened" name="creditBeritaOpened"><small>Credit</small> : </p>
+                <small>Sumber</small> :
+                <p id="sumberBeritaOpened" name="sumberBeritaOpened"></p>
+                <small>Credit</small> :
+                <p id="creditBeritaOpened" name="creditBeritaOpened"></p>
             </div>
             </>
         </div>
@@ -375,8 +383,8 @@
 
                     document.getElementById('judulIsiBerita').innerHTML = judulIsiBerita;
                     document.getElementById('isiBeritaOpened').innerHTML = isiBeritaOpened.replace(/\r\n|\r|\n/g, "<br />");
-                    document.getElementById('sumberBeritaOpened').innerHTML += sumberBeritaOpened;
-                    document.getElementById('creditBeritaOpened').innerHTML += creditBeritaOpened;
+                    document.getElementById('sumberBeritaOpened').innerHTML = sumberBeritaOpened;
+                    document.getElementById('creditBeritaOpened').innerHTML = creditBeritaOpened;
                 });
         });
     </script>

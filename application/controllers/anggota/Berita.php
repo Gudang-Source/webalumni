@@ -55,7 +55,7 @@ class Berita extends MY_Controller
         $data['title'] = 'Kelola Berita';
         $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
-        $data['berita'] = $this->M_berita->getAllBerita();
+        $data['berita'] = $this->M_berita->getAllBeritaForSpecificUser($data['info'][0]->user_id);
         $data['daftarKategori'] = $this->M_kategori->getAllKategori();
 
         if ($this->session->userdata('role') == 3) {
@@ -81,7 +81,7 @@ class Berita extends MY_Controller
         $data['title'] = 'Berita Nonaktif';
         $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
-        $data['berita'] = $this->M_berita->getAllBerita();
+        $data['berita'] = $this->M_berita->getAllBeritaForSpecificUser($data['info'][0]->user_id);
         $data['daftarKategori'] = $this->M_kategori->getAllKategori();
 
         if ($this->session->userdata('role') == 3) {
@@ -284,9 +284,9 @@ class Berita extends MY_Controller
         $judul = $this->input->post('judulBerita');
 
         $where = "tb_berita.stat_berita != 0";
-        $data['berita'] = $this->M_berita->findBeritaLikeJudul($where, $judul);
-
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+        $data['berita'] = $this->M_berita->findBeritaLikeJudulForSpecificUser($where, $judul, $data['info'][0]->user_id);
 
         if ($this->session->userdata('role') == 3) {
             $this->anggota_render('anggota/kelolaBerita', $data);
@@ -300,9 +300,9 @@ class Berita extends MY_Controller
         $judul = $this->input->post('judulBerita');
 
         $where = "tb_berita.stat_berita = 0";
-        $data['berita'] = $this->M_berita->findBeritaLikeJudul($where, $judul);
 
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+        $data['berita'] = $this->M_berita->findBeritaLikeJudulForSpecificUser($where, $judul, $data['info'][0]->user_id);
 
         if ($this->session->userdata('role') == 3) {
             $this->anggota_render('anggota/beritaNonaktif', $data);

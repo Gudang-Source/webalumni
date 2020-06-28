@@ -26,7 +26,7 @@ class Anggota extends MY_Controller
 
     function index()
     {
-        $data['title'] = 'Anggota IKASMA3BDG';
+        $data['title'] = 'Lihat Anggota';
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
         $where = $this->session->userdata('uid');

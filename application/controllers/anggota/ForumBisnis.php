@@ -24,7 +24,7 @@ class ForumBisnis extends MY_Controller
 
     function index()
     {
-        $data['title'] = 'Lihat Forum Bisnis';
+        $data['title'] = 'Kelola Forum Bisnis';
         $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
         $id_pemilik = $data['info'];
@@ -155,7 +155,7 @@ class ForumBisnis extends MY_Controller
 
     public function cariForumBisnis()
     {
-        $data['title'] = 'Lihat Forum Bisnis';
+        $data['title'] = 'Kelola Forum Bisnis';
 
         $namaForbis = $this->input->post('namaBisnis');
 
