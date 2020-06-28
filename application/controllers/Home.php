@@ -15,7 +15,7 @@ class Home extends MY_Controller
         parent::__construct();
         $this->load->model('FrontPageModel');
         $this->load->model('KoordinatorAnggotaModel');
-        // $this->load->model('M_forumBisnis');
+        $this->load->model('M_anggota');
     }
 
     function index()
@@ -26,11 +26,21 @@ class Home extends MY_Controller
         $this->frontend_render('frontend/home', $data);
     }
 
+    function cariAnggota()
+    {
+        $data['title'] = 'Cari Teman';
+
+        $data['dataAnggota'] = $this->FrontPageModel->getAllAnggota();
+        // $data['dataAnggota'] = $this->M_anggota->findAnggotaLikeNamaForFrontEnd($nama);
+        $this->load->view('frontend/cariTeman', $data);
+    }
+
     function cariTeman()
     {
         $data['title'] = 'Cari Teman';
-        $data['dataAnggota'] = $this->FrontPageModel->getAllAnggota();
+        $nama = $this->input->post('namaAnggota');
 
+        $data['dataAnggota'] = $this->FrontPageModel->findAnggotaForFrontEnd($nama);
         $this->load->view('frontend/cariTeman', $data);
     }
 
