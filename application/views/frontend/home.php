@@ -16,11 +16,11 @@
                     <h2 class="section-heading">Apa Itu IKASMA3BDG ?</h2>
                     <hr class="light">
                     <p class="text-faded">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">Ada Apa Saja ?</a>
                 </div>
             </div>
@@ -47,18 +47,22 @@
                 </div>
                 <div class="col-lg-4 col-md-6 text-center">
                     <div class="service-box">
-						<a href="<?= base_url('Home/cariTeman'); ?>"><i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i></a>
+                        <a href="<?= base_url('Home/cariAnggota'); ?>"><i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i></a>
                         <h3>Teman</h3>
-						<a href="<?= base_url('Home/cariTeman'); ?>" style="text-decoration: none;"><p class="text-muted">Temukan teman sekolah anda disini</p></a>
+                        <a href="<?= base_url('Home/cariAnggota'); ?>" style="text-decoration: none;">
+                            <p class="text-muted">Temukan teman sekolah anda disini</p>
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 text-center">
                     <div class="service-box">
-                        <a href="<?= base_url('Home/forumBisnisAnggota'); ?>"><i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i></a>
+                        <a href="<?= base_url('forumBisnis'); ?>"><i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i></a>
                         <h3>FORBIS</h3>
-                        <a href="<?= base_url('Home/forumBisnisAnggota'); ?>" style="text-decoration: none;"><p class="text-muted">Forum Bisnis</p></a>
+                        <a href="<?= base_url('forumBisnis'); ?>" style="text-decoration: none;">
+                            <p class="text-muted">Forum Bisnis</p>
+                        </a>
                     </div>
-                </div>    
+                </div>
             </div>
         </div>
     </section>
@@ -111,7 +115,7 @@
                         </div>
                     </a>
                 </div>
-                
+
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <a href="<?= base_url('assets/back-end/img/13.jpeg') ?>" class="portfolio-box">
                         <img src="<?= base_url('assets/back-end/img/13.jpeg') ?>" class="img-responsive" alt="">

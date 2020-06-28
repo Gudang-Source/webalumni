@@ -30,6 +30,24 @@ class FrontPageModel extends CI_Model
 		return $this->db->get('tb_anggota')->result();
 	}
 
+	function findAnggotaLikeNamaForFrontEnd($nama, $where)
+	{
+		$query = "SELECT * FROM `tb_anggota` JOIN `tb_user` ON `tb_anggota`.`user_id` = `tb_user`.`id_user` WHERE `tb_anggota`.`nama_lengkap` LIKE '%$nama%' AND `tb_anggota`.`status_anggota` != '0' AND `tb_user`.`role` = '3' AND `tb_anggota`.`user_id` != '$where' ORDER BY `id_anggota` DESC";
+
+		return $this->db->query($query)->result();
+	}
+
+	function findAnggotaForFrontEnd($nama)
+	{
+
+		$this->db->select('nama_lengkap, angkatan, email, nama_foto, no_telp, support');
+		$this->db->like('nama_lengkap', $nama);
+		$this->db->where('nama_lengkap !=', 'admin');
+		$this->db->order_by('nama_lengkap', 'ASC');
+
+		return $this->db->get('tb_anggota')->result();
+	}
+
 	function getAllForumBisnis()
 	{
 		$query = "SELECT * FROM `tb_forum_bisnis` JOIN `tb_jenis_bisnis` ON
