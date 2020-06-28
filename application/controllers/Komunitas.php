@@ -23,6 +23,7 @@ class Komunitas extends MY_Controller
 
     function detailKomunitas($id)
     {
+        $data['info'] = $this->FrontPageModel->getInfoBySessionId();
         $data['komunitas'] = $this->M_komunitas->findKomunitasLikeId($id);
         $data['title'] = 'Detail Komunitas';
         // $data['komunitas'] = $this->M_komunitas->getAllKomunitas();

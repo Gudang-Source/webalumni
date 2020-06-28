@@ -82,7 +82,11 @@
                                         <div class="panel-body">
                                             <div class="contact-info">
                                                 <p><i class="fa fa-link" aria-hidden="true"></i> <strong>Link Komunitas</strong><br>
-                                                    <h5><a><?= $A->tautat_komunitas; ?></a></h5>
+                                                    <?php if ($info[0]->id_user == $A->id_pengupload ) { ?>
+                                                        <h5><a><?= $A->tautat_komunitas ?></a></h5>
+                                                    <?php } else {?>
+                                                        <h5><a>Komunitas belum aktif</a></h5>
+                                                    <?php } ?>
                                                 </p>
 
                                                 <?php if ($A->sifat_komunitas == "Publik") { ?>
