@@ -100,4 +100,20 @@ class M_forumBisnis extends CI_Model
 
         return $forbis;
     }
+
+    function getLihatAllForbisById($id)
+    {
+
+        $this->db->select('*');
+        $this->db->from('tb_forum_bisnis');
+        $this->db->join('tb_anggota', 'tb_forum_bisnis.pemilik_id=tb_anggota.id_anggota');
+        $this->db->like('tb_forum_bisnis.id_forbis', $id);
+        $this->db->where('tb_forum_bisnis.stat_forbis', 1);
+
+        return $this->db->get()->result();
+
+        // $queryForbisById = "SELECT * FROM tb_forum_bisnis JOIN tb_anggota ON tb_forum_bisnis.pemilik_id = tb_anggota.id_anggota WHERE tb_forum_bisnis.pemilik_id = $id AND `tb_forum_bisnis`.`stat_forbis` = 1 ORDER BY `tb_forum_bisnis`.`id_forbis` DESC";
+
+        // return $this->db->query($queryForbisById)->result();
+    }
 }
