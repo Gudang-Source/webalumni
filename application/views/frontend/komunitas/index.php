@@ -16,7 +16,7 @@
     <!-- START BREADCRUMB -->
     <ul class="breadcrumb">
         <li>Komunitas</li>
-        <li class="active"><a href="<?= base_url('anggota/Komunitas'); ?>">Lihat Komunitas</a></li>
+        <li class="active"><a href="<?= base_url('Komunitas'); ?>">Lihat Komunitas</a></li>
     </ul>
     <!-- END BREADCRUMB -->
 

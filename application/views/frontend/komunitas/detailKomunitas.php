@@ -32,7 +32,7 @@
     {
         margin: -90px 10px 0px 50px;
         z-index: 9;
-        width: 20%; 
+        background-size: cover;
     }
 
     @media (max-width:768px)
@@ -45,9 +45,8 @@
 
     .fb-image-profile
     {
-        margin: -45px 10px 0px 25px;
+        margin: -135px 1000px 10px 25px;
         z-index: 9;
-        width: 20%; 
     }
 }
 </style>
@@ -58,19 +57,24 @@
 <div class="container">
     <div class="fb-profile">
     <div class="panel panel-default">
-        <img align="left" class="fb-image-lg" src="http://lorempixel.com/850/280/nightlife/5/" alt="Profile image example"/>
-        <img align="left" class="fb-image-profile thumbnail" src="<?= base_url('uploads/content/komunitas/') . $komunitas[0]->logo_komunitas ?>" alt="Profile image example"/>
+        <img align="left" class="fb-image-lg" src="<?= base_url('uploads/content/komunitas/defaultGrey.jpg') ?>" height="250" alt="Profile image example"/>
+        <img align="left" class="profile-image fb-image-profile thumbnail" width="200" height="200" src="<?= base_url('uploads/content/komunitas/') . $komunitas[0]->logo_komunitas ?>" alt="Profile image example"/>
+        
         <div class="fb-profile-text">
-            <h1><?= $komunitas[0]->nama_komunitas ?></h1>
-            <p><i class="fa fa-calendar" aria-hidden="true"></i> <small>Berdiri Sejak :</small><br>
-                <h3><?= $komunitas[0]->date_created; ?></h3>
-            </p>
+        <div class="col-md-6">
+            <h2><?= $komunitas[0]->nama_komunitas ?></h2>   
+                <div class="col-md-4">
+                    <p><br><i class="fa fa-calendar" aria-hidden="true"></i> <small>Berdiri Sejak :</small>
+                        <h3><?= $komunitas[0]->date_created; ?></h3>
+                    </p>
+                </div>
+            </div>
             <div class="row">
                     <div class="container">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="col-md-6">
-                            <hr>
+                            <br>
                                 <h3>Tentang Komunitas ini</h3>
                                 <div class="col-md-10">
                                 <h4> <?= $komunitas[0]->deskripsi_komunitas ?></h4>
