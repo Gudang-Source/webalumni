@@ -52,37 +52,40 @@ class Berita extends MY_Controller
     // ==================================================
     function index()
     {
-        $data['title'] = 'Kelola Berita';
-        $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
-
-        $data['calonBerita'] = $this->M_berita->getAllBerita();
-        $data['daftarKategori'] = $this->M_kategori->getAllKategori();
-
         if ($this->session->userdata('role') == 1) {
+
+            $data['title'] = 'Kelola Berita';
+            $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+            $data['calonBerita'] = $this->M_berita->getAllBerita();
+            $data['daftarKategori'] = $this->M_kategori->getAllKategori();
+
             $this->admin_render('admin/kelolaCalonBerita', $data);
         }
     }
 
     function kelolaBerita()
     {
-        $data['title'] = 'Kelola Berita Aktif';
-        $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
-
-        $data['berita'] = $this->M_berita->getAllBerita();
-        $data['daftarKategori'] = $this->M_kategori->getAllKategori();
-
         if ($this->session->userdata('role') == 1) {
+
+            $data['title'] = 'Kelola Berita Aktif';
+            $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+            $data['berita'] = $this->M_berita->getAllBerita();
+            $data['daftarKategori'] = $this->M_kategori->getAllKategori();
+
             $this->admin_render('admin/kelolaBeritaAktif', $data);
         }
     }
 
     function kelolaKategori()
     {
-        $data['title'] = 'Kelola Kategori Berita';
-        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
-        $data['kategori'] = $this->M_kategori->getAllKategori();
-
         if ($this->session->userdata('role') == 1) {
+
+            $data['title'] = 'Kelola Kategori Berita';
+            $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+            $data['kategori'] = $this->M_kategori->getAllKategori();
+
             $this->admin_render('admin/kelolaKategori', $data);
         }
     }
@@ -365,16 +368,17 @@ class Berita extends MY_Controller
     // ==================================================
     function cariBerita()
     {
-        $data['title'] = 'Kelola Berita';
-
-        $judul = $this->input->post('judulBerita');
-
-        $where = "tb_berita.stat_berita != 0";
-        $data['berita'] = $this->M_berita->findBeritaLikeJudul($where, $judul);
-
-        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
-
         if ($this->session->userdata('role') == 1) {
+
+            $data['title'] = 'Kelola Berita';
+
+            $judul = $this->input->post('judulBerita');
+
+            $where = "tb_berita.stat_berita != 0";
+            $data['berita'] = $this->M_berita->findBeritaLikeJudul($where, $judul);
+
+            $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
             $this->admin_render('admin/kelolaBeritaAktif', $data);
         }
     }
