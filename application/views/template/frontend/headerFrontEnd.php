@@ -12,6 +12,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="<?= base_url('assets/back-end/vendor/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
+    <link rel="icon" href="<?= base_url('assets/html/favicon.ico') ?>" type="image/x-icon" />
 
     <!-- Custom Fonts -->
     <link href="<?= base_url('assets/back-end/vendor/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet" type="text/css">
@@ -49,7 +50,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="<?= base_url('berita'); ?>" class="page-scroll" href="">Berita</a></li>
-                    <li><a href="<?= base_url('forumbisnis'); ?>" class="page-scroll" href="">Forum Bisnis</a></li>
+                    <li><a href="<?= base_url('forumBisnis'); ?>" class="page-scroll" href="">Forum Bisnis</a></li>
                     <li><a href="<?= base_url('komunitas'); ?>" class="page-scroll" href="">Komunitas</a></li>
                     <li><a href="<?= base_url('anggota'); ?>" class="page-scroll" href="">Anggota</a></li>
                     <li><a href="<?= base_url('lowongan'); ?>" class="page-scroll" href="">Lowongan</a></li>
