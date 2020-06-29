@@ -14,6 +14,19 @@
     <!-- CSS INCLUDE -->
     <link rel="stylesheet" type="text/css" id="theme" href="<?php echo base_url('assets/html/css/theme-default.css'); ?>" />
     <!-- EOF CSS INCLUDE -->
+
+    <style>
+        .alert {
+            animation: autoHide 0s ease-in 3s forwards;
+        }
+
+        @keyframes autoHide {
+            to {
+                visibility: hidden;
+                position: absolute;
+            }
+        }
+    </style>
 </head>
 
 <body>
