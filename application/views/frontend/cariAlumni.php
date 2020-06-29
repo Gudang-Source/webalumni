@@ -32,7 +32,7 @@
 	<!-- START BREADCRUMB -->
 	<ul class="breadcrumb" style="margin-top:80px;">
 		<li><a href="<?= base_url(''); ?>">Beranda</a></li>
-		<li class="active"><a href="<?= base_url('Home/cariTeman'); ?>">Cari Teman Anda</a></li>
+		<li class="active"><a href="<?= base_url('Home/cariAlumni'); ?>">Cari Alumni</a></li>
 	</ul>
 	<!-- END BREADCRUMB -->
 
@@ -42,8 +42,8 @@
 			<div class="col-md-12">
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<p>Cari Teman Anda.</p>
-						<form action="<?= base_url('home/cariTeman'); ?>" method="post">
+						<p>Cari Alumni.</p>
+						<form action="<?= base_url('home/cariAlumniIka'); ?>" method="post">
 							<div class="form-group">
 								<div class="col-md-12">
 									<div class="input-group">

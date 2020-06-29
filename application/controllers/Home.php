@@ -32,7 +32,8 @@ class Home extends MY_Controller
 
         $data['dataAnggota'] = $this->FrontPageModel->getAllAnggota();
         // $data['dataAnggota'] = $this->M_anggota->findAnggotaLikeNamaForFrontEnd($nama);
-        $this->load->view('frontend/cariTeman', $data);
+        $this->frontend_render('frontend/cariTeman', $data);
+        // $this->load->view('frontend/cariTeman', $data);
     }
 
     function cariTeman()
@@ -41,7 +42,24 @@ class Home extends MY_Controller
         $nama = $this->input->post('namaAnggota');
 
         $data['dataAnggota'] = $this->FrontPageModel->findAnggotaForFrontEnd($nama);
-        $this->load->view('frontend/cariTeman', $data);
+        $this->frontend_render('frontend/cariTeman', $data);
+        // $this->load->view('frontend/cariTeman', $data);
+    }
+
+    function cariAlumni()
+    {
+        $data['title'] = 'Cari Alumni';
+        $data['dataAnggota'] = $this->FrontPageModel->findAlumniForFrontEnd();
+        $this->frontend_render('frontend/cariAlumni', $data);
+    }
+
+    function cariAlumniIka()
+    {
+        $data['title'] = 'Cari Alumni';
+        $nama = $this->input->post('namaAnggota');
+
+        $data['dataAnggota'] = $this->FrontPageModel->findAlumniForFrontEndByNama($nama);
+        $this->frontend_render('frontend/cariAlumni', $data);
     }
 
     function forumBisnisAnggota()
