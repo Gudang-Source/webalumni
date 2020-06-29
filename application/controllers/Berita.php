@@ -184,16 +184,20 @@ class Berita extends MY_Controller
 
         $this->pagination->initialize($config);
         $data['daftarBerita'] = $this->M_berita->findBeritaLikeKategori($id, $config['per_page'], $data['start']);
-        $data['title'] = $data['daftarBerita'][0]->kategori;
         $data['daftarKategori'] = $this->M_kategori->getAllKategori();
-        $data['kategori'] = '<h2 class="text-info"><b>#' . $data['daftarBerita'][0]->kategori . '</b></h2>';
 
-        if (!$data['daftarBerita'][0]->kategori) {
-            flashMessage('error', 'Berita kosong');
+        // var_dump($data['daftarBerita']);
+        // die;
+
+        if (!$data['daftarBerita']) {
+            flashMessage('error', 'Berita dengan kategori ' . $data['title'] . ' tidak ditemukan!');
             redirect('berita');
-        }
+        } else {
+            $data['title'] = $data['daftarBerita'][0]->kategori;
+            $data['kategori'] = '<h2 class="text-info"><b>#' . $data['title'] . '</b></h2>';
 
-        $this->frontend_render('frontend/berita/index', $data);
+            $this->frontend_render('frontend/berita/index', $data);
+        }
     }
     // ==================================================
     // --------------------- SEARCH ---------------------
