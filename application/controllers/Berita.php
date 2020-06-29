@@ -190,7 +190,7 @@ class Berita extends MY_Controller
         // die;
 
         if (!$data['daftarBerita']) {
-            flashMessage('error', 'Berita dengan kategori ' . $data['title'] . ' tidak ditemukan!');
+            flashMessage('error', 'Berita kosong');
             redirect('berita');
         } else {
             $data['title'] = $data['daftarBerita'][0]->kategori;
