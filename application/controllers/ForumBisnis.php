@@ -29,6 +29,7 @@ class ForumBisnis extends MY_Controller
     function lihatForbis($id)
     {
         $data['forumBisnis'] = $this->M_forumBisnis->getLihatAllForbisById($id);
+        $data['forumBisnisLainnya'] = $this->M_forumBisnis->getAllForumBisnisNotById($id);
         $data['title'] = 'Forum Bisnis';
         // $data['title'] = $data['berita'][0]->judul_berita;
         $data['info'] = $this->FrontPageModel->getInfoBySessionId();

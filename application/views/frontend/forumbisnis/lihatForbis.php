@@ -77,6 +77,40 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-4">
+                <h6 class="text-info" style="margin-bottom: 25px; padding-bottom: 10px; border-bottom: 2px dotted #000 ;"><b>Forum Bisnis Lainnya</b></h6>
+                <?php foreach ($forumBisnisLainnya as $B) : ?>
+
+                    <a href="<?= base_url('forumBisnis/lihatForbis/') . $B->id_forbis; ?>">
+                        <div class="panel panel-default">
+                            <div class="col-md-4">
+                                <div class="panel-body" style="width: 100px; height: 100px; overflow: hidden;">
+                                    <?php if ($B->nama_foto_bisnis == NULL) { ?>
+                                        <img src="<?php echo base_url('uploads/no-image.jpg'); ?> " alt="No Image" title="Default Image" style="height: 100%;">
+                                    <?php } else { ?>
+                                        <img src="<?php echo base_url('uploads/logo-bisnis/' . $B->nama_foto_bisnis); ?> " alt="<?= $B->nama_bisnis_usaha; ?>" title="<?= $B->nama_bisnis_usaha; ?>" style="height: 100%;">
+                                    <?php } ?>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="panel-body">
+                                    <?php if ($B->nama_bisnis_usaha == "") { ?>
+                                        <h2><b>Belum di isi</b></h2>
+                                    <?php } else { ?>
+                                        <h6 class="text-primary" id="namaBisnisUsaha" name="namaBisnisUsaha"><b><?= $B->nama_bisnis_usaha; ?></b></h6>
+                                        <!-- <h3><b><a class="text-primary" id="bacaBerita" name="bacaBerita" href="<?= base_url('berita/baca/') . $B->id_berita; ?>"><?= $B->judul_berita; ?></a></b></h3> -->
+                                    <?php } ?>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                <?php endforeach; ?>
+                <a class="text-info" href="<?= base_url('forumBisnis'); ?>">Selengkapnya &raquo;</a>
+            </div>
         </div>
     </div>
 
