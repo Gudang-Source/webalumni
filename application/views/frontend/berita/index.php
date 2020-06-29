@@ -46,7 +46,6 @@
                                         </div>
                                     </div>
                                 </form>
-                                <a class="btn btn-primary" href="<?= base_url('Berita'); ?>" style="margin-top: 20px;">Reset Pencarian</a>
                             </div>
                         </div>
                     </div>

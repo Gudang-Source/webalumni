@@ -139,6 +139,10 @@ class Berita extends MY_Controller
         $data['daftarBerita'] = $this->M_berita->findBeritaLikeJudulFrontend($where, $judul, $config['per_page'], $data['start']);
         $data['daftarKategori'] = $this->M_kategori->getAllKategori();
 
+        if ($judul == "") {
+            redirect('berita');
+        }
+
         $this->frontend_render('frontend/berita/index', $data);
     }
 
@@ -197,11 +201,4 @@ class Berita extends MY_Controller
     //
     //
     //
-    // ==================================================
-    // --------------------- OTHERS ---------------------
-    // ==================================================
-
-    // ==================================================
-    // --------------------- OTHERS ---------------------
-    // ==================================================
 }
