@@ -116,15 +116,6 @@
                     </ul>
                 </li>
 
-                <?php if ($info[0]->support == 0) { ?>
-                    <li class="hidden">
-                        <a href="<?= base_url('anggota/Forbis'); ?>"><span class="glyphicon glyphicon-file"></span> <span class="xn-text">Forum Bisnis</span></a>
-                    </li>
-                <?php } else if ($info[0]->support == 1) { ?>
-                    <li>
-                        <a href="<?= base_url('anggota/Forbis'); ?>"><span class="glyphicon glyphicon-file"></span> <span class="xn-text">Forum Bisnis</span></a>
-                    </li>
-                <?php } ?>
                 <li>
                     <a href="<?= base_url('anggota/Pengaturan'); ?>"><span class="glyphicon glyphicon-cog"></span> <span class="xn-text">Pengaturan</span></a>
                 </li>
