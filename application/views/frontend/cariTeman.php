@@ -88,9 +88,9 @@
 									<?php } ?>
 
 									<?php if ($A->angkatan == NULL || empty($A->angkatan)) { ?>
-										<div class="profile-data-title">Belum di isi</div>
+										<div class="profile-data-title"><small>Angkatan :</small> Belum di isi</div>
 									<?php } else { ?>
-										<div class="profile-data-title"><?= $A->angkatan; ?></div>
+										<div class="profile-data-title"><small>Angkatan :</small> <?= $A->angkatan; ?></div>
 									<?php } ?>
 								</div>
 							</div>
@@ -100,6 +100,13 @@
 										<p style="font-size: 12px;"><small>Email :</small> Belum di isi</p>
 									<?php } else { ?>
 										<p style="font-size: 12px;"><small>Email :</small> <?= $A->email; ?></p>
+									<?php } ?>
+								</div>
+								<div class="contact-info">
+									<?php if ($A->no_telp == "") { ?>
+										<p style="font-size: 12px;"><small>No Telp :</small> Belum di isi</p>
+									<?php } else { ?>
+										<p style="font-size: 12px;"><small>No Telp :</small> <?= $A->no_telp; ?></p>
 									<?php } ?>
 								</div>
 							</div>

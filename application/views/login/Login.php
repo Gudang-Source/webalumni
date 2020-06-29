@@ -6,18 +6,15 @@
                     <strong><?= showFlashMessage(); ?></strong>
 
                     <div class="login-title"><strong>Login</strong> dengan menggunakan akun Anda</div>
-                    <form action="<?= base_url('auth'); ?>" class="form-horizontal" method="post"
-                        id="form-login-validate">
+                    <form action="<?= base_url('auth'); ?>" class="form-horizontal" method="post" id="form-login-validate">
                         <div class="form-group">
                             <div class="col-md-12">
-                                <input type="text" class="form-control" placeholder="Username" name="userName"
-                                    maxlength="50" required />
+                                <input type="text" class="form-control" placeholder="Username" name="userName" maxlength="50" required />
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-12">
-                                <input type="password" class="form-control" placeholder="Password" name="passWord"
-                                    maxlength="50" required />
+                                <input type="password" class="form-control" placeholder="Password" name="passWord" maxlength="50" required />
                             </div>
                         </div>
                         <div class="form-group">
@@ -43,7 +40,6 @@
                     </div>
                     <div class="pull-right">
                         <a href="<?= base_url('#about'); ?>">About</a> |
-                        <a href="<?= base_url('#services'); ?>">Privacy</a> |
                         <a href="<?= base_url('#contact'); ?>">Contact Us</a>
                     </div>
                 </div>
@@ -52,5 +48,5 @@
         </div>
 
         <script type="text/javascript">
-$("#form-login-validate").validate();
+            $("#form-login-validate").validate();
         </script>

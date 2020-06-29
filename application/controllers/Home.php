@@ -29,6 +29,7 @@ class Home extends MY_Controller
     function cariAnggota()
     {
         $data['title'] = 'Cari Teman';
+        $data['info'] = $this->FrontPageModel->getInfoBySessionId();
 
         $data['dataAnggota'] = $this->FrontPageModel->getAllAnggota();
         // $data['dataAnggota'] = $this->M_anggota->findAnggotaLikeNamaForFrontEnd($nama);
@@ -39,6 +40,7 @@ class Home extends MY_Controller
     function cariTeman()
     {
         $data['title'] = 'Cari Teman';
+        $data['info'] = $this->FrontPageModel->getInfoBySessionId();
         $nama = $this->input->post('namaAnggota');
 
         $data['dataAnggota'] = $this->FrontPageModel->findAnggotaForFrontEnd($nama);
@@ -49,6 +51,7 @@ class Home extends MY_Controller
     function cariAlumni()
     {
         $data['title'] = 'Cari Alumni';
+        $data['info'] = $this->FrontPageModel->getInfoBySessionId();
         $data['dataAnggota'] = $this->FrontPageModel->findAlumniForFrontEnd();
         $this->frontend_render('frontend/cariAlumni', $data);
     }
@@ -56,6 +59,7 @@ class Home extends MY_Controller
     function cariAlumniIka()
     {
         $data['title'] = 'Cari Alumni';
+        $data['info'] = $this->FrontPageModel->getInfoBySessionId();
         $nama = $this->input->post('namaAnggota');
 
         $data['dataAnggota'] = $this->FrontPageModel->findAlumniForFrontEndByNama($nama);
@@ -65,6 +69,7 @@ class Home extends MY_Controller
     function forumBisnisAnggota()
     {
         $data['title'] = 'Forum Bisnis IKASMA3BDG';
+        $data['info'] = $this->FrontPageModel->getInfoBySessionId();
         $data['forumBisnis'] = $this->FrontPageModel->getAllForumBisnis();
 
         $this->load->view('frontend/forumBisnis', $data);
@@ -73,7 +78,7 @@ class Home extends MY_Controller
     function cariForumBisnis()
     {
         $data['title'] = 'Forum Bisnis IKASMA3BDG';
-
+        $data['info'] = $this->FrontPageModel->getInfoBySessionId();
         $nama = $this->input->post('namaForbis');
 
         $data['forumBisnis'] = $this->FrontPageModel->findForumBisnisLikeNama($nama);

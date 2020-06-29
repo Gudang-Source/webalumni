@@ -15,12 +15,7 @@
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <h2 class="section-heading">Apa Itu IKASMA3BDG ?</h2>
                     <hr class="light">
-                    <p class="text-faded">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p class="text-faded">IKASMA3BDG (Ikatan Alumni Sekolah Menengah 3 Bandung) merupakan ikatan alumni dari SMA 3 Kota Bandung.</p>
                     <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">Ada Apa Saja ?</a>
                 </div>
             </div>
@@ -38,30 +33,39 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-6 text-center">
+                <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
-                        <a href="<?= base_url('Home/cariAlumni'); ?>"><i class="fa fa-4x fa-diamond text-primary sr-icons"></i></a>
-                        <h3>Informasi Alumni</h3>
-                        <a href="<?= base_url('Home/cariAlumni'); ?>" style="text-decoration: none;">
-                            <p class="text-muted">Temukan informasi alumni yang up to date disini</p>
+                        <a href="<?= base_url('berita'); ?>"><i class="fa fa-4x fa-newspaper-o sr-icons"></i></a>
+                        <h3>Berita</h3>
+                        <a href="<?= base_url('berita'); ?>" style="text-decoration: none;">
+                            <p class="text-muted">Temukan informasi kegiatan IKASMA3BDG yang terbaru disini.</p>
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 text-center">
+                <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
-                        <a href="<?= base_url('Home/cariAnggota'); ?>"><i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i></a>
+                        <a href="<?= base_url('forumBisnis'); ?>"><i class="fa fa-4x fa-building sr-icons"></i></a>
+                        <h3>ForumBisnis</h3>
+                        <a href="<?= base_url('forumBisnis'); ?>" style="text-decoration: none;">
+                            <p class="text-muted">Beragam bisnis antar sesama alumni SMA 3 Bandung</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <a href="<?= base_url('komunitas'); ?>"><i class="fa fa-4x fa-gratipay sr-icons"></i></i></a>
+                        <h3>Komunitas</h3>
+                        <a href="<?= base_url('komunitas'); ?>" style="text-decoration: none;">
+                            <p class="text-muted">Temukan minatmu bersama teman-teman alumni</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="service-box">
+                        <a href="<?= base_url('Home/cariAnggota'); ?>"><i class="fa fa-4x fa-users sr-icons"></i></a>
                         <h3>Teman</h3>
                         <a href="<?= base_url('Home/cariAnggota'); ?>" style="text-decoration: none;">
                             <p class="text-muted">Temukan teman sekolah anda disini</p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 text-center">
-                    <div class="service-box">
-                        <a href="<?= base_url('forumBisnis'); ?>"><i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i></a>
-                        <h3>FORBIS</h3>
-                        <a href="<?= base_url('forumBisnis'); ?>" style="text-decoration: none;">
-                            <p class="text-muted">Forum Bisnis</p>
                         </a>
                     </div>
                 </div>
@@ -195,3 +199,32 @@
             </div>
         </div>
     </section>
+
+    <footer class="bg-dark" style="padding: 50px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6" style="margin-bottom: 50px;">
+                    <p class="text-primary">Dikembangkan oleh FANCY SOFTWARE : </p>
+                    <ul>
+                        <li>Adhy Wiranto Sudjana</li>
+                        <li>Dicky Ardianto</li>
+                        <li>Rafly Yunandi Aliansyah</li>
+                    </ul>
+                </div>
+                <div class="col-md-6" style="margin-bottom: 50px;">
+                    <p class="text-primary">Kontak</p>
+                    <ul>
+                        <li>+62 819 1143 7177 (Adhy)</li>
+                        <li>+62 821 6838 0859 (Dicky)</li>
+                        <li>+62 896 6227 3550 (Rafly)</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12 text-faded text-center">
+                    <span>Copyright &copy; FANCY SOFTWARE. 2020 untuk IKASMA3BDG</span>
+                </div>
+            </div>
+        </div>
+    </footer>

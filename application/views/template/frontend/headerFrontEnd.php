@@ -49,29 +49,31 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                    <li><a href="<?= base_url(''); ?>" class="page-scroll" href="">Beranda</a></li>
                     <li><a href="<?= base_url('berita'); ?>" class="page-scroll" href="">Berita</a></li>
                     <li><a href="<?= base_url('forumBisnis'); ?>" class="page-scroll" href="">Forum Bisnis</a></li>
                     <li><a href="<?= base_url('komunitas'); ?>" class="page-scroll" href="">Komunitas</a></li>
-                    <li><a href="<?= base_url('anggota'); ?>" class="page-scroll" href="">Anggota</a></li>
-                    <li><a href="<?= base_url('lowongan'); ?>" class="page-scroll" href="">Lowongan</a></li>
+                    <li><a href="<?= base_url('home/cariAnggota'); ?>" class="page-scroll" href="">Teman</a></li>
 
                     <?php if ($this->session->userdata('logged_in') == 'Sudah Login') : ?>
-                        <li class="dropdown" style="margin-right:20px">
-                            <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                        <li class="dropdown" style="margin-right: 20px;">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <span class="navbar-avatar">
                                     <?php if ($this->session->userdata('role') == 1 || $this->session->userdata('role') == 2) : ?>
-                                        <img width="20" src="<?php echo base_url('uploads/avatars/gambar-admin/' . $info[0]->nama_foto); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" />
+                                        <img width="20" src="<?= base_url('uploads/avatars/gambar-admin/' . $info[0]->nama_foto); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" />
                                     <?php else : ?>
-                                        <img width="20" src="<?php echo base_url('uploads/avatars//' . $info[0]->nama_foto); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" />
+                                        <img width="20" src="<?= base_url('uploads/avatars/' . $info[0]->nama_foto); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" />
                                     <?php endif; ?>
-                                </span> <?= $info[0]->nama_lengkap; ?></a>
+                                </span>
+                                <?= $info[0]->nama_lengkap; ?>
+                            </a>
 
                             <ul class="dropdown-menu">
                                 <?php if ($this->session->userdata('role') == 1 || $this->session->userdata('role') == 2) : ?>
                                     <li><a href="<?= base_url($info[0]->role); ?>">Beranda <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
                                 <?php else : ?>
                                     <li><a href="<?= base_url($info[0]->role); ?>">Profil <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
-                                    <li><a href="<?= base_url($info[0]->role . '/pengaturan'); ?>">Pengaturan <span class="glyphicon glyphicon-cog pull-right"></span></li>
+                                    <li><a href="<?= base_url($info[0]->role) . '/pengaturan'; ?>">Pengaturan <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
                                 <?php endif; ?>
                                 <li><a href="<?= base_url('Login/Logout'); ?>">Log Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
                             </ul>
