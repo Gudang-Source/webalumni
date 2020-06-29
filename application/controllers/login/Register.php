@@ -33,7 +33,7 @@ class Register extends MY_Controller
 		$noTelepon = htmlspecialchars($this->input->post('noTelepon'));
 		$tglLahir = htmlspecialchars($this->input->post('tglLahir'));
 
-		$filename = "anggota-" . $namaLengkap . "-" . time();
+		$filename = htmlspecialchars("anggota-" . $namaLengkap . "-" . time());
 
 		//set preferences
 		$config['upload_path'] = './uploads/avatars';
