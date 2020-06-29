@@ -25,13 +25,13 @@
 
 <body>
 
-	<div class="page-title" style="margin-top: 10px;">
-		<h2> Cari Teman Anda</h2>
-	</div>
+	<!-- <div class="page-title" > -->
+	<!-- <h2> Cari Teman Anda</h2> -->
+	<!-- </div> -->
 
 	<!-- START BREADCRUMB -->
-	<ul class="breadcrumb">
-		<li><a href="<?= base_url('Home'); ?>">Beranda</a></li>
+	<ul class="breadcrumb" style="margin-top:80px;">
+		<li><a href="<?= base_url(''); ?>">Beranda</a></li>
 		<li class="active"><a href="<?= base_url('Home/cariTeman'); ?>">Cari Teman Anda</a></li>
 	</ul>
 	<!-- END BREADCRUMB -->
@@ -97,9 +97,9 @@
 							<div class="panel-body">
 								<div class="contact-info">
 									<?php if ($A->email == "") { ?>
-										<p><small>Email :</small> Belum di isi</p>
+										<p style="font-size: 12px;"><small>Email :</small> Belum di isi</p>
 									<?php } else { ?>
-										<p><small>Email :</small> <?= $A->email; ?></p>
+										<p style="font-size: 12px;"><small>Email :</small> <?= $A->email; ?></p>
 									<?php } ?>
 								</div>
 							</div>

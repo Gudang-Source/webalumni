@@ -40,9 +40,11 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 text-center">
                     <div class="service-box">
-                        <i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
+                        <a href="<?= base_url('Home/cariAlumni'); ?>"><i class="fa fa-4x fa-diamond text-primary sr-icons"></i></a>
                         <h3>Informasi Alumni</h3>
-                        <p class="text-muted">Temukan informasi alumni yang up to date disini</p>
+                        <a href="<?= base_url('Home/cariAlumni'); ?>" style="text-decoration: none;">
+                            <p class="text-muted">Temukan informasi alumni yang up to date disini</p>
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 text-center">
