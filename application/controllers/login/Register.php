@@ -26,12 +26,12 @@ class Register extends MY_Controller
 	function createRegisterAnggota()
 	{
 
-		$namaLengkap = $this->input->post('namaLengkap');
-		$namaPanggilanAlias = $this->input->post('namaPanggilanAlias');
-		$angkatan = $this->input->post('angkatan');
-		$email = $this->input->post('email');
-		$noTelepon = $this->input->post('noTelepon');
-		$tglLahir = $this->input->post('tglLahir');
+		$namaLengkap = htmlspecialchars($this->input->post('namaLengkap'));
+		$namaPanggilanAlias = htmlspecialchars($this->input->post('namaPanggilanAlias'));
+		$angkatan = htmlspecialchars($this->input->post('angkatan'));
+		$email = htmlspecialchars($this->input->post('email'));
+		$noTelepon = htmlspecialchars($this->input->post('noTelepon'));
+		$tglLahir = htmlspecialchars($this->input->post('tglLahir'));
 
 		$filename = "anggota-" . $namaLengkap . "-" . time();
 
