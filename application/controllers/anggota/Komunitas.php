@@ -64,6 +64,20 @@ class Komunitas extends MY_Controller
             $this->anggota_render('anggota/komunitasNonaktif', $data);
         }
     }
+
+    function kelolaKomunitas()
+    {
+        $data['title'] = 'Lihat Komunitas';
+        $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+        $where = "tb_komunitas.stat_komunitas != 0";
+
+        $data['komunitas'] = $this->M_komunitas->getAllKomunitasForSpecificUser($where, $data['info'][0]->user_id);
+
+        if ($this->session->userdata('role') == 3) {
+            $this->anggota_render('anggota/kelolaKomunitas', $data);
+        }
+    }
     // ==================================================
     // ---------------------- READ ----------------------
     // ==================================================
@@ -181,6 +195,25 @@ class Komunitas extends MY_Controller
     // ==================================================
     // --------------------- SEARCH ---------------------
     // ==================================================
+    function cariKomunitas()
+    {
+        $data['title'] = 'Kelola Status Komunitas';
+
+        $nama = $this->input->post('namaKomunitas');
+
+        $where = "tb_komunitas.stat_komunitas != 0";
+        $data['komunitas'] = $this->M_komunitas->findKomunitasLikeNama($where, $nama);
+
+        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+        if ($this->session->userdata('role') == 3) {
+            if (!$nama) {
+                redirect('anggota/Komunitas/kelolaKomunitas');
+            }
+            $this->anggota_render('anggota/kelolaKomunitas', $data);
+        }
+    }
+
     function cariStatusKomunitas()
     {
         $data['title'] = 'Kelola Status Komunitas';
@@ -194,7 +227,7 @@ class Komunitas extends MY_Controller
 
         if ($this->session->userdata('role') == 3) {
             if (!$nama) {
-                redirect('anggota/komunitas');
+                redirect('anggota/lihatKomunitas');
             }
 
             $this->anggota_render('anggota/lihatKomunitas', $data);

@@ -121,7 +121,7 @@
                             <?php if ($info[0]->id_user == $A->id_pengupload) { ?>
                                 <div class="panel-body">
                                     <div class="contact-info">
-                                        <a class="btn btn-danger btn-block btn-hapus-komunitas" title="Hapus Komunitas" id="<?= $A->id_komunitas; ?>" id="<?= $A->id_komunitas; ?>" data-toggle="modal" data-target="#message-box-delete-komunitas"><i class="fa fa-edit"></i>Hapus Komunitas</a>
+                                        <a class="btn btn-danger btn-block btn-hapus-komunitas" title="Hapus Komunitas" id="<?= $A->id_komunitas; ?>" id="<?= $A->id_komunitas; ?>" data-toggle="modal" data-target="#message-box-delete-komunitas"><i class="fa fa-edit"></i>Batalkan Permohonan Komunitas</a>
                                     </div>
                                 </div>
                             <?php } ?>

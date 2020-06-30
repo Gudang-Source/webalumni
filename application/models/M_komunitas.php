@@ -15,6 +15,18 @@ class M_komunitas extends CI_Model
         // return $this->db->get('tb_komunitas')->result();
     }
 
+    public function getAllKomunitasForSpecificUser($where, $user_id)
+    {
+        $this->db->select('tb_komunitas.*, tb_user.username');
+        $this->db->from('tb_komunitas');
+        $this->db->join('tb_user', 'tb_komunitas.id_pengupload=tb_user.id_user');
+        $this->db->where('tb_komunitas.id_pengupload = ' . $user_id);
+        // $this->db->order_by('tb_komunitas.date_created', 'DESC');
+        // $this->db->order_by('tb_komunitas.time_created', 'DESC');
+
+        return $this->db->get()->result();
+    }
+
     function findKomunitas($select, $where)
     {
         $this->db->select($select);

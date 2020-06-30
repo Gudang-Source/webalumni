@@ -64,6 +64,21 @@ class Komunitas extends MY_Controller
             $this->alumni_render('alumni/komunitasNonaktif', $data);
         }
     }
+
+    function kelolaKomunitas()
+    {
+        $data['title'] = 'Lihat Komunitas';
+        $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+        $where = "tb_komunitas.stat_komunitas != 0";
+
+        $data['komunitas'] = $this->M_komunitas->getAllKomunitasForSpecificUser($where, $data['info'][0]->user_id);
+
+        if ($this->session->userdata('role') == 4) {
+            $this->alumni_render('alumni/kelolaKomunitas', $data);
+        }
+    }
+
     // ==================================================
     // ---------------------- READ ----------------------
     // ==================================================
@@ -181,6 +196,25 @@ class Komunitas extends MY_Controller
     // ==================================================
     // --------------------- SEARCH ---------------------
     // ==================================================
+    function cariKomunitas()
+    {
+        $data['title'] = 'Kelola Status Komunitas';
+
+        $nama = $this->input->post('namaKomunitas');
+
+        $where = "tb_komunitas.stat_komunitas != 0";
+        $data['komunitas'] = $this->M_komunitas->findKomunitasLikeNama($where, $nama);
+
+        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+        if ($this->session->userdata('role') == 4) {
+            if (!$nama) {
+                redirect('alumni/Komunitas/kelolaKomunitas');
+            }
+            $this->alumni_render('alumni/kelolaKomunitas', $data);
+        }
+    }
+
     function cariStatusKomunitas()
     {
         $data['title'] = 'Kelola Status Komunitas';

@@ -6,7 +6,7 @@
 <!-- END BREADCRUMB -->
 
 <div class="page-title">
-    <h2> Lihat Komunitas</h2>
+    <h2>Komunitas Aktif</h2>
 </div>
 
 <?= showFlashMessage(); ?>
@@ -55,6 +55,7 @@
     <div class="row">
         <?php if ($komunitas) : ?>
             <?php foreach ($komunitas as $A) { ?>
+                <?php if ($A->stat_komunitas == 1) : ?>
                 <div class="col-md-4    ">
                     <div class="panel panel-default">
                         <div class="panel-body profile">
@@ -108,11 +109,7 @@
                                         <p><i class="fa fa-users" aria-hidden="true"></i> <strong>Anggota</strong><br>
                                             <h5>+- <?= $A->anggota_komunitas ?></h5>
                                         </p>
-                                        <!-- <hr>
-                            <p><i class="fa fa-calendar" aria-hidden="true"></i> <small>Tanggal Dibuat</small><br><h5><?= $A->date_created; ?></h5></p>
-                            <p><i class="fa fa-clock-o" aria-hidden="true"></i> <small>Waktu Dibuat</small><br><h5><?= $A->time_created; ?></h5></p>
-                            <p><i class="fa fa-user" aria-hidden="true"></i> <small>Pengupload Komunitas</small><br><h5><?= $A->username; ?></h5></p>
-                            -->
+
                                     </div>
                                 </div>
                             </div>
@@ -120,7 +117,8 @@
                         <!-- END CONTACT ITEM -->
                     </div>
                 </div>
-            <?php } ?>
+                <?php endif; ?>
+                <?php } ?>
         <?php else : ?>
             <div class="row">
                 <div class="col-md-6">

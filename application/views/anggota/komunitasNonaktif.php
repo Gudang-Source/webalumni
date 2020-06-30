@@ -52,7 +52,7 @@
     <div class="row">
         <?php if ($komunitas) : ?>
             <?php foreach ($komunitas as $A) { ?>
-                <div class="col-md-4    ">
+                <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-body profile">
                             <div class="profile-image">
@@ -71,8 +71,11 @@
                         </div>
                         <div class="panel-body">
                             <div class="contact-info">
+                            <?php if ($info[0]->id_user == $A->id_pengupload) { ?>
                                 <h3>Tentang Komunitas ini</h3>
                                 <p> <?= $A->deskripsi_komunitas ?></p>
+                                <?php } ?>
+
                                 <div class="panel-body">
                                     <div class="contact-info">
                                         <p><i class="fa fa-link" aria-hidden="true"></i> <strong>Link Komunitas</strong><br>
@@ -83,6 +86,7 @@
                                             <?php } ?>
                                         </p>
 
+                                        <?php if ($info[0]->id_user == $A->id_pengupload) { ?>
                                         <?php if ($A->sifat_komunitas == "Publik") { ?>
                                             <p><i class="fa fa-eye" aria-hidden="true"></i> <strong> <?= $A->sifat_komunitas ?> </strong><br>
                                                 <h5>Semua orang bisa join ke komunitas ini.</h5>
@@ -113,7 +117,7 @@
                                         <p><i class="fa fa-user" aria-hidden="true"></i> <strong>Pengupload Komunitas</strong><br>
                                             <h5><?= $A->username; ?></h5>
                                         </p>
-
+                                            <?php } ?>
                                     </div>
                                 </div>
                             </div>
@@ -123,7 +127,7 @@
                         <?php if ($info[0]->id_user == $A->id_pengupload) { ?>
                             <div class="panel-body">
                                 <div class="contact-info">
-                                    <a class="btn btn-danger btn-block btn-hapus-komunitas" title="Hapus Komunitas" id="<?= $A->id_komunitas; ?>" id="<?= $A->id_komunitas; ?>" data-toggle="modal" data-target="#message-box-delete-komunitas"><i class="fa fa-edit"></i>Hapus Komunitas</a>
+                                    <a class="btn btn-danger btn-block btn-hapus-komunitas" title="Hapus Komunitas" id="<?= $A->id_komunitas; ?>" id="<?= $A->id_komunitas; ?>" data-toggle="modal" data-target="#message-box-delete-komunitas"><i class="fa fa-edit"></i>Batalkan Permohonan Komunitas</a>
                                 </div>
                             </div>
                         <?php } ?>
