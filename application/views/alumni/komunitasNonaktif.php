@@ -71,45 +71,54 @@
 
                             </div>
                             <div class="panel-body">
-                                <div class="contact-info">
-                                    <h3>Tentang Komunitas ini</h3>
-                                    <p> <?= $A->deskripsi_komunitas ?></p>
-                                    <div class="panel-body">
-                                        <div class="contact-info">
-                                            <p><i class="fa fa-link" aria-hidden="true"></i> <strong>Link Komunitas</strong><br>
-                                                <?php if ($info[0]->id_user == $A->id_pengupload) { ?>
-                                                    <h5><a><?= $A->tautat_komunitas ?></a></h5>
-                                                <?php } else { ?>
-                                                    <h5><i><a>Komunitas belum aktif</a></i></h5>
-                                                <?php } ?>
-                                            </p>
+                            <div class="contact-info">
+                            <?php if ($info[0]->id_user == $A->id_pengupload) { ?>
+                                <h3>Tentang Komunitas ini</h3>
+                                <p> <?= $A->deskripsi_komunitas ?></p>
+                                <?php } ?>
 
-                                            <?php if ($A->sifat_komunitas == "Publik") { ?>
-                                                <p><i class="fa fa-eye" aria-hidden="true"></i> <strong> <?= $A->sifat_komunitas ?> </strong><br>
-                                                    <h5>Semua orang bisa join ke komunitas ini.</h5>
-                                                </p>
+                                <div class="panel-body">
+                                    <div class="contact-info">
+                                        <p><i class="fa fa-link" aria-hidden="true"></i> <strong>Link Komunitas</strong><br>
+                                            <?php if ($info[0]->id_user == $A->id_pengupload) { ?>
+                                                <h5><a><?= $A->tautat_komunitas ?></a></h5>
                                             <?php } else { ?>
-                                                <p><i class="fa fa-eye" aria-hidden="true"></i> <strong>Private </strong><br>
-                                                    <h5>Tidak semua orang bisa menemukan komunitas ini.</h5>
-                                                </p>
+                                                <h5><a>Komunitas belum aktif</a></h5>
                                             <?php } ?>
+                                        </p>
 
-                                            <?php if ($A->jenis_komunitas == "Aktif") { ?>
-                                                <p><i class="fa fa-globe" aria-hidden="true"></i> <strong><?= $A->jenis_komunitas ?></strong><br>
-                                                    <h5>Banyak orang menggunakan komunitas ini</h5>
-                                                </p>
-                                            <?php } else { ?>
-                                                <p><i class="fa fa-globe" aria-hidden="true"></i> <strong>Pasif</strong><br>
-                                                    <h5>Hanya sebagian anggota menggunakan komunitas ini dan sedikit hal yang diposting</h5>
-                                                </p>
+                                        <?php if ($info[0]->id_user == $A->id_pengupload) { ?>
+                                        <?php if ($A->sifat_komunitas == "Publik") { ?>
+                                            <p><i class="fa fa-eye" aria-hidden="true"></i> <strong> <?= $A->sifat_komunitas ?> </strong><br>
+                                                <h5>Semua orang bisa join ke komunitas ini.</h5>
+                                            </p>
+                                        <?php } else { ?>
+                                            <p><i class="fa fa-eye" aria-hidden="true"></i> <strong>Private </strong><br>
+                                                <h5>Tidak semua orang bisa menemukan komunitas ini.</h5>
+                                            </p>
+                                        <?php } ?>
+
+                                        <?php if ($A->jenis_komunitas == "Aktif") { ?>
+                                            <p><i class="fa fa-globe" aria-hidden="true"></i> <strong><?= $A->jenis_komunitas ?></strong><br>
+                                                <h5>Banyak orang menggunakan komunitas ini</h5>
+                                            </p>
+                                        <?php } else { ?>
+                                            <p><i class="fa fa-globe" aria-hidden="true"></i> <strong>Pasif</strong><br>
+                                                <h5>Hanya sebagian anggota menggunakan komunitas ini dan sedikit hal yang diposting</h5>
+                                            </p>
+                                        <?php } ?>
+
+                                        <p><i class="fa fa-map-marker" aria-hidden="true"></i> <strong>Lokasi</strong><br>
+                                            <h5><?= $A->lokasi_komunitas ?></h5>
+                                        </p>
+                                        <p><i class="fa fa-users" aria-hidden="true"></i> <strong>Anggota</strong><br>
+                                            <h5>+- <?= $A->anggota_komunitas ?></h5>
+                                        </p>
+
+                                        <p><i class="fa fa-user" aria-hidden="true"></i> <strong>Pengupload Komunitas</strong><br>
+                                            <h5><?= $A->username; ?></h5>
+                                        </p>
                                             <?php } ?>
-
-                                            <p><i class="fa fa-map-marker" aria-hidden="true"></i> <strong>Lokasi</strong><br>
-                                                <h5><?= $A->lokasi_komunitas ?></h5>
-                                            </p>
-                                            <p><i class="fa fa-users" aria-hidden="true"></i> <strong>Anggota</strong><br>
-                                                <h5>+- <?= $A->anggota_komunitas ?></h5>
-                                            </p>
 
                                         </div>
                                     </div>
