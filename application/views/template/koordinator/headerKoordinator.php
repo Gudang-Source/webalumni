@@ -132,6 +132,7 @@
                     <ul>
                         <li><a href="<?= base_url('koordinator/Komunitas') ?>"><span class="fa fa-user"></span> Kelola
                                 Calon Komunitas</a></li>
+                        <li><a href="<?= base_url('koordinator/Komunitas/komunitasNonaktif'); ?>"><span class="fa fa-minus"></span> <span class="xn-text">Komunitas Nonaktif</span></a></li>
                         <li><a href="<?= base_url('koordinator/Komunitas/kelolaStatusKomunitas') ?>"><span
                                     class="fa fa-users"></span> Kelola Status Komunitas </a></li>
                     </ul>

@@ -1,12 +1,12 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
     <li>Komunitas</li>
-    <li class="active"><a href="<?= base_url('admin/Komunitas/kelolaStatusKomunitas'); ?>">Kelola Status Komunitas</a></li>
+    <li class="active"><a href="<?= base_url('koordinator/Komunitas/komunitasNonaktif'); ?>">Komunitas Nonaktif</a></li>
 </ul>
 <!-- END BREADCRUMB -->
 
 <div class="page-title">
-    <h2> Kelola Status Komunitas</h2>
+    <h2>Komunitas Nonaktif</h2>
 </div>
 
 <?= showFlashMessage(); ?>
@@ -21,7 +21,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <p>Cari Komunitas</p>
-                        <form action="<?= base_url('admin/Komunitas/cariStatusKomunitas'); ?>" method="post">
+                        <form action="<?= base_url('koordinator/Komunitas/cariStatusKomunitas'); ?>" method="post">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <div class="input-group">
@@ -41,11 +41,12 @@
     <!-- SEARCH -->
 
 
+    <div class="row">
         <!-- KOMUNITAS CONTENT -->
         <div class="row">
             <?php if ($komunitas) : ?>
                 <?php foreach ($komunitas as $A) { ?>
-                    <?php if ($A->stat_komunitas == 1) : ?>
+                    <?php if ($A->stat_komunitas == 0) : ?>
                         <div class="col-md-4">
                             <div class="panel panel-default">
                                 <div class="panel-body profile">
@@ -124,15 +125,17 @@
                                 <!-- BUTTON UBAH -->
                             </div>
                         </div>
-                    <?php endif ?>
+
+            <?php endif; ?>
                 <?php } ?>
-            <?php else : ?>
-                <div class="row">
-                    <div class="col-md-6">
+                    <?php else : ?>
+                    <div class="row">
+                        <div class="col-md-6">
                         <h2 class="text-center" style="margin-top: 10px;">Komunitas tidak ditemukan</h2>
                     </div>
                 </div>
             <?php endif; ?>
+            
         </div>
         <!-- KOMUNITAS CONTENT -->
     </div>
@@ -144,7 +147,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
             
-                <form action="<?= base_url('admin/Komunitas/setUpdateKomunitas'); ?>" class="form-horizontal" id="ubah-anggota-validate" method="post" enctype="multipart/form-data">
+                <form action="<?= base_url('koordinator/Komunitas/setUpdateKomunitas'); ?>" class="form-horizontal" id="ubah-anggota-validate" method="post" enctype="multipart/form-data">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                         <h4 class="modal-title" id="defModalHead">Ubah Komunitas</h4>
@@ -163,21 +166,21 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label">Nama Komunitas</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" name="namaUbahKomunitas" id="namaUbahKomunitas" placeholder="" required clear />
+                                <input type="text" class="form-control" name="namaUbahKomunitas" id="namaUbahKomunitas" placeholder="" required clear/>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-3 control-label">Lokasi Komunitas</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" name="lokasiUbahKomunitas" id="lokasiUbahKomunitas" placeholder="" required clear />
+                                <input type="text" class="form-control" name="lokasiUbahKomunitas" id="lokasiUbahKomunitas" placeholder="" required clear/>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-3 control-label">Tautat Komunitas</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" name="tautatUbahKomunitas" id="tautatUbahKomunitas" placeholder="" required clear />
+                                <input type="text" class="form-control" name="tautatUbahKomunitas" id="tautatUbahKomunitas" placeholder="" required clear/>
                             </div>
                         </div>
 
@@ -200,7 +203,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-3 control-label">Jenis Komunitas</label>
+                            <label class="col-md-3 control-label">Aktifkan kembali Komunitas</label>
                             <div class="col-md-8">
                                 <select name="jenisUbahKomunitas" id="jenisUbahKomunitas" class="select form-control validate[required]">
                                     <option value="Aktif">Aktif</option>
@@ -219,11 +222,11 @@
 
                     <hr>
                     <div class="form-group">
-                            <label class="col-md-3 control-label">Nonaktifkan Komunitas</label>
+                            <label class="col-md-3 control-label">Aktifkan kembali Komunitas</label>
                             <div class="col-md-8">
                                 <select name="statUbahKomunitasss" id="statUbahKomunitasss" class="select form-control">
-                                    <option value="1">Tidak</option>
-                                    <option value="0">Ya </option>
+                                    <option value="1">Ya</option>
+                                    <option value="0">Tidak </option>
                                 </select>
                             </div>
                         </div>
@@ -247,7 +250,7 @@
     <div class="modal animated zoomIn" id="message-box-ubah-gambar-komunitas" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="<?= base_url('admin/Komunitas/setUpdateFotoKomunitas'); ?>" class="form-horizontal" id="ubah-anggota-validate" method="post" enctype="multipart/form-data">
+                <form action="<?= base_url('koordinator/Komunitas/setUpdateFotoKomunitas'); ?>" class="form-horizontal" id="ubah-anggota-validate" method="post" enctype="multipart/form-data">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                         <h4 class="modal-title" id="defModalHead">Ubah Komunitas</h4>
@@ -296,7 +299,7 @@
                 <div class="mb-title">
                     <span class="fa fa-times"></span> Hapus <strong>Komunitas</strong>
                 </div>
-                <form action="<?= base_url('admin/Komunitas/hapusKomunitas'); ?>" class="form-horizontal" method="post">
+                <form action="<?= base_url('koordinator/Komunitas/hapusKomunitas'); ?>" class="form-horizontal" method="post">
                     <div class="mb-content">
                         <div class="panel-body">
                             <p>Anda yakin akan menghapus komunitas dari IKASMA3BDG dengan identitas sebagai berikut :</p>
@@ -332,7 +335,7 @@
                     <div class="mb-footer">
                         <div class="pull-right">
                             <button type="submit" class="btn btn-primary btn-lg mb-control-yes">Hapus</button>
-                            <a href="<?= base_url('admin/Komunitas/kelolaStatusKomunitas'); ?>" class="btn btn-default btn-lg">Batal</a>
+                            <a href="<?= base_url('koordinator/Komunitas/kelolaStatusKomunitas'); ?>" class="btn btn-default btn-lg">Batal</a>
                         </div>
                     </div>
                 </form>
@@ -363,7 +366,7 @@
             console.log(this.id);
             var idUbahKomunitas = this.id;
 
-            $.post("<?= base_url('admin/Komunitas/KomunitasJSON/') ?>", {
+            $.post("<?= base_url('koordinator/Komunitas/KomunitasJSON/') ?>", {
                     id: idUbahKomunitas
                 },
                 function(data) {
@@ -398,7 +401,7 @@
             console.log(this.id);
             var idUbahFoto = this.id;
 
-            $.post("<?= base_url('admin/Komunitas/KomunitasJSON/') ?>", {
+            $.post("<?= base_url('koordinator/Komunitas/KomunitasJSON/') ?>", {
                     id: idUbahFoto
                 },
                 function(data) {
@@ -418,7 +421,7 @@
             console.log(this.id);
             var idKomunitasHapus = this.id;
 
-            $.post("<?= base_url('admin/Komunitas/KomunitasJSON/') ?>", {
+            $.post("<?= base_url('koordinator/Komunitas/KomunitasJSON/') ?>", {
                     id: idKomunitasHapus
                 },
                 function(data) {

@@ -162,35 +162,35 @@
 
                         <div class="panel-body">
                             <div class="form-group">
-                                <label class="col-md-2 control-label">Nama Komunitas</label>
+                                <label class="col-md-3 control-label">Nama Komunitas</label>
                                 <div class="col-md-8">
                                     <input type="text" class="form-control" name="namaUbahKomunitas" id="namaUbahKomunitas" placeholder="" required clear />
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-2 control-label">Lokasi Komunitas</label>
+                                <label class="col-md-3 control-label">Lokasi Komunitas</label>
                                 <div class="col-md-8">
                                     <input type="text" class="form-control" name="lokasiUbahKomunitas" id="lokasiUbahKomunitas" placeholder="" required clear />
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-2 control-label">Tautat Komunitas</label>
+                                <label class="col-md-3 control-label">Tautat Komunitas</label>
                                 <div class="col-md-8">
                                     <input type="text" class="form-control" name="tautatUbahKomunitas" id="tautatUbahKomunitas" placeholder="" required clear />
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-2 control-label">Deskripsi Komunitas</label>
+                                <label class="col-md-3 control-label">Deskripsi Komunitas</label>
                                 <div class="col-md-8">
                                     <textarea class="form-control" name="deskripsiUbahKomunitas" id="deskripsiUbahKomunitas" placeholder="" rows="4" cols="50"></textarea>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-2 control-label">Sifat Komunitas</label>
+                                <label class="col-md-3 control-label">Sifat Komunitas</label>
                                 <div class="col-md-8">
                                     <select name="sifatUbahKomunitas" id="sifatUbahKomunitas" class="select form-control validate[required]">
                                         <option value="Publik">Publik </option>
@@ -201,7 +201,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-2 control-label">Jenis Komunitas</label>
+                                <label class="col-md-3 control-label">Jenis Komunitas</label>
                                 <div class="col-md-8">
                                     <select name="jenisUbahKomunitas" id="jenisUbahKomunitas" class="select form-control validate[required]">
                                         <option value="Aktif">Aktif</option>
@@ -211,12 +211,23 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-2 control-label">Jumlah Anggota</label>
+                                <label class="col-md-3 control-label">Jumlah Anggota</label>
                                 <div class="col-md-8">
                                     <input type="number" class="form-control" name="anggotaUbahKomunitas" id="anggotaUbahKomunitas" placeholder="+-" required clear />
                                 </div>
                             </div>
                         </div>
+
+                        <hr>
+                        <div class="form-group">
+                                <label class="col-md-3 control-label">Nonaktifkan Komunitas</label>
+                                <div class="col-md-8">
+                                    <select name="statUbahKomunitasss" id="statUbahKomunitasss" class="select form-control">
+                                        <option value="1">Tidak</option>
+                                        <option value="0">Ya </option>
+                                    </select>
+                                </div>
+                            </div>
 
                         <div class="modal-footer">
                             <div class="col-md-12" style="text-align: left;">

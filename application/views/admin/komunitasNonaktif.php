@@ -1,12 +1,12 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
     <li>Komunitas</li>
-    <li class="active"><a href="<?= base_url('admin/Komunitas/kelolaStatusKomunitas'); ?>">Kelola Status Komunitas</a></li>
+    <li class="active"><a href="<?= base_url('admin/Komunitas/komunitasNonaktif'); ?>">Komunitas Nonaktif</a></li>
 </ul>
 <!-- END BREADCRUMB -->
 
 <div class="page-title">
-    <h2> Kelola Status Komunitas</h2>
+    <h2>Komunitas Nonaktif</h2>
 </div>
 
 <?= showFlashMessage(); ?>
@@ -41,11 +41,12 @@
     <!-- SEARCH -->
 
 
+    <div class="row">
         <!-- KOMUNITAS CONTENT -->
         <div class="row">
             <?php if ($komunitas) : ?>
                 <?php foreach ($komunitas as $A) { ?>
-                    <?php if ($A->stat_komunitas == 1) : ?>
+                    <?php if ($A->stat_komunitas == 0) : ?>
                         <div class="col-md-4">
                             <div class="panel panel-default">
                                 <div class="panel-body profile">
@@ -124,15 +125,17 @@
                                 <!-- BUTTON UBAH -->
                             </div>
                         </div>
-                    <?php endif ?>
+
+            <?php endif; ?>
                 <?php } ?>
-            <?php else : ?>
-                <div class="row">
-                    <div class="col-md-6">
+                    <?php else : ?>
+                    <div class="row">
+                        <div class="col-md-6">
                         <h2 class="text-center" style="margin-top: 10px;">Komunitas tidak ditemukan</h2>
                     </div>
                 </div>
             <?php endif; ?>
+            
         </div>
         <!-- KOMUNITAS CONTENT -->
     </div>
@@ -163,21 +166,21 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label">Nama Komunitas</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" name="namaUbahKomunitas" id="namaUbahKomunitas" placeholder="" required clear />
+                                <input type="text" class="form-control" name="namaUbahKomunitas" id="namaUbahKomunitas" placeholder="" required clear/>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-3 control-label">Lokasi Komunitas</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" name="lokasiUbahKomunitas" id="lokasiUbahKomunitas" placeholder="" required clear />
+                                <input type="text" class="form-control" name="lokasiUbahKomunitas" id="lokasiUbahKomunitas" placeholder="" required clear/>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-3 control-label">Tautat Komunitas</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" name="tautatUbahKomunitas" id="tautatUbahKomunitas" placeholder="" required clear />
+                                <input type="text" class="form-control" name="tautatUbahKomunitas" id="tautatUbahKomunitas" placeholder="" required clear/>
                             </div>
                         </div>
 
@@ -200,7 +203,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-3 control-label">Jenis Komunitas</label>
+                            <label class="col-md-3 control-label">Aktifkan kembali Komunitas</label>
                             <div class="col-md-8">
                                 <select name="jenisUbahKomunitas" id="jenisUbahKomunitas" class="select form-control validate[required]">
                                     <option value="Aktif">Aktif</option>
@@ -219,11 +222,11 @@
 
                     <hr>
                     <div class="form-group">
-                            <label class="col-md-3 control-label">Nonaktifkan Komunitas</label>
+                            <label class="col-md-3 control-label">Aktifkan kembali Komunitas</label>
                             <div class="col-md-8">
                                 <select name="statUbahKomunitasss" id="statUbahKomunitasss" class="select form-control">
-                                    <option value="1">Tidak</option>
-                                    <option value="0">Ya </option>
+                                    <option value="1">Ya</option>
+                                    <option value="0">Tidak </option>
                                 </select>
                             </div>
                         </div>
