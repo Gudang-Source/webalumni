@@ -153,7 +153,7 @@ a {
                             <?php } ?>
                             <hr>
                             <div>
-                                <a href="<?=  base_url('Komunitas/detailKomunitas/') .  $A->id_komunitas; ?>  " class="btn btn-primary btn-block" title="Detail komunitas" id="<?= $A->id_komunitas; ?>"><i class="fa fa-eye"></i>Selengkapnya >></a>
+                                <a href="<?=  base_url('Komunitas/detailKomunitas/') .  $A->id_komunitas; ?>  " class="btn btn-primary btn-block" title="Detail komunitas" id="<?= $A->id_komunitas; ?>">Lihat semua</a>
                             </div>
                             <p class="social-icon m-t-5 m-b-0">
                                 <!-- <a title="Twitter" href="javascript:void(0);"><i class="fa fa-twitter"></i></a>

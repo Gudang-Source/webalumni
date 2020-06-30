@@ -92,7 +92,7 @@
                                             </p>
                                         <?php } else { ?>
                                             <p><i class="fa fa-eye" aria-hidden="true"></i> <strong>Private </strong><br>
-                                                <h5>Tidak semua orang bisa menemukan komunitas ini.</h5>
+                                                <h5>Tidak semua orang bisa join ke komunitas ini.</h5>
                                             </p>
                                            
                                         <?php } ?>
@@ -103,7 +103,7 @@
                                                     </p>
                                                 <?php } else { ?>
                                                     <p><i class="fa fa-globe" aria-hidden="true"></i> <strong>Pasif</strong><br>
-                                                        <h5>Hanya sebagian anggota menggunakan komunitas ini dan sedikit hal yang diposting</h5>
+                                                        <h5>Ssebagian orang menggunakan komunitas ini</h5>
                                                     </p>
                                                 <?php } ?>
 
