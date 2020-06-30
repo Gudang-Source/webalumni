@@ -45,6 +45,10 @@ class Komunitas extends MY_Controller
         $data['komunitas'] = $this->M_komunitas->findKomunitasLikeNama($where, $nama);
 
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+        
+        if ($nama == "") {
+            redirect('komunitas');
+        }
 
         $this->frontend_render('frontend/komunitas/index', $data);
     }

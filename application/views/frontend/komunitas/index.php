@@ -10,29 +10,6 @@
             <link rel="stylesheet" type="text/css" id="theme" href="<?php echo base_url('assets/html/css/theme-default.css') ?>"/>
 
 <style>
-a {
-    color: #f96332;
-}
-.m-t-5{
-    margin-top: 5px;   
-}
-.card {
-    background: #fff;
-    margin-bottom: 30px;
-    transition: .5s;
-    border: 0;
-    border-radius: .1875rem;
-    display: inline-block;
-    position: relative;
-    width: 100%;
-    box-shadow: none;
-}
-.card .body {
-    font-size: 14px;
-    color: #424242;
-    padding: 20px;
-    font-weight: 400;
-}
 .profile-page .profile-header {
     position: relative
 }
@@ -131,8 +108,8 @@ a {
     <?php if ($A->stat_komunitas == 1) : ?>
 
         <div class="col-md-6 col-md-12">
-            <div class="card profile-header">
-                <div class="body">
+            <div class="panel default profile-header">
+                <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-12">
                             <div class="profile-image float-md-right">
