@@ -35,4 +35,17 @@ class Komunitas extends MY_Controller
         $this->frontend_render('frontend/komunitas/detailKomunitas', $data);
     }
     
+    function cariKomunitas()
+    {
+        $data['title'] = 'Kelola Status Komunitas';
+
+        $nama = $this->input->post('namaKomunitas');
+
+        $where = "tb_komunitas.stat_komunitas != 0";
+        $data['komunitas'] = $this->M_komunitas->findKomunitasLikeNama($where, $nama);
+
+        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+        $this->frontend_render('frontend/komunitas/index', $data);
+    }
 }

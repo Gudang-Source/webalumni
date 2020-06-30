@@ -10,10 +10,6 @@
             <link rel="stylesheet" type="text/css" id="theme" href="<?php echo base_url('assets/html/css/theme-default.css') ?>"/>
 
 <style>
-body{
-    margin-top:20px;
-    background:#eee;    
-}
 a {
     color: #f96332;
 }
@@ -108,8 +104,8 @@ a {
                 <div class="panel-body">
                     <div class="row">
                         <p>Cari Komunitas</p>
-                        <form action="<?= base_url('anggota/Komunitas/cariStatusKomunitas'); ?>" method="post">
-                            <div class="col-md-10">
+                        <form action="<?= base_url('komunitas/cariKomunitas'); ?>" method="post">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <div class="input-group">
                                         <input type="text" class="form-control" name="namaKomunitas" placeholder="Komunitas mana yang akan anda cari ?">
@@ -120,12 +116,6 @@ a {
                                 </div>
                             </div>
                         </form>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <a href="<?= base_url('anggota/Komunitas'); ?>" class="btn btn-primary">Reset
-                                    Pencarian</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -159,7 +149,7 @@ a {
                             <?php if ($A->sifat_komunitas == 'Publik') { ?> 
                                 <p><h5>Semua orang bisa join ke komunitas ini.</h5></p>
                             <?php } else { ?>
-                                <p><h5>Sebagian orang bisa join ke komunitas ini.</h5></p>
+                                <p><i><h5>Sebagian orang bisa join ke komunitas ini!</h5></i></p>
                             <?php } ?>
                             <hr>
                             <div>
