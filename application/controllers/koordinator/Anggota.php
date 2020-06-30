@@ -75,7 +75,7 @@ class Anggota extends MY_Controller
         $where = array(
             'tb_anggota.status_anggota !=' => '0',
             'tb_anggota.user_id != ' => $this->session->userdata('uid'),
-            'tb_anggota.user_id != ' => 1,
+            'tb_user.role != ' => 1
         );
         $data['anggota'] = $this->M_anggota->findAnggota('*', $where);
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id' => $this->session->userdata('uid')));
@@ -473,7 +473,11 @@ class Anggota extends MY_Controller
 
         $nama = $this->input->post('namaAnggota');
 
-        $where = "tb_anggota.status_anggota != 0";
+        $where = array(
+            'tb_anggota.status_anggota !=' => '0',
+            'tb_anggota.user_id != ' => $this->session->userdata('uid'),
+            'tb_user.role != ' => '1'
+        );
         $data['anggota'] = $this->M_anggota->findAnggotaLikeNama($where, $nama);
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
