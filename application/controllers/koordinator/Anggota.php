@@ -185,25 +185,31 @@ class Anggota extends MY_Controller
         $user['status_akun'] = '1';
         $user['role'] = $this->input->post('role');
 
-        $sukses = $this->M_user->insertUser($user);
+        if ($user['role'] != "") {
 
-        if ($sukses != 0) {
+            $sukses = $this->M_user->insertUser($user);
 
-            $anggota['user_id'] = $sukses;
-            $anggota['status_anggota'] = '1';
-            $updateAnggota = $this->M_anggota->updateAnggota($anggota, $idAnggota);
+            if ($sukses != 0) {
 
-            $this->sendEmailKeanggotaan();
+                $anggota['user_id'] = $sukses;
+                $anggota['status_anggota'] = '1';
+                $updateAnggota = $this->M_anggota->updateAnggota($anggota, $idAnggota);
 
-            if (!$updateAnggota) {
-                flashMessage('success', 'Calon Anggota berhasil di aktifkan dan dapat masuk menggunakan Username & Password sesuai yang tertera pada saat Aktivasi');
-                redirect('koordinator/Anggota');
+                $this->sendEmailKeanggotaan();
+
+                if (!$updateAnggota) {
+                    flashMessage('success', 'Calon Anggota berhasil di aktifkan dan dapat masuk menggunakan Username & Password sesuai yang tertera pada saat Aktivasi');
+                    redirect('koordinator/Anggota');
+                } else {
+                    flashMessage('error', 'Aktivasi Calon Anggota gagal! Silahkan coba lagi...');
+                    redirect('koordinator/Anggota');
+                }
             } else {
-                flashMessage('error', 'Aktivasi Calon Anggota gagal! Silahkan coba lagi...');
+                flashMessage('error', 'Maaf, Terjadi kesalahan pada saat proses pembuatan akun anggota baru');
                 redirect('koordinator/Anggota');
             }
         } else {
-            flashMessage('error', 'Maaf, Terjadi kesalahan pada saat proses pembuatan akun anggota baru');
+            flashMessage('error', 'Mohon pilih kolom keanggotaan !');
             redirect('koordinator/Anggota');
         }
     }
@@ -576,12 +582,7 @@ class Anggota extends MY_Controller
             $namaRole = "Anggota";
         } else if ($role == '4') {
             $namaRole = "Alumni";
-        } else {
-            flashMessage('error', 'Mohon pilih kolom kenanggotaan !');
-            redirect('koordinator/Anggota');
         }
-
-
 
         $config['mailtype'] = 'html';
         $config['protocol'] = 'smtp';
