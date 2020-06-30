@@ -8,7 +8,77 @@
             
             <link rel="icon" href="<?= base_url('assets/html/favicon.ico'); ?>" type="image/x-icon" />
             <link rel="stylesheet" type="text/css" id="theme" href="<?php echo base_url('assets/html/css/theme-default.css') ?>"/>
-    
+
+<style>
+body{
+    margin-top:20px;
+    background:#eee;    
+}
+a {
+    color: #f96332;
+}
+.m-t-5{
+    margin-top: 5px;   
+}
+.card {
+    background: #fff;
+    margin-bottom: 30px;
+    transition: .5s;
+    border: 0;
+    border-radius: .1875rem;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    box-shadow: none;
+}
+.card .body {
+    font-size: 14px;
+    color: #424242;
+    padding: 20px;
+    font-weight: 400;
+}
+.profile-page .profile-header {
+    position: relative
+}
+
+.profile-page .profile-header .profile-image img {
+    border-radius: 50%;
+    width: 140px;
+    border: 3px solid #fff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+}
+
+.profile-page .profile-header .social-icon a {
+    margin: 0 5px
+}
+
+.profile-page .profile-sub-header {
+    min-height: 60px;
+    width: 100%
+}
+
+.profile-page .profile-sub-header ul.box-list {
+    display: inline-table;
+    table-layout: fixed;
+    width: 100%;
+    background: #eee
+}
+
+.profile-page .profile-sub-header ul.box-list li {
+    border-right: 1px solid #e0e0e0;
+    display: table-cell;
+    list-style: none
+}
+
+.profile-page .profile-sub-header ul.box-list li:last-child {
+    border-right: none
+}
+
+.profile-page .profile-sub-header ul.box-list li a {
+    display: block;
+    color: #424242
+}
+</style>
 
     </head>
     <body>
@@ -63,56 +133,55 @@
     </div>
     <!-- SEARCH -->
 
-    <!-- KOMUNITAS CONTENT -->
+<div class="profile-page">
     <div class="row">
-        <?php foreach ($komunitas as $A) { ?>
-            <?php if ($A->stat_komunitas == 1) : ?>
-                <div class="col-md-6">
-                    <div class="panel panel-default">
-                        <div class="panel-body profile">
-                            <div class="profile-image">
-                                <?php if ($A->logo_komunitas == NULL) { ?>
-                                    <img src="<?php echo base_url('uploads/content/komunitas/no-image.jpg'); ?> " alt="No Image" title="Default Image">
-                                <?php } else { ?>
-                                    <img src="<?php echo base_url('uploads/content/komunitas/' . $A->logo_komunitas); ?> " alt="<?= $A->nama_komunitas; ?>" title="<?= $A->nama_komunitas; ?>">
+    <?php foreach ($komunitas as $A) { ?>
+    <?php if ($A->stat_komunitas == 1) : ?>
+
+        <div class="col-md-6 col-md-12">
+            <div class="card profile-header">
+                <div class="body">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-12">
+                            <div class="profile-image float-md-right">
+                            <?php if ($A->logo_komunitas == NULL) { ?>
+                                        <img src="<?php echo base_url('uploads/content/komunitas/no-image.jpg'); ?> " alt="No Image" title="Default Image">
+                                    <?php } else { ?>
+                                        <img width="150" height="150" src="<?php echo base_url('uploads/content/komunitas/' . $A->logo_komunitas); ?> " alt="<?= $A->nama_komunitas; ?>" title="<?= $A->nama_komunitas; ?>">
                                 <?php } ?>
-                            </div>
-                            <div class="profile-data">
-                                <div class="profile-data-name">
-                                    <h3 style="color:white;"><?= $A->nama_komunitas; ?><h3>
-                                </div>
-                            </div>
+                             </div>
                         </div>
-
-                        <div class="panel-body">
-                            <div class="contact-info">
-                                <h3>Info Singkat :</h3>
-                                <div class="panel-body">
-                                    <div class="contact-info">
-                                        <p><i class="fa fa-eye" aria-hidden="true"></i> <strong> <?= $komunitas[0]->sifat_komunitas ?> </strong><br>
-                                                <h5>Semua orang bisa join ke komunitas ini.</h5>
-                                            </p>
-
-                                        <p><i class="fa fa-users" aria-hidden="true"></i> <strong>Anggota</strong><br>
-                                            <h5>+- <?= $A->anggota_komunitas ?></h5>
-                                        </p>
-                                    </div>
-                                </div>
+                        <div class="col-lg-6 col-md-6 col-12">
+                                <h4 class="m-t-0 m-b-0"><strong><?= $A->nama_komunitas; ?></strong></h4>
+                                <span class="job_post"><i class="fa fa-eye" aria-hidden="true"></i> <strong> <?= $A->sifat_komunitas ?> |</strong></span>
+                                <span class="job_post"><i class="fa fa-user" aria-hidden="true"></i><strong> Anggota : +- <?= $A->anggota_komunitas ?></strong></span>
+                            
+                            <?php if ($A->sifat_komunitas == 'Publik') { ?> 
+                                <p><h5>Semua orang bisa join ke komunitas ini.</h5></p>
+                            <?php } else { ?>
+                                <p><h5>Sebagian orang bisa join ke komunitas ini.</h5></p>
+                            <?php } ?>
+                            <hr>
+                            <div>
+                                <a href="<?=  base_url('Komunitas/detailKomunitas/') .  $A->id_komunitas; ?>  " class="btn btn-primary btn-block" title="Detail komunitas" id="<?= $A->id_komunitas; ?>"><i class="fa fa-eye"></i>Selengkapnya >></a>
                             </div>
-                        </div>
-
-                        <div class="panel-body text-center">
-                            <a href="<?=  base_url('Komunitas/detailKomunitas/') .  $A->id_komunitas; ?>  " class="btn btn-primary btn-block" title="Detail komunitas" id="<?= $A->id_komunitas; ?>"><i class="fa fa-eye"></i>Selengkapnya >></a>
-                        </div>
-                        <!-- END CONTACT ITEM -->
+                            <p class="social-icon m-t-5 m-b-0">
+                                <!-- <a title="Twitter" href="javascript:void(0);"><i class="fa fa-twitter"></i></a>
+                                <a title="Facebook" href="javascript:void(0);"><i class="fa fa-facebook"></i></a>
+                                <a title="Google-plus" href="javascript:void(0);"><i class="fa fa-twitter"></i></a>
+                                <a title="Behance" href="javascript:void(0);"><i class="fa fa-behance"></i></a>
+                                <a title="Instagram" href="javascript:void(0);"><i class="fa fa-instagram "></i></a> -->
+                            </p>
+                        </div>                
                     </div>
-                </div>
-            <?php endif ?>
+                </div>                    
+            </div>
+        </div>
+        <?php endif ?>
         <?php } ?>
-        <!-- KOMUNITAS CONTENT -->
-    </div>
+        
+	</div>
 </div>
-<!-- PAGE CONTENT WRAP -->
 
 
 
