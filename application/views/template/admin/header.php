@@ -64,7 +64,7 @@
                             <?php if (empty($info[0]->nama_foto)) { ?>
                                 <img src="<?php echo base_url('uploads/no-image.jpg'); ?>" alt="Belum ada foto" />
                             <?php } else { ?>
-                                <img src="<?php echo base_url('uploads/avatars/gambar-admin/' . $info[0]->nama_foto); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" />
+                                <img src="<?php echo base_url('uploads/avatars/' . $info[0]->nama_foto); ?>" alt="<?= $info[0]->nama_lengkap; ?>" title="<?= $info[0]->nama_lengkap; ?>" />
                             <?php } ?>
                         </div>
                         <div class="profile-data">
