@@ -148,7 +148,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<a href="" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></a>
 				<h4 class="modal-title" id="defModalHead">Password Baru</h4>
 			</div>
 			<form action="<?= base_url('koordinator/Pengaturan/setUpdatePassword') ?>" class="form-horizontal" id="password-validate" method="post">
@@ -158,16 +158,21 @@
 							<input type="text" name="idUserPassword" value="<?= $info[0]->id_user; ?>">
 						</div>
 					</div>
-
 					<div class="form-group">
-						<label class="col-md-3 control-label">* Password :</label>
+						<label class="col-md-3 control-label">* Password Lama :</label>
+						<div class="col-md-9">
+							<input type="password" class="form-control" name="passwordLama" placeholder="Password Lama" required />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-3 control-label">* Password Baru :</label>
 						<div class="col-md-9">
 							<input type="password" class="form-control" name="passwordBaru" placeholder="Password Baru" required />
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="col-md-3 control-label">* Ulangi Password :</label>
+						<label class="col-md-3 control-label">* Ulangi Password Baru :</label>
 						<div class="col-md-9">
 							<input type="password" class="form-control" name="ulangiPasswordBaru" placeholder="Ulangi Password Baru" required />
 						</div>
@@ -179,7 +184,7 @@
 						<label class="control-label">* harus diisi</label>
 					</div>
 
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+					<a href="" class="btn btn-danger">Tutup</a>
 					<button type="submit" class="btn btn-success">Simpan</button>
 				</div>
 			</form>
