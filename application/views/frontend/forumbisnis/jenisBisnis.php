@@ -70,9 +70,13 @@
         </div>
 
         <div class="row">
-            <h2 class="text-info"><b>#<?= $findJenisBisnis[0]->nama_jenis_bisnis ?></b></h2>
+            <div class="col-md-12">
+                <h2 class="text-info"><b>#<?= $findJenisBisnis[0]->nama_jenis_bisnis ?></b></h2>
+            </div>
             <?php if (empty($forumBisnis)) : ?>
-                <p>Data tidak ditemukan!</p>
+                <div class="col-md-12">
+                    <p>Data tidak ditemukan!</p>
+                </div>
             <?php else : ?>
                 <div class="col-md-8">
                     <div class="row">

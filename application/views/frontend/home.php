@@ -77,15 +77,15 @@
         <div class="container-fluid">
             <div class="row no-gutter popup-gallery">
                 <div class="col-lg-4 col-md-6 col-sm-6">
-                    <a href="<?= base_url('assets/back-end/img/1.jpeg') ?>" class="portfolio-box">
-                        <img src="<?= base_url('assets/back-end/img/1.jpeg') ?>" class="img-responsive" alt="">
+                    <a href="<?= base_url('assets/back-end/img/17.jpg') ?>" class="portfolio-box">
+                        <img src="<?= base_url('assets/back-end/img/17.jpg') ?>" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Category
+                                    <!-- Category -->
                                 </div>
                                 <div class="project-name">
-                                    Project Name
+                                    <!-- Project Name -->
                                 </div>
                             </div>
                         </div>
@@ -97,25 +97,25 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Category
+                                    <!-- Category -->
                                 </div>
                                 <div class="project-name">
-                                    Project Name
+                                    <!-- Project Name -->
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
-                    <a href="<?= base_url('assets/back-end/img/12.jpeg') ?>" class="portfolio-box">
-                        <img src="<?= base_url('assets/back-end/img/12.jpeg') ?>" class="img-responsive" alt="">
+                    <a href="<?= base_url('assets/back-end/img/19.jpg') ?>" class="portfolio-box">
+                        <img src="<?= base_url('assets/back-end/img/19.jpg') ?>" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Category
+                                    <!-- Category -->
                                 </div>
                                 <div class="project-name">
-                                    Project Name
+                                    <!-- Project Name -->
                                 </div>
                             </div>
                         </div>
@@ -128,10 +128,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Category
+                                    <!-- Category -->
                                 </div>
                                 <div class="project-name">
-                                    Project Name
+                                    <!-- Project Name -->
                                 </div>
                             </div>
                         </div>
@@ -143,25 +143,25 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Category
+                                    <!-- Category -->
                                 </div>
                                 <div class="project-name">
-                                    Project Name
+                                    <!-- Project Name -->
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
-                    <a href="<?= base_url('assets/back-end/img/15.jpeg'); ?>" class="portfolio-box">
-                        <img src="<?= base_url('assets/back-end/img/15.jpeg'); ?>" class="img-responsive" alt="">
+                    <a href="<?= base_url('assets/back-end/img/12.jpeg'); ?>" class="portfolio-box">
+                        <img src="<?= base_url('assets/back-end/img/12.jpeg'); ?>" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Category
+                                    <!-- Category -->
                                 </div>
                                 <div class="project-name">
-                                    Project Name
+                                    <!-- Project Name -->
                                 </div>
                             </div>
                         </div>

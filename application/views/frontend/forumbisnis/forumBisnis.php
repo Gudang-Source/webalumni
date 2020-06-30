@@ -77,7 +77,7 @@
                     <div class="row">
                         <?php foreach ($forumBisnis as $B) : ?>
                             <?php if ($B->stat_forbis == 1) : ?>
-                                <a href="<?= base_url('forumBisnis/lihatForbis/') . $B->id_forbis; ?>">
+                                <a style="color: black;" href="<?= base_url('forumBisnis/lihatForbis/') . $B->id_forbis; ?>">
                                     <div class="panel panel-default">
                                         <!--  -->
                                         <div class="col-sm-4">
@@ -103,9 +103,9 @@
                                                 <?php } ?>
 
                                                 <?php if ($B->pemilik_id == "") { ?>
-                                                    <p style="font-size: 12px;"><small>Pemilik Bisnis</small><br>Belum di isi</p>
+                                                    <p style="font-size: 13.6px;">Pemilik Bisnis<br>Belum di isi</p>
                                                 <?php } else { ?>
-                                                    <p style="font-size: 12px;"><small>Pemilik Bisnis</small><br><?= $B->nama_lengkap; ?></p>
+                                                    <p style="font-size: 13.6px;">Pemilik Bisnis : <?= $B->nama_lengkap; ?></p>
                                                 <?php } ?>
 
                                             </div>
