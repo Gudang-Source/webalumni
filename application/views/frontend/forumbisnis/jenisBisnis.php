@@ -83,8 +83,8 @@
                                     <a href="<?= base_url('forumBisnis/lihatForbis/') . $B->id_forbis; ?>">
                                         <div class="panel panel-default" style="padding: 15px;">
                                             <div class="col-md-4">
-                                                <div class="panel-body">
-                                                    <div class="profile-image" style="width: 200px; height: 150px; overflow: hidden;">
+                                                <div class="panel-body" style="width: 200px; height: 150px; overflow: hidden;">
+                                                    <div class="profile-image">
                                                         <?php if ($B->nama_foto_bisnis == NULL) { ?>
                                                             <img src="<?php echo base_url('uploads/no-image.jpg'); ?> " alt="No Image" title="Default Image" style="width: 100%;">
                                                         <?php } else { ?>
@@ -94,8 +94,8 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-8">
-                                                <div class="panel-body" style="transform: translate(0, 50%);">
+                                            <div class="col-md-8" style="transform: translate(0, 50%);">
+                                                <div class="panel-body">
                                                     <?php if ($B->nama_bisnis_usaha == "") { ?>
                                                         <h2><b>Belum di isi</b></h2>
                                                     <?php } else { ?>
@@ -124,13 +124,7 @@
                     </div>
                 </div>
             <?php endif; ?>
-            <!-- <div class="col-md-4">
-                <div class="row">
-                    <div class="panel panel-default" style="padding: 15px;">
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae dolor ducimus eos officiis dicta excepturi saepe voluptatem minima nam! Non rerum totam, pariatur perspiciatis ex quos veniam cupiditate tempora odit quidem blanditiis nam dolores mollitia fugit aut consequuntur similique incidunt maxime? Perspiciatis vitae veniam corporis consectetur hic fugit voluptatem vel minima vero esse facere soluta temporibus animi, rerum tempora rem ratione distinctio? Beatae neque enim est totam voluptatem voluptatibus ipsam vero amet iusto ut veritatis quia quaerat natus, ipsa quibusdam, doloremque blanditiis nam saepe et possimus. Velit porro repellendus aspernatur nulla accusamus. Optio, quibusdam temporibus quis architecto inventore quisquam voluptatem corrupti iste ea natus nulla dicta officiis rerum expedita reprehenderit facere quo hic ratione, enim sit repudiandae dolor, amet harum. </p>
-                    </div>
-                </div>
-            </div> -->
+
         </div>
 
     </div>
@@ -138,95 +132,7 @@
 
 </body>
 
-<!-- START PRELOADS -->
-<audio id="audio-alert" src="<?= base_url('assets/html/audio/alert.mp3') ?>" preload="auto"></audio>
-<audio id="audio-fail" src="<?= base_url('assets/html/audio/fail.mp3') ?>" preload="auto"></audio>
-<!-- END PRELOADS -->
 
-<!-- START SCRIPTS -->
-<script type="text/javascript" src="<?= base_url('assets/html/js/plugins/bootstrap/bootstrap.min.js') ?>">
-</script>
-
-<!-- START THIS PAGE PLUGINS-->
-<!-- <script type='text/javascript' src="<?= base_url('assets/html/js/plugins/icheck/icheck.min.js') ?>"></script>         -->
-<script type="text/javascript" src="<?= base_url('assets/html/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js') ?>"></script>
-<script type="text/javascript" src="<?= base_url('assets/html/js/plugins/scrolltotop/scrolltopcontrol.js') ?>">
-</script>
-
-<!-- <script type="text/javascript" src="<?= base_url('assets/html/js/plugins/morris/raphael-min.js') ?>"></script>
-        <script type="text/javascript" src="<?= base_url('assets/html/js/plugins/morris/morris.min.js') ?>"></script>        -->
-<!-- <script type="text/javascript" src="<?= base_url('assets/html/js/plugins/rickshaw/d3.v3.js') ?>"></script> -->
-<!-- <script type="text/javascript" src="<?= base_url('assets/html/js/plugins/rickshaw/rickshaw.min.js') ?>"></script> -->
-<!-- <script type='text/javascript' src='<?= base_url('assets/html/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') ?>'></script> -->
-<!-- <script type='text/javascript' src='<?= base_url('assets/html/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') ?>'></script>                 -->
-<!-- <script type='text/javascript' src='<?= base_url('assets/html/js/plugins/bootstrap/bootstrap-datepicker.js') ?>'></script>                 -->
-<script type="text/javascript" src="<?= base_url('assets/html/js/plugins/owl/owl.carousel.min.js') ?>"></script>
-
-<!-- <script type="text/javascript" src="<?= base_url('assets/html/js/plugins/moment.min.js') ?>"></script> -->
-<!-- <script type="text/javascript" src="<?= base_url('assets/html/js/plugins/daterangepicker/daterangepicker.js') ?>"></script> -->
-<!-- END THIS PAGE PLUGINS-->
-
-<!-- TAB  PLUGINS -->
-<!-- <script type='text/javascript' src='<?= base_url('assets/html/js/plugins/icheck/icheck.min.js') ?>'></script> -->
-<script type="text/javascript" src="<?= base_url('assets/html/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js') ?>"></script>
-
-<!-- <script type="text/javascript" src="<?= base_url('assets/html/js/plugins/bootstrap/bootstrap-file-input.js') ?>"></script> -->
-<!-- <script type="text/javascript" src="<?= base_url('assets/html/js/plugins/bootstrap/bootstrap-select.js') ?>"></script> -->
-<!-- <script type="text/javascript" src="<?= base_url('assets/html/js/plugins/tagsinput/jquery.tagsinput.min.js') ?>"></script> -->
-<!-- TAB PLUGINS -->
-
-<!--TABLE PLUGINS -->
-<!-- <script type='text/javascript' src='<?= base_url('assets/html/js/plugins/icheck/icheck.min.js') ?>'></script> -->
-<script type="text/javascript" src="<?= base_url('assets/html/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js') ?>"></script>
-
-<script type="text/javascript" src="<?= base_url('assets/html/js/plugins/datatables/jquery.dataTables.min.js') ?>">
-</script>
-<!--TABLE PLUGINS -->
-
-<!-- <script type="text/javascript" src="<?= base_url('assets/html/js/plugins/dropzone/dropzone.min.js') ?>"></script> -->
-<!-- <script type="text/javascript" src="<?= base_url('assets/html/js/plugins/fileinput/fileinput.min.js') ?>"></script>  -->
-<!-- <script type="text/javascript" src="<?= base_url('assets/html/js/plugins/filetree/jqueryFileTree.js'); ?>"></script>     -->
-
-<!-- START TEMPLATE -->
-<!-- <script type="text/javascript" src="<?= base_url('assets/html/js/settings.js') ?>"></script> -->
-
-<script type="text/javascript" src="<?= base_url('assets/html/js/plugins.js') ?>"></script>
-<script type="text/javascript" src="<?= base_url('assets/html/js/actions.js') ?>"></script>
-
-<script type="text/javascript" src="<?= base_url('assets/html/js/demo_dashboard.js') ?>"></script>
-<!-- END TEMPLATE -->
-
-<script type="text/javascript" src="<?= base_url('assets/html/js/custom-javascript.js'); ?>"></script>
-
-<!-- END SCRIPTS -->
-
-
-<script type='text/javascript'>
-    $(".btn-detail-forbis").click(function() {
-        // console.log(this.id);
-        var idForbis = this.id;
-
-        $.post("<?= base_url('Home/getForbisById/') ?>", {
-                id: idForbis
-            },
-            function(data, success) {
-                console.log(data);
-                var data_obj = JSON.parse(data);
-
-                var fotoBisnis = data_obj.forbis[0].nama_foto_bisnis;
-                var deskripsiBisnis = data_obj.forbis[0].deskripsi_bisnis;
-                var alamatBisnis = data_obj.forbis[0].alamat_bisnis;
-                var noTelpBisnis = data_obj.forbis[0].no_telp_bisnis;
-
-                document.getElementById('namaBisnisUsaha').innerHTML = data_obj.forbis[0].nama_bisnis_usaha;
-                document.getElementById('namaFotoBisnis').src = '<?= base_url('uploads/logo-bisnis/') ?>' + fotoBisnis;
-                document.getElementById('deskripsiBisnis').innerHTML = deskripsiBisnis;
-                document.getElementById('alamatBisnis').innerHTML = alamatBisnis;
-                document.getElementById('noTelpBisnis').innerHTML = noTelpBisnis;
-
-            });
-    });
-</script>
 
 
 </html>
