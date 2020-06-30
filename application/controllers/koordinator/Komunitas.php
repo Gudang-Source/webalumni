@@ -68,6 +68,19 @@ class Komunitas extends MY_Controller
             $this->koordinator_render('koordinator/KelolaStatusKomunitas', $data);
         }
     }
+
+    function komunitasNonaktif()
+    {
+        $data['title'] = 'Komunitas Nonaktif';
+        $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+        $data['komunitas'] = $this->M_komunitas->getAllKomunitas();
+
+        if ($this->session->userdata('role') == 2) {
+            $this->koordinator_render('koordinator/komunitasNonaktif', $data);
+        }
+    }
+
     // ==================================================
     // ---------------------- READ ----------------------
     // ==================================================
@@ -172,53 +185,42 @@ class Komunitas extends MY_Controller
 
     public function setUpdateKomunitas()
     {
-        $sifatKomunitas = $this->input->post('sifatKomunitas');
-        $jenisKomunitas = $this->input->post('jenisKomunitas');
-        $lokasiKomunitas = $this->input->post('lokasiKomunitas');
-        $anggotaKomunitas = $this->input->post('anggotaKomunitas');
-        $deskKomunitas = $this->input->post('deskKomunitas');
+        $sifatUbahKomunitas = $this->input->post('sifatUbahKomunitas');
+        $jenisUbahKomunitas = $this->input->post('jenisUbahKomunitas');
+        $lokasiUbahKomunitas = $this->input->post('lokasiUbahKomunitas');
+        $anggotaUbahKomunitas = $this->input->post('anggotaUbahKomunitas');
+        $deskripsiUbahKomunitas = $this->input->post('deskripsiUbahKomunitas');
 
-        $idKomunitas = $this->input->post('idKomunitas');
-        $namaKomunitas = $this->input->post('namaKomunitas');
-        $tautatKomunitas = $this->input->post('tautatKomunitas');
+        $idUbahKomunitas = $this->input->post('idUbahKomunitas');
+        $namaUbahKomunitas = $this->input->post('namaUbahKomunitas');
+        $tautatUbahKomunitas = $this->input->post('tautatUbahKomunitas');
+        
+        $statUbahKomunitasss = $this->input->post('statUbahKomunitasss');
 
-        $filename = "komunitas-" . $namaKomunitas . "-" . time();
+        $komunitas['sifat_komunitas'] = $sifatUbahKomunitas;
+        $komunitas['jenis_komunitas'] = $jenisUbahKomunitas;
+        $komunitas['lokasi_komunitas'] = $lokasiUbahKomunitas;
+        $komunitas['anggota_komunitas'] = $anggotaUbahKomunitas;
+        $komunitas['deskripsi_komunitas'] = $deskripsiUbahKomunitas;
+        $komunitas['nama_komunitas'] = $namaUbahKomunitas;
+        $komunitas['tautat_komunitas'] = $tautatUbahKomunitas;
 
-        // Set preferences
-        $config['upload_path'] = './uploads/avatars';
-        $config['allowed_types'] = 'png|jpg|jpeg';
-        $config['file_name'] = $filename;
+        if($statUbahKomunitasss == '1') {
+            $komunitas['stat_komunitas'] = 1;
+        } 
+        if ($statUbahKomunitasss == '0') {
+            $komunitas['stat_komunitas'] = 0;
+        } 
 
-        //load upload class library
-        $this->load->library('upload', $config);
-
-        // if (!$this->upload->do_upload('fileSaya')) {
-        //     flashMessage('error', 'Maaf, Upload gambar calon anggota gagal! Silahkan coba lagi');
-        //     redirect('admin/komunitas/kelolaStatusKomunitas');
-        // } else {
-        $upload_data = $this->upload->data();
-
-        $komunitas['sifat_komunitas'] = $sifatKomunitas;
-        $komunitas['jenis_komunitas'] = $jenisKomunitas;
-        $komunitas['lokasi_komunitas'] = $lokasiKomunitas;
-        $komunitas['anggota_komunitas'] = $anggotaKomunitas;
-        $komunitas['deskripsi_komunitas'] = $deskKomunitas;
-
-        $komunitas['nama_komunitas'] = $namaKomunitas;
-        $komunitas['tautat_komunitas'] = $tautatKomunitas;
-        // $komunitas['logo_komunitas'] = $upload_data['file_name'];
-
-        // echo json_encode($data);
-        $sukses = $this->M_komunitas->updateKomunitas($komunitas, $idKomunitas);
+        $sukses = $this->M_komunitas->updateKomunitas($komunitas, $idUbahKomunitas);
 
         if (!$sukses) {
-            flashMessage('success', 'Calon Komunitas Baru berhasil di daftarkan. Silahkan verifikasi di Permohonan Calon Anggota');
-            redirect('admin/komunitas/kelolaStatusKomunitas');
+            flashMessage('success', 'Komunitas Baru berhasil diubah. Silahkan cek kembali');
+            redirect('koordinator/komunitas/kelolaStatusKomunitas');
         } else {
             flashMessage('error', 'Calon Komunitas Baru gagal di daftarkan! Silahkan coba lagi');
-            redirect('admin/komunitas/kelolaStatusKomunitas');
+            redirect('koordinator/komunitas/kelolaStatusKomunitas');
         }
-        // }
     }
 
     public function setUpdateFotoKomunitas()

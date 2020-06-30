@@ -119,8 +119,8 @@
                     <a href="#"><span class="fa fa-camera-retro"></span> <span class="xn-text">Komunitas</span></a>
                     <ul>
                         <li><a href="<?= base_url('admin/Komunitas'); ?>"><span class="fa fa-cube"></span> <span class="xn-text">Kelola Calon Komunitas</span></a></li>
-                        <li><a href="<?= base_url('admin/Komunitas/kelolaStatusKomunitas'); ?>"><span class="fa fa-cubes"></span> <span class="xn-text">Kelola Status
-                                    Komunitas</span></a>
+                        <li><a href="<?= base_url('admin/Komunitas/komunitasNonaktif'); ?>"><span class="fa fa-minus"></span> <span class="xn-text">Komunitas Nonaktif</span></a></li>
+                        <li><a href="<?= base_url('admin/Komunitas/kelolaStatusKomunitas'); ?>"><span class="fa fa-cubes"></span> <span class="xn-text">Kelola Komunitas Aktif</span></a>
                         </li>
                     </ul>
                 </li>
