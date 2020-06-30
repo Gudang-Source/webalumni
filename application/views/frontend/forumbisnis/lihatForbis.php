@@ -41,15 +41,15 @@
                             <div class="panel-body" style=" padding: 25px;">
 
                                 <?php if ($forumBisnis[0]->nama_bisnis_usaha == "") { ?>
-                                    <h2><b>Belum di isi</b></h2>
+                                    <h3><b>Belum di isi</b></h3>
                                 <?php } else { ?>
-                                    <h2><b><a class="text-primary" id="bacaBerita" name="bacaBerita" href="<?= base_url('forumBisnis/lihatForbis/') . $forumBisnis[0]->id_forbis; ?>"><?= $forumBisnis[0]->nama_bisnis_usaha; ?></a></b></h2>
+                                    <h3><b><a class="text-primary" id="bacaBerita" name="bacaBerita" href="<?= base_url('forumBisnis/lihatForbis/') . $forumBisnis[0]->id_forbis; ?>"><?= $forumBisnis[0]->nama_bisnis_usaha; ?></a></b></h3>
                                 <?php } ?>
 
                                 <?php if ($forumBisnis[0]->nama_lengkap == "") { ?>
-                                    <h2><b>Belum di isi</b></h2>
+                                    <h3><b>Belum di isi</b></h3>
                                 <?php } else { ?>
-                                    <p class="text-primary" id="usernamePenulis" name="usernamePenulis"><b>Pemiliki Bisnis : </b><?= $forumBisnis[0]->nama_lengkap; ?></p>
+                                    <p style="font-size: 15px;" class="text-primary" id="usernamePenulis" name="usernamePenulis"><b>Pemilik Bisnis : </b><?= $forumBisnis[0]->nama_lengkap; ?></p>
                                 <?php } ?>
 
                             </div>
@@ -65,9 +65,9 @@
 
                             <div class="panel-body" style=" padding: 25px;">
                                 <?php if ($forumBisnis[0]->deskripsi_bisnis == "") { ?>
-                                    <h2><b>Belum di isi</b></h2>
+                                    <h3><b>Belum di isi</b></h3>
                                 <?php } else { ?>
-                                    <p class="text-primary" id="isiBerita" name="isiBerita"><?= nl2br($forumBisnis[0]->deskripsi_bisnis); ?></p>
+                                    <p style="font-size: 15px;" class="text-primary" id="isiBerita" name="isiBerita"><?= nl2br($forumBisnis[0]->deskripsi_bisnis); ?></p>
                                 <?php } ?>
                             </div>
 
