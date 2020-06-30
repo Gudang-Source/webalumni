@@ -52,6 +52,7 @@
     <div class="row">
         <?php if ($komunitas) : ?>
             <?php foreach ($komunitas as $A) { ?>
+                <?php if ($A->stat_komunitas == 0) { ?>
                 <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-body profile">
@@ -137,6 +138,7 @@
 
                     </div>
                 </div>
+                <?php } ?>
             <?php } ?>
         <?php else : ?>
             <div class="row">

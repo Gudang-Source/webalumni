@@ -324,9 +324,8 @@ class Komunitas extends MY_Controller
 
         if ($this->session->userdata('role') == 3) {
             if (!$nama) {
-                redirect('anggota/lihatKomunitas');
+                redirect('anggota/Komunitas');
             }
-
             $this->anggota_render('anggota/lihatKomunitas', $data);
         }
     }
