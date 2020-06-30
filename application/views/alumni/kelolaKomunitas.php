@@ -43,7 +43,7 @@
     <div class="row">
         <!-- KOMUNITAS CONTENT -->
         <div class="row">
-            <?php if (empty($komunitas)) : ?>
+            <?php if ($komunitas) : ?>
                 <?php foreach ($komunitas as $A) { ?>
                     <?php if ($A->stat_komunitas == 1) : ?>
                         <div class="col-md-4">

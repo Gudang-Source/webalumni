@@ -169,6 +169,103 @@ class Komunitas extends MY_Controller
     //
     //
     // ==================================================
+    // --------------------- UPDATE ---------------------
+    // ==================================================
+    public function setUpdateKomunitas()
+    {
+        $sifatKomunitas = $this->input->post('sifatKomunitas');
+        $jenisKomunitas = $this->input->post('jenisKomunitas');
+        $lokasiKomunitas = $this->input->post('lokasiKomunitas');
+        $anggotaKomunitas = $this->input->post('anggotaKomunitas');
+        $deskKomunitas = $this->input->post('deskKomunitas');
+
+        $idKomunitas = $this->input->post('idKomunitas');
+        $namaKomunitas = $this->input->post('namaKomunitas');
+        $tautatKomunitas = $this->input->post('tautatKomunitas');
+
+        $filename = "komunitas-" . $namaKomunitas . "-" . time();
+
+        // Set preferences
+        $config['upload_path'] = './uploads/avatars';
+        $config['allowed_types'] = 'png|jpg|jpeg';
+        $config['file_name'] = $filename;
+
+        //load upload class library
+        $this->load->library('upload', $config);
+
+        $upload_data = $this->upload->data();
+
+        $komunitas['sifat_komunitas'] = $sifatKomunitas;
+        $komunitas['jenis_komunitas'] = $jenisKomunitas;
+        $komunitas['lokasi_komunitas'] = $lokasiKomunitas;
+        $komunitas['anggota_komunitas'] = $anggotaKomunitas;
+        $komunitas['deskripsi_komunitas'] = $deskKomunitas;
+
+        $komunitas['nama_komunitas'] = $namaKomunitas;
+        $komunitas['tautat_komunitas'] = $tautatKomunitas;
+        // $komunitas['logo_komunitas'] = $upload_data['file_name'];
+
+        // echo json_encode($data);
+        $sukses = $this->M_komunitas->updateKomunitas($komunitas, $idKomunitas);
+
+        if (!$sukses) {
+            flashMessage('success', 'Calon Komunitas Baru berhasil di daftarkan. Silahkan verifikasi di Permohonan Calon Anggota');
+            redirect('alumni/Komunitas/kelolaKomunitas');
+        } else {
+            flashMessage('error', 'Calon Komunitas Baru gagal di daftarkan! Silahkan coba lagi');
+            redirect('alumni/Komunitas/kelolaKomunitas');
+        }
+        // }
+    }
+
+    public function setUpdateFotoKomunitas()
+    {
+        $idUbahFoto = $this->input->post('idUbahFoto');
+
+        $filename = "komunitas-" . $namaFotoKomunitas . "-" . time();
+        $namaKomunitas = $this->input->post('namaKomunitas');
+
+        $filename = "komunitas-" . $namaKomunitas . "-" . time();
+
+        // Set preferences
+        $config['upload_path'] = './uploads/content/komunitas';
+        $config['allowed_types'] = 'png|jpg|jpeg';
+        $config['file_name'] = $filename;
+
+        // load upload class library
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('fileSaya')) {
+            flashMessage('error', 'Maaf, Upload gambar Forum Bisnis gagal! Silahkan coba lagi');
+            redirect('alumni/lihatKomunitas');
+        } else {
+            $upload_data = $this->upload->data();
+
+            $data = $this->M_komunitas->findKomunitas('logo_komunitas', array('tb_komunitas.id_komunitas = ' => $idUbahFoto));
+
+            $komunitas['logo_komunitas'] = $upload_data['file_name'];
+
+            unlink(FCPATH . 'uploads/content/komunitas/' . $data[0]->logo_komunitas);
+
+            // echo json_encode($data);
+            $sukses = $this->M_komunitas->updateKomunitas($komunitas, $idUbahFoto);
+
+            if (!$sukses) {
+                flashMessage('success', 'Foto berhasil di ubah.');
+                redirect('alumni/Komunitas/kelolaKomunitas');
+            } else {
+                flashMessage('error', 'Foto gagal di ubah! Silahkan coba lagi');
+                redirect('alumni/Komunitas/kelolaKomunitas');
+            }
+        }
+    }
+    // ==================================================
+    // --------------------- UPDATE ---------------------
+    // ==================================================
+    //
+    //
+    //
+    // ==================================================
     // --------------------- DELETE ---------------------
     // ==================================================	
     public function batalkanPermohonanKomunitas()
