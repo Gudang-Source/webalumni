@@ -15,7 +15,7 @@ class Komunitas extends MY_Controller
     function index()
     {
         $data['title'] = 'Komunitas';
-        $data['komunitas'] = $this->M_komunitas->getAllKomunitas();
+        $data['komunitas'] = $this->M_komunitas->getAllActiveKomunitas();
 
         $data['info'] = $this->FrontPageModel->getInfoBySessionId();
         $this->frontend_render('frontend/komunitas/index', $data);
@@ -34,7 +34,7 @@ class Komunitas extends MY_Controller
 
         $this->frontend_render('frontend/komunitas/detailKomunitas', $data);
     }
-    
+
     function cariKomunitas()
     {
         $data['title'] = 'Kelola Status Komunitas';
@@ -45,7 +45,7 @@ class Komunitas extends MY_Controller
         $data['komunitas'] = $this->M_komunitas->findKomunitasLikeNama($where, $nama);
 
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
-        
+
         if ($nama == "") {
             redirect('komunitas');
         }
