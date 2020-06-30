@@ -67,7 +67,7 @@ class Login extends MY_Controller
                         } else if ($this->session->userdata('role') == '4') {
                             redirect('alumni');
                         } else if ($this->session->userdata('role') == '5') {
-                            redirect('umum');
+                            redirect('');
                         }
                     }
                 }
