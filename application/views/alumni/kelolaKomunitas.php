@@ -285,7 +285,7 @@
                 <div class="mb-title">
                     <span class="fa fa-times"></span> Hapus <strong>Komunitas</strong>
                 </div>
-                <form action="<?= base_url('anggota/Komunitas/hapusKomunitas'); ?>" class="form-horizontal" method="post">
+                <form action="<?= base_url('alumni/Komunitas/hapusKomunitas'); ?>" class="form-horizontal" method="post">
                     <div class="mb-content">
                         <div class="panel-body">
                             <p>Anda yakin akan menghapus komunitas dari IKASMA3BDG dengan identitas sebagai berikut :</p>
@@ -321,7 +321,7 @@
                     <div class="mb-footer">
                         <div class="pull-right">
                             <button type="submit" class="btn btn-primary btn-lg mb-control-yes">Hapus</button>
-                            <a href="<?= base_url('anggota/Komunitas/kelolaKomunitas'); ?>" class="btn btn-default btn-lg">Batal</a>
+                            <a href="<?= base_url('alumni/Komunitas/kelolaKomunitas'); ?>" class="btn btn-default btn-lg">Batal</a>
                         </div>
                     </div>
                 </form>

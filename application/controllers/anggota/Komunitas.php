@@ -266,7 +266,24 @@ class Komunitas extends MY_Controller
     //
     // ==================================================
     // --------------------- DELETE ---------------------
-    // ==================================================	
+    // ==================================================
+    public function hapusKomunitas()
+    {
+        $this->load->model('M_komunitas');
+
+        $id = $this->input->post('idKomunitasHapus');
+
+        $deleteKomunitas = $this->M_komunitas->deleteKomunitas($id);
+
+        if (!$deleteKomunitas) {
+            flashMessage('success', 'Komunitas berhasil dihapus');
+            redirect('anggota/Komunitas/kelolaKomunitas');
+        } else {
+            flashMessage('error', 'Komunitas gagal dihapus! Silahkan coba lagi');
+            redirect('anggota/Komunitas/kelolaKomunitas');
+        }
+    }
+
     public function batalkanPermohonanKomunitas()
     {
         $this->load->model('M_komunitas');
