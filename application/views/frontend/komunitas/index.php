@@ -104,9 +104,9 @@
 
 <div class="profile-page">
     <div class="row">
+    <?php if ($komunitas) : ?>
     <?php foreach ($komunitas as $A) { ?>
     <?php if ($A->stat_komunitas == 1) : ?>
-
         <div class="col-md-6 col-md-12">
             <div class="panel default profile-header">
                 <div class="panel-body">
@@ -143,7 +143,13 @@
         </div>
         <?php endif ?>
         <?php } ?>
-        
+        <?php else : ?>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="text-center" style="margin-top: 10px;">Komunitas tidak ditemukan</h2>
+                    </div>
+                </div>
+            <?php endif; ?>
 	</div>
 </div>
 
