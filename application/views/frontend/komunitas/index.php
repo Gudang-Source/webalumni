@@ -8,6 +8,8 @@
             
             <link rel="icon" href="<?= base_url('assets/html/favicon.ico'); ?>" type="image/x-icon" />
             <link rel="stylesheet" type="text/css" id="theme" href="<?php echo base_url('assets/html/css/theme-default.css') ?>"/>
+    
+
     </head>
     <body>
     
@@ -31,13 +33,13 @@
 
     <!-- SEARCH -->
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="row">
                         <p>Cari Komunitas</p>
                         <form action="<?= base_url('anggota/Komunitas/cariStatusKomunitas'); ?>" method="post">
-                            <div class="col-md-8">
+                            <div class="col-md-10">
                                 <div class="form-group">
                                     <div class="input-group">
                                         <input type="text" class="form-control" name="namaKomunitas" placeholder="Komunitas mana yang akan anda cari ?">
@@ -61,20 +63,11 @@
     </div>
     <!-- SEARCH -->
 
-
-    <?php if (empty($komunitas)) : ?>
-        <div class="row">
-            <div class="col-md-6">
-                <h2 class="text-center" style="margin-top: 10px;">Komunitas tidak ditemukan</h2>
-            </div>
-        </div>
-    <?php endif; ?>
-
     <!-- KOMUNITAS CONTENT -->
     <div class="row">
         <?php foreach ($komunitas as $A) { ?>
             <?php if ($A->stat_komunitas == 1) : ?>
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-body profile">
                             <div class="profile-image">
@@ -99,9 +92,6 @@
                                         <p><i class="fa fa-eye" aria-hidden="true"></i> <strong> <?= $komunitas[0]->sifat_komunitas ?> </strong><br>
                                                 <h5>Semua orang bisa join ke komunitas ini.</h5>
                                             </p>
-                                        <p><i class="fa fa-link" aria-hidden="true"></i> <strong>Link Komunitas</strong><br>
-                                            <h5><a><?= $A->tautat_komunitas; ?></a></h5>
-                                        </p>
 
                                         <p><i class="fa fa-users" aria-hidden="true"></i> <strong>Anggota</strong><br>
                                             <h5>+- <?= $A->anggota_komunitas ?></h5>
