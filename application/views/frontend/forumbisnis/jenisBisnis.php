@@ -84,7 +84,7 @@
                             <?php if ($forumBisnis) : ?>
                                 <?php if ($B->stat_forbis == 1) : ?>
                                     <!-- CONTACT ITEM -->
-                                    <a href="<?= base_url('forumBisnis/lihatForbis/') . $B->id_forbis; ?>">
+                                    <a style="color: black;" href="<?= base_url('forumBisnis/lihatForbis/') . $B->id_forbis; ?>">
                                         <div class="panel panel-default" style="padding: 15px;">
                                             <div class="col-md-4">
                                                 <div class="panel-body" style="width: 200px; height: 150px; overflow: hidden;">
@@ -108,9 +108,9 @@
                                                     <?php } ?>
 
                                                     <?php if ($B->pemilik_id == "") { ?>
-                                                        <p style="font-size: 12px;"><small>Pemilik Bisnis</small><br>Belum di isi</p>
+                                                        <p style="font-size: 13.6px;">Pemilik Bisnis<br>Belum di isi</p>
                                                     <?php } else { ?>
-                                                        <p style="font-size: 12px;"><small>Pemilik Bisnis</small><br><?= $B->nama_lengkap; ?></p>
+                                                        <p style="font-size: 13.6px;">Pemilik Bisnis : <?= $B->nama_lengkap; ?></p>
                                                     <?php } ?>
 
 

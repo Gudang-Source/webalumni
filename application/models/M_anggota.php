@@ -19,7 +19,19 @@ class M_anggota extends CI_Model
     function findAnggota($select, $where)
     {
         $this->db->select($select);
-        $this->db->join('tb_user', 'tb_anggota.user_id = tb_user.id_user');
+        $this->db->order_by('id_anggota', 'DESC');
+
+        // $this->db->join('tb_user', 'tb_anggota.user_id = tb_user.id_user');
+        $this->db->where($where);
+        $this->db->order_by('id_anggota', 'DESC');
+
+        return $this->db->get('tb_anggota')->result();
+    }
+
+    function findCalonAnggota($select, $where)
+    {
+        $this->db->select($select);
+        $this->db->order_by('id_anggota', 'DESC');
         $this->db->where($where);
         $this->db->order_by('id_anggota', 'DESC');
 

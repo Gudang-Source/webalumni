@@ -150,7 +150,7 @@
                             </div>
                         <?php } ?>
                     <?php else : ?>
-                        <h4 class="text-danger text-center" style="margin-bottom: 30px;">Berita tidak ditemukan!</h4>
+                        <h4 class="text-danger text-center" style="margin-bottom: 30px;">Komunitas tidak ditemukan!</h4>
                     <?php endif; ?>
                 </div>
             </div>
