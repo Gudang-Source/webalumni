@@ -39,9 +39,11 @@ a {
 
 .profile-page .profile-header .profile-image img {
     border-radius: 50%;
-    width: 140px;
+    width: 120px;
+    height: 120px;
     border: 3px solid #fff;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    margin-bottom: 15px;
 }
 
 .profile-page .profile-header .social-icon a {
@@ -137,14 +139,14 @@ a {
                             <?php if ($A->logo_komunitas == NULL) { ?>
                                         <img src="<?php echo base_url('uploads/content/komunitas/no-image.jpg'); ?> " alt="No Image" title="Default Image">
                                     <?php } else { ?>
-                                        <img width="150" height="150" src="<?php echo base_url('uploads/content/komunitas/' . $A->logo_komunitas); ?> " alt="<?= $A->nama_komunitas; ?>" title="<?= $A->nama_komunitas; ?>">
+                                        <img src="<?php echo base_url('uploads/content/komunitas/' . $A->logo_komunitas); ?> " alt="<?= $A->nama_komunitas; ?>" title="<?= $A->nama_komunitas; ?>">
                                 <?php } ?>
                              </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-12">
-                                <h4 class="m-t-0 m-b-0"><strong><?= $A->nama_komunitas; ?></strong></h4>
+                                <h4 class="m-t-0 m-b-0"><h2><?= $A->nama_komunitas; ?></h2></h4>
                                 <span class="job_post"><i class="fa fa-eye" aria-hidden="true"></i> <strong> <?= $A->sifat_komunitas ?> |</strong></span>
-                                <span class="job_post"><i class="fa fa-user" aria-hidden="true"></i><strong> Anggota : +- <?= $A->anggota_komunitas ?></strong></span>
+                                <span class="job_post"><i class="fa fa-user" aria-hidden="true"></i><strong> Anggota : +-<?= $A->anggota_komunitas ?></strong></span>
                             
                             <?php if ($A->sifat_komunitas == 'Publik') { ?> 
                                 <p><h5>Semua orang bisa join ke komunitas ini.</h5></p>
@@ -156,11 +158,6 @@ a {
                                 <a href="<?=  base_url('Komunitas/detailKomunitas/') .  $A->id_komunitas; ?>  " class="btn btn-primary btn-block" title="Detail komunitas" id="<?= $A->id_komunitas; ?>">Lihat semua</a>
                             </div>
                             <p class="social-icon m-t-5 m-b-0">
-                                <!-- <a title="Twitter" href="javascript:void(0);"><i class="fa fa-twitter"></i></a>
-                                <a title="Facebook" href="javascript:void(0);"><i class="fa fa-facebook"></i></a>
-                                <a title="Google-plus" href="javascript:void(0);"><i class="fa fa-twitter"></i></a>
-                                <a title="Behance" href="javascript:void(0);"><i class="fa fa-behance"></i></a>
-                                <a title="Instagram" href="javascript:void(0);"><i class="fa fa-instagram "></i></a> -->
                             </p>
                         </div>                
                     </div>
