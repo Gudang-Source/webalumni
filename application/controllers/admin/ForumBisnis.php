@@ -360,6 +360,10 @@ class ForumBisnis extends MY_Controller
         $data['jenisBisnis'] = $this->M_jenisBisnis->getAllJenisBisnis();
         $data['forumBisnis'] = $this->M_forumBisnis->findForumBisnisLikeNama($namaForbis);
 
+        if (!$namaForbis) {
+            redirect('admin/forumBisnis');
+        }
+
         $this->admin_render('admin/kelolaForumBisnis', $data);
     }
 }

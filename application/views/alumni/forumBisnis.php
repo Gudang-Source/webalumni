@@ -25,18 +25,13 @@
                     <p>Cari Forum Bisnis</p>
                     <form action="<?= base_url('alumni/ForumBisnis/cariForumBisnis'); ?>" method="post">
                         <div class="form-group">
-                            <div class="col-md-8">
+                            <div class="col-md-12">
                                 <div class="input-group">
                                     <input type="text" class="form-control" name="namaBisnis" placeholder="Temukan forum bisnis anda disini.">
                                     <div class="input-group-btn">
                                         <button type="submit" class="btn btn-primary"><span class="fa fa-search"></span></button>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-2">
-                                <a href="<?= base_url('alumni/ForumBisnis'); ?>" class="btn btn-primary">Reset Pencarian</a>
                             </div>
                         </div>
                     </form>

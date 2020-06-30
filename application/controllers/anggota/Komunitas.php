@@ -193,23 +193,31 @@ class Komunitas extends MY_Controller
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
         if ($this->session->userdata('role') == 3) {
+            if (!$nama) {
+                redirect('anggota/komunitas');
+            }
+
             $this->anggota_render('anggota/lihatKomunitas', $data);
         }
     }
 
     function cariStatusKomunitasNonaktif()
     {
-    $data['title'] = 'Kelola Status Komunitas';
+        $data['title'] = 'Kelola Status Komunitas';
 
-    $nama = $this->input->post('namaKomunitas');
+        $nama = $this->input->post('namaKomunitas');
 
-    $where = "tb_komunitas.stat_komunitas != 1";
-    $data['komunitas'] = $this->M_komunitas->findKomunitasLikeNama($where, $nama);
+        $where = "tb_komunitas.stat_komunitas = 0";
+        $data['komunitas'] = $this->M_komunitas->findKomunitasLikeNama($where, $nama);
 
-    $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+        $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
-    if ($this->session->userdata('role') == 3) {
-        $this->anggota_render('anggota/komunitasNonaktif', $data);
+        if ($this->session->userdata('role') == 3) {
+            if (!$nama) {
+                redirect('anggota/komunitas/komunitasNonaktif');
+            }
+
+            $this->anggota_render('anggota/komunitasNonaktif', $data);
         }
     }
     // ==================================================

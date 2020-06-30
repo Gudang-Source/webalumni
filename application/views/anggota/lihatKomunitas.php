@@ -33,7 +33,7 @@
                     <div class="row">
                         <p>Cari Komunitas</p>
                         <form action="<?= base_url('anggota/Komunitas/cariStatusKomunitas'); ?>" method="post">
-                            <div class="col-md-8">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <div class="input-group">
                                         <input type="text" class="form-control" name="namaKomunitas" placeholder="Komunitas mana yang akan anda cari ?">
@@ -44,12 +44,6 @@
                                 </div>
                             </div>
                         </form>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <a href="<?= base_url('anggota/Komunitas'); ?>" class="btn btn-primary">Reset
-                                    Pencarian</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -57,20 +51,10 @@
     </div>
     <!-- SEARCH -->
 
-
-    <?php if (empty($komunitas)) : ?>
-        <div class="row">
-            <div class="col-md-6">
-                <h2 class="text-center" style="margin-top: 10px;">Komunitas tidak ditemukan</h2>
-            </div>
-        </div>
-    <?php endif; ?>
-
-
     <!-- KOMUNITAS CONTENT -->
     <div class="row">
-        <?php foreach ($komunitas as $A) { ?>
-            <?php if ($A->stat_komunitas == 1) : ?>
+        <?php if ($komunitas) : ?>
+            <?php foreach ($komunitas as $A) { ?>
                 <div class="col-md-4    ">
                     <div class="panel panel-default">
                         <div class="panel-body profile">
@@ -136,8 +120,14 @@
                         <!-- END CONTACT ITEM -->
                     </div>
                 </div>
-            <?php endif ?>
-        <?php } ?>
+            <?php } ?>
+        <?php else : ?>
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="text-center" style="margin-top: 10px;">Komunitas tidak ditemukan</h2>
+                </div>
+            </div>
+        <?php endif; ?>
         <!-- KOMUNITAS CONTENT -->
     </div>
 </div>

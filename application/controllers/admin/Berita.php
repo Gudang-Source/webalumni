@@ -379,6 +379,10 @@ class Berita extends MY_Controller
 
             $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
+            if (!$judul) {
+                redirect('admin/berita/kelolaBerita');
+            }
+
             $this->admin_render('admin/kelolaBeritaAktif', $data);
         }
     }

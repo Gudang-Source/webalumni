@@ -230,35 +230,35 @@ class Komunitas extends MY_Controller
 
         $filename = "komunitas-" . $namaKomunitas . "-" . time();
 
-         // Set preferences
-         $config['upload_path'] = './uploads/content/komunitas';
-         $config['allowed_types'] = 'png|jpg|jpeg';
-         $config['file_name'] = $filename;
- 
-         // load upload class library
-         $this->load->library('upload', $config);
- 
-         if (!$this->upload->do_upload('fileSaya')) {
-             flashMessage('error', 'Maaf, Upload gambar Forum Bisnis gagal! Silahkan coba lagi');
-             redirect('koordinator/Komunitas');
-         } else {
-             $upload_data = $this->upload->data();
- 
-             $data = $this->M_komunitas->findKomunitas('logo_komunitas', array('tb_komunitas.id_komunitas = ' => $idUbahFoto));
- 
-             $komunitas['logo_komunitas'] = $upload_data['file_name'];
- 
-             unlink(FCPATH . 'uploads/content/komunitas/' . $data[0]->logo_komunitas);
- 
-             // echo json_encode($data);
-             $sukses = $this->M_komunitas->updateKomunitas($komunitas, $idUbahFoto);
- 
-             if (!$sukses) {
-                 flashMessage('success', 'Foto berhasil di ubah.');
-                 redirect('koordinator/Komunitas/kelolaStatusKomunitas');
-             } else {
-                 flashMessage('error', 'Foto gagal di ubah! Silahkan coba lagi');
-                 redirect('koordinator/Komunitas/kelolaStatusKomunitas');
+        // Set preferences
+        $config['upload_path'] = './uploads/content/komunitas';
+        $config['allowed_types'] = 'png|jpg|jpeg';
+        $config['file_name'] = $filename;
+
+        // load upload class library
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('fileSaya')) {
+            flashMessage('error', 'Maaf, Upload gambar Forum Bisnis gagal! Silahkan coba lagi');
+            redirect('koordinator/Komunitas');
+        } else {
+            $upload_data = $this->upload->data();
+
+            $data = $this->M_komunitas->findKomunitas('logo_komunitas', array('tb_komunitas.id_komunitas = ' => $idUbahFoto));
+
+            $komunitas['logo_komunitas'] = $upload_data['file_name'];
+
+            unlink(FCPATH . 'uploads/content/komunitas/' . $data[0]->logo_komunitas);
+
+            // echo json_encode($data);
+            $sukses = $this->M_komunitas->updateKomunitas($komunitas, $idUbahFoto);
+
+            if (!$sukses) {
+                flashMessage('success', 'Foto berhasil di ubah.');
+                redirect('koordinator/Komunitas/kelolaStatusKomunitas');
+            } else {
+                flashMessage('error', 'Foto gagal di ubah! Silahkan coba lagi');
+                redirect('koordinator/Komunitas/kelolaStatusKomunitas');
             }
         }
     }
@@ -325,6 +325,10 @@ class Komunitas extends MY_Controller
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
         if ($this->session->userdata('role') == 2) {
+            if (!$nama) {
+                redirect('koordinator/komunitas/kelolaStatusKomunitas');
+            }
+
             $this->koordinator_render('koordinator/kelolaStatusKomunitas', $data);
         }
     }

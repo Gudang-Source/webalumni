@@ -22,7 +22,7 @@
                     <div class="row">
                         <p>Cari Komunitas</p>
                         <form action="<?= base_url('admin/Komunitas/cariStatusKomunitas'); ?>" method="post">
-                            <div class="col-md-8">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <div class="input-group">
                                         <input type="text" class="form-control" name="namaKomunitas" placeholder="Komunitas mana yang akan anda cari ?">
@@ -33,12 +33,6 @@
                                 </div>
                             </div>
                         </form>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <a href="<?= base_url('admin/Komunitas/kelolaStatusKomunitas'); ?>" class="btn btn-primary">Reset
-                                    Pencarian</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -253,7 +247,7 @@
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" id="idUbahFoto" name="idUbahFoto">
                                     <input type="text" class="form-control" id="namaUbahFotoKomunitas" name=" namaUbahFotoKomunitas">
-                                    <input type="text" class="form-control"  id="namaKomunitas" name="namaKomunitas">
+                                    <input type="text" class="form-control" id="namaKomunitas" name="namaKomunitas">
                                 </div>
                             </div>
                         </div>

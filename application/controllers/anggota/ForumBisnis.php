@@ -167,6 +167,10 @@ class ForumBisnis extends MY_Controller
         $data['jenisBisnis'] = $this->M_jenisBisnis->getAllJenisBisnis();
         $data['forumBisnis'] = $this->M_forumBisnis->cariForumBisnis($id, $namaForbis);
 
+        if (!$namaForbis) {
+            redirect('anggota/forumBisnis');
+        }
+
         $this->anggota_render('anggota/ForumBisnis', $data);
     }
 
@@ -183,6 +187,10 @@ class ForumBisnis extends MY_Controller
 
         $data['jenisBisnis'] = $this->M_jenisBisnis->getAllJenisBisnis();
         $data['forumBisnis'] = $this->M_forumBisnis->cariForumBisnisNonAktif($id, $namaForbis);
+
+        if (!$namaForbis) {
+            redirect('anggota/forumBisnis/forumBisnisNonaktif');
+        }
 
         $this->anggota_render('anggota/forumBisnisNonaktif', $data);
     }

@@ -342,6 +342,10 @@ class ForumBisnis extends MY_Controller
         $data['forumBisnis'] = $this->M_forumBisnis->findForumBisnisLikeNama($nama);
 
         if ($this->session->userdata('role') == 2) {
+            if (!$nama) {
+                redirect('koordinator/forumBisnis');
+            }
+
             $this->koordinator_render('koordinator/kelolaForumBisnis', $data);
         }
     }

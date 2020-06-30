@@ -478,6 +478,10 @@ class Anggota extends MY_Controller
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
         if ($this->session->userdata('role') == 2) {
+            if (!$nama) {
+                redirect('koordinator/anggota/kelolaAnggota');
+            }
+
             $this->koordinator_render('koordinator/kelolaAnggota', $data);
         }
     }

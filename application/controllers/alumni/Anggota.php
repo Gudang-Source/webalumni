@@ -60,6 +60,10 @@ class Anggota extends MY_Controller
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
         if ($this->session->userdata('role') == 4) {
+            if (!$nama) {
+                redirect('alumni/anggota');
+            }
+
             $this->alumni_render('alumni/lihatAlumni', $data);
         }
     }

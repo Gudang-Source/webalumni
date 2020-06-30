@@ -124,6 +124,10 @@ class Anggota extends MY_Controller
         $data['anggota'] = $this->M_anggota->findAnggotaLikeNamaByRole($nama, $where);
 
         if ($this->session->userdata('role') == 3) {
+            if (!$nama) {
+                redirect('anggota/anggota');
+            }
+
             $this->anggota_render('anggota/lihatAnggota', $data);
         }
 

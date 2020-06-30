@@ -21,7 +21,7 @@
                     <div class="row">
                         <p>Cari Alumni</p>
                         <form action="<?= base_url('alumni/Anggota/cariAnggota'); ?>" method="post">
-                            <div class="col-md-8">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <div class="input-group">
                                         <input type="text" class="form-control" name="namaAnggota" placeholder="Siapa yang akan anda cari ?">
@@ -32,12 +32,6 @@
                                 </div>
                             </div>
                         </form>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <a href="<?= base_url('alumni/Anggota'); ?>" class="btn btn-primary">Reset
-                                    Pencarian</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

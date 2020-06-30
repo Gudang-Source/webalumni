@@ -297,6 +297,10 @@ class Berita extends MY_Controller
 
             $data['berita'] = $this->M_berita->findBeritaLikeJudulForSpecificUser($where, $judul, $data['info'][0]->user_id);
 
+            if (!$judul) {
+                redirect('anggota/berita');
+            }
+
             $this->anggota_render('anggota/kelolaBerita', $data);
         }
     }
@@ -313,6 +317,10 @@ class Berita extends MY_Controller
 
             $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
             $data['berita'] = $this->M_berita->findBeritaLikeJudulForSpecificUser($where, $judul, $data['info'][0]->user_id);
+
+            if (!$judul) {
+                redirect('anggota/berita/beritaNonaktif');
+            }
 
             $this->anggota_render('anggota/beritaNonaktif', $data);
         }

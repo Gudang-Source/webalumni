@@ -193,6 +193,11 @@ class Komunitas extends MY_Controller
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
         if ($this->session->userdata('role') == 4) {
+
+            if (!$nama) {
+                redirect('alumni/komunitas');
+            }
+
             $this->alumni_render('alumni/lihatKomunitas', $data);
         }
     }
@@ -209,6 +214,10 @@ class Komunitas extends MY_Controller
         $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
         if ($this->session->userdata('role') == 4) {
+            if (!$nama) {
+                redirect('alumni/komunitas/komunitasNonaktif');
+            }
+
             $this->alumni_render('alumni/komunitasNonaktif', $data);
         }
     }

@@ -24,7 +24,7 @@
                     <div class="row">
                         <p>Cari Forum Bisnis</p>
                         <form action="<?= base_url('anggota/ForumBisnis/cariForumBisnis'); ?>" method="post">
-                            <div class="col-md-8">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <div class="input-group">
                                         <input type="text" class="form-control" name="namaBisnis" placeholder="Temukan forum bisnis anda disini.">
@@ -35,12 +35,6 @@
                                 </div>
                             </div>
                         </form>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                <a href="<?= base_url('anggota/ForumBisnis'); ?>" class="btn btn-primary">Reset
-                                    Pencarian</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -100,7 +94,7 @@
                                 </div>
                             </div>
                             <div class="panel-footer text-center">
-                                <a class="btn btn-primary btn-rounded btn-block btn-ubah-forbis" title="Ubah Forum Bisnis" id="<?= $A->id_forbis; ?>" data-toggle="modal" data-target="#ubahForbis"><span class="fa fa-edit"></span></a>
+                                <a class="btn btn-primary btn-rounded btn-block btn-ubah-forbis" title="Ubah Forum Bisnis" id="<?= $A->id_forbis; ?>" data-toggle="modal" data-target="#ubahForbis"><span class="fa fa-edit"></span> Ubah</a>
                             </div>
                             <!-- END CONTACT ITEM -->
                         </div>
