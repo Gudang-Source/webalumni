@@ -109,8 +109,7 @@
                 <li class="xn-openable">
                     <a href="#"><span class="fa fa-camera-retro"></span> <span class="xn-text">Komunitas</span></a>
                     <ul>
-                        <li><a href="<?= base_url('anggota/Komunitas') ?>"><span class="fa fa-cube"></span>Komunitas Aktif</a></li>
-                        <li><a href="<?= base_url('anggota/Komunitas/kelolaKomunitas') ?>"><span class="fa fa-edit"></span> Kelola Komunitas</a></li>
+                        <li><a href="<?= base_url('anggota/Komunitas') ?>"><span class="fa fa-cube"></span>Kelola Komunitas</a></li>
                         <li><a href="<?= base_url('anggota/Komunitas/komunitasNonaktif') ?>"><span class="fa fa-minus"></span> Komunitas Nonaktif</a></li>
                         <li><a href="<?= base_url('anggota/Komunitas/tambahKomunitas') ?>"><span class="fa fa-plus"></span> Tambah Komunitas </a></li>
                     </ul>
