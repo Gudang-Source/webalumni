@@ -30,9 +30,10 @@ class M_komunitas extends CI_Model
         $this->db->select('tb_komunitas.*, tb_user.username');
         $this->db->from('tb_komunitas');
         $this->db->join('tb_user', 'tb_komunitas.id_pengupload=tb_user.id_user');
+        $this->db->where($where);
         $this->db->where('tb_komunitas.id_pengupload = ' . $user_id);
-        // $this->db->order_by('tb_komunitas.date_created', 'DESC');
-        // $this->db->order_by('tb_komunitas.time_created', 'DESC');
+        $this->db->order_by('tb_komunitas.date_created', 'DESC');
+        $this->db->order_by('tb_komunitas.time_created', 'DESC');
 
         return $this->db->get()->result();
     }
@@ -52,6 +53,18 @@ class M_komunitas extends CI_Model
         $this->db->from('tb_komunitas');
         $this->db->join('tb_user', 'tb_komunitas.id_pengupload=tb_user.id_user');
         $this->db->where($where);
+        $this->db->like('nama_komunitas', $nama, 'both');
+
+        return $this->db->get()->result();
+    }
+
+    function findKomunitasLikeNamaForSpecificUser($where, $nama, $userId)
+    {
+        $this->db->select('tb_komunitas.*, tb_user.username');
+        $this->db->from('tb_komunitas');
+        $this->db->join('tb_user', 'tb_komunitas.id_pengupload=tb_user.id_user');
+        $this->db->where($where);
+        $this->db->where("tb_komunitas.id_pengupload = ", $userId);
         $this->db->like('nama_komunitas', $nama, 'both');
 
         return $this->db->get()->result();

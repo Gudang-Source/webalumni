@@ -1,12 +1,12 @@
 <!-- START BREADCRUMB -->
 <ul class="breadcrumb">
     <li>Komunitas</li>
-    <li class="active"><a href="<?= base_url('anggota/Komunitas'); ?>">Lihat Komunitas</a></li>
+    <li class="active"><a href="<?= base_url('anggota/Komunitas'); ?>">Kelola Komunitas</a></li>
 </ul>
 <!-- END BREADCRUMB -->
 
 <div class="page-title">
-    <h2>Komunitas Aktif</h2>
+    <h2>Kelola Komunitas</h2>
 </div>
 
 <?= showFlashMessage(); ?>
@@ -55,8 +55,7 @@
     <div class="row">
         <?php if ($komunitas) : ?>
             <?php foreach ($komunitas as $A) { ?>
-                <?php if ($A->stat_komunitas == 1) : ?>
-                <div class="col-md-4    ">
+                <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-body profile">
                             <div class="profile-image">
@@ -117,8 +116,7 @@
                         <!-- END CONTACT ITEM -->
                     </div>
                 </div>
-                <?php endif; ?>
-                <?php } ?>
+            <?php } ?>
         <?php else : ?>
             <div class="row">
                 <div class="col-md-6">

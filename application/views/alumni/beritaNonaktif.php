@@ -133,7 +133,7 @@
                 <div class="mb-footer">
                     <div class="pull-right">
                         <button type="submit" class="btn btn-primary btn-lg mb-control-yes">Hapus</button>
-                        <a href="<?= base_url('alumni/Berita'); ?>" class="btn btn-default btn-lg">Batal</a>
+                        <a href="<?= base_url('alumni/Berita/beritaNonaktif'); ?>" class="btn btn-default btn-lg">Batal</a>
                     </div>
                 </div>
             </form>
