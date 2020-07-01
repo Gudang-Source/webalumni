@@ -340,6 +340,12 @@ class ForumBisnis extends MY_Controller
         $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
         $nama = $this->input->post('namaForbis');
         $data['forumBisnis'] = $this->M_forumBisnis->findForumBisnisLikeNama($nama);
+        $where = array(
+            'tb_anggota.status_anggota !=' => '0',
+            'tb_anggota.user_id != ' => $this->session->userdata('uid')
+        );
+
+        $data['pemilikForbis'] = $this->M_anggota->findAnggota('*', $where);
 
         if ($this->session->userdata('role') == 2) {
             if (!$nama) {

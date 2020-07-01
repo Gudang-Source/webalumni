@@ -21,7 +21,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <p>Cari Komunitas</p>
-                        <form action="<?= base_url('koordinator/Komunitas/cariStatusKomunitas'); ?>" method="post">
+                        <form action="<?= base_url('koordinator/Komunitas/cariStatusKomunitasNon'); ?>" method="post">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <div class="input-group">
@@ -126,16 +126,16 @@
                             </div>
                         </div>
 
-            <?php endif; ?>
+                    <?php endif; ?>
                 <?php } ?>
-                    <?php else : ?>
-                    <div class="row">
-                        <div class="col-md-6">
+            <?php else : ?>
+                <div class="row">
+                    <div class="col-md-6">
                         <h2 class="text-center" style="margin-top: 10px;">Komunitas tidak ditemukan</h2>
                     </div>
                 </div>
             <?php endif; ?>
-            
+
         </div>
         <!-- KOMUNITAS CONTENT -->
     </div>
@@ -146,7 +146,7 @@
     <div class="modal animated zoomIn" id="message-box-ubah-komunitas" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-            
+
                 <form action="<?= base_url('koordinator/Komunitas/setUpdateKomunitas'); ?>" class="form-horizontal" id="ubah-anggota-validate" method="post" enctype="multipart/form-data">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -166,21 +166,21 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label">Nama Komunitas</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" name="namaUbahKomunitas" id="namaUbahKomunitas" placeholder="" required clear/>
+                                <input type="text" class="form-control" name="namaUbahKomunitas" id="namaUbahKomunitas" placeholder="" required clear />
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-3 control-label">Lokasi Komunitas</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" name="lokasiUbahKomunitas" id="lokasiUbahKomunitas" placeholder="" required clear/>
+                                <input type="text" class="form-control" name="lokasiUbahKomunitas" id="lokasiUbahKomunitas" placeholder="" required clear />
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-3 control-label">Tautat Komunitas</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" name="tautatUbahKomunitas" id="tautatUbahKomunitas" placeholder="" required clear/>
+                                <input type="text" class="form-control" name="tautatUbahKomunitas" id="tautatUbahKomunitas" placeholder="" required clear />
                             </div>
                         </div>
 
@@ -222,14 +222,14 @@
 
                     <hr>
                     <div class="form-group">
-                            <label class="col-md-3 control-label">Aktifkan kembali Komunitas</label>
-                            <div class="col-md-8">
-                                <select name="statUbahKomunitasss" id="statUbahKomunitasss" class="select form-control">
-                                    <option value="1">Ya</option>
-                                    <option value="0">Tidak </option>
-                                </select>
-                            </div>
+                        <label class="col-md-3 control-label">Aktifkan kembali Komunitas</label>
+                        <div class="col-md-8">
+                            <select name="statUbahKomunitasss" id="statUbahKomunitasss" class="select form-control">
+                                <option value="1">Ya</option>
+                                <option value="0">Tidak </option>
+                            </select>
                         </div>
+                    </div>
 
                     <div class="modal-footer">
                         <div class="col-md-12" style="text-align: left;">
@@ -380,7 +380,7 @@
                     var sifatUbahKomunitas = data_obj.komunitas[0].sifat_komunitas;
                     var jenisUbahKomunitas = data_obj.komunitas[0].jenis_komunitas;
                     var anggotaUbahKomunitas = data_obj.komunitas[0].anggota_komunitas;
-                   
+
                     var statUbahKomunitasss = data_obj.komunitas[0].stat_komunitasss;
 
                     document.getElementById('idUbahKomunitas').value = idUbahKomunitas;
@@ -391,7 +391,7 @@
                     document.getElementById('sifatUbahKomunitas').value = sifatUbahKomunitas;
                     document.getElementById('jenisUbahKomunitas').value = jenisUbahKomunitas;
                     document.getElementById('anggotaUbahKomunitas').value = anggotaUbahKomunitas;
-                    
+
                     document.getElementById('statUbahKomunitas').value = statUbahKomunitasss;
 
                 });

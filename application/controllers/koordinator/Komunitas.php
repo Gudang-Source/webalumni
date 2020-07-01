@@ -194,7 +194,7 @@ class Komunitas extends MY_Controller
         $idUbahKomunitas = $this->input->post('idUbahKomunitas');
         $namaUbahKomunitas = $this->input->post('namaUbahKomunitas');
         $tautatUbahKomunitas = $this->input->post('tautatUbahKomunitas');
-        
+
         $statUbahKomunitasss = $this->input->post('statUbahKomunitasss');
 
         $komunitas['sifat_komunitas'] = $sifatUbahKomunitas;
@@ -205,12 +205,12 @@ class Komunitas extends MY_Controller
         $komunitas['nama_komunitas'] = $namaUbahKomunitas;
         $komunitas['tautat_komunitas'] = $tautatUbahKomunitas;
 
-        if($statUbahKomunitasss == '1') {
+        if ($statUbahKomunitasss == '1') {
             $komunitas['stat_komunitas'] = 1;
-        } 
+        }
         if ($statUbahKomunitasss == '0') {
             $komunitas['stat_komunitas'] = 0;
-        } 
+        }
 
         $sukses = $this->M_komunitas->updateKomunitas($komunitas, $idUbahKomunitas);
 
@@ -227,7 +227,7 @@ class Komunitas extends MY_Controller
     {
         $idUbahFoto = $this->input->post('idUbahFoto');
 
-        $filename = "komunitas-" . $namaFotoKomunitas . "-" . time();
+        // $filename = "komunitas-" . $namaFotoKomunitas . "-" . time();
         $namaKomunitas = $this->input->post('namaKomunitas');
 
         $filename = "komunitas-" . $namaKomunitas . "-" . time();
@@ -332,6 +332,26 @@ class Komunitas extends MY_Controller
             }
 
             $this->koordinator_render('koordinator/kelolaStatusKomunitas', $data);
+        }
+    }
+
+    function cariStatusKomunitasNon()
+    {
+        $data['title'] = 'Kelola Status Komunitas';
+
+        $nama = $this->input->post('namaKomunitas');
+
+        $where = "tb_komunitas.stat_komunitas = 0";
+        $data['komunitas'] = $this->M_komunitas->findKomunitasLikeNama($where, $nama);
+
+        $data['info'] = $this->M_anggota->findAnggota('*', array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
+
+        if ($this->session->userdata('role') == 2) {
+            if (!$nama) {
+                redirect('koordinator/komunitas/komunitasNonaktif');
+            }
+
+            $this->koordinator_render('koordinator/komunitasNonaktif', $data);
         }
     }
     // ==================================================
