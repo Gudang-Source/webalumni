@@ -202,7 +202,7 @@
                 <div class="panel-heading">
                     <div class="panel-title-box">
                         <h3>Komunitas terkait hari ini</h3>
-                        <span>Lihat selengkapnya <a href="admin/Komunitas">disini</a></span>
+                        <span>Lihat selengkapnya <a href="admin/Komunitas/kelolaStatusKomunitas">disini</a></span>
                     </div>
                     <ul class="panel-controls" style="margin-top: 2px;">
                         <!-- <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li> -->

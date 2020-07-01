@@ -80,12 +80,12 @@
     <div class="mb-container">
         <div class="mb-middle">
             <div class="mb-title">
-                <span class="fa fa-check"></span> Terima <strong> Pemulihan Akun Anggota baru di IKASMA3BDG </strong>
+                <span class="fa fa-check"></span> Terima <strong> Pemulihan Akun User IKASMA3BDG </strong>
             </div>
             <form action="<?= base_url('admin/Anggota/aktivasiPemulihanAnggota'); ?>" class="form-horizontal" method="post">
                 <div class="mb-content">
                     <div class="panel-body">
-                        <p>Apakah benar bahwa Akun Anggota di bawah ini akan diaktifkan Pemulihan Akun Anggota di
+                        <p>Apakah benar bahwa akun user di bawah ini akan diaktifkan dari status pemulihan akun Anggota di
                             IKASMA3BDG
                             dan merupakan Alumni SMA 3 Bandung dengan identitas Pemulihan berikut: </p><br>
 

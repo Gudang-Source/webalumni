@@ -21,7 +21,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <p>Cari Komunitas</p>
-                        <form action="<?= base_url('admin/Komunitas/cariStatusKomunitas'); ?>" method="post">
+                        <form action="<?= base_url('admin/Komunitas/cariStatusKomunitasNon'); ?>" method="post">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <div class="input-group">
@@ -44,98 +44,104 @@
     <div class="row">
         <!-- KOMUNITAS CONTENT -->
         <div class="row">
-            <?php if ($komunitas) : ?>
-                <?php foreach ($komunitas as $A) { ?>
-                    <?php if ($A->stat_komunitas == 0) : ?>
-                        <div class="col-md-4">
-                            <div class="panel panel-default">
-                                <div class="panel-body profile">
-                                    <div class="profile-image">
-                                        <?php if ($A->logo_komunitas == NULL) { ?>
-                                            <img src="<?php echo base_url('uploads/content/komunitas/no-image.jpg'); ?> " alt="No Image" title="Default Image">
-                                        <?php } else { ?>
-                                            <img src="<?php echo base_url('uploads/content/komunitas/' . $A->logo_komunitas); ?> " alt="<?= $A->nama_komunitas; ?>" title="<?= $A->nama_komunitas; ?>">
-                                        <?php } ?>
-                                    </div>
-                                    <div class="profile-data">
-                                        <div class="profile-data-name">
-                                            <h3 style="color:white;"><?= $A->nama_komunitas; ?><h3>
+            <?php if (empty($komunitas)) : ?>
+                <div class="col-md-6">
+                    <h2 class="text-center" style="margin-top: 10px;">Komunitas Nonaktif tidak ditemukan</h2>
+                </div>
+            <?php else : ?>
+                <?php if ($komunitas) : ?>
+                    <?php foreach ($komunitas as $A) { ?>
+                        <?php if ($A->stat_komunitas == 0) : ?>
+                            <div class="col-md-4">
+                                <div class="panel panel-default">
+                                    <div class="panel-body profile">
+                                        <div class="profile-image">
+                                            <?php if ($A->logo_komunitas == NULL) { ?>
+                                                <img src="<?php echo base_url('uploads/content/komunitas/no-image.jpg'); ?> " alt="No Image" title="Default Image">
+                                            <?php } else { ?>
+                                                <img src="<?php echo base_url('uploads/content/komunitas/' . $A->logo_komunitas); ?> " alt="<?= $A->nama_komunitas; ?>" title="<?= $A->nama_komunitas; ?>">
+                                            <?php } ?>
                                         </div>
+                                        <div class="profile-data">
+                                            <div class="profile-data-name">
+                                                <h3 style="color:white;"><?= $A->nama_komunitas; ?><h3>
+                                            </div>
 
+                                        </div>
+                                        <div class="profile-controls">
+                                            <a class="profile-control-left btn-ubah-foto" title="UbahGambar" id="<?= $A->id_komunitas; ?>" data-toggle="modal" data-target="#message-box-ubah-gambar-komunitas"><span class="fa fa-edit"></span></a>
+                                            <a class="profile-control-right btn-hapus-komunitas" title="Hapus" id="<?= $A->id_komunitas; ?>" data-toggle="modal" data-target="#message-box-delete-anggota"><span class="fa fa-trash-o"></span></a>
+                                        </div>
                                     </div>
-                                    <div class="profile-controls">
-                                        <a class="profile-control-left btn-ubah-foto" title="UbahGambar" id="<?= $A->id_komunitas; ?>" data-toggle="modal" data-target="#message-box-ubah-gambar-komunitas"><span class="fa fa-edit"></span></a>
-                                        <a class="profile-control-right btn-hapus-komunitas" title="Hapus" id="<?= $A->id_komunitas; ?>" data-toggle="modal" data-target="#message-box-delete-anggota"><span class="fa fa-trash-o"></span></a>
-                                    </div>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="contact-info">
-                                        <h3>Tentang Komunitas ini</h3>
-                                        <p> <?= $A->deskripsi_komunitas ?></p>
-                                        <div class="panel-body">
-                                            <div class="contact-info">
-                                                <p><i class="fa fa-link" aria-hidden="true"></i> <strong>Link Komunitas</strong><br>
-                                                    <h5><a><?= $A->tautat_komunitas; ?></a></h5>
-                                                </p>
+                                    <div class="panel-body">
+                                        <div class="contact-info">
+                                            <h3>Tentang Komunitas ini</h3>
+                                            <p> <?= $A->deskripsi_komunitas ?></p>
+                                            <div class="panel-body">
+                                                <div class="contact-info">
+                                                    <p><i class="fa fa-link" aria-hidden="true"></i> <strong>Link Komunitas</strong><br>
+                                                        <h5><a><?= $A->tautat_komunitas; ?></a></h5>
+                                                    </p>
 
-                                                <?php if ($A->sifat_komunitas == "Publik") { ?>
-                                                    <p><i class="fa fa-eye" aria-hidden="true"></i> <strong> <?= $A->sifat_komunitas ?> </strong><br>
-                                                        <h5>Semua orang bisa join ke komunitas ini.</h5>
-                                                    </p>
-                                                <?php } else { ?>
-                                                    <p><i class="fa fa-eye" aria-hidden="true"></i> <strong>Private </strong><br>
-                                                        <h5>Tidak semua orang bisa menemukan komunitas ini.</h5>
-                                                    </p>
-                                                <?php } ?>
+                                                    <?php if ($A->sifat_komunitas == "Publik") { ?>
+                                                        <p><i class="fa fa-eye" aria-hidden="true"></i> <strong> <?= $A->sifat_komunitas ?> </strong><br>
+                                                            <h5>Semua orang bisa join ke komunitas ini.</h5>
+                                                        </p>
+                                                    <?php } else { ?>
+                                                        <p><i class="fa fa-eye" aria-hidden="true"></i> <strong>Private </strong><br>
+                                                            <h5>Tidak semua orang bisa menemukan komunitas ini.</h5>
+                                                        </p>
+                                                    <?php } ?>
 
-                                                <?php if ($A->jenis_komunitas == "Aktif") { ?>
-                                                    <p><i class="fa fa-globe" aria-hidden="true"></i> <strong><?= $A->jenis_komunitas ?></strong><br>
-                                                        <h5>Banyak orang menggunakan komunitas ini</h5>
-                                                    </p>
-                                                <?php } else { ?>
-                                                    <p><i class="fa fa-globe" aria-hidden="true"></i> <strong>Pasif</strong><br>
-                                                        <h5>Hanya sebagian anggota menggunakan komunitas ini dan sedikit hal yang diposting</h5>
-                                                    </p>
-                                                <?php } ?>
+                                                    <?php if ($A->jenis_komunitas == "Aktif") { ?>
+                                                        <p><i class="fa fa-globe" aria-hidden="true"></i> <strong><?= $A->jenis_komunitas ?></strong><br>
+                                                            <h5>Banyak orang menggunakan komunitas ini</h5>
+                                                        </p>
+                                                    <?php } else { ?>
+                                                        <p><i class="fa fa-globe" aria-hidden="true"></i> <strong>Pasif</strong><br>
+                                                            <h5>Hanya sebagian anggota menggunakan komunitas ini dan sedikit hal yang diposting</h5>
+                                                        </p>
+                                                    <?php } ?>
 
-                                                <p><i class="fa fa-map-marker" aria-hidden="true"></i> <strong>Lokasi</strong><br>
-                                                    <h5><?= $A->lokasi_komunitas ?></h5>
-                                                </p>
-                                                <p><i class="fa fa-users" aria-hidden="true"></i> <strong>Anggota</strong><br>
-                                                    <h5>+- <?= $A->anggota_komunitas ?></h5>
-                                                </p>
-                                                <hr>
-                                                <p><i class="fa fa-calendar" aria-hidden="true"></i> <small>Tanggal Dibuat</small><br>
-                                                    <h5><?= $A->date_created; ?></h5>
-                                                </p>
-                                                <p><i class="fa fa-clock-o" aria-hidden="true"></i> <small>Waktu Dibuat</small><br>
-                                                    <h5><?= $A->time_created; ?></h5>
-                                                </p>
-                                                <p><i class="fa fa-user" aria-hidden="true"></i> <small>Pengupload Komunitas</small><br>
-                                                    <h5><?= $A->username; ?></h5>
-                                                </p>
+                                                    <p><i class="fa fa-map-marker" aria-hidden="true"></i> <strong>Lokasi</strong><br>
+                                                        <h5><?= $A->lokasi_komunitas ?></h5>
+                                                    </p>
+                                                    <p><i class="fa fa-users" aria-hidden="true"></i> <strong>Anggota</strong><br>
+                                                        <h5>+- <?= $A->anggota_komunitas ?></h5>
+                                                    </p>
+                                                    <hr>
+                                                    <p><i class="fa fa-calendar" aria-hidden="true"></i> <small>Tanggal Dibuat</small><br>
+                                                        <h5><?= $A->date_created; ?></h5>
+                                                    </p>
+                                                    <p><i class="fa fa-clock-o" aria-hidden="true"></i> <small>Waktu Dibuat</small><br>
+                                                        <h5><?= $A->time_created; ?></h5>
+                                                    </p>
+                                                    <p><i class="fa fa-user" aria-hidden="true"></i> <small>Pengupload Komunitas</small><br>
+                                                        <h5><?= $A->username; ?></h5>
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- BUTTON UBAH  -->
+                                    <div class="panel-footer text-center">
+                                        <a class="btn btn-primary btn-rounded btn-block  btn-ubah-komunitas" title="Ubah Berita" id="<?= $A->id_komunitas; ?>" data-toggle="modal" data-target="#message-box-ubah-komunitas"><i class="fa fa-edit"></i>Ubah Komunitas</a>
+                                    </div>
+                                    <!-- BUTTON UBAH -->
                                 </div>
-                                <!-- BUTTON UBAH  -->
-                                <div class="panel-footer text-center">
-                                    <a class="btn btn-primary btn-rounded btn-block  btn-ubah-komunitas" title="Ubah Berita" id="<?= $A->id_komunitas; ?>" data-toggle="modal" data-target="#message-box-ubah-komunitas"><i class="fa fa-edit"></i>Ubah Komunitas</a>
-                                </div>
-                                <!-- BUTTON UBAH -->
                             </div>
-                        </div>
 
-            <?php endif; ?>
-                <?php } ?>
-                    <?php else : ?>
+                        <?php endif; ?>
+                    <?php } ?>
+                <?php else : ?>
                     <div class="row">
                         <div class="col-md-6">
-                        <h2 class="text-center" style="margin-top: 10px;">Komunitas tidak ditemukan</h2>
+                            <h2 class="text-center" style="margin-top: 10px;">Komunitas tidak ditemukan</h2>
+                        </div>
                     </div>
-                </div>
+                <?php endif; ?>
             <?php endif; ?>
-            
+
         </div>
         <!-- KOMUNITAS CONTENT -->
     </div>
@@ -146,7 +152,7 @@
     <div class="modal animated zoomIn" id="message-box-ubah-komunitas" tabindex="-1" role="dialog" aria-labelledby="defModalHead" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-            
+
                 <form action="<?= base_url('admin/Komunitas/setUpdateKomunitas'); ?>" class="form-horizontal" id="ubah-anggota-validate" method="post" enctype="multipart/form-data">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -166,21 +172,21 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label">Nama Komunitas</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" name="namaUbahKomunitas" id="namaUbahKomunitas" placeholder="" required clear/>
+                                <input type="text" class="form-control" name="namaUbahKomunitas" id="namaUbahKomunitas" placeholder="" required clear />
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-3 control-label">Lokasi Komunitas</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" name="lokasiUbahKomunitas" id="lokasiUbahKomunitas" placeholder="" required clear/>
+                                <input type="text" class="form-control" name="lokasiUbahKomunitas" id="lokasiUbahKomunitas" placeholder="" required clear />
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-3 control-label">Tautat Komunitas</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" name="tautatUbahKomunitas" id="tautatUbahKomunitas" placeholder="" required clear/>
+                                <input type="text" class="form-control" name="tautatUbahKomunitas" id="tautatUbahKomunitas" placeholder="" required clear />
                             </div>
                         </div>
 
@@ -222,14 +228,14 @@
 
                     <hr>
                     <div class="form-group">
-                            <label class="col-md-3 control-label">Aktifkan kembali Komunitas</label>
-                            <div class="col-md-8">
-                                <select name="statUbahKomunitasss" id="statUbahKomunitasss" class="select form-control">
-                                    <option value="1">Ya</option>
-                                    <option value="0">Tidak </option>
-                                </select>
-                            </div>
+                        <label class="col-md-3 control-label">Aktifkan kembali Komunitas</label>
+                        <div class="col-md-8">
+                            <select name="statUbahKomunitasss" id="statUbahKomunitasss" class="select form-control">
+                                <option value="1">Ya</option>
+                                <option value="0">Tidak </option>
+                            </select>
                         </div>
+                    </div>
 
                     <div class="modal-footer">
                         <div class="col-md-12" style="text-align: left;">
@@ -380,7 +386,7 @@
                     var sifatUbahKomunitas = data_obj.komunitas[0].sifat_komunitas;
                     var jenisUbahKomunitas = data_obj.komunitas[0].jenis_komunitas;
                     var anggotaUbahKomunitas = data_obj.komunitas[0].anggota_komunitas;
-                   
+
                     var statUbahKomunitasss = data_obj.komunitas[0].stat_komunitasss;
 
                     document.getElementById('idUbahKomunitas').value = idUbahKomunitas;
@@ -391,7 +397,7 @@
                     document.getElementById('sifatUbahKomunitas').value = sifatUbahKomunitas;
                     document.getElementById('jenisUbahKomunitas').value = jenisUbahKomunitas;
                     document.getElementById('anggotaUbahKomunitas').value = anggotaUbahKomunitas;
-                    
+
                     document.getElementById('statUbahKomunitas').value = statUbahKomunitasss;
 
                 });

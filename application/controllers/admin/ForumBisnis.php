@@ -355,6 +355,12 @@ class ForumBisnis extends MY_Controller
         $data['info'] = $this->M_anggota->findAnggotaAndUser(array('tb_anggota.user_id = ' => $this->session->userdata('uid')));
 
         $namaForbis = $this->input->post('namaForumBisnis');
+        $where = array(
+            'tb_anggota.status_anggota !=' => '0',
+            'tb_anggota.user_id != ' => $this->session->userdata('uid')
+        );
+
+        $data['pemilikForbis'] = $this->M_anggota->findAnggota('*', $where);
 
 
         $data['jenisBisnis'] = $this->M_jenisBisnis->getAllJenisBisnis();
